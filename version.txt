@@ -1,0 +1,10 @@
+Current Version: 0.2.4
+Released: 02/08/2020 6:25pm
+
+Changed cookies format so that there is now less cookies than before to display
+Now able to save life
+Now able to change settings mid-game
+Rate of time now increased so that having the slider at maximum makes it so that the game runs at computer's maximum speed
+Added unsupported div if using browser that does not support cookies
+Added too small div if window width is smaller than 1250px
+Added not started div if main.html is opened before home.html
