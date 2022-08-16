@@ -1,9 +1,8 @@
 Current Version: 0.2.4.208162
 Released: 16/08/2022 04:32pm
 
-Added for loops for lines of code that can be compressed
-Changed format from YYYY/M/D to DD/MM/YYYY
-Tidied up code a little bit
+Made Changes to the User Manual
+Added Segments in loadhome and loadmain
 
 Version Number meaning
 First number: 0 means the game is still in development and not complete, 1 means the game is out
