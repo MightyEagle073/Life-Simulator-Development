@@ -1,15 +1,15 @@
-//Checks if cookies work
+//Segment M1: Checks if cookies work
 Cookies.set("test", 1)
 if (Cookies.get("test") != 1) {
 	document.getElementById("notsupported_overlay").style.display = "block";
 }
 
-//Checks if life actually exists
+//Segment M2: Checks if life actually exists
 if (Cookies.get("active_dsb") == null || Cookies.get("death") == 1) {
 	document.getElementById("notstarted_overlay").style.display = "block";
 }
 
-//This function changes the theme depending on which one has been chosen by profile.js
+//Segment M3: This function changes the theme depending on which one has been chosen by profile.js
 function switch_theme() {
 	for (let i = 1; i <= 12; i++) {
 		if (parseInt(Cookies.get("theme")) == i) {
@@ -20,7 +20,7 @@ function switch_theme() {
 }
 switch_theme()
 
-//This function changes the life information
+//Segment M4: This function changes the life information
 document.getElementById("main_diary_h1").innerHTML = Cookies.get("active_firstname") + " " + Cookies.get("active_surname") + "'s Diary"
 document.getElementById("main_info_age").innerHTML = "Age: " + Cookies.get("active_age_years") + " years " + Cookies.get("active_age_days") + " days"
 switch (Cookies.get("active_gender")) {
@@ -37,60 +37,61 @@ document.getElementById("main_info_birthday").innerHTML = "Birthday:" + " " + Co
 document.getElementById("main_control_currentdate").innerHTML = Cookies.get("active_date")
 document.getElementById("main_control_speed").value = 0
 
-// This function turns on the education overlay when the education button on the action bar has been pressed
+//Segment M5: Below are functions turns on overlays on button press
+//Segment M5a: This function turns on the education overlay when the education button on the action bar has been pressed
 function education_overlay_on() {
 	document.getElementById("education_overlay").style.display = "block";
 }
-// This function turns off the education overlay when the close button has been pressed
+//Segment M5b: This function turns off the education overlay when the close button has been pressed
 function education_overlay_off() {
 	document.getElementById("education_overlay").style.display = "none";
 }
-// This function turns on the secondary education overlay when the view past results button has been pressed
+//Segment M5c: This function turns on the secondary education overlay when the view past results button has been pressed
 function education_overlay_on() {
 	document.getElementById("education2_overlay").style.display = "block";
 }
-// This function turns off the secondary education overlay when the blose button has been pressed
+//Segment M5d: This function turns off the secondary education overlay when the blose button has been pressed
 function education_overlay_off() {
 	document.getElementById("education2_overlay").style.display = "none";
 }
-// This function turns on the end life overlay when the end life button has been pressed
+//Segment M53: This function turns on the end life overlay when the end life button has been pressed
 function end_overlay_on() {
 	document.getElementById("end_overlay").style.display = "block";
 }
-// This function turns off the end life overlay when the close button has been pressed
+//Segment M5f: This function turns off the end life overlay when the close button has been pressed
 function end_overlay_off() {
 	document.getElementById("end_overlay").style.display = "none";
 }
-// This function turns on the preserve life overlay when the preserve life button has been pressed
+//Segment M5g: This function turns on the preserve life overlay when the preserve life button has been pressed
 function preserve_overlay_on() {
 	document.getElementById("preserve_overlay").style.display = "block";
 }
-// This function turns off the preserve life overlay when the close button has been pressed
+//Segment M5h: This function turns off the preserve life overlay when the close button has been pressed
 function preserve_overlay_off() {
 	document.getElementById("preserve_overlay").style.display = "none";
 }
-//This function turns on the save overlay when the save button on the action bar has been pressed
+//Segment M5i: This function turns on the save overlay when the save button on the action bar has been pressed
 function save_overlay_on() {
 	document.getElementById("save_overlay").style.display = "block";
 }
-// This function turns off the save overlay when the close button has been pressed
+//Segment M5j: This function turns off the save overlay when the close button has been pressed
 function save_overlay_off() {
 	document.getElementById("save_overlay").style.display = "none";
 }
-//This function turns on the settings overlay when the settings button on the action bar has been pressed
+//Segment M5k: This function turns on the settings overlay when the settings button on the action bar has been pressed
 function settings_overlay_on() {
 	document.getElementById("settings_overlay").style.display = "block";
 }
-// This function turns off the settings overlay when the close button has been pressed
+//Segment M5l: This function turns off the settings overlay when the close button has been pressed
 function settings_overlay_off() {
 	document.getElementById("settings_overlay").style.display = "none";
 }
-// This function turns off the secondary settings overlay when the close button or the no button has been pressed
+//Segment M5m: This function turns off the secondary settings overlay when the close button or the no button has been pressed
 function settings2_overlay_off() {
 	document.getElementById("settings2_overlay").style.display = "none";
 }
 
-//This function creates temporary variables that can later be changed
+//Segment M6: This function creates temporary variables that can later be changed
 var volume_temp = parseInt(Cookies.get("volume"));
 var theme_temp = parseInt(Cookies.get("theme"));
 var gamespeed_temp = parseInt(Cookies.get("gamespeed"));
@@ -99,7 +100,7 @@ var newsurname_temp = "Jasons";
 var newgender_temp = "male";
 var newdate_temp = 14434;
 
-//This function changes the text on the secondary overlay according to the settings
+//Segment M7: This function changes the text on the secondary overlay according to the settings
 function settings_sure() {
 	document.getElementById("settings2_overlay").style.display = "block";
 	volume_temp = document.getElementById("settings_volume").value;
@@ -114,7 +115,7 @@ function settings_sure() {
 	}
 }
 
-//This function changes the value of the settings theme button
+//Segment M8: This function changes the value of the settings theme button
 function settings_theme() {
 	if (theme_temp == 12) {
 		theme_temp = 1
@@ -129,7 +130,7 @@ function settings_theme() {
 	}
 }
 
-//This function saves all changes made in the settings overlay to profile.js
+//Segment M9: This function saves all changes made in the settings overlay to profile.js
 function settings_save() {
 	Cookies.set("volume", volume_temp);
 	Cookies.set("theme", theme_temp);
@@ -138,7 +139,7 @@ function settings_save() {
 	settings2_overlay_off()
 }
 
-//This function adds the wait function, which tells the program to hold for a given amount of milliseconds
+//Segment M10: This function adds the wait function, which tells the program to hold for a given amount of milliseconds
 function wait(ms) {
 	var d = new Date();
 	var d2 = null;
@@ -146,7 +147,7 @@ function wait(ms) {
 	while (d2 - d < ms);
 }
 
-//This function forwards the game by one day, and determines what happens during that day. This version (0.3.0) will perform 8 tasks for each iteration, and will be labelled as such. Future versions may perform more and more tasks per iteration. Not all tasks may be performed in an iteration.
+//Segment M11: This segment defines progress(), which forwards the game by one day, and determines what happens during that day. Instead of dividing this into subsegments, this segment will be divided into tasks. This version (0.3.0) will perform 8 tasks for each iteration, and will be labelled as such. Future versions may perform more and more tasks per iteration. Not all tasks may be performed in an iteration. 
 function progress() {
 	if (breakfn == 0) {
 		//Task 1: Upon starting the game, player's life begins, log birth into diary. Only performed during first day of player's life.
@@ -155,7 +156,7 @@ function progress() {
 		}
 		//Task 2: Advances time by one day
 		Cookies.set("active_date", (toDMY(toUnix(Cookies.get("active_date")) + 2)))
-		//Task 3: Player gets older by one day. If the month and day of the current day and the month and day of the character's birthday mathes, the age goes up by 1. Else, the days goes up by 1.
+		//Task 3: Player gets older by one day. If the month and day of the current day and the month and day of the character's birthday matches, the age goes up by 1. Else, the days goes up by 1.
 		if (Cookies.get("active_date").split("/").slice(0, 2).join("/") == Cookies.get("active_birthday").split("/").slice(0, 2).join("/")) {
 			Cookies.set("active_age_years", (parseInt(Cookies.get("active_age_years")) + 1))
 			Cookies.set("active_age_days", 0)
@@ -193,7 +194,8 @@ function progress() {
 		wait(1000 * (Math.pow(10, (-0.03 * document.getElementById("main_control_speed").value))) - 1)
 	}
 }
-//This function tells the program what to do when the start and pause buttons are pressed
+
+//Segment M12: This function tells the program what to do when the start and pause buttons are pressed
 var iteration = 0
 if (Cookies.get("death") == 0) {
 	var breakfn = 1
@@ -210,12 +212,12 @@ function timepause() {
 	breakfn = 1;
 }
 
-//This function ends the life of the current player without saving
+//Segment M13: This function ends the life of the current player without saving
 function endlife() {
 	window.location.href = "../home.html"
 }
 
-//This function changes the text on the inside of the save life div
+//Segment M14: This function changes the text on the inside of the save life div
 document.getElementById("save_overlay").style.display = "block";
 for (let i = 1; i <= 10; i++) {
 	if (Cookies.get("current_status").split(",")[i] == 1) {
@@ -223,7 +225,7 @@ for (let i = 1; i <= 10; i++) {
 	}
 }
 
-//This function changes the text on the inside of the preserve life div
+//Segment M15: This function changes the text on the inside of the preserve life div
 function preserve() {
 	document.getElementById("preserve_overlay").style.display = "block";
 	for (let i = 1; i <= 30; i++) {
@@ -233,7 +235,7 @@ function preserve() {
 	}
 }
 
-//This function saves the life into the continue lives tab
+//Segment M16: This function saves the life into the continue lives tab
 function save_life(life_no) {
 	Cookies.set("current_status", (Cookies.get("current_status").split(",").splice(0, life_no) + ",1," + Cookies.get("current_status").split(",").splice(life_no + 1)).split(","))
 	Cookies.set("current_firstname", (Cookies.get("current_firstname").split(",").splice(0, life_no) + "," + Cookies.get("active_firstname") + "," + Cookies.get("current_firstname").split(",").splice(life_no + 1)).split(","))
@@ -248,7 +250,7 @@ function save_life(life_no) {
 	window.location.href = "../home.html"
 }
 
-//This function saves the life into the pasts lives tab
+//Segment M17: This function saves the life into the pasts lives tab
 function preserve_life(life_no) {
 	Cookies.set("past_status", (Cookies.get("past_status").split(",").splice(0, life_no) + ",1," + Cookies.get("past_status").split(",").splice(life_no + 1)).split(","))
 	Cookies.set("past_name", (Cookies.get("past_name").split(",").splice(0, life_no) + "," + Cookies.get("active_firstname") + " " + Cookies.get("active_surname") + "," + Cookies.get("past_name").split(",").splice(life_no + 1)).split(","))
@@ -257,5 +259,5 @@ function preserve_life(life_no) {
 	window.location.href = "../home.html"
 }
 
-//Following code makes final adjustments to page
+//Segment M18: Following code makes final adjustments to page
 save_overlay_off();
