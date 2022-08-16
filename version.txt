@@ -1,10 +1,15 @@
-Current Version: 0.2.4
-Released: 02/08/2020 6:25pm
+Current Version: 0.2.4.208161
+Released: 16/08/2022 04:32pm
 
-Changed cookies format so that there is now less cookies than before to display
-Now able to save life
-Now able to change settings mid-game
-Rate of time now increased so that having the slider at maximum makes it so that the game runs at computer's maximum speed
-Added unsupported div if using browser that does not support cookies
-Added too small div if window width is smaller than 1250px
-Added not started div if main.html is opened before home.html
+Added for loops for lines of code that can be compressed
+Changed format from YYYY/M/D to DD/MM/YYYY
+Tidied up code a little bit
+
+Version Number meaning
+First number: 0 means the game is still in development and not complete, 1 means the game is out
+Second number: Goes up by one everytime a major version is out (E.g. New features)
+Third number: Goes up by one everytime a minor version is out (E.g. Bug fixes, information fixes, minor tweaks)
+Fourth number: Is complicated, and you should not see a fourth number unless you are playing on a beta version (which I do not release)
+	First digit: Odd means it is a beta for a new minor version, even means it is a beta for a new major version. Usually these should only be 1 or 2, but could be 3 or 4 if I started coding it near the end of the year. Shouldn't be anything else unless I take more than a year to code in that version!
+	Second to fifth digits: The date when that version is completed, in the format of mmdd. Could be a day or two over if a lot of beta versions were released on a single day.
+	Sixth digit: The nth beta version of the game released that day.

@@ -24,4 +24,3 @@ Education
 	Requirements to be enrolled in Tertiary School: N/A
 	Number of Grades in Tertiary School: N/A
 	Grade Names of Tertiary School: N/A
-	
