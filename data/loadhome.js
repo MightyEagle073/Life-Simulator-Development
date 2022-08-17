@@ -12,6 +12,7 @@ if (localStorage.getItem("gamespeed") == null) {
 //Segment H2: Sets profile values to default values if not already set
 console.log(localStorage.getItem("firstlaunch"));
 if (localStorage.getItem("firstlaunch") == null) {
+	//Segment H2a: Sets non-diary profile values
 	localStorage.setItem("current_status", "0,0,0,0,0,0,0,0,0,0,0");
 	localStorage.setItem("current_firstname", "0,0,0,0,0,0,0,0,0,0,0");
 	localStorage.setItem("current_surname", "0,0,0,0,0,0,0,0,0,0,0");
@@ -27,6 +28,7 @@ if (localStorage.getItem("firstlaunch") == null) {
 	localStorage.setItem("past_date", "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0");
 	localStorage.setItem("past_wealth", "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0");
 	localStorage.setItem("past_career", "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0");
+	//Segment H2b: Sets diary profile values
 	console.log("All Local Storage set to default values");
 }
 

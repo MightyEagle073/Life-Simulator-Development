@@ -20,7 +20,7 @@ function switch_theme() {
 }
 switch_theme()
 
-//Segment M4: This function changes the life information
+//Segment M4: This segment changes the life information on the diary (top left) and information (top right) tabs
 document.getElementById("main_diary_h1").innerHTML = localStorage.getItem("active_firstname") + " " + localStorage.getItem("active_surname") + "'s Diary"
 document.getElementById("main_info_age").innerHTML = "Age: " + localStorage.getItem("active_age_years") + " years " + localStorage.getItem("active_age_days") + " days"
 switch (localStorage.getItem("active_gender")) {
@@ -147,12 +147,22 @@ function wait(ms) {
 	while (d2 - d < ms);
 }
 
+//Segment M11: This segment defines lsr(), which stands for Local Storage Replace. This basically replaces the curly brackets inside the quote, defined in the database, with a local storage variable.
+function lsr(input) {
+	let array = input.split(/{|}/)
+	for (let i = 1; i < array.length; i += 2) {
+		array[i] = localStorage.getItem(array[i])
+	}
+	output = array.join("")
+	return output
+}
+
 //Segment M11: This segment defines progress(), which forwards the game by one day, and determines what happens during that day. Instead of dividing this into subsegments, this segment will be divided into tasks. This version (0.3.0) will perform 8 tasks for each iteration, and will be labelled as such. Future versions may perform more and more tasks per iteration. Not all tasks may be performed in an iteration. 
 function progress() {
 	if (breakfn == 0) {
 		//Task 1: Upon starting the game, player's life begins, log birth into diary. Only performed during first day of player's life.
 		if (localStorage.getItem("active_dsb") == 0) {
-			document.getElementById("main_diary_p").innerHTML = localStorage.getItem("active_birthday") + " - I have been brought into this world. <br>";
+			document.getElementById("main_diary_p").innerHTML = localStorage.getItem("active_birthday") + database_diary_born + "<br>";
 		}
 		//Task 2: Advances time by one day
 		localStorage.setItem("active_date", (toDMY(toUnix(localStorage.getItem("active_date")) + 2)))
@@ -176,7 +186,7 @@ function progress() {
 			breakfn = 2
 			console.log("Dead at " + localStorage.getItem("active_age_years") + " years " + localStorage.getItem("active_age_days") + " days due to a death_x of " + death_x.toString())
 			localStorage.setItem("death", "1")
-			document.getElementById("main_diary_p").innerHTML = document.getElementById("main_diary_p").innerHTML + localStorage.getItem("active_date") + " - I died due to natural causes. I was aged " + localStorage.getItem("active_age_years") + " years " + localStorage.getItem("active_age_days") + " days when I died. <br>"
+			document.getElementById("main_diary_p").innerHTML = document.getElementById("main_diary_p").innerHTML + localStorage.getItem("active_date") + lsr(database_diary_death)
 			document.getElementById("main_audio_death").volume = localStorage.getItem("volume") / 100
 			document.getElementById("main_audio_death").play()
 			document.getElementById("death_overlay").style.display = "block";

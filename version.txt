@@ -1,7 +1,7 @@
-Current Version: 0.2.4.208171
-Released: 17/08/2022 01:30pm
+Current Version: 0.2.4.208172
+Released: 17/08/2022 04:02pm
 
-Cookies now replaced with LocalStorage
+Diary entry texts are now located in the database instead of in the code
 
 Version Number meaning
 First number: 0 means the game is still in development and not complete, 1 means the game is out
