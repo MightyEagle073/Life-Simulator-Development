@@ -1,18 +1,18 @@
 //Segment M1: Checks if cookies work
-Cookies.set("test", 1)
-if (Cookies.get("test") != 1) {
+localStorage.setItem("test", 1)
+if (localStorage.getItem("test") != 1) {
 	document.getElementById("notsupported_overlay").style.display = "block";
 }
 
 //Segment M2: Checks if life actually exists
-if (Cookies.get("active_dsb") == null || Cookies.get("death") == 1) {
+if (localStorage.getItem("active_dsb") == null || localStorage.getItem("death") == 1) {
 	document.getElementById("notstarted_overlay").style.display = "block";
 }
 
 //Segment M3: This function changes the theme depending on which one has been chosen by profile.js
 function switch_theme() {
 	for (let i = 1; i <= 12; i++) {
-		if (parseInt(Cookies.get("theme")) == i) {
+		if (parseInt(localStorage.getItem("theme")) == i) {
 			document.getElementById("main_body").style.backgroundImage = `url('wallpapers/${database_theme_names[i]}')`;
 			document.getElementById("settings_theme").style.backgroundImage = `url('wallpapers/previews/${database_theme_names[i]}')`;
 		}
@@ -21,9 +21,9 @@ function switch_theme() {
 switch_theme()
 
 //Segment M4: This function changes the life information
-document.getElementById("main_diary_h1").innerHTML = Cookies.get("active_firstname") + " " + Cookies.get("active_surname") + "'s Diary"
-document.getElementById("main_info_age").innerHTML = "Age: " + Cookies.get("active_age_years") + " years " + Cookies.get("active_age_days") + " days"
-switch (Cookies.get("active_gender")) {
+document.getElementById("main_diary_h1").innerHTML = localStorage.getItem("active_firstname") + " " + localStorage.getItem("active_surname") + "'s Diary"
+document.getElementById("main_info_age").innerHTML = "Age: " + localStorage.getItem("active_age_years") + " years " + localStorage.getItem("active_age_days") + " days"
+switch (localStorage.getItem("active_gender")) {
 	case "m":
 		document.getElementById("main_info_gender").innerHTML = "Gender: Male"
 		break;
@@ -33,8 +33,8 @@ switch (Cookies.get("active_gender")) {
 	default:
 		document.getElementById("main_info_gender").innerHTML = "Gender: Error! You might want to restart your game."
 }
-document.getElementById("main_info_birthday").innerHTML = "Birthday:" + " " + Cookies.get("active_birthday")
-document.getElementById("main_control_currentdate").innerHTML = Cookies.get("active_date")
+document.getElementById("main_info_birthday").innerHTML = "Birthday:" + " " + localStorage.getItem("active_birthday")
+document.getElementById("main_control_currentdate").innerHTML = localStorage.getItem("active_date")
 document.getElementById("main_control_speed").value = 0
 
 //Segment M5: Below are functions turns on overlays on button press
@@ -92,9 +92,9 @@ function settings2_overlay_off() {
 }
 
 //Segment M6: This function creates temporary variables that can later be changed
-var volume_temp = parseInt(Cookies.get("volume"));
-var theme_temp = parseInt(Cookies.get("theme"));
-var gamespeed_temp = parseInt(Cookies.get("gamespeed"));
+var volume_temp = parseInt(localStorage.getItem("volume"));
+var theme_temp = parseInt(localStorage.getItem("theme"));
+var gamespeed_temp = parseInt(localStorage.getItem("gamespeed"));
 var newfirstname_temp = "Atkin";
 var newsurname_temp = "Jasons";
 var newgender_temp = "male";
@@ -132,9 +132,9 @@ function settings_theme() {
 
 //Segment M9: This function saves all changes made in the settings overlay to profile.js
 function settings_save() {
-	Cookies.set("volume", volume_temp);
-	Cookies.set("theme", theme_temp);
-	Cookies.set("gamespeed", gamespeed_temp);
+	localStorage.setItem("volume", volume_temp);
+	localStorage.setItem("theme", theme_temp);
+	localStorage.setItem("gamespeed", gamespeed_temp);
 	switch_theme()
 	settings2_overlay_off()
 }
@@ -151,42 +151,42 @@ function wait(ms) {
 function progress() {
 	if (breakfn == 0) {
 		//Task 1: Upon starting the game, player's life begins, log birth into diary. Only performed during first day of player's life.
-		if (Cookies.get("active_dsb") == 0) {
-			document.getElementById("main_diary_p").innerHTML = Cookies.get("active_birthday") + " - I have been brought into this world. <br>";
+		if (localStorage.getItem("active_dsb") == 0) {
+			document.getElementById("main_diary_p").innerHTML = localStorage.getItem("active_birthday") + " - I have been brought into this world. <br>";
 		}
 		//Task 2: Advances time by one day
-		Cookies.set("active_date", (toDMY(toUnix(Cookies.get("active_date")) + 2)))
+		localStorage.setItem("active_date", (toDMY(toUnix(localStorage.getItem("active_date")) + 2)))
 		//Task 3: Player gets older by one day. If the month and day of the current day and the month and day of the character's birthday matches, the age goes up by 1. Else, the days goes up by 1.
-		if (Cookies.get("active_date").split("/").slice(0, 2).join("/") == Cookies.get("active_birthday").split("/").slice(0, 2).join("/")) {
-			Cookies.set("active_age_years", (parseInt(Cookies.get("active_age_years")) + 1))
-			Cookies.set("active_age_days", 0)
+		if (localStorage.getItem("active_date").split("/").slice(0, 2).join("/") == localStorage.getItem("active_birthday").split("/").slice(0, 2).join("/")) {
+			localStorage.setItem("active_age_years", (parseInt(localStorage.getItem("active_age_years")) + 1))
+			localStorage.setItem("active_age_days", 0)
 		}
 		else {
-			Cookies.set("active_age_days", (parseInt(Cookies.get("active_age_days")) + 1))
+			localStorage.setItem("active_age_days", (parseInt(localStorage.getItem("active_age_days")) + 1))
 		}
 		//Task 4: Active days since birth goes up by one. DSB is never displayed to the player.
-		Cookies.set("active_dsb", (parseInt(Cookies.get("active_dsb")) + 1))
+		localStorage.setItem("active_dsb", (parseInt(localStorage.getItem("active_dsb")) + 1))
 		//Task 5: Current date in the control tab (bottom right) advances by one day.
-		document.getElementById("main_control_currentdate").innerHTML = Cookies.get("active_date")
+		document.getElementById("main_control_currentdate").innerHTML = localStorage.getItem("active_date")
 		//Task 6: Player's age is changed to the new age (which is now one day older)
-		document.getElementById("main_info_age").innerHTML = "Age: " + Cookies.get("active_age_years") + " years " + Cookies.get("active_age_days") + " days"
+		document.getElementById("main_info_age").innerHTML = "Age: " + localStorage.getItem("active_age_years") + " years " + localStorage.getItem("active_age_days") + " days"
 		//Task 7: Determines whether the player will die naturally today. If so, end the game. Chances will get higher and higher based on the DSB of player.
 		var death_x = Math.random()
-		if (Math.pow(10, ((Cookies.get("active_dsb"))) * 0.0001) >= 10000000 * death_x) {
+		if (Math.pow(10, ((localStorage.getItem("active_dsb"))) * 0.0001) >= 10000000 * death_x) {
 			breakfn = 2
-			console.log("Dead at " + Cookies.get("active_age_years") + " years " + Cookies.get("active_age_days") + " days due to a death_x of " + death_x.toString())
-			Cookies.set("death", "1")
-			document.getElementById("main_diary_p").innerHTML = document.getElementById("main_diary_p").innerHTML + Cookies.get("active_date") + " - I died due to natural causes. I was aged " + Cookies.get("active_age_years") + " years " + Cookies.get("active_age_days") + " days when I died. <br>"
-			document.getElementById("main_audio_death").volume = Cookies.get("volume") / 100
+			console.log("Dead at " + localStorage.getItem("active_age_years") + " years " + localStorage.getItem("active_age_days") + " days due to a death_x of " + death_x.toString())
+			localStorage.setItem("death", "1")
+			document.getElementById("main_diary_p").innerHTML = document.getElementById("main_diary_p").innerHTML + localStorage.getItem("active_date") + " - I died due to natural causes. I was aged " + localStorage.getItem("active_age_years") + " years " + localStorage.getItem("active_age_days") + " days when I died. <br>"
+			document.getElementById("main_audio_death").volume = localStorage.getItem("volume") / 100
 			document.getElementById("main_audio_death").play()
 			document.getElementById("death_overlay").style.display = "block";
-			document.getElementById("death_died").innerHTML = Cookies.get("active_firstname") + " " + Cookies.get("active_surname") + " has died on " + Cookies.get("active_date") + " due to natural causes."
-			switch (Cookies.get("active_gender")) {
+			document.getElementById("death_died").innerHTML = localStorage.getItem("active_firstname") + " " + localStorage.getItem("active_surname") + " has died on " + localStorage.getItem("active_date") + " due to natural causes."
+			switch (localStorage.getItem("active_gender")) {
 				case "m":
-					document.getElementById("death_age").innerHTML = "He was at an age of " + Cookies.get("active_age_years") + " years " + Cookies.get("active_age_days") + " days."
+					document.getElementById("death_age").innerHTML = "He was at an age of " + localStorage.getItem("active_age_years") + " years " + localStorage.getItem("active_age_days") + " days."
 					break;
 				case "f":
-					document.getElementById("death_age").innerHTML = "She was at an age of " + Cookies.get("active_age_years") + " years " + Cookies.get("active_age_days") + " days."
+					document.getElementById("death_age").innerHTML = "She was at an age of " + localStorage.getItem("active_age_years") + " years " + localStorage.getItem("active_age_days") + " days."
 					break;
 			}
 		}
@@ -197,7 +197,7 @@ function progress() {
 
 //Segment M12: This function tells the program what to do when the start and pause buttons are pressed
 var iteration = 0
-if (Cookies.get("death") == 0) {
+if (localStorage.getItem("death") == 0) {
 	var breakfn = 1
 }
 function timestart() {
@@ -220,8 +220,8 @@ function endlife() {
 //Segment M14: This function changes the text on the inside of the save life div
 document.getElementById("save_overlay").style.display = "block";
 for (let i = 1; i <= 10; i++) {
-	if (Cookies.get("current_status").split(",")[i] == 1) {
-		document.getElementById(`save_div_${i}`).innerHTML = `Life ${i}: ` + Cookies.get("current_firstname").split(",")[i] + " " + Cookies.get("current_surname").split(",")[i];
+	if (localStorage.getItem("current_status").split(",")[i] == 1) {
+		document.getElementById(`save_div_${i}`).innerHTML = `Life ${i}: ` + localStorage.getItem("current_firstname").split(",")[i] + " " + localStorage.getItem("current_surname").split(",")[i];
 	}
 }
 
@@ -229,33 +229,33 @@ for (let i = 1; i <= 10; i++) {
 function preserve() {
 	document.getElementById("preserve_overlay").style.display = "block";
 	for (let i = 1; i <= 30; i++) {
-		if (Cookies.get("past_status").split(",")[i] == 1) {
-			document.getElementById(`preserve_div_${i}`).innerHTML = `Life ${i}: ` + Cookies.get("past_name").split(",")[i];
+		if (localStorage.getItem("past_status").split(",")[i] == 1) {
+			document.getElementById(`preserve_div_${i}`).innerHTML = `Life ${i}: ` + localStorage.getItem("past_name").split(",")[i];
 		}
 	}
 }
 
 //Segment M16: This function saves the life into the continue lives tab
 function save_life(life_no) {
-	Cookies.set("current_status", (Cookies.get("current_status").split(",").splice(0, life_no) + ",1," + Cookies.get("current_status").split(",").splice(life_no + 1)).split(","))
-	Cookies.set("current_firstname", (Cookies.get("current_firstname").split(",").splice(0, life_no) + "," + Cookies.get("active_firstname") + "," + Cookies.get("current_firstname").split(",").splice(life_no + 1)).split(","))
-	Cookies.set("current_surname", (Cookies.get("current_surname").split(",").splice(0, life_no) + "," + Cookies.get("active_surname") + "," + Cookies.get("current_surname").split(",").splice(life_no + 1)).split(","))
-	Cookies.set("current_gender", (Cookies.get("current_gender").split(",").splice(0, life_no) + "," + Cookies.get("active_gender") + "," + Cookies.get("current_gender").split(",").splice(life_no + 1)).split(","))
-	Cookies.set("current_date", (Cookies.get("current_date").split(",").splice(0, life_no) + "," + Cookies.get("active_date") + "," + Cookies.get("current_date").split(",").splice(life_no + 1)).split(","))
-	Cookies.set("current_age_years", (Cookies.get("current_age_years").split(",").splice(0, life_no) + "," + Cookies.get("active_age_years") + "," + Cookies.get("current_age_years").split(",").splice(life_no + 1)).split(","))
-	Cookies.set("current_age_days", (Cookies.get("current_age_days").split(",").splice(0, life_no) + "," + Cookies.get("active_age_days") + "," + Cookies.get("current_age_days").split(",").splice(life_no + 1)).split(","))
-	Cookies.set("current_birthday", (Cookies.get("current_birthday").split(",").splice(0, life_no) + "," + Cookies.get("active_birthday") + "," + Cookies.get("current_birthday").split(",").splice(life_no + 1)).split(","))
-	Cookies.set("current_date", (Cookies.get("current_date").split(",").splice(0, life_no) + "," + Cookies.get("active_date") + "," + Cookies.get("current_date").split(",").splice(life_no + 1)).split(","))
-	Cookies.set("current_dsb", (Cookies.get("current_dsb").split(",").splice(0, life_no) + "," + Cookies.get("active_dsb") + "," + Cookies.get("current_dsb").split(",").splice(life_no + 1)).split(","))
+	localStorage.setItem("current_status", (localStorage.getItem("current_status").split(",").splice(0, life_no) + ",1," + localStorage.getItem("current_status").split(",").splice(life_no + 1)).split(","))
+	localStorage.setItem("current_firstname", (localStorage.getItem("current_firstname").split(",").splice(0, life_no) + "," + localStorage.getItem("active_firstname") + "," + localStorage.getItem("current_firstname").split(",").splice(life_no + 1)).split(","))
+	localStorage.setItem("current_surname", (localStorage.getItem("current_surname").split(",").splice(0, life_no) + "," + localStorage.getItem("active_surname") + "," + localStorage.getItem("current_surname").split(",").splice(life_no + 1)).split(","))
+	localStorage.setItem("current_gender", (localStorage.getItem("current_gender").split(",").splice(0, life_no) + "," + localStorage.getItem("active_gender") + "," + localStorage.getItem("current_gender").split(",").splice(life_no + 1)).split(","))
+	localStorage.setItem("current_date", (localStorage.getItem("current_date").split(",").splice(0, life_no) + "," + localStorage.getItem("active_date") + "," + localStorage.getItem("current_date").split(",").splice(life_no + 1)).split(","))
+	localStorage.setItem("current_age_years", (localStorage.getItem("current_age_years").split(",").splice(0, life_no) + "," + localStorage.getItem("active_age_years") + "," + localStorage.getItem("current_age_years").split(",").splice(life_no + 1)).split(","))
+	localStorage.setItem("current_age_days", (localStorage.getItem("current_age_days").split(",").splice(0, life_no) + "," + localStorage.getItem("active_age_days") + "," + localStorage.getItem("current_age_days").split(",").splice(life_no + 1)).split(","))
+	localStorage.setItem("current_birthday", (localStorage.getItem("current_birthday").split(",").splice(0, life_no) + "," + localStorage.getItem("active_birthday") + "," + localStorage.getItem("current_birthday").split(",").splice(life_no + 1)).split(","))
+	localStorage.setItem("current_date", (localStorage.getItem("current_date").split(",").splice(0, life_no) + "," + localStorage.getItem("active_date") + "," + localStorage.getItem("current_date").split(",").splice(life_no + 1)).split(","))
+	localStorage.setItem("current_dsb", (localStorage.getItem("current_dsb").split(",").splice(0, life_no) + "," + localStorage.getItem("active_dsb") + "," + localStorage.getItem("current_dsb").split(",").splice(life_no + 1)).split(","))
 	window.location.href = "../home.html"
 }
 
 //Segment M17: This function saves the life into the pasts lives tab
 function preserve_life(life_no) {
-	Cookies.set("past_status", (Cookies.get("past_status").split(",").splice(0, life_no) + ",1," + Cookies.get("past_status").split(",").splice(life_no + 1)).split(","))
-	Cookies.set("past_name", (Cookies.get("past_name").split(",").splice(0, life_no) + "," + Cookies.get("active_firstname") + " " + Cookies.get("active_surname") + "," + Cookies.get("past_name").split(",").splice(life_no + 1)).split(","))
-	Cookies.set("past_age", (Cookies.get("past_age").split(",").splice(0, life_no) + "," + Cookies.get("active_age_years") + "," + Cookies.get("past_age").split(",").splice(life_no + 1)).split(","))
-	Cookies.set("past_date", (Cookies.get("past_date").split(",").splice(0, life_no) + "," + Cookies.get("active_date") + "," + Cookies.get("past_date").split(",").splice(life_no + 1)).split(","))
+	localStorage.setItem("past_status", (localStorage.getItem("past_status").split(",").splice(0, life_no) + ",1," + localStorage.getItem("past_status").split(",").splice(life_no + 1)).split(","))
+	localStorage.setItem("past_name", (localStorage.getItem("past_name").split(",").splice(0, life_no) + "," + localStorage.getItem("active_firstname") + " " + localStorage.getItem("active_surname") + "," + localStorage.getItem("past_name").split(",").splice(life_no + 1)).split(","))
+	localStorage.setItem("past_age", (localStorage.getItem("past_age").split(",").splice(0, life_no) + "," + localStorage.getItem("active_age_years") + "," + localStorage.getItem("past_age").split(",").splice(life_no + 1)).split(","))
+	localStorage.setItem("past_date", (localStorage.getItem("past_date").split(",").splice(0, life_no) + "," + localStorage.getItem("active_date") + "," + localStorage.getItem("past_date").split(",").splice(life_no + 1)).split(","))
 	window.location.href = "../home.html"
 }
 

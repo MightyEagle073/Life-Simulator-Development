@@ -1,8 +1,7 @@
-Current Version: 0.2.4.208162
-Released: 16/08/2022 04:32pm
+Current Version: 0.2.4.208171
+Released: 17/08/2022 01:30pm
 
-Made Changes to the User Manual
-Added Segments in loadhome and loadmain
+Cookies now replaced with LocalStorage
 
 Version Number meaning
 First number: 0 means the game is still in development and not complete, 1 means the game is out
