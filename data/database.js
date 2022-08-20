@@ -17,5 +17,3 @@ const database_career_levels = [
 //Diary entries - Make sure the quote begins with " - " and ends with " <br>". Replace variables with curly brackets. Make sure there are the same number of open curly brackets as closing curly brackets, otherwise you're gonna break the code!
 const database_diary_born = " - I have been brought into this world. <br>"
 const database_diary_death = " - I died due to natural causes. I was aged {active_age_years} years and {active_age_days} days when I died. <br>"
-
-// document.getElementById("main_diary_p").innerHTML = document.getElementById("main_diary_p").innerHTML + localStorage.getItem("active_date") + " - I died due to natural causes. I was aged " + localStorage.getItem("active_age_years") + " years " + localStorage.getItem("active_age_days") + " days when I died. <br>"
