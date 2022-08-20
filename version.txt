@@ -1,7 +1,7 @@
-Current Version: 0.2.4.208213
-Released: 21/08/2022 04:06am
+Current Version: 0.2.4.208214
+Released: 21/08/2022 04:18am
 
-Github Beta merge test
+Github Beta post merge test
 
 Version Number meaning
 First number: 0 means the game is still in development and not complete, 1 means the game is out
