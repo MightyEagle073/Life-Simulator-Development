@@ -1,12 +1,12 @@
 //Segment H1: Sets settings to default values if not already set
-if (localStorage.getItem("volume") == null) {
-	localStorage.setItem("volume", 100);
+if (localStorage.getItem("settings_volume") == null) {
+	localStorage.setItem("settings_volume", 100);
 }
-if (localStorage.getItem("theme") == null) {
-	localStorage.setItem("theme", 1);
+if (localStorage.getItem("settings_theme") == null) {
+	localStorage.setItem("settings_theme", 1);
 }
-if (localStorage.getItem("gamespeed") == null) {
-	localStorage.setItem("gamespeed", 1);
+if (localStorage.getItem("settings_gamespeed") == null) {
+	localStorage.setItem("settings_gamespeed", 1);
 }
 
 //Segment H2: Sets profile values to default values if not already set
@@ -29,16 +29,42 @@ if (localStorage.getItem("firstlaunch") == null) {
 	localStorage.setItem("past_wealth", "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0");
 	localStorage.setItem("past_career", "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0");
 	//Segment H2b: Sets diary profile values
+	for (let i = 1; i <= 10; i++) {
+		localStorage.setItem(`current_diary_${i}`, "Empty")
+	}
+	for (let i = 1; i <= 30; i++) {
+		localStorage.setItem(`past_diary_${i}`, "Empty")
+	}
 	console.log("All Local Storage set to default values");
 }
 
-//Segment H3: Sets first launch variable to 1, then checks if cookies work
+//Segment H3: Sets first launch variable to 1, then checks if local storage work
 localStorage.setItem("firstlaunch", 1)
 if (localStorage.getItem("firstlaunch") != 1) {
 	document.getElementById("notsupported_overlay").style.display = "block";
 }
 
-//Segment H4: This function changes the text in continue life section according to profile.js
+//Segment H4: Firefox Cookie Transfer
+if(navigator.userAgent.indexOf("Firefox") != -1) {
+	if (Cookies.get("transfer") == 1) {
+		for (let i = 1; i < database_localstorage_names.length; i++) {
+			localStorage.setItem(database_localstorage_names[i], Cookies.get(database_localstorage_names[i]))
+		}
+		Cookies.set("transfer", 0)
+		console.log("Cookie transfer successful")
+	}
+}
+function cookie_transfer() {
+	if(navigator.userAgent.indexOf("Firefox") != -1) {
+		console.log("Commenced cookie transfer")
+		Cookies.set("transfer", 1)
+		for (let i = 1; i < database_localstorage_names.length; i++) {
+			Cookies.set(database_localstorage_names[i], localStorage.getItem(database_localstorage_names[i]))
+		}
+	}
+}
+
+//Segment H5: This function changes the text in continue life section according to profile.js
 for (let i = 1; i <= 10; i++) {
 	if (localStorage.getItem("current_status").split(",")[i] == 1) {
 		document.getElementById(`continuelife_savefile${i}_name`).innerHTML = localStorage.getItem("current_firstname").split(",")[i] + " " + localStorage.getItem("current_surname").split(",")[i];
@@ -47,7 +73,7 @@ for (let i = 1; i <= 10; i++) {
 	}
 }
 
-//Segment H5: This function changes the text in the past lives section according to profile.js
+//Segment H6: This function changes the text in the past lives section according to profile.js
 for (let i = 1; i <= 30; i++) {
 	if (localStorage.getItem("past_status").split(",")[i] == 1) {
 		document.getElementById(`pastlives_save${i}_name`).innerHTML = localStorage.getItem("past_name").split(",")[i];
@@ -58,8 +84,8 @@ for (let i = 1; i <= 30; i++) {
 	}
 }
 
-//Segment H6: This function changes the settings according to profile.js
-document.getElementById("settings_volume").value = localStorage.getItem("volume");
+//Segment H7: This function changes the settings according to profile.js
+document.getElementById("settings_volume").value = localStorage.getItem("settings_volume");
 if (parseInt(localStorage.getItem("gamespeed")) == 1) {
 	document.getElementById("settings_gamespeed1").checked = true;
 }
@@ -70,10 +96,10 @@ else {
 	document.getElementById("settings_gamespeed3").checked = true;
 }
 
-//Segment H7: This function changes the theme depending on which one has been chosen by profile.js
+//Segment H8: This function changes the theme depending on which one has been chosen by profile.js
 function switch_theme() {
-	for (let i = 1; i <= 12; i++) {
-		if (parseInt(localStorage.getItem("theme")) == i) {
+	for (let i = 1; i <= database_theme_names.length - 1; i++) {
+		if (parseInt(localStorage.getItem("settings_theme")) == i) {
 			document.getElementById("home_body").style.backgroundImage = `url('data/wallpapers/${database_theme_names[i]}')`;
 			document.getElementById("settings_theme").style.backgroundImage = `url('data/wallpapers/previews/${database_theme_names[i]}')`;
 		}
@@ -81,71 +107,75 @@ function switch_theme() {
 }
 switch_theme()
 
-//Segment H8: This function creates temporary variables that can later be changed
-var volume_temp = parseInt(localStorage.getItem("volume"));
-var theme_temp = parseInt(localStorage.getItem("theme"));
-var gamespeed_temp = parseInt(localStorage.getItem("gamespeed"));
+//Segment H9: This function creates temporary variables that can later be changed
+var volume_temp = parseInt(localStorage.getItem("settings_volume"));
+var theme_temp = parseInt(localStorage.getItem("settings_theme"));
+var gamespeed_temp = parseInt(localStorage.getItem("settings_gamespeed"));
 var newfirstname_temp = "Atkin";
 var newsurname_temp = "Jasons";
 var newgender_temp = "male";
 var newdate_temp = 14434;
 var life_no_temp = 0;
 
-//Segment H9: Below are functions turns on overlays on button press
-//Segment H9a: This function turns on the new life overlay when the new life button has been pressed
+//Segment H10: Below are functions turns on overlays on button press
+//Segment H10a: This function turns on the new life overlay when the new life button has been pressed
 function newlife_overlay_on() {
 	document.getElementById("newlife_overlay").style.display = "block";
 }
-//Segment H9b: This function turns off the new life overlay when the close button has been pressed
+//Segment H10b: This function turns off the new life overlay when the close button has been pressed
 function newlife_overlay_off() {
 	document.getElementById("newlife_overlay").style.display = "none";
 }
-//Segment H9c: This function turns on the continue life overlay when the continue life button has been pressed
+//Segment H10c: This function turns on the continue life overlay when the continue life button has been pressed
 function continuelife_overlay_on() {
 	document.getElementById("continuelife_overlay").style.display = "block";
 }
-//Segment H9d: This function turns off the continue life overlay when the close button has been pressed
+//Segment H10d: This function turns off the continue life overlay when the close button has been pressed
 function continuelife_overlay_off() {
 	document.getElementById("continuelife_overlay").style.display = "none";
 }
-//Segment H9e: This function turns on the past lives overlay when the past lives button has been pressed
+//Segment H10e: This function turns on the past lives overlay when the past lives button has been pressed
 function pastlives_overlay_on() {
 	document.getElementById("pastlives_overlay").style.display = "block";
 }
-//Segment H9f: This function turns off the past lives overlay when the close button has been pressed
+//Segment H10f: This function turns off the past lives overlay when the close button has been pressed
 function pastlives_overlay_off() {
 	document.getElementById("pastlives_overlay").style.display = "none";
 }
-//Segment H9g: This function turns on the settings overlay when the past lives button has been pressed
+//Segment H10g: This function turns on the settings overlay when the past lives button has been pressed
 function settings_overlay_on() {
 	document.getElementById("settings_overlay").style.display = "block";
 }
-//Segment H9h: This function turns off the settings overlay when the close button has been pressed
+//Segment H10h: This function turns off the settings overlay when the close button has been pressed
 function settings_overlay_off() {
 	document.getElementById("settings_overlay").style.display = "none";
 }
-//Segment H9i: This function turns on the credits overlay when the past lives button has been pressed
+//Segment H10i: This function turns on the credits overlay when the past lives button has been pressed
 function credits_overlay_on() {
 	document.getElementById("credits_overlay").style.display = "block";
 }
-//Segment H9j: This function turns off the credits overlay when the close button has been pressed
+//Segment H10j: This function turns off the credits overlay when the close button has been pressed
 function credits_overlay_off() {
 	document.getElementById("credits_overlay").style.display = "none";
 }
-//Segment H9k: This function turns off the secondary new live overlay when the close button or the no button has been pressed
+//Segment H10k: This function turns off the secondary new live overlay when the close button or the no button has been pressed
 function newlife2_overlay_off() {
 	document.getElementById("newlife2_overlay").style.display = "none";
 }
-//Segment H9l: This function turns off the secondary continue live overlay when the close button or the no button has been pressed
+//Segment H10l: This function turns off the secondary continue live overlay when the close button or the no button has been pressed
 function continuelife2_overlay_off() {
 	document.getElementById("continuelife2_overlay").style.display = "none";
 }
-//Segment H9m: This function turns off the secondary settings overlay when the close button or the no button has been pressed
+//Segment H10m: This function turns off the secondary continue live overlay when the close button or the no button has been pressed
+function pastlives2_overlay_off() {
+	document.getElementById("pastlives2_overlay").style.display = "none";
+}
+//Segment H10n: This function turns off the secondary settings overlay when the close button or the no button has been pressed
 function settings2_overlay_off() {
 	document.getElementById("settings2_overlay").style.display = "none";
 }
 
-//Segment H10: This function sets the default date of #newlife_dob to the current day
+//Segment H11: This function sets the default date of #newlife_dob to the current day
 $(document).ready(function () {
 	var now = new Date();
 	var month = (now.getMonth() + 1);
@@ -158,7 +188,7 @@ $(document).ready(function () {
 	$('#newlife_dob').val(today);
 });
 
-//Segment H11: This function changes the text on the secondary overlay according to which life has been chosen
+//Segment H12: This function changes the text on the secondary overlay according to which life has been chosen
 function continueFn(life_no) {
 	life_no_temp = life_no
 	if (localStorage.getItem("current_status").split(",")[life_no] == 1) {
@@ -167,8 +197,15 @@ function continueFn(life_no) {
 		document.getElementById("continuelife2_overlay").style.display = "block";
 	}
 }
+function pastFn(life_no) {
+	if (localStorage.getItem("past_status").split(",")[life_no] == 1) {
+		document.getElementById("pastlives2_overlay").style.display = "block";
+		document.getElementById("pastlives2_h1").innerHTML = localStorage.getItem(`past_name`).split(",")[life_no] + "'s diary"
+		document.getElementById("pastlives2_p").innerHTML = localStorage.getItem(`past_diary_${life_no}`)
+	}
+}
 
-//Segment H12: This function loads the game onto the main tab
+//Segment H13: This function loads the game onto the main tab
 function continuelife() {
 	localStorage.setItem("active_firstname", localStorage.getItem("current_firstname").split(",")[life_no_temp]);
 	localStorage.setItem("active_surname", localStorage.getItem("current_surname").split(",")[life_no_temp]);
@@ -178,11 +215,13 @@ function continuelife() {
 	localStorage.setItem("active_age_years", localStorage.getItem("current_age_years").split(",")[life_no_temp]);
 	localStorage.setItem("active_age_days", localStorage.getItem("current_age_days").split(",")[life_no_temp]);
 	localStorage.setItem("active_dsb", localStorage.getItem("current_dsb").split(",")[life_no_temp]);
+	localStorage.setItem("active_diary", localStorage.getItem(`current_diary_${life_no_temp}`));
 	localStorage.setItem("death", "0");
+	cookie_transfer()
 	window.location.href = "data/main.html"
 }
 
-//Segment H13: This function changes the text on the secondary overlay according to the settings
+//Segment H14: This function changes the text on the secondary overlay according to the settings
 function settings_sure() {
 	document.getElementById("settings2_overlay").style.display = "block";
 	volume_temp = document.getElementById("settings_volume").value;
@@ -197,33 +236,33 @@ function settings_sure() {
 	}
 }
 
-//Segment H14: This function changes the value of the settings theme button
+//Segment H15: This function changes the value of the settings theme button
 function settings_theme() {
-	if (theme_temp == 12) {
+	if (theme_temp == database_theme_names.length - 1) {
 		theme_temp = 1
 	}
 	else {
 		theme_temp = theme_temp + 1
 	}
-	for (let i = 1; i <= 12; i++) {
+	for (let i = 1; i <= database_theme_names.length - 1; i++) {
 		if (theme_temp == i) {
 			document.getElementById("settings_theme").style.backgroundImage = `url('data/wallpapers/previews/${database_theme_names[i]}')`;
 		}
 	}
 }
 
-//Segment H15: This function saves all changes made in the settings overlay to profile.js
+//Segment H16: This function saves all changes made in the settings overlay to profile.js
 function settings_save() {
-	localStorage.setItem("volume", volume_temp);
-	localStorage.setItem("theme", theme_temp);
-	localStorage.setItem("gamespeed", gamespeed_temp);
+	localStorage.setItem("settings_volume", volume_temp);
+	localStorage.setItem("settings_theme", theme_temp);
+	localStorage.setItem("settings_gamespeed", gamespeed_temp);
 	switch_theme()
 	settings2_overlay_off()
 }
 
-//Segment H16: This function activates when user tries to start a life
+//Segment H17: This function activates when user tries to start a life
 function newlife_sure() {
-	//Segment H16a: Invalid First Name
+	//Segment H17a: Invalid First Name
 	if (document.getElementById("newlife_firstname").value.length == 0) {
 		document.getElementById("newlife2_h1").innerHTML = "Invalid First Name!"
 		document.getElementById("newlife2_p").innerHTML = "Please enter a first name. Do you really want your character to live their life without a name? Imagine how much they'll get bullied!"
@@ -231,7 +270,7 @@ function newlife_sure() {
 		document.getElementById("newlife2_no").style.display = "none";
 		document.getElementById("newlife2_overlay").style.display = "block";
 	}
-	//Segment H16b: Invalid Surname
+	//Segment H17b: Invalid Surname
 	else if (document.getElementById("newlife_surname").value.length == 0) {
 		document.getElementById("newlife2_h1").innerHTML = "Invalid Surname!"
 		document.getElementById("newlife2_p").innerHTML = "Please enter a surname. You can't just have someone with a first name but no last name. Imagine your full name being John. That would be awkward wouldn't it?"
@@ -239,7 +278,7 @@ function newlife_sure() {
 		document.getElementById("newlife2_no").style.display = "none";
 		document.getElementById("newlife2_overlay").style.display = "block";
 	}
-	//Segment H16c: Invalid Gender
+	//Segment H17c: Invalid Gender
 	else if (document.getElementById("newlife_gender_male").checked == false && document.getElementById("newlife_gender_female").checked == false) {
 		document.getElementById("newlife2_h1").innerHTML = "Invalid Gender!"
 		document.getElementById("newlife2_p").innerHTML = "Please enter a gender. I know some people don't really like to identify them as either Male or Female but you got to be born either of the two!"
@@ -247,7 +286,7 @@ function newlife_sure() {
 		document.getElementById("newlife2_no").style.display = "none";
 		document.getElementById("newlife2_overlay").style.display = "block";
 	}
-	//Segment H16d: Invalid Date
+	//Segment H17d: Invalid Date
 	else if (document.getElementById("newlife_dob").value.toString().length == 0) {
 		document.getElementById("newlife2_h1").innerHTML = "Invalid Date!"
 		document.getElementById("newlife2_p").innerHTML = "Please enter a date of birth. I haven't heard of anyone who was never born, and just exists. Maybe you're one but Life Simulator could only simulate lives of mortals!"
@@ -255,7 +294,7 @@ function newlife_sure() {
 		document.getElementById("newlife2_no").style.display = "none";
 		document.getElementById("newlife2_overlay").style.display = "block";
 	}
-	//Segment H16e: All is valid
+	//Segment H17e: All is valid
 	else {
 		newfirstname_temp = document.getElementById("newlife_firstname").value;
 		newsurname_temp = document.getElementById("newlife_surname").value;
@@ -274,7 +313,7 @@ function newlife_sure() {
 	}
 }
 
-//Segment H17: This function activates when user is sure they want to start their life
+//Segment H18: This function activates when user is sure they want to start their life
 function createlife() {
 	localStorage.setItem("active_firstname", newfirstname_temp);
 	localStorage.setItem("active_surname", newsurname_temp);
@@ -285,4 +324,6 @@ function createlife() {
 	localStorage.setItem("active_age_days", "0");
 	localStorage.setItem("active_dsb", "0")
 	localStorage.setItem("death", "0")
+	cookie_transfer()
+	window.location.href = "data/main.html"
 }
