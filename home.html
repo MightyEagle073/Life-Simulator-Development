@@ -75,7 +75,7 @@
 				<p id="newlife2_p">Would you like to start the life of <strong>John Smith</strong> starting from
 					<strong>1970/1/1?</strong>
 				</p>
-				<a href="data/main.html"><button id="newlife2_yes" onclick="createlife()"></button></a>
+				<button id="newlife2_yes" onclick="createlife()"></button>
 				<button id="newlife2_no" onclick="newlife2_overlay_off()"></button>
 			</div>
 		</div>
@@ -237,11 +237,11 @@
 			<div id="pastlives_container">
 				<button id="pastlives_close" class="close" onclick="pastlives_overlay_off()"></button>
 				<h1>Past Lives</h1>
-				<p>This is the gallery of all the lives you have once lived that you chose to preserve.</p>
+				<p>This is the gallery of all the lives you have once lived that you chose to preserve. Click on a life to read their diary.</p>
 				<p><i>They say you die twice. One time when you stop breathing and a second time, a bit later on, when
 						somebody says your name for the last time.</i> - Banksy</p>
 				<div id="pastlives_div">
-					<div id="pastlives_save1" class="pastlives_save">
+					<div id="pastlives_save1" class="pastlives_save" onClick="pastFn(1)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save1_main">
 								<td class="pastlives_save_no" id="pastlives_save1_no">1</td>
@@ -258,7 +258,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save2" class="pastlives_save">
+					<div id="pastlives_save2" class="pastlives_save" onClick="pastFn(2)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save2_main">
 								<td class="pastlives_save_no" id="pastlives_save2_no">2</td>
@@ -275,7 +275,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save3" class="pastlives_save">
+					<div id="pastlives_save3" class="pastlives_save" onClick="pastFn(3)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save3_main">
 								<td class="pastlives_save_no" id="pastlives_save3_no">3</td>
@@ -292,7 +292,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save4" class="pastlives_save">
+					<div id="pastlives_save4" class="pastlives_save" onClick="pastFn(4)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save4_main">
 								<td class="pastlives_save_no" id="pastlives_save4_no">4</td>
@@ -309,7 +309,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save5" class="pastlives_save">
+					<div id="pastlives_save5" class="pastlives_save" onClick="pastFn(5)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save5_main">
 								<td class="pastlives_save_no" id="pastlives_save5_no">5</td>
@@ -326,7 +326,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save6" class="pastlives_save">
+					<div id="pastlives_save6" class="pastlives_save" onClick="pastFn(6)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save6_main">
 								<td class="pastlives_save_no" id="pastlives_save6_no">6</td>
@@ -343,7 +343,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save7" class="pastlives_save">
+					<div id="pastlives_save7" class="pastlives_save" onClick="pastFn(7)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save7_main">
 								<td class="pastlives_save_no" id="pastlives_save7_no">7</td>
@@ -360,7 +360,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save8" class="pastlives_save">
+					<div id="pastlives_save8" class="pastlives_save" onClick="pastFn(8)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save8_main">
 								<td class="pastlives_save_no" id="pastlives_save8_no">8</td>
@@ -377,7 +377,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save9" class="pastlives_save">
+					<div id="pastlives_save9" class="pastlives_save" onClick="pastFn(9)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save9_main">
 								<td class="pastlives_save_no" id="pastlives_save9_no">9</td>
@@ -394,7 +394,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save10" class="pastlives_save">
+					<div id="pastlives_save10" class="pastlives_save" onClick="pastFn(10)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save10_main">
 								<td class="pastlives_save_no" id="pastlives_save10_no">10</td>
@@ -411,7 +411,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save11" class="pastlives_save">
+					<div id="pastlives_save11" class="pastlives_save" onClick="pastFn(11)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save11_main">
 								<td class="pastlives_save_no" id="pastlives_save11_no">11</td>
@@ -428,7 +428,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save12" class="pastlives_save">
+					<div id="pastlives_save12" class="pastlives_save" onClick="pastFn(12)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save12_main">
 								<td class="pastlives_save_no" id="pastlives_save12_no">12</td>
@@ -445,7 +445,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save13" class="pastlives_save">
+					<div id="pastlives_save13" class="pastlives_save" onClick="pastFn(13)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save13_main">
 								<td class="pastlives_save_no" id="pastlives_save13_no">13</td>
@@ -462,7 +462,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save14" class="pastlives_save">
+					<div id="pastlives_save14" class="pastlives_save" onClick="pastFn(14)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save14_main">
 								<td class="pastlives_save_no" id="pastlives_save14_no">14</td>
@@ -479,7 +479,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save15" class="pastlives_save">
+					<div id="pastlives_save15" class="pastlives_save" onClick="pastFn(15)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save15_main">
 								<td class="pastlives_save_no" id="pastlives_save15_no">15</td>
@@ -496,7 +496,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save16" class="pastlives_save">
+					<div id="pastlives_save16" class="pastlives_save" onClick="pastFn(16)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save16_main">
 								<td class="pastlives_save_no" id="pastlives_save16_no">16</td>
@@ -513,7 +513,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save17" class="pastlives_save">
+					<div id="pastlives_save17" class="pastlives_save" onClick="pastFn(17)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save17_main">
 								<td class="pastlives_save_no" id="pastlives_save17_no">17</td>
@@ -530,7 +530,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save18" class="pastlives_save">
+					<div id="pastlives_save18" class="pastlives_save" onClick="pastFn(18)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save18_main">
 								<td class="pastlives_save_no" id="pastlives_save18_no">18</td>
@@ -547,7 +547,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save19" class="pastlives_save">
+					<div id="pastlives_save19" class="pastlives_save" onClick="pastFn(19)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save19_main">
 								<td class="pastlives_save_no" id="pastlives_save19_no">19</td>
@@ -564,7 +564,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save20" class="pastlives_save">
+					<div id="pastlives_save20" class="pastlives_save" onClick="pastFn(20)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save20_main">
 								<td class="pastlives_save_no" id="pastlives_save20_no">20</td>
@@ -581,7 +581,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save21" class="pastlives_save">
+					<div id="pastlives_save21" class="pastlives_save" onClick="pastFn(21)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save21_main">
 								<td class="pastlives_save_no" id="pastlives_save21_no">21</td>
@@ -598,7 +598,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save22" class="pastlives_save">
+					<div id="pastlives_save22" class="pastlives_save" onClick="pastFn(22)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save22_main">
 								<td class="pastlives_save_no" id="pastlives_save22_no">22</td>
@@ -615,7 +615,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save23" class="pastlives_save">
+					<div id="pastlives_save23" class="pastlives_save" onClick="pastFn(23)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save23_main">
 								<td class="pastlives_save_no" id="pastlives_save23_no">23</td>
@@ -632,7 +632,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save24" class="pastlives_save">
+					<div id="pastlives_save24" class="pastlives_save" onClick="pastFn(24)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save24_main">
 								<td class="pastlives_save_no" id="pastlives_save24_no">24</td>
@@ -649,7 +649,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save25" class="pastlives_save">
+					<div id="pastlives_save25" class="pastlives_save" onClick="pastFn(25)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save25_main">
 								<td class="pastlives_save_no" id="pastlives_save25_no">25</td>
@@ -666,7 +666,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save26" class="pastlives_save">
+					<div id="pastlives_save26" class="pastlives_save" onClick="pastFn(26)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save26_main">
 								<td class="pastlives_save_no" id="pastlives_save26_no">26</td>
@@ -683,7 +683,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save27" class="pastlives_save">
+					<div id="pastlives_save27" class="pastlives_save" onClick="pastFn(27)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save27_main">
 								<td class="pastlives_save_no" id="pastlives_save27_no">27</td>
@@ -700,7 +700,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save28" class="pastlives_save">
+					<div id="pastlives_save28" class="pastlives_save" onClick="pastFn(28)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save28_main">
 								<td class="pastlives_save_no" id="pastlives_save28_no">28</td>
@@ -717,7 +717,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save29" class="pastlives_save">
+					<div id="pastlives_save29" class="pastlives_save" onClick="pastFn(29)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save29_main">
 								<td class="pastlives_save_no" id="pastlives_save29_no">29</td>
@@ -734,7 +734,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save30" class="pastlives_save">
+					<div id="pastlives_save30" class="pastlives_save" onClick="pastFn(30)">
 						<table>
 							<tr class="pastlives_save_main" id="pastlives_save30_main">
 								<td class="pastlives_save_no" id="pastlives_save30_no">30</td>
@@ -753,6 +753,17 @@
 					</div>
 				</div>
 				<br><br><br>
+				<div>
+					<div id="pastlives2_overlay" class="overlay">
+						<div id="pastlives2_tab">
+							<button id="pastlives2_close" class="close" onclick="pastlives2_overlay_off()"></button>
+							<div id="pastlives2_container">
+								<h1 id="pastlives2_h1">John Smith's diary</h1>
+								<p id="pastlives2_p">01/01/1970 - I have been brought into this world. <br>01/01/2050 - I died due to natural causes. I was aged 80 years and 0 days when I died. <br></p>
+							</div>
+						</div>
+					</div>	
+				</div>
 			</div>
 		</div>
 	</div>
