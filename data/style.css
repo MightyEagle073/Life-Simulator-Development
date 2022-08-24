@@ -45,6 +45,7 @@ img{
 #home_version{
 	position: fixed;
 	display: flex;
+	margin-left: 0.5%;
 	height: 4%;
 	width: 15%;
 	top: 96%;
@@ -54,7 +55,6 @@ img{
 }
 #newlife{
 	top: 35%;
-	onclick: "newlifeoverlayon()";
 	cursor: pointer; /* Add a pointer on hover */
 }
 #continuelife{

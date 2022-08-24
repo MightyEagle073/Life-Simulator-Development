@@ -15,35 +15,37 @@ const database_theme_names = [
 	"12_train.jpg"
 ]
 
-//Local Storage Items, excluding Current and Past Diaries
+//Life Variables
+const database_life_variables = [
+	//Status (0 = Empty, 1 = Alive and 2 = Dead)
+	"status",
+	//Common variables (Usually short)
+	"age_days",
+	"age_years",
+	"birthday",
+	"career_current",
+	"career_longest",
+	"date",
+	"dsb",
+	"education",
+	"gender",
+	"name_first",
+	"name_last",
+	"networth",
+	//Diary (Longest of the bunch)
+	"diary",
+	//Life Number (Only for transferring use)
+	"lifeno"
+]
+
+//Local Storage Items to be transferred by Firefox
 const database_localstorage_names = [
 	null,
-	"active_age_days",
-	"active_age_years",
-	"active_birthday",
-	"active_date",
-	"active_diary",
-	"active_dsb",
-	"active_firstname",
-	"active_gender",
-	"active_surname",
-	"current_age_days",
-	"current_age_years",
-	"current_birthday",
-	"current_date",
-	"current_dsb",
-	"current_firstname",
-	"current_gender",
-	"current_status",
-	"current_surname",
-	"death",
 	"firstlaunch",
-	"past_age",
-	"past_career",
-	"past_date",
-	"past_name",
+	"transfer",
+	"current_status",
 	"past_status",
-	"past_wealth",
+	"death",
 	"settings_gamespeed",
 	"settings_theme",
 	"settings_volume"

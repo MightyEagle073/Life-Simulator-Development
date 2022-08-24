@@ -1,64 +1,111 @@
-//Segment H1: Sets settings to default values if not already set
-if (localStorage.getItem("settings_volume") == null) {
-	localStorage.setItem("settings_volume", 100);
-}
-if (localStorage.getItem("settings_theme") == null) {
-	localStorage.setItem("settings_theme", 1);
-}
-if (localStorage.getItem("settings_gamespeed") == null) {
-	localStorage.setItem("settings_gamespeed", 1);
-}
-
-//Segment H2: Sets profile values to default values if not already set
+//Segment H1: Sets default local storage values if not already set
 console.log(localStorage.getItem("firstlaunch"));
 if (localStorage.getItem("firstlaunch") == null) {
-	//Segment H2a: Sets non-diary profile values
-	localStorage.setItem("current_status", "0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("current_firstname", "0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("current_surname", "0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("current_gender", "0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("current_date", "0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("current_birthday", "0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("current_age_years", "0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("current_age_days", "0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("current_dsb", "0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("past_status", "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("past_name", "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("past_age", "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("past_date", "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("past_wealth", "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("past_career", "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0");
-	//Segment H2b: Sets diary profile values
+	//Segment H1a: Sets current and past life data to empty values
 	for (let i = 1; i <= 10; i++) {
-		localStorage.setItem(`current_diary_${i}`, "Empty")
+		let xmldata = ""
+		for (let j = 0; j < database_life_variables.length; j++) {
+			xmldata = xmldata + "<" + database_life_variables[j] + ">" + "</" + database_life_variables[j] + "> \n"
+		}
+		localStorage.setItem(`current_${i}`, xmldata)
 	}
 	for (let i = 1; i <= 30; i++) {
-		localStorage.setItem(`past_diary_${i}`, "Empty")
+		let xmldata = ""
+		for (let j = 0; j < database_life_variables.length; j++) {
+			xmldata = xmldata + "<" + database_life_variables[j] + ">" + "</" + database_life_variables[j] + "> \n"
+		}
+		localStorage.setItem(`past_${i}`, xmldata)
 	}
+	//Segment H1b: Sets transfer value
+	let xmldata = ""
+	for (let i = 0; i < database_life_variables.length; i++) {
+		xmldata = xmldata + "<" + database_life_variables[i] + ">" + "</" + database_life_variables[i] + "> \n"
+	}
+	localStorage.setItem("transfer", xmldata)
+	//Segment H1c: Sets firefox status values 
+	if(navigator.userAgent.indexOf("Firefox") != -1) {
+		localStorage.setItem("current_status", "00000000000");
+		localStorage.setItem("past_status", "0000000000000000000000000000000");
+	}
+	//Segment H1d: Sets default settings
+	localStorage.setItem("settings_volume", 100);
+	localStorage.setItem("settings_theme", 1);
+	localStorage.setItem("settings_gamespeed", 1);
 	console.log("All Local Storage set to default values");
 }
 
-//Segment H3: Sets first launch variable to 1, then checks if local storage work
+//Segment H2: Sets first launch variable to 1, then checks if local storage work
 localStorage.setItem("firstlaunch", 1)
 if (localStorage.getItem("firstlaunch") != 1) {
 	document.getElementById("notsupported_overlay").style.display = "block";
 }
 
-//Segment H4: Firefox Cookie Transfer
+//Segment H3: This segment defines liferead() and lifewrite(), which is used to read and write data into the XML formatted local storages (current life, past life and transfer).
+function lsread(tag, type, lifeno) {
+	let startreplace = "<" + tag + ">"
+	let endreplace = "</" + tag + ">"
+	if (type == "current") {
+		var array = localStorage.getItem("current_" + lifeno.toString()).replace(startreplace, "{}").replace(endreplace,"{}").split("{}")
+	}
+	else if (type == "past") {
+		var array = localStorage.getItem("past_" + lifeno.toString()).replace(startreplace, "{}").replace(endreplace,"{}").split("{}")
+	}
+	else if (type == "transfer") {
+		var array = localStorage.getItem("transfer").replace(startreplace, "{}").replace(endreplace,"{}").split("{}")
+	}
+	return array[1]
+}
+function lswrite(tag, type, lifeno, input) {
+	let startreplace = "<" + tag + ">"
+	let endreplace = "</" + tag + ">"
+	if (type == "current") {
+		var output1 = "current_" + lifeno.toString
+		var array = localStorage.getItem("current_" + lifeno.toString()).replace(startreplace, "{}").replace(endreplace,"{}").split("{}")
+	}
+	else if (type == "past") {
+		var output1 = "current_" + lifeno.toString
+		var array = localStorage.getItem("past_" + lifeno.toString()).replace(startreplace, "{}").replace(endreplace,"{}").split("{}")
+	}
+	else if (type == "transfer") {
+		var output1 = "transfer"
+		var array = localStorage.getItem("transfer").replace(startreplace, "{}").replace(endreplace,"{}").split("{}")
+	}
+	array[1] = input
+	let output2 = array[0] + startreplace + array[1] + endreplace + array[2]
+	localStorage.setItem(output1, output2)
+}
+
+//Segment H4: Download from main.html
+//Segment H4a: Local Storage Transfer
+if (lsread("status", "transfer", 0) == 1) {
+	for (let i = 1; i <= database_life_variables.length; i++) {
+		lswrite(database_life_variables[i], "current", lsread("lifeno", "transfer", 0), lsread(database_life_variables[i], "transfer", lifeno))
+	}
+	lswrite("status", "transfer", 0, 0)
+	lswrite("lifeno", "transfer", 0, "")
+}
+else if (lsread("status", "transfer", 0) == 2) {
+	for (let i = 1; i <= database_life_variables.length; i++) {
+		lswrite(database_life_variables[i], "past", lsread("lifeno", "transfer", 0), lsread(database_life_variables[i], "transfer", lifeno))
+	}
+	lswrite("status", "transfer", 0, 0)
+	lswrite("lifeno", "transfer", 0, "")
+}
+//Segment H4b: Firefox Cookie Transfer
 if(navigator.userAgent.indexOf("Firefox") != -1) {
-	if (Cookies.get("transfer") == 1) {
-		for (let i = 1; i < database_localstorage_names.length; i++) {
+	if (Cookies.get("firefox_transfer") == 1) {
+		for (let i = 1; i <= database_localstorage_names.length; i++) {
 			localStorage.setItem(database_localstorage_names[i], Cookies.get(database_localstorage_names[i]))
 		}
-		Cookies.set("transfer", 0)
+		Cookies.set("firefox_transfer", 0)
 		console.log("Cookie transfer successful")
 	}
 }
 function cookie_transfer() {
 	if(navigator.userAgent.indexOf("Firefox") != -1) {
 		console.log("Commenced cookie transfer")
-		Cookies.set("transfer", 1)
-		for (let i = 1; i < database_localstorage_names.length; i++) {
+		Cookies.set("firefox_transfer", 1)
+		for (let i = 1; i <= database_localstorage_names.length; i++) {
 			Cookies.set(database_localstorage_names[i], localStorage.getItem(database_localstorage_names[i]))
 		}
 	}
@@ -66,21 +113,21 @@ function cookie_transfer() {
 
 //Segment H5: This function changes the text in continue life section according to profile.js
 for (let i = 1; i <= 10; i++) {
-	if (localStorage.getItem("current_status").split(",")[i] == 1) {
-		document.getElementById(`continuelife_savefile${i}_name`).innerHTML = localStorage.getItem("current_firstname").split(",")[i] + " " + localStorage.getItem("current_surname").split(",")[i];
-		document.getElementById(`continuelife_savefile${i}_age`).innerHTML = "Age: " + localStorage.getItem("current_age_years").split(",")[i];
-		document.getElementById(`continuelife_savefile${i}_date`).innerHTML = "Date: " + localStorage.getItem("current_date").split(",")[i];
+	if (lsread("status", "current", i) == 1) {
+		document.getElementById(`continuelife_savefile${i}_name`).innerHTML = lsread("name_first", "current", i) + " " + lsread("name_last", "current", i);
+		document.getElementById(`continuelife_savefile${i}_age`).innerHTML = "Age: " + lsread("age_years", "current", i);
+		document.getElementById(`continuelife_savefile${i}_date`).innerHTML = "Date: " + lsread("date", "current", i);
 	}
 }
 
 //Segment H6: This function changes the text in the past lives section according to profile.js
 for (let i = 1; i <= 30; i++) {
-	if (localStorage.getItem("past_status").split(",")[i] == 1) {
-		document.getElementById(`pastlives_save${i}_name`).innerHTML = localStorage.getItem("past_name").split(",")[i];
-		document.getElementById(`pastlives_save${i}_age`).innerHTML = "Age: " + localStorage.getItem("past_age").split(",")[i];
-		document.getElementById(`pastlives_save${i}_date`).innerHTML = "Date: " + localStorage.getItem("past_date").split(",")[i];
-		document.getElementById(`pastlives_save${i}_wealth`).innerHTML = "Net Worth: $" + localStorage.getItem("past_wealth").split(",")[i];
-		document.getElementById(`pastlives_save${i}_career`).innerHTML = "Career: " + database_careers[localStorage.getItem("past_career").split(",")[i]];
+	if (lsread("status", "past", i) == 1) {
+		document.getElementById(`pastlives_save${i}_name`).innerHTML = lsread("name", "past", i);
+		document.getElementById(`pastlives_save${i}_age`).innerHTML = "Age: " + lsread("age", "past", i);
+		document.getElementById(`pastlives_save${i}_date`).innerHTML = "Date: " + lsread("date", "past", i);
+		document.getElementById(`pastlives_save${i}_wealth`).innerHTML = "Net Worth: $" + lsread("wealth", "past", i);
+		document.getElementById(`pastlives_save${i}_career`).innerHTML = "Career: " + database_careers[lsread("career", "past", i)];
 	}
 }
 
@@ -191,31 +238,25 @@ $(document).ready(function () {
 //Segment H12: This function changes the text on the secondary overlay according to which life has been chosen
 function continueFn(life_no) {
 	life_no_temp = life_no
-	if (localStorage.getItem("current_status").split(",")[life_no] == 1) {
+	if (lsread("status", "current", life_no) == 1) {
 		document.getElementById("continuelife2_h1").innerHTML = "Continue Life " + life_no.toString() + "?";
-		document.getElementById("continuelife2_p").innerHTML = "Would you like to continue the life of <strong>" + localStorage.getItem("current_firstname").split(",")[life_no] + " " + localStorage.getItem("current_surname").split(",")[life_no] + "</strong>, aged <strong>" + localStorage.getItem("current_age_years").split(",")[life_no] + "</strong>, from <strong>" + localStorage.getItem("current_date").split(",")[life_no] + "</strong>?";
+		document.getElementById("continuelife2_p").innerHTML = "Would you like to continue the life of <strong>" + lsread("name_first", "current", life_no) + " " + lsread("name_last", "current", life_no) + "</strong>, aged <strong>" + lsread("name_last", "age_years", life_no) + "</strong>, from <strong>" + lsread("date", "current", life_no) + "</strong>?";
 		document.getElementById("continuelife2_overlay").style.display = "block";
 	}
 }
 function pastFn(life_no) {
 	if (localStorage.getItem("past_status").split(",")[life_no] == 1) {
 		document.getElementById("pastlives2_overlay").style.display = "block";
-		document.getElementById("pastlives2_h1").innerHTML = localStorage.getItem(`past_name`).split(",")[life_no] + "'s diary"
-		document.getElementById("pastlives2_p").innerHTML = localStorage.getItem(`past_diary_${life_no}`)
+		document.getElementById("pastlives2_h1").innerHTML = lsread("name", "past", life_no) + "'s diary"
+		document.getElementById("pastlives2_p").innerHTML = lsread("diary", "past", life_no)
 	}
 }
 
-//Segment H13: This function loads the game onto the main tab
+//Segment H13: This function loads the game onto the main tab if life is continued
 function continuelife() {
-	localStorage.setItem("active_firstname", localStorage.getItem("current_firstname").split(",")[life_no_temp]);
-	localStorage.setItem("active_surname", localStorage.getItem("current_surname").split(",")[life_no_temp]);
-	localStorage.setItem("active_gender", localStorage.getItem("current_gender").split(",")[life_no_temp]);
-	localStorage.setItem("active_date", localStorage.getItem("current_date").split(",")[life_no_temp]);
-	localStorage.setItem("active_birthday", localStorage.getItem("current_birthday").split(",")[life_no_temp]);
-	localStorage.setItem("active_age_years", localStorage.getItem("current_age_years").split(",")[life_no_temp]);
-	localStorage.setItem("active_age_days", localStorage.getItem("current_age_days").split(",")[life_no_temp]);
-	localStorage.setItem("active_dsb", localStorage.getItem("current_dsb").split(",")[life_no_temp]);
-	localStorage.setItem("active_diary", localStorage.getItem(`current_diary_${life_no_temp}`));
+	for (let i = 0; i < database_life_variables.length; i++) {
+		lswrite(database_life_variables[i], "transfer", 0, lsread(database_life_variables[i], "current", lifeno))
+	}
 	localStorage.setItem("death", "0");
 	cookie_transfer()
 	window.location.href = "data/main.html"
@@ -294,7 +335,15 @@ function newlife_sure() {
 		document.getElementById("newlife2_no").style.display = "none";
 		document.getElementById("newlife2_overlay").style.display = "block";
 	}
-	//Segment H17e: All is valid
+	//Segment H17e: Curly Brackets in name
+	else if (document.getElementById("newlife_firstname").value.match(/{|}|<|>/) || document.getElementById("newlife_surname").value.match(/{|}|<|>/)) {
+		document.getElementById("newlife2_h1").innerHTML = "Invalid Name!"
+		document.getElementById("newlife2_p").innerHTML = "I mean... I won't judge your naming skills (which are clearly horrible), but because of the way Life Simulator is coded, you can't include any curly or angular brackets in your name. You can include other brackets in your name (such as the normal and square ones), but like come on... why not just have a normal name... like Tom... or Hannah... or something?"
+		document.getElementById("newlife2_yes").style.display = "none";
+		document.getElementById("newlife2_no").style.display = "none";
+		document.getElementById("newlife2_overlay").style.display = "block";
+	}
+	//Segment H17f: All is valid
 	else {
 		newfirstname_temp = document.getElementById("newlife_firstname").value;
 		newsurname_temp = document.getElementById("newlife_surname").value;
@@ -315,14 +364,20 @@ function newlife_sure() {
 
 //Segment H18: This function activates when user is sure they want to start their life
 function createlife() {
-	localStorage.setItem("active_firstname", newfirstname_temp);
-	localStorage.setItem("active_surname", newsurname_temp);
-	localStorage.setItem("active_gender", newgender_temp);
-	localStorage.setItem("active_date", changeDMY(newdate_temp));
-	localStorage.setItem("active_birthday", changeDMY(newdate_temp));
-	localStorage.setItem("active_age_years", "0");
-	localStorage.setItem("active_age_days", "0");
-	localStorage.setItem("active_dsb", "0")
+	lswrite("status", "transfer", 0, 1)
+	lswrite("age_days", "transfer", 0, 0)
+	lswrite("age_years", "transfer", 0, 0)
+	lswrite("birthday", "transfer", 0, changeDMY(newdate_temp))
+	lswrite("career_current", "transfer", 0, 0)
+	lswrite("career_longest", "transfer", 0, 0)
+	lswrite("date", "transfer", 0, changeDMY(newdate_temp))
+	lswrite("dsb", "transfer", 0, 0)
+	lswrite("education", "transfer", 0, 0)
+	lswrite("gender", "transfer", 0, newgender_temp)
+	lswrite("name_first", "transfer", 0, newfirstname_temp)
+	lswrite("name_last", "transfer", 0, newsurname_temp)
+	lswrite("networth", "transfer", 0, 0)
+	lswrite("diary", "transfer", 0, "Click the play button on the bottom right corner to start your life!")
 	localStorage.setItem("death", "0")
 	cookie_transfer()
 	window.location.href = "data/main.html"

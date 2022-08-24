@@ -1,8 +1,8 @@
-Current Version: 0.2.4.208215
+Current Version: 0.2.4.208241
 Released: 21/08/2022 09:21am
 
-New diary storage system
-Storage system updated
+New past and current Local Storage formats
+An attempt was made to use variables instead of Active Local Storage. This does not work, and I (Oscar) am currently finding a fix. Most likely, I might remove it alltogether.
 
 Version Number meaning
 First number: 0 means the game is still in development and not complete, 1 means the game is out
