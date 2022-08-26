@@ -1,57 +1,34 @@
-//Segment H1: Sets settings to default values if not already set
-if (localStorage.getItem("settings_volume") == null) {
-	localStorage.setItem("settings_volume", 100);
-}
-if (localStorage.getItem("settings_theme") == null) {
-	localStorage.setItem("settings_theme", 1);
-}
-if (localStorage.getItem("settings_gamespeed") == null) {
-	localStorage.setItem("settings_gamespeed", 1);
-}
-
 //Segment H1: Sets local storage values to default values if not already set
-console.log(localStorage.getItem("firstlaunch"));
 if (localStorage.getItem("firstlaunch") == null) {
-	//Segment H1a: Sets settings values
+	//Segment H1a: Sets default local storage values except for current and past life
 	localStorage.setItem("settings_volume", 100);
 	localStorage.setItem("settings_theme", 1);
 	localStorage.setItem("settings_gamespeed", 1);
-	localStorage.setItem("current_status", "0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("current_firstname", "0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("current_surname", "0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("current_gender", "0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("current_date", "0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("current_birthday", "0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("current_age_years", "0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("current_age_days", "0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("current_dsb", "0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("past_status", "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("past_name", "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("past_age", "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("past_date", "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("past_wealth", "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0");
-	localStorage.setItem("past_career", "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0");
-	//Segment H1b: Sets diary profile values
+	//Segment H1b: Sets current and past life local storage values
+	let current_temp = {}
 	for (let i = 1; i <= 10; i++) {
-		localStorage.setItem(`current_diary_${i}`, "Empty") //Before
+		current_temp[i] = database["life_information"]
 	}
+	localStorage.setItem("current_info", JSON.stringify(current_temp))
+	let past_temp = {}
 	for (let i = 1; i <= 30; i++) {
-		localStorage.setItem(`past_diary_${i}`, "Empty")
+		past_temp[i] = database["life_information"]
 	}
+	localStorage.setItem("past_info", JSON.stringify(past_temp))
 	console.log("All Local Storage set to default values");
 }
 
-//Segment H3: Sets first launch variable to 1, then checks if local storage work
+//Segment H2: Sets first launch variable to 1, then checks if local storage work
 localStorage.setItem("firstlaunch", 1)
 if (localStorage.getItem("firstlaunch") != 1) {
 	document.getElementById("notsupported_overlay").style.display = "block";
 }
 
-//Segment H4: Firefox Cookie Transfer
+//Segment H3: Firefox Cookie Transfer
 if(navigator.userAgent.indexOf("Firefox") != -1) {
 	if (Cookies.get("transfer") == 1) {
-		for (let i = 1; i < database_localstorage_names.length; i++) {
-			localStorage.setItem(database_localstorage_names[i], Cookies.get(database_localstorage_names[i]))
+		for (let i = 1; i < database["transfer"].length; i++) {
+			localStorage.setItem(database["transfer"][i], Cookies.get(database["transfer"][i]))
 		}
 		Cookies.set("transfer", 0)
 		console.log("Cookie transfer successful")
@@ -61,29 +38,45 @@ function cookie_transfer() {
 	if(navigator.userAgent.indexOf("Firefox") != -1) {
 		console.log("Commenced cookie transfer")
 		Cookies.set("transfer", 1)
-		for (let i = 1; i < database_localstorage_names.length; i++) {
-			Cookies.set(database_localstorage_names[i], localStorage.getItem(database_localstorage_names[i]))
+		for (let i = 0; i < database["transfer"].length; i++) {
+			Cookies.set(database["transfer"][i], localStorage.getItem(database["transfer"][i]))
 		}
 	}
 }
 
+//Segment H4: Transfers any information over from main.html
+if (localStorage.getItem("life_transfer") != null) {
+	let info = JSON.parse(localStorage.getItem("life_transfer"))
+	if (info["status"] == 1) {
+		let info_new = JSON.parse(localStorage.getItem("current_info"))
+		info_new[info["life_no"]] = info
+		localStorage.setItem("current_info", JSON.stringify(info_new))
+	}
+	else if (info["status"] == 2) {
+		let info_new = JSON.parse(localStorage.getItem("past_info"))
+		info_new[info["life_no"]] = info
+		localStorage.setItem("past_info", JSON.stringify(info_new))
+	}
+	localStorage.removeItem("life_transfer")
+}
+
 //Segment H5: This function changes the text in continue life section according to profile.js
 for (let i = 1; i <= 10; i++) {
-	if (localStorage.getItem("current_status").split(",")[i] == 1) {
-		document.getElementById(`continuelife_savefile${i}_name`).innerHTML = localStorage.getItem("current_firstname").split(",")[i] + " " + localStorage.getItem("current_surname").split(",")[i];
-		document.getElementById(`continuelife_savefile${i}_age`).innerHTML = "Age: " + localStorage.getItem("current_age_years").split(",")[i];
-		document.getElementById(`continuelife_savefile${i}_date`).innerHTML = "Date: " + localStorage.getItem("current_date").split(",")[i];
+	if (JSON.parse(localStorage.getItem("current_info"))[i]["status"] == 1) {
+		document.getElementById(`continuelife_savefile${i}_name`).innerHTML = JSON.parse(localStorage.getItem("current_info"))[i]["name"]["first"] + " " + JSON.parse(localStorage.getItem("current_info"))[i]["name"]["last"];
+		document.getElementById(`continuelife_savefile${i}_age`).innerHTML = "Age: " + JSON.parse(localStorage.getItem("current_info"))[i]["age"]["years"];
+		document.getElementById(`continuelife_savefile${i}_date`).innerHTML = "Date: " + dict_to_date(JSON.parse(localStorage.getItem("current_info"))[i]["date"]);
 	}
 }
 
 //Segment H6: This function changes the text in the past lives section according to profile.js
 for (let i = 1; i <= 30; i++) {
-	if (localStorage.getItem("past_status").split(",")[i] == 1) {
-		document.getElementById(`pastlives_save${i}_name`).innerHTML = localStorage.getItem("past_name").split(",")[i];
-		document.getElementById(`pastlives_save${i}_age`).innerHTML = "Age: " + localStorage.getItem("past_age").split(",")[i];
-		document.getElementById(`pastlives_save${i}_date`).innerHTML = "Date: " + localStorage.getItem("past_date").split(",")[i];
-		document.getElementById(`pastlives_save${i}_wealth`).innerHTML = "Net Worth: $" + localStorage.getItem("past_wealth").split(",")[i];
-		document.getElementById(`pastlives_save${i}_career`).innerHTML = "Career: " + database_careers[localStorage.getItem("past_career").split(",")[i]];
+	if (JSON.parse(localStorage.getItem("past_info"))[i]["status"] == 2) {
+		document.getElementById(`pastlives_save${i}_name`).innerHTML = JSON.parse(localStorage.getItem("past_info"))[i]["name"]["first"] + " " + JSON.parse(localStorage.getItem("past_info"))[i]["name"]["last"];
+		document.getElementById(`pastlives_save${i}_age`).innerHTML = "Age: " + JSON.parse(localStorage.getItem("past_info"))[i]["age"]["years"];
+		document.getElementById(`pastlives_save${i}_date`).innerHTML = "Lifespan: " + dict_to_date(JSON.parse(localStorage.getItem("past_info"))[i]["birthday"]) + " - " + dict_to_date(JSON.parse(localStorage.getItem("past_info"))[i]["date"]);
+		document.getElementById(`pastlives_save${i}_wealth`).innerHTML = "Net Worth: $" + JSON.parse(localStorage.getItem("past_info"))[i]["net_worth"];
+		document.getElementById(`pastlives_save${i}_career`).innerHTML = "Career: " + JSON.parse(localStorage.getItem("past_info"))[i]["career"]["longest"];
 	}
 }
 
@@ -126,32 +119,23 @@ $(document).ready(function () {
 //Segment H12: This function changes the text on the secondary overlay according to which life has been chosen
 function continueFn(life_no) {
 	life_no_temp = life_no
-	if (localStorage.getItem("current_status").split(",")[life_no] == 1) {
+	if (JSON.parse(localStorage.getItem("current_info"))[life_no]["status"] == 1) {
 		document.getElementById("continuelife2_h1").innerHTML = "Continue Life " + life_no.toString() + "?";
-		document.getElementById("continuelife2_p").innerHTML = "Would you like to continue the life of <strong>" + localStorage.getItem("current_firstname").split(",")[life_no] + " " + localStorage.getItem("current_surname").split(",")[life_no] + "</strong>, aged <strong>" + localStorage.getItem("current_age_years").split(",")[life_no] + "</strong>, from <strong>" + localStorage.getItem("current_date").split(",")[life_no] + "</strong>?";
+		document.getElementById("continuelife2_p").innerHTML = "Would you like to continue the life of <strong>" + JSON.parse(localStorage.getItem("current_info"))[life_no]["name"]["first"] + " " + JSON.parse(localStorage.getItem("current_info"))[life_no]["name"]["last"] + "</strong>, aged <strong>" + JSON.parse(localStorage.getItem("current_info"))[life_no]["age"]["years"] + "</strong>, from <strong>" + dict_to_date(JSON.parse(localStorage.getItem("current_info"))[life_no]["date"]) + "</strong>?";
 		document.getElementById("continuelife2_overlay").style.display = "block";
 	}
 }
 function pastFn(life_no) {
-	if (localStorage.getItem("past_status").split(",")[life_no] == 1) {
+	if (JSON.parse(localStorage.getItem("current_info"))[life_no]["status"] == 2) {
 		document.getElementById("pastlives2_overlay").style.display = "block";
-		document.getElementById("pastlives2_h1").innerHTML = localStorage.getItem(`past_name`).split(",")[life_no] + "'s diary"
-		document.getElementById("pastlives2_p").innerHTML = localStorage.getItem(`past_diary_${life_no}`)
+		document.getElementById("pastlives2_h1").innerHTML = JSON.parse(localStorage.getItem("past_info"))[life_no]["name"]["first"] + " " + JSON.parse(localStorage.getItem("past_info"))[life_no]["name"]["last"] + "'s diary"
+		document.getElementById("pastlives2_p").innerHTML = JSON.parse(localStorage.getItem("past_info"))[life_no]["diary"]
 	}
 }
 
 //Segment H13: This function loads the game onto the main tab
 function continuelife() {
-	localStorage.setItem("active_firstname", localStorage.getItem("current_firstname").split(",")[life_no_temp]);
-	localStorage.setItem("active_surname", localStorage.getItem("current_surname").split(",")[life_no_temp]);
-	localStorage.setItem("active_gender", localStorage.getItem("current_gender").split(",")[life_no_temp]);
-	localStorage.setItem("active_date", localStorage.getItem("current_date").split(",")[life_no_temp]);
-	localStorage.setItem("active_birthday", localStorage.getItem("current_birthday").split(",")[life_no_temp]);
-	localStorage.setItem("active_age_years", localStorage.getItem("current_age_years").split(",")[life_no_temp]);
-	localStorage.setItem("active_age_days", localStorage.getItem("current_age_days").split(",")[life_no_temp]);
-	localStorage.setItem("active_dsb", localStorage.getItem("current_dsb").split(",")[life_no_temp]);
-	localStorage.setItem("active_diary", localStorage.getItem(`current_diary_${life_no_temp}`));
-	localStorage.setItem("death", "0");
+	localStorage.setItem("life_transfer", JSON.stringify(JSON.parse(localStorage.getItem("current_info"))[life_no_temp]))
 	cookie_transfer()
 	window.location.href = "data/main.html"
 }
@@ -173,15 +157,15 @@ function settings_sure() {
 
 //Segment H15: This function changes the value of the settings theme button
 function settings_theme() {
-	if (theme_temp == database_theme_names.length - 1) {
+	if (theme_temp == database["theme_names"].length - 1) {
 		theme_temp = 1
 	}
 	else {
 		theme_temp = theme_temp + 1
 	}
-	for (let i = 1; i <= database_theme_names.length - 1; i++) {
+	for (let i = 1; i <= database["theme_names"].length - 1; i++) {
 		if (theme_temp == i) {
-			document.getElementById("settings_theme").style.backgroundImage = `url('data/wallpapers/previews/${database_theme_names[i]}')`;
+			document.getElementById("settings_theme").style.backgroundImage = `url('data/wallpapers/previews/${database["theme_names"][i]}')`;
 		}
 	}
 }
@@ -234,22 +218,20 @@ function newlife_sure() {
 		document.getElementById("newlife2_yes").style.display = "block";
 		document.getElementById("newlife2_no").style.display = "block";
 		document.getElementById("newlife2_h1").innerHTML = "Start Life?"
-		document.getElementById("newlife2_p").innerHTML = "Would you like to start the life of <strong>" + newfirstname_temp + " " + newsurname_temp + "</strong>, starting from <strong>" + changeDMY(newdate_temp) + "</strong>?"
+		document.getElementById("newlife2_p").innerHTML = "Would you like to start the life of <strong>" + newfirstname_temp + " " + newsurname_temp + "</strong>, starting from <strong>" + calendar_to_date(newdate_temp) + "</strong>?"
 		document.getElementById("newlife2_overlay").style.display = "block";
 	}
 }
 
 //Segment H18: This function activates when user is sure they want to start their life
 function createlife() {
-	localStorage.setItem("active_firstname", newfirstname_temp);
-	localStorage.setItem("active_surname", newsurname_temp);
-	localStorage.setItem("active_gender", newgender_temp);
-	localStorage.setItem("active_date", changeDMY(newdate_temp));
-	localStorage.setItem("active_birthday", changeDMY(newdate_temp));
-	localStorage.setItem("active_age_years", "0");
-	localStorage.setItem("active_age_days", "0");
-	localStorage.setItem("active_dsb", "0")
-	localStorage.setItem("death", "0")
+	let info = database["life_information"]
+	info["status"] = 1
+	info["name"]["first"] = newfirstname_temp
+	info["name"]["last"] = newsurname_temp
+	info["date"] = info["birthday"] = calendar_to_dict(newdate_temp)
+	info["gender"] = newgender_temp
+	localStorage.setItem("life_transfer", JSON.stringify(info))
 	cookie_transfer()
 	window.location.href = "data/main.html"
 }

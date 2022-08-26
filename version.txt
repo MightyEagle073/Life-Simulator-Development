@@ -1,7 +1,8 @@
-Current Version: 0.2.4.208263
-Released: 26/08/2022 10:24pm
+Current Version: 0.2.4.208271
+Released: 27/08/2022 04:41am
 
-Added database constant into database.js, although other values not completely phased out yet.
+Completely redesigned storage system, life information now using JSON instead of previous local storage variables
+Death now shows lifespan instead of death date
 
 Version Number meaning
 First number: 0 means the game is still in development and not complete, 1 means the game is out

@@ -3,12 +3,15 @@ localStorage.setItem("test", 1)
 if (localStorage.getItem("test") != 1) {
 	document.getElementById("notsupported_overlay").style.display = "block";
 }
+else {
+	localStorage.removeItem("test")
+}
 
 //Segment M2: Firefox Cookie Transfer
 if(navigator.userAgent.indexOf("Firefox") != -1) {
 	if (Cookies.get("transfer") == 1) {
-		for (let i = 1; i < database_localstorage_names.length; i++) {
-			localStorage.setItem(database_localstorage_names[i], Cookies.get(database_localstorage_names[i]))
+		for (let i = 1; i < database["transfer"].length; i++) {
+			localStorage.setItem(database["transfer"][i], Cookies.get(database["transfer"][i]))
 		}
 		Cookies.set("transfer", 0)
 		console.log("Cookie transfer successful")
@@ -18,32 +21,28 @@ function cookie_transfer() {
 	if(navigator.userAgent.indexOf("Firefox") != -1) {
 		console.log("Commenced cookie transfer")
 		Cookies.set("transfer", 1)
-		for (let i = 1; i < database_localstorage_names.length; i++) {
-			Cookies.set(database_localstorage_names[i], localStorage.getItem(database_localstorage_names[i]))
+		for (let i = 1; i < database["transfer"]; i++) {
+			Cookies.set(database["transfer"][i], localStorage.getItem(database["transfer"][i]))
 		}
 	}
 }
 
-//Segment M3: Checks if life actually exists
-if (localStorage.getItem("active_dsb") == null || localStorage.getItem("death") == 1) {
+//Segment M3: Initialises Life
+if (localStorage.getItem("life_transfer") != null) {
+	var life_info = JSON.parse(localStorage.getItem("life_transfer"))
+	localStorage.removeItem("life_transfer")
+}
+else {
 	document.getElementById("notstarted_overlay").style.display = "block";
 }
 
 //Segment M4: This function changes the theme depending on which one has been chosen by profile.js
-function switch_theme() {
-	for (let i = 1; i <= database_theme_names.length - 1; i++) {
-		if (parseInt(localStorage.getItem("settings_theme")) == i) {
-			document.getElementById("main_body").style.backgroundImage = `url('wallpapers/${database_theme_names[i]}')`;
-			document.getElementById("settings_theme").style.backgroundImage = `url('wallpapers/previews/${database_theme_names[i]}')`;
-		}
-	}
-}
 switch_theme()
 
 //Segment M5: This segment changes the life information on the diary (top left) and information (top right) tabs
-document.getElementById("main_diary_h1").innerHTML = localStorage.getItem("active_firstname") + " " + localStorage.getItem("active_surname") + "'s Diary"
-document.getElementById("main_info_age").innerHTML = "Age: " + localStorage.getItem("active_age_years") + " years " + localStorage.getItem("active_age_days") + " days"
-switch (localStorage.getItem("active_gender")) {
+document.getElementById("main_diary_h1").innerHTML = life_info["name"]["first"] + " " + life_info["name"]["last"] + "'s Diary"
+document.getElementById("main_info_age").innerHTML = "Age: " + life_info["age"]["years"] + " years " + life_info["age"]["days"] + " days"
+switch (life_info["gender"]) {
 	case "m":
 		document.getElementById("main_info_gender").innerHTML = "Gender: Male"
 		break;
@@ -53,8 +52,8 @@ switch (localStorage.getItem("active_gender")) {
 	default:
 		document.getElementById("main_info_gender").innerHTML = "Gender: Error! You might want to restart your game."
 }
-document.getElementById("main_info_birthday").innerHTML = "Birthday:" + " " + localStorage.getItem("active_birthday")
-document.getElementById("main_control_currentdate").innerHTML = localStorage.getItem("active_date")
+document.getElementById("main_info_birthday").innerHTML = "Birthday:" + " " + dict_to_date(life_info["birthday"])
+document.getElementById("main_control_currentdate").innerHTML = dict_to_date(life_info["birthday"])
 document.getElementById("main_control_speed").value = 0
 
 //Segment M7: This function creates temporary variables that can later be changed
@@ -100,20 +99,80 @@ function wait(ms) {
 	while (d2 - d < ms);
 }
 
-//Segment M12: This segment defines lsr(), which stands for Local Storage Replace. This basically replaces the curly brackets inside the quote, defined in the database, with a local storage variable.
-function lsr(input) {
-	let array = input.split(/{|}/)
-	for (let i = 1; i < array.length; i += 2) {
-		array[i] = localStorage.getItem(array[i])
+//Segment M12: This segment defines diaryreplace(), which replaces the curly brackets inside the quote, defined in the database, with a variable.
+function diaryreplace(input) {
+	let array_a = input.split(/{|}/)
+	for (let i = 1; i < array_a.length; i += 2) {
+		let array_b = array_a[i].split(",")
+		switch (array_b.length) {
+			case 1:
+				array_a[i] = life_info[array_b[0]]
+				break;
+			case 2:
+				array_a[i] = life_info[array_b[0]][array_b[1]]
+				break;
+			case 3:
+				array_a[i] = life_info[array_b[0]][array_b[1]][array_b[2]]
+				break;
+			case 4:
+				array_a[i] = life_info[array_b[0]][array_b[1]][array_b[2]][array_b[3]]
+				break;
+		}
 	}
-	output = array.join("")
+	output = array_a.join("")
 	return output
 }
 
-//Segment M14: This function tells the program what to do when the start and pause buttons are pressed
-if (localStorage.getItem("death") == 0) {
-	var breakfn = 1
+//Segment M13: This segment defines progress(), which forwards the game by one day, and determines what happens during that day. Instead of dividing this into subsegments, this segment will be divided into tasks. This version (0.3.0) will perform 8 tasks for each iteration, and will be labelled as such. Future versions may perform more and more tasks per iteration. Not all tasks may be performed in an iteration. 
+function progress() {
+	if (breakfn == 0) {
+		//Task 1: Upon starting the game, player's life begins, log birth into diary. Only performed during first day of player's life.
+		if (life_info["dsb"] == 0) {
+			life_info["diary"] = dict_to_date(life_info["date"]) + database["diary_entries"]["born"]
+		}
+		//Task 2: Advances time by one day
+		life_info["date"] = date_add(life_info["date"], 1)
+		//Task 3: Player gets older by one day. If the month and day of the current day and the month and day of the character's birthday matches, the age goes up by 1. Else, the days goes up by 1.
+		if (life_info["date"]["month"] == life_info["birthday"]["month"] && life_info["date"]["day"] == life_info["birthday"]["day"]) {
+			life_info["age"]["years"]++
+			life_info["age"]["days"] = 0
+		}
+		else {
+			life_info["age"]["days"]++
+		}
+		//Task 4: Active days since birth goes up by one. DSB is never displayed to the player.
+		life_info["dsb"]++
+		//Task 5: Determines whether the player will die naturally today. If so, end the game. Chances will get higher and higher based on the DSB of player.
+		var death_x = Math.random()
+		if (Math.pow(10, (life_info["dsb"]) * 0.0001) >= 10000000 * death_x) {
+			breakfn = 2
+			life_info["status"] = 2
+			console.log("Dead at " + life_info["age"]["years"] + " years " + life_info["age"]["days"] + " days due to a death_x of " + death_x.toString())
+			life_info["diary"] = life_info["diary"] + dict_to_date(life_info["date"]) + diaryreplace(database["diary_entries"]["death"])
+			document.getElementById("main_audio_death").volume = localStorage.getItem("settings_volume") / 100
+			document.getElementById("main_audio_death").play()
+			document.getElementById("death_overlay").style.display = "block";
+			document.getElementById("death_died").innerHTML = life_info["name"]["first"] + " " + life_info["name"]["last"] + " has died on " + dict_to_date(life_info["date"]) + " due to natural causes."
+			switch (life_info["gender"]) {
+				case "m":
+					document.getElementById("death_age").innerHTML = "He was at an age of " + life_info["age"]["years"] + " years " + life_info["age"]["days"] + " days."
+					break;
+				case "f":
+					document.getElementById("death_age").innerHTML = "She was at an age of " + life_info["age"]["years"] + " years " + life_info["age"]["days"] + " days."
+					break;
+			}
+		}
+		//Task 6: Updates information throughout the HTML
+		document.getElementById("main_control_currentdate").innerHTML = dict_to_date(life_info["date"])
+		document.getElementById("main_info_age").innerHTML = "Age: " + life_info["age"]["years"] + " years " + life_info["age"]["days"] + " days"
+		document.getElementById("main_diary_p").innerHTML = life_info["diary"]
+		//Task 7: Wait a period of time before advancing to the next day.
+		wait(1000 * (Math.pow(10, (-0.03 * document.getElementById("main_control_speed").value))) - 1)
+	}
 }
+
+//Segment M14: This function tells the program what to do when the start and pause buttons are pressed
+var breakfn = 1
 function timestart() {
 	if (breakfn == 1) {
 		breakfn = 0
@@ -135,8 +194,8 @@ function endlife() {
 //Segment M16: This function changes the text on the inside of the save life div
 document.getElementById("save_overlay").style.display = "block";
 for (let i = 1; i <= 10; i++) {
-	if (localStorage.getItem("current_status").split(",")[i] == 1) {
-		document.getElementById(`save_div_${i}`).innerHTML = `Life ${i}: ` + localStorage.getItem("current_firstname").split(",")[i] + " " + localStorage.getItem("current_surname").split(",")[i];
+	if (JSON.parse(localStorage.getItem("current_info"))[i]["status"] == 1) {
+		document.getElementById(`save_div_${i}`).innerHTML = `Life ${i}: ` + JSON.parse(localStorage.getItem("current_info"))[i]["name"]["first"] + " " + JSON.parse(localStorage.getItem("current_info"))[i]["name"]["last"];
 	}
 }
 
@@ -144,36 +203,24 @@ for (let i = 1; i <= 10; i++) {
 function preserve() {
 	document.getElementById("preserve_overlay").style.display = "block";
 	for (let i = 1; i <= 30; i++) {
-		if (localStorage.getItem("past_status").split(",")[i] == 1) {
-			document.getElementById(`preserve_div_${i}`).innerHTML = `Life ${i}: ` + localStorage.getItem("past_name").split(",")[i];
+		if (JSON.parse(localStorage.getItem("past_info"))[i]["status"] == 2) {
+			document.getElementById(`preserve_div_${i}`).innerHTML = `Life ${i}: ` + JSON.parse(localStorage.getItem("past_info"))[i]["name"]["first"] + " " + JSON.parse(localStorage.getItem("past_info"))[i]["name"]["last"];
 		}
 	}
 }
 
 //Segment M18: This function saves the life into the continue lives tab
 function save_life(life_no) {
-	localStorage.setItem("current_status", (localStorage.getItem("current_status").split(",").splice(0, life_no) + ",1," + localStorage.getItem("current_status").split(",").splice(life_no + 1)).split(","))
-	localStorage.setItem("current_firstname", (localStorage.getItem("current_firstname").split(",").splice(0, life_no) + "," + localStorage.getItem("active_firstname") + "," + localStorage.getItem("current_firstname").split(",").splice(life_no + 1)).split(","))
-	localStorage.setItem("current_surname", (localStorage.getItem("current_surname").split(",").splice(0, life_no) + "," + localStorage.getItem("active_surname") + "," + localStorage.getItem("current_surname").split(",").splice(life_no + 1)).split(","))
-	localStorage.setItem("current_gender", (localStorage.getItem("current_gender").split(",").splice(0, life_no) + "," + localStorage.getItem("active_gender") + "," + localStorage.getItem("current_gender").split(",").splice(life_no + 1)).split(","))
-	localStorage.setItem("current_date", (localStorage.getItem("current_date").split(",").splice(0, life_no) + "," + localStorage.getItem("active_date") + "," + localStorage.getItem("current_date").split(",").splice(life_no + 1)).split(","))
-	localStorage.setItem("current_age_years", (localStorage.getItem("current_age_years").split(",").splice(0, life_no) + "," + localStorage.getItem("active_age_years") + "," + localStorage.getItem("current_age_years").split(",").splice(life_no + 1)).split(","))
-	localStorage.setItem("current_age_days", (localStorage.getItem("current_age_days").split(",").splice(0, life_no) + "," + localStorage.getItem("active_age_days") + "," + localStorage.getItem("current_age_days").split(",").splice(life_no + 1)).split(","))
-	localStorage.setItem("current_birthday", (localStorage.getItem("current_birthday").split(",").splice(0, life_no) + "," + localStorage.getItem("active_birthday") + "," + localStorage.getItem("current_birthday").split(",").splice(life_no + 1)).split(","))
-	localStorage.setItem("current_date", (localStorage.getItem("current_date").split(",").splice(0, life_no) + "," + localStorage.getItem("active_date") + "," + localStorage.getItem("current_date").split(",").splice(life_no + 1)).split(","))
-	localStorage.setItem("current_dsb", (localStorage.getItem("current_dsb").split(",").splice(0, life_no) + "," + localStorage.getItem("active_dsb") + "," + localStorage.getItem("current_dsb").split(",").splice(life_no + 1)).split(","))
-	localStorage.setItem(`current_diary_${life_no}`, localStorage.getItem("active_diary"))
+	life_info["life_no"] = life_no
+	localStorage.setItem("life_transfer", JSON.stringify(life_info))
 	cookie_transfer()
 	window.location.href = "../home.html"
 }
 
 //Segment M19: This function saves the life into the pasts lives tab
 function preserve_life(life_no) {
-	localStorage.setItem("past_status", (localStorage.getItem("past_status").split(",").splice(0, life_no) + ",1," + localStorage.getItem("past_status").split(",").splice(life_no + 1)).split(","))
-	localStorage.setItem("past_name", (localStorage.getItem("past_name").split(",").splice(0, life_no) + "," + localStorage.getItem("active_firstname") + " " + localStorage.getItem("active_surname") + "," + localStorage.getItem("past_name").split(",").splice(life_no + 1)).split(","))
-	localStorage.setItem("past_age", (localStorage.getItem("past_age").split(",").splice(0, life_no) + "," + localStorage.getItem("active_age_years") + "," + localStorage.getItem("past_age").split(",").splice(life_no + 1)).split(","))
-	localStorage.setItem("past_date", (localStorage.getItem("past_date").split(",").splice(0, life_no) + "," + localStorage.getItem("active_date") + "," + localStorage.getItem("past_date").split(",").splice(life_no + 1)).split(","))
-	localStorage.setItem(`past_diary_${life_no}`, localStorage.getItem("active_diary"))
+	life_info["life_no"] = life_no
+	localStorage.setItem("life_transfer", JSON.stringify(life_info))
 	cookie_transfer()
 	window.location.href = "../home.html"
 }
