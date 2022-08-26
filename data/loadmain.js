@@ -57,68 +57,10 @@ document.getElementById("main_info_birthday").innerHTML = "Birthday:" + " " + lo
 document.getElementById("main_control_currentdate").innerHTML = localStorage.getItem("active_date")
 document.getElementById("main_control_speed").value = 0
 
-//Segment M6: Below are functions turns on overlays on button press
-//Segment M6a: This function turns on the education overlay when the education button on the action bar has been pressed
-function education_overlay_on() {
-	document.getElementById("education_overlay").style.display = "block";
-}
-//Segment M6b: This function turns off the education overlay when the close button has been pressed
-function education_overlay_off() {
-	document.getElementById("education_overlay").style.display = "none";
-}
-//Segment M6c: This function turns on the secondary education overlay when the view past results button has been pressed
-function education_overlay_on() {
-	document.getElementById("education2_overlay").style.display = "block";
-}
-//Segment M6d: This function turns off the secondary education overlay when the blose button has been pressed
-function education_overlay_off() {
-	document.getElementById("education2_overlay").style.display = "none";
-}
-//Segment M6e: This function turns on the end life overlay when the end life button has been pressed
-function end_overlay_on() {
-	document.getElementById("end_overlay").style.display = "block";
-}
-//Segment M6f: This function turns off the end life overlay when the close button has been pressed
-function end_overlay_off() {
-	document.getElementById("end_overlay").style.display = "none";
-}
-//Segment M6g: This function turns on the preserve life overlay when the preserve life button has been pressed
-function preserve_overlay_on() {
-	document.getElementById("preserve_overlay").style.display = "block";
-}
-//Segment M6h: This function turns off the preserve life overlay when the close button has been pressed
-function preserve_overlay_off() {
-	document.getElementById("preserve_overlay").style.display = "none";
-}
-//Segment M6i: This function turns on the save overlay when the save button on the action bar has been pressed
-function save_overlay_on() {
-	document.getElementById("save_overlay").style.display = "block";
-}
-//Segment M6j: This function turns off the save overlay when the close button has been pressed
-function save_overlay_off() {
-	document.getElementById("save_overlay").style.display = "none";
-}
-//Segment M6k: This function turns on the settings overlay when the settings button on the action bar has been pressed
-function settings_overlay_on() {
-	document.getElementById("settings_overlay").style.display = "block";
-}
-//Segment M6l: This function turns off the settings overlay when the close button has been pressed
-function settings_overlay_off() {
-	document.getElementById("settings_overlay").style.display = "none";
-}
-//Segment M6m: This function turns off the secondary settings overlay when the close button or the no button has been pressed
-function settings2_overlay_off() {
-	document.getElementById("settings2_overlay").style.display = "none";
-}
-
 //Segment M7: This function creates temporary variables that can later be changed
 var volume_temp = parseInt(localStorage.getItem("settings_volume"));
 var theme_temp = parseInt(localStorage.getItem("settings_theme"));
 var gamespeed_temp = parseInt(localStorage.getItem("settings_gamespeed"));
-var newfirstname_temp = "Atkin";
-var newsurname_temp = "Jasons";
-var newgender_temp = "male";
-var newdate_temp = 14434;
 
 //Segment M8: This function changes the text on the secondary overlay according to the settings
 function settings_sure() {
@@ -150,15 +92,6 @@ function settings_theme() {
 	}
 }
 
-//Segment M10: This function saves all changes made in the settings overlay to profile.js
-function settings_save() {
-	localStorage.setItem("settings_volume", volume_temp);
-	localStorage.setItem("settings_theme", theme_temp);
-	localStorage.setItem("settings_gamespeed", gamespeed_temp);
-	switch_theme()
-	settings2_overlay_off()
-}
-
 //Segment M11: This function adds the wait function, which tells the program to hold for a given amount of milliseconds
 function wait(ms) {
 	var d = new Date();
@@ -175,54 +108,6 @@ function lsr(input) {
 	}
 	output = array.join("")
 	return output
-}
-
-//Segment M13: This segment defines progress(), which forwards the game by one day, and determines what happens during that day. Instead of dividing this into subsegments, this segment will be divided into tasks. This version (0.3.0) will perform 8 tasks for each iteration, and will be labelled as such. Future versions may perform more and more tasks per iteration. Not all tasks may be performed in an iteration. 
-function progress() {
-	if (breakfn == 0) {
-		//Task 1: Upon starting the game, player's life begins, log birth into diary. Only performed during first day of player's life.
-		if (localStorage.getItem("active_dsb") == 0) {
-			localStorage.setItem("active_diary", localStorage.getItem("active_birthday") + database_diary_born);
-		}
-		//Task 2: Advances time by one day
-		localStorage.setItem("active_date", (toDMY(toUnix(localStorage.getItem("active_date")) + 2)))
-		//Task 3: Player gets older by one day. If the month and day of the current day and the month and day of the character's birthday matches, the age goes up by 1. Else, the days goes up by 1.
-		if (localStorage.getItem("active_date").split("/").slice(0, 2).join("/") == localStorage.getItem("active_birthday").split("/").slice(0, 2).join("/")) {
-			localStorage.setItem("active_age_years", (parseInt(localStorage.getItem("active_age_years")) + 1))
-			localStorage.setItem("active_age_days", 0)
-		}
-		else {
-			localStorage.setItem("active_age_days", (parseInt(localStorage.getItem("active_age_days")) + 1))
-		}
-		//Task 4: Active days since birth goes up by one. DSB is never displayed to the player.
-		localStorage.setItem("active_dsb", (parseInt(localStorage.getItem("active_dsb")) + 1))
-		//Task 5: Determines whether the player will die naturally today. If so, end the game. Chances will get higher and higher based on the DSB of player.
-		var death_x = Math.random()
-		if (Math.pow(10, ((localStorage.getItem("active_dsb"))) * 0.0001) >= 10000000 * death_x) {
-			breakfn = 2
-			console.log("Dead at " + localStorage.getItem("active_age_years") + " years " + localStorage.getItem("active_age_days") + " days due to a death_x of " + death_x.toString())
-			localStorage.setItem("death", "1")
-			localStorage.setItem("active_diary", localStorage.getItem("active_diary") + localStorage.getItem("active_date") + lsr(database_diary_death))
-			document.getElementById("main_audio_death").volume = localStorage.getItem("settings_volume") / 100
-			document.getElementById("main_audio_death").play()
-			document.getElementById("death_overlay").style.display = "block";
-			document.getElementById("death_died").innerHTML = localStorage.getItem("active_firstname") + " " + localStorage.getItem("active_surname") + " has died on " + localStorage.getItem("active_date") + " due to natural causes."
-			switch (localStorage.getItem("active_gender")) {
-				case "m":
-					document.getElementById("death_age").innerHTML = "He was at an age of " + localStorage.getItem("active_age_years") + " years " + localStorage.getItem("active_age_days") + " days."
-					break;
-				case "f":
-					document.getElementById("death_age").innerHTML = "She was at an age of " + localStorage.getItem("active_age_years") + " years " + localStorage.getItem("active_age_days") + " days."
-					break;
-			}
-		}
-		//Task 6: Updates information throughout the HTML
-		document.getElementById("main_control_currentdate").innerHTML = localStorage.getItem("active_date")
-		document.getElementById("main_info_age").innerHTML = "Age: " + localStorage.getItem("active_age_years") + " years " + localStorage.getItem("active_age_days") + " days"
-		document.getElementById("main_diary_p").innerHTML = localStorage.getItem("active_diary")
-		//Task 7: Wait a period of time before advancing to the next day.
-		wait(1000 * (Math.pow(10, (-0.03 * document.getElementById("main_control_speed").value))) - 1)
-	}
 }
 
 //Segment M14: This function tells the program what to do when the start and pause buttons are pressed

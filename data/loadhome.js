@@ -84,7 +84,7 @@ for (let i = 1; i <= 30; i++) {
 	}
 }
 
-//Segment H7: This function changes the settings according to profile.js
+//Segment H7: This function changes the settings according to setting local storages
 document.getElementById("settings_volume").value = localStorage.getItem("settings_volume");
 if (parseInt(localStorage.getItem("gamespeed")) == 1) {
 	document.getElementById("settings_gamespeed1").checked = true;
@@ -95,17 +95,7 @@ else if (parseInt(localStorage.getItem("gamespeed")) == 2) {
 else {
 	document.getElementById("settings_gamespeed3").checked = true;
 }
-
-//Segment H8: This function changes the theme depending on which one has been chosen by profile.js
-function switch_theme() {
-	for (let i = 1; i <= database_theme_names.length - 1; i++) {
-		if (parseInt(localStorage.getItem("settings_theme")) == i) {
-			document.getElementById("home_body").style.backgroundImage = `url('data/wallpapers/${database_theme_names[i]}')`;
-			document.getElementById("settings_theme").style.backgroundImage = `url('data/wallpapers/previews/${database_theme_names[i]}')`;
-		}
-	}
-}
-switch_theme()
+switch_theme() //Defined in functions.js
 
 //Segment H9: This function creates temporary variables that can later be changed
 var volume_temp = parseInt(localStorage.getItem("settings_volume"));
@@ -116,64 +106,6 @@ var newsurname_temp = "Jasons";
 var newgender_temp = "male";
 var newdate_temp = 14434;
 var life_no_temp = 0;
-
-//Segment H10: Below are functions turns on overlays on button press
-//Segment H10a: This function turns on the new life overlay when the new life button has been pressed
-function newlife_overlay_on() {
-	document.getElementById("newlife_overlay").style.display = "block";
-}
-//Segment H10b: This function turns off the new life overlay when the close button has been pressed
-function newlife_overlay_off() {
-	document.getElementById("newlife_overlay").style.display = "none";
-}
-//Segment H10c: This function turns on the continue life overlay when the continue life button has been pressed
-function continuelife_overlay_on() {
-	document.getElementById("continuelife_overlay").style.display = "block";
-}
-//Segment H10d: This function turns off the continue life overlay when the close button has been pressed
-function continuelife_overlay_off() {
-	document.getElementById("continuelife_overlay").style.display = "none";
-}
-//Segment H10e: This function turns on the past lives overlay when the past lives button has been pressed
-function pastlives_overlay_on() {
-	document.getElementById("pastlives_overlay").style.display = "block";
-}
-//Segment H10f: This function turns off the past lives overlay when the close button has been pressed
-function pastlives_overlay_off() {
-	document.getElementById("pastlives_overlay").style.display = "none";
-}
-//Segment H10g: This function turns on the settings overlay when the past lives button has been pressed
-function settings_overlay_on() {
-	document.getElementById("settings_overlay").style.display = "block";
-}
-//Segment H10h: This function turns off the settings overlay when the close button has been pressed
-function settings_overlay_off() {
-	document.getElementById("settings_overlay").style.display = "none";
-}
-//Segment H10i: This function turns on the credits overlay when the past lives button has been pressed
-function credits_overlay_on() {
-	document.getElementById("credits_overlay").style.display = "block";
-}
-//Segment H10j: This function turns off the credits overlay when the close button has been pressed
-function credits_overlay_off() {
-	document.getElementById("credits_overlay").style.display = "none";
-}
-//Segment H10k: This function turns off the secondary new live overlay when the close button or the no button has been pressed
-function newlife2_overlay_off() {
-	document.getElementById("newlife2_overlay").style.display = "none";
-}
-//Segment H10l: This function turns off the secondary continue live overlay when the close button or the no button has been pressed
-function continuelife2_overlay_off() {
-	document.getElementById("continuelife2_overlay").style.display = "none";
-}
-//Segment H10m: This function turns off the secondary continue live overlay when the close button or the no button has been pressed
-function pastlives2_overlay_off() {
-	document.getElementById("pastlives2_overlay").style.display = "none";
-}
-//Segment H10n: This function turns off the secondary settings overlay when the close button or the no button has been pressed
-function settings2_overlay_off() {
-	document.getElementById("settings2_overlay").style.display = "none";
-}
 
 //Segment H11: This function sets the default date of #newlife_dob to the current day
 $(document).ready(function () {
@@ -249,15 +181,6 @@ function settings_theme() {
 			document.getElementById("settings_theme").style.backgroundImage = `url('data/wallpapers/previews/${database_theme_names[i]}')`;
 		}
 	}
-}
-
-//Segment H16: This function saves all changes made in the settings overlay to profile.js
-function settings_save() {
-	localStorage.setItem("settings_volume", volume_temp);
-	localStorage.setItem("settings_theme", theme_temp);
-	localStorage.setItem("settings_gamespeed", gamespeed_temp);
-	switch_theme()
-	settings2_overlay_off()
 }
 
 //Segment H17: This function activates when user tries to start a life

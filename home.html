@@ -12,7 +12,7 @@
 	<script src="data/js.cookie.min.js"></script>
 	<script src="data/database.js"></script>
 	<script src="data/database.json"></script>
-	<script src="data/unixtodate.js"></script>
+	<script src="data/functions.js"></script>
 </head>
 
 <body id="home_body">
@@ -31,19 +31,19 @@
 	</div>
 	<!--Buttons-->
 	<img id="home_logo" src="data/homelogo.png" alt="Logo">
-	<button class="home_buttons" id="newlife" onclick="newlife_overlay_on()">
+	<button class="home_buttons" id="newlife" onclick="overlay('newlife_overlay', 'block')">
 		New Life
 	</button>
-	<button class="home_buttons" id="continuelife" onclick="continuelife_overlay_on()">
+	<button class="home_buttons" id="continuelife" onclick="overlay('continuelife_overlay', 'block')">
 		Continue Life
 	</button>
-	<button class="home_buttons" id="pastlives" onclick="pastlives_overlay_on()">
+	<button class="home_buttons" id="pastlives" onclick="overlay('pastlives_overlay', 'block')">
 		Past Lives
 	</button>
-	<button class="home_buttons" id="settings" onclick="settings_overlay_on()">
+	<button class="home_buttons" id="settings" onclick="overlay('settings_overlay', 'block')">
 		Settings
 	</button>
-	<button class="home_buttons" id="credits" onclick="credits_overlay_on()">
+	<button class="home_buttons" id="credits" onclick="overlay('credits_overlay', 'block')">
 		Credits
 	</button>
 	<div id="newlife_overlay" class="overlay">
@@ -65,18 +65,18 @@
 				<input id="newlife_dob" type="date" required>
 				<h3>The game will start from this day onwards.</h3>
 			</div>
-			<button id="newlife_close" class="close" onclick="newlife_overlay_off()"></button>
+			<button id="newlife_close" class="close" onclick="overlay('newlife_overlay', 'none')"></button>
 			<button id="newlife_start" onClick="newlife_sure()"></button>
 		</div>
 		<div id="newlife2_overlay" class="overlay">
 			<div id="newlife2_tab">
-				<button id="newlife2_close" class="close" onclick="newlife2_overlay_off()"></button>
+				<button id="newlife2_close" class="close" onclick="overlay('newlife2_overlay', 'none')"></button>
 				<h1 id="newlife2_h1">Start New Life?</h1>
 				<p id="newlife2_p">Would you like to start the life of <strong>John Smith</strong> starting from
 					<strong>1970/1/1?</strong>
 				</p>
 				<button id="newlife2_yes" onclick="createlife()"></button>
-				<button id="newlife2_no" onclick="newlife2_overlay_off()"></button>
+				<button id="newlife2_no" onclick="overlay('newlife2_overlay', 'none')"></button>
 			</div>
 		</div>
 	</div>
@@ -218,24 +218,24 @@
 				</div>
 				<div id="continuelife2_overlay" class="overlay">
 					<div id="continuelife2_tab">
-						<button id="continuelife2_close" class="close" onclick="continuelife2_overlay_off()"></button>
+						<button id="continuelife2_close" class="close" onclick="overlay('newlife_overlay', 'block')"></button>
 						<h1 id="continuelife2_h1">Continue life 0?</h1>
 						<p id="continuelife2_p">Would you like to continue the life of <strong>John Smith</strong>, aged
 							<strong>18</strong>, from <strong>1970/1/1</strong>?
 						</p>
 						<button id="continuelife2_yes" onclick="continuelife()"></button>
-						<button id="continuelife2_no" onclick="continuelife2_overlay_off()"></button>
+						<button id="continuelife2_no" onclick="overlay('continuelife2_overlay', 'none')"></button>
 					</div>
 				</div>
 				<br><br><br>
 			</div>
-			<button id="continuelife_close" class="close" onclick="continuelife_overlay_off()"></button>
+			<button id="continuelife_close" class="close" onclick="overlay('continuelife_overlay', 'none')"></button>
 		</div>
 	</div>
 	<div id="pastlives_overlay" class="overlay">
 		<div id="pastlives_tab">
 			<div id="pastlives_container">
-				<button id="pastlives_close" class="close" onclick="pastlives_overlay_off()"></button>
+				<button id="pastlives_close" class="close" onclick="overlay('pastlives_overlay', 'none')"></button>
 				<h1>Past Lives</h1>
 				<p>This is the gallery of all the lives you have once lived that you chose to preserve. Click on a life to read their diary.</p>
 				<p><i>They say you die twice. One time when you stop breathing and a second time, a bit later on, when
@@ -756,7 +756,7 @@
 				<div>
 					<div id="pastlives2_overlay" class="overlay">
 						<div id="pastlives2_tab">
-							<button id="pastlives2_close" class="close" onclick="pastlives2_overlay_off()"></button>
+							<button id="pastlives2_close" class="close" onclick="overlay('pastlives2_overlay', 'none')"></button>
 							<div id="pastlives2_container">
 								<h1 id="pastlives2_h1">John Smith's diary</h1>
 								<p id="pastlives2_p">01/01/1970 - I have been brought into this world. <br>01/01/2050 - I died due to natural causes. I was aged 80 years and 0 days when I died. <br></p>
@@ -787,14 +787,14 @@
 					balanced game, choose medium.</p>
 				<div id="settings2_overlay" class="overlay">
 					<div id="settings2_tab">
-						<button id="settings2_close" class="close" onclick="settings2_overlay_off()"></button>
+						<button id="settings2_close" class="close" onclick="overlay('settings2_overlay', 'none')"></button>
 						<h2 id="settings2_h2">Save your current settings?</h2>
 						<button id="settings2_yes" onclick="settings_save()"></button>
-						<button id="settings2_no" onclick="settings2_overlay_off()"></button>
+						<button id="settings2_no" onclick="overlay('settings2_overlay', 'none')"></button>
 					</div>
 				</div>
 			</div>
-			<button id="settings_close" class="close" onclick="settings_overlay_off()"></button>
+			<button id="settings_close" class="close" onclick="overlay('settings_overlay', 'none')"></button>
 			<button id="settings_save" onclick="settings_sure()"></button>
 		</div>
 	</div>
@@ -821,7 +821,7 @@
 				<br>
 				<h3>Life simulator is part of the 2020 Year 12 Software Design &#38 Development Major Project.</h3>
 			</div>
-			<button id="credits_close" class="close" onclick="credits_overlay_off()"></button>
+			<button id="credits_close" class="close" onclick="overlay('credits_overlay', 'none')"></button>
 		</div>
 	</div>
 	<div id="home_version">

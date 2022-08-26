@@ -10,7 +10,7 @@
 		<script src="jquery.fittext.js"></script>
 		<script src="js.cookie.min.js"></script>
 		<script src="database.js"></script>
-		<script src="unixtodate.js"></script>
+		<script src="functions.js"></script>
  	</head>
 	<body id="main_body">
 		<a href = "https://www.mozilla.org/en-US/firefox/new/">
@@ -52,9 +52,9 @@
 			</div>
 		</div>
 		<div id="main_actions">
-			<img class="main_actions_icons" src="png/actions_education.png" alt="Education" onClick="education_overlay_on()">
-			<img class="main_actions_icons" src="png/actions_save.png" alt="Save" onClick="save_overlay_on()">
-			<img class="main_actions_icons" src="png/actions_settings.png" alt="Settings" onClick="settings_overlay_on()">
+			<img class="main_actions_icons" src="png/actions_education.png" alt="Education" onClick="overlay('education_overlay', 'block')">
+			<img class="main_actions_icons" src="png/actions_save.png" alt="Save" onClick="overlay('save_overlay', 'block')">
+			<img class="main_actions_icons" src="png/actions_settings.png" alt="Settings" onClick="overlay('settings_overlay', 'block')">
 		</div>
 		<div id="main_control">
 			<div id="main_control_date">
@@ -72,9 +72,9 @@
 					<p id="education_grade">Your parents will automatically enrol you in Primary School at the age of 4 years and 7 months.</p>
 					<h3 id="education_effort_h3">Adjust effort put into schooling:</h3>
 					<input id="education_effort_input" type="range" min="0" max="100" value="50" name="education_effort">
-					<button id="education_view" onclick="education2_overlay_on"></button>
+					<button id="education_view" onclick="overlay('education2_overlay', 'block')"></button>
 				</div>
-				<button id="education_close" class="close" onclick="education_overlay_off()"></button>
+				<button id="education_close" class="close" onclick="overlay('education_overlay', 'none')"></button>
 			</div>
 		</div>
 		<div id="save_overlay" class="overlay">
@@ -93,7 +93,7 @@
 					<div class="save_div" id="save_div_10" onClick="save_life(10)">Life 10: Empty</div>
 				</div>
 				<br>
-				<button id="save_close" class="close" onclick="save_overlay_off()"></button>
+				<button id="save_close" class="close" onclick="overlay('save_overlay', 'none')"></button>
 			</div>
 		</div>
 		<div id="settings_overlay" class="overlay">
@@ -111,14 +111,14 @@
 					<p>The Game Speed adjusts the amounts of events that will happen in your life. For a fast game but uneventful life, choose fast. For a slow game but a life packed full of events, choose slow. For a balanced game, choose medium.</p>
 					<div id="settings2_overlay" class="overlay">
 						<div id="settings2_tab">
-							<button id="settings2_close" class="close" onclick="settings2_overlay_off()"></button>
+							<button id="settings2_close" class="close" onclick="overlay('settings2_overlay', 'none')"></button>
 							<h2 id="settings2_h2">Save your current settings?</h2>
 							<button id="settings2_yes" onclick="settings_save()"></button>
-							<button id="settings2_no" onclick="settings2_overlay_off()"></button>
+							<button id="settings2_no" onclick="overlay('settings2_overlay', 'none')"></button>
 						</div>
 					</div>
 				</div>
-				<button id="settings_close" class="close" onclick="settings_overlay_off()"></button>
+				<button id="settings_close" class="close" onclick="overlay('settings_overlay', 'none')"></button>
 				<button id="settings_save" onclick="settings_sure()"></button>
 			</div>
 		</div>
@@ -130,15 +130,15 @@
 					<p id="death_died">John Smith died on 1970/1/1.</p>
 					<p id="death_age">He was at a young age of 18 years 0 days.</p>
 				</div>
-				<button id="death_endlife" onClick="end_overlay_on()"></button>
-				<button id="death_preservelife" onClick="preserve()"></button>
+				<button id="death_endlife" onClick="overlay('end_overlay','block')"></button>
+				<button id="death_preservelife" onClick="overlay('preserve_overlay','block')"></button>
 			</div>
 			<div id="end_overlay" class="overlay">
 				<div id="end_tab">
 					<h2>Are you sure you want to end this life? This life will be gone forever, as if it never happened!</h2>
-					<button id="end_close" class="close" onclick="end_overlay_off()"></button>
+					<button id="end_close" class="close" onclick="overlay('end_overlay', 'none')"></button>
 					<button id="end_yes" onclick="endlife()"></button>
-					<button id="end_no" onclick="end_overlay_off()"></button>
+					<button id="end_no" onclick="overlay('end_overlay', 'none')"></button>
 				</div>
 			</div>
 			<div id="preserve_overlay" class="overlay">
@@ -177,7 +177,7 @@
 						<div class="preserve_div" id="preserve_div_30" onClick="preserve_life(30)">Life 30: Empty</div>
 					</div>
 					<br>
-					<button id="preserve_close" class="close" onclick="preserve_overlay_off()"></button>
+					<button id="preserve_close" class="close" onclick="overlay('preserve_overlay', 'none')"></button>
 				</div>
 			</div>
 		</div>
