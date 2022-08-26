@@ -1,0 +1,106 @@
+/* this css document has follow the conventions or ordering css properties
+in this specific order:
+margin
+border
+background
+padding
+height
+width
+other internal properties*/
+/* standard values */
+:root {
+  /* colors */
+  --background-color-black: rgba(0,0,0,0.5);
+  --button-color-red: #f30c0c;
+  --button-color-pink: #eda0a0; 
+  --button-color-gradient: var(--button-color-pink), var(--button-color-red);
+  /* width and height standards */
+  --width-logo: 25rem;
+  --min-width-logo: 35%;
+      /* this value are from home.html */
+  --width-button: 6rem;
+  --min-width-button: 5%;
+  /* font sizes standard */
+  --font-size-title: 2.4rem;
+  --font-size-button: 1.4rem;
+
+
+}
+
+/* from ./data/style.css Universal section */
+html{
+	height: 100%;
+}
+body{
+	margin: 0; 
+  box-sizing: border-box; 
+  background-color: #FFFFFF;
+  background-image: url(../data/wallpapers/1_sunset.jpg);
+	background-size: cover;
+	width: 100%;
+	overflow-x: hidden; 
+	overflow-y: auto;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+}
+img{
+	alt: "Image cannot be loaded"
+}
+.close{
+	position: absolute;
+	border: none;
+	background-image: url("png/button_close.png");
+	background-size: cover;
+	cursor: pointer; /* Add a pointer on hover */
+}
+
+/* header or navigation */
+header {
+  display: flex;
+  margin: 3%;
+  background-color: green;
+  overflow: hidden;
+  justify-content: space-between;
+}
+/* logo at top left */
+.logo-container {
+  width: var(--width-logo);
+  min-width: var(--min-width-logo);
+}
+.logo-container img{
+  height: 100%;
+  width: 100%;
+}
+/* title at middle */
+.title-container {
+  display: flex;
+  border-radius: 90px;
+  background-image: linear-gradient(160deg, var(--button-color-gradient));
+  padding: 0 2rem;
+  min-width: 30%;
+  font-size: var(--font-size-title);
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden; 
+}
+/* exit or return button at top right */
+.button-container {
+  display: flex;
+}
+.button-container a{
+  /* separated for clarity, a and .nav-btn is equivalent here */
+  text-decoration: none;
+  color: var(--button-color-red)
+}
+.button-container .nav-btn {
+  display: flex;
+  background-color: var(--background-color-black);
+  border-radius: 90px;
+  padding: 0 1rem;
+  width: var(--width-button);
+  min-width: var(--min-width-button);
+  font-size: var(--font-size-button);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
