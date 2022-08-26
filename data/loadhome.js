@@ -9,10 +9,13 @@ if (localStorage.getItem("settings_gamespeed") == null) {
 	localStorage.setItem("settings_gamespeed", 1);
 }
 
-//Segment H2: Sets profile values to default values if not already set
+//Segment H1: Sets local storage values to default values if not already set
 console.log(localStorage.getItem("firstlaunch"));
 if (localStorage.getItem("firstlaunch") == null) {
-	//Segment H2a: Sets non-diary profile values
+	//Segment H1a: Sets settings values
+	localStorage.setItem("settings_volume", 100);
+	localStorage.setItem("settings_theme", 1);
+	localStorage.setItem("settings_gamespeed", 1);
 	localStorage.setItem("current_status", "0,0,0,0,0,0,0,0,0,0,0");
 	localStorage.setItem("current_firstname", "0,0,0,0,0,0,0,0,0,0,0");
 	localStorage.setItem("current_surname", "0,0,0,0,0,0,0,0,0,0,0");
@@ -28,9 +31,9 @@ if (localStorage.getItem("firstlaunch") == null) {
 	localStorage.setItem("past_date", "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0");
 	localStorage.setItem("past_wealth", "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0");
 	localStorage.setItem("past_career", "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0");
-	//Segment H2b: Sets diary profile values
+	//Segment H1b: Sets diary profile values
 	for (let i = 1; i <= 10; i++) {
-		localStorage.setItem(`current_diary_${i}`, "Empty")
+		localStorage.setItem(`current_diary_${i}`, "Empty") //Before
 	}
 	for (let i = 1; i <= 30; i++) {
 		localStorage.setItem(`past_diary_${i}`, "Empty")

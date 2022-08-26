@@ -63,7 +63,6 @@ function settings_save() {
 //Function 4: overlay() - Turns the overlays either on or off
 function overlay(overlay_name, display_type) {
 	document.getElementById(overlay_name).style.display = display_type;
-	console.log(overlay_name + display_type)
 }
 
 //Function 5: progress() - Forwards the game by one day, and determines what happens during that day. Instead of dividing this into subsegments, this segment will be divided into tasks. This version (0.3.0) will perform 8 tasks for each iteration, and will be labelled as such. Future versions may perform more and more tasks per iteration. Not all tasks may be performed in an iteration. 

@@ -54,7 +54,6 @@ img{
 }
 #newlife{
 	top: 35%;
-	onclick: "newlifeoverlayon()";
 	cursor: pointer; /* Add a pointer on hover */
 }
 #continuelife{

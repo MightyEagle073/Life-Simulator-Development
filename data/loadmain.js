@@ -179,4 +179,4 @@ function preserve_life(life_no) {
 }
 
 //Segment M20: Following code makes final adjustments to page
-save_overlay_off();
+overlay("save_overlay", "none");

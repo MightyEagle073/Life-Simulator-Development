@@ -1,7 +1,7 @@
-Current Version: 0.2.4.208262
-Released: 26/08/2022 06:56pm
+Current Version: 0.2.4.208263
+Released: 26/08/2022 10:24pm
 
-Created new functions.js file, some functions are now integrated into functions.js
+Added database constant into database.js, although other values not completely phased out yet.
 
 Version Number meaning
 First number: 0 means the game is still in development and not complete, 1 means the game is out
