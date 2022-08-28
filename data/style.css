@@ -1,1091 +1,1245 @@
  /*Universal*/
-html{
-	height: 100%;
-}
-body{
-    font-family: "Open Sans", sans-serif;
-    font-weight: 300;
-    background-color: #FFFFFF;
-	box-sizing: border-box; 
-	margin: 0; 
-	max-width: 100%;
-	overflow-x: hidden; 
-	overflow-y: auto;
-	background-size: cover;
-}
-img{
-	alt: "Image cannot be loaded"
-}
-.close{
-	cursor: pointer; /* Add a pointer on hover */
-	position: absolute;
-	background-image: url("png/button_close.png");
-	background-size: cover;
-	border: none;
-}
+ html {
+ 	height: 100%;
+ }
 
-/*Home*/
-#home_logo{
-	position: fixed;
-	width: 35%;
-	top: 5%;
-	left: 32.5%;
-}
-.home_buttons{
-	font-family: "Open Sans", sans-serif;
-	position: fixed;
-	width: 10%;
-	height: 5%;
-	left: 45%;
-	background-image: url("homebutton_background.png");
-	background-size: cover;
-	border: none;
-	font-size: 16px;
-}
-#home_version{
-	position: fixed;
-	display: flex;
-	height: 4%;
-	width: 15%;
-	top: 96%;
-	font-size: 24px;
-	max-width: 40%;
-	color: white;
-}
-#newlife{
-	top: 35%;
-	cursor: pointer; /* Add a pointer on hover */
-}
-#continuelife{
-	top: 45%;
-	cursor: pointer; /* Add a pointer on hover */
-}
-#pastlives{
-	top: 55%;
-	cursor: pointer; /* Add a pointer on hover */
-}
-#settings{
-	top: 65%;
-	cursor: pointer; /* Add a pointer on hover */
+ body {
+ 	font-family: "Open Sans", sans-serif;
+ 	font-weight: 300;
+ 	background-color: #FFFFFF;
+ 	box-sizing: border-box;
+ 	margin: 0;
+ 	max-width: 100%;
+ 	overflow-x: hidden;
+ 	overflow-y: auto;
+ 	background-size: cover;
+ }
 
-}
-#credits{
-	top: 75%;
-	cursor: pointer; /* Add a pointer on hover */
-}
-.overlay {
-	/*The overlay dims the screen when active, also contains the specified tab*/
-	position: fixed; /* Sit on top of the page content */
-	display: none; /* Hidden by default */
-	width: 100%; /* Full width (cover the whole page) */
-	height: 100%; /* Full height (cover the whole page) */
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-	z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-	animation-name: overlay_animation;
-	animation-duration: 1s
-}
-h1{
-	position: relative;
-	display: block;
-	left: 3%;
-	font-size: 48px;
-	font-weight: 300;
-	height: 10px;
-	line-height: 20px;
-}
+ img {
+ 	alt: "Image cannot be loaded"
+ }
 
-/*Error Overlays*/
-#notsupported_overlay {
-	background-image: url("png/notsupported.png");
-	background-size: cover;
-	z-index: 100;
-}
-@media only screen and (max-width: 1250px){
-	#toosmall_overlay {
-		display: block;
-	}
-}
-#toosmall_tab {
-	position: fixed;
-	display: fixed;
-	width: 30%;
-	height: 80%;
-	left: 35%;
-	top: 10%;
-	background-color: rgba(255,255,255,0.7);
-	animation-name: continuelife2_tab_animation;
-	animation-duration: 1s;
-	overflow-x: hidden;
-	overflow-y: auto;
-}
-#toosmall_tab h2, #toosmall_tab p {
-	position: relative;
-	left: 3%;
-	width: 94%;
-	color: black;
-}
-#toosmall_tab img {
-	position: relative;
-	left: 3%;
-	width: 370px;
-}
-#notstarted_tab {
-	position: fixed;
-	display: fixed;
-	width: 30%;
-	height: 25%;
-	left: 35%;
-	top: 37.5%;
-	background-color: rgba(255,255,255,0.7);
-	animation-name: continuelife2_tab_animation;
-	animation-duration: 1s;
-	overflow-x: hidden;
-	overflow-y: auto;
-}
-#notstarted_tab h2, #notstarted_tab p {
-	position: relative;
-	left: 3%;
-	width: 94%;
-	color: black;
-}
+ .close {
+ 	cursor: pointer;
+ 	/* Add a pointer on hover */
+ 	position: absolute;
+ 	background-image: url("png/button_close.png");
+ 	background-size: cover;
+ 	border: none;
+ }
 
-/*New Life Overlay*/
-#newlife_tab {
-	position: fixed;
-	display: fixed;
-	width: 30%;
-	height: 60%;
-	left: 35%;
-	top: 20%;
-	background-color: rgba(255,255,255,0.7);
-	animation-name: newlife_tab_animation;
-	animation-duration: 1s;
-}
-#newlife_container {
-	position: relative;
-	max-height: 100%;
-	max-width: 100%;
-	overflow-x: hidden;
-	overflow-y: auto;
-}
-#newlife_close {
-	width: 6%;
-	right: 3%;
-	top: 3%;
-	padding-top: 6%;
-}
-#newlife_start {
-	cursor: pointer;
-	position: absolute;
-	display: block;
-	background-image: url("png/button_start.png");
-	background-size: cover;
-	border: none;
-	width: 30%;
-	bottom: 3%;
-	right: 3%;
-	padding-top: 10%;
-}
-#newlife_tab h2 {
-	position: relative;
-	display: block;
-	left: 3%;
-	font-size: 20px;
-	font-weight: 300;
-	height: auto;
-	width: 88%;
-}
-#newlife_tab h3{
-	position: relative;
-	display: block;
-	left: 3%;
-	font-size: 10px;
-	font-weight: 600;
-	height: auto;
-	width: 88%;
-	line-height: 30px;
-}
-#newlife_tab p {
-    position: relative;
-    display: block;
-	left: 3%;
-	font-size: 16px;
-	font-weight: 300;
-	height: auto;
-	line-height: 16px;
-}
-#newlife_tab input {
-    position: relative;
-    left: 3%;
-    font-family: "Open Sans", sans-serif;
-}
-#newlife2_tab {
-	position: fixed;
-	width: 30%;
-	height: 25%;
-	left: 35%;
-	top: 40%;
-	background-color: rgba(255,255,255,0.7);
-	animation-name: continuelife2_tab_animation;
-	animation-duration: 1s;
-	overflow-x: hidden;
-	overflow-y: auto;
-}
-#newlife2_tab p {
-    position: relative;
-	left: 3%;
-	width: 94%;
-	padding: 5px 10px 10px 5px;
-}
-#newlife2_close {
-	width: 6%;
-	right: 3%;
-	top: 5%;
-	padding-top: 6%;
-}
-#newlife2_yes {
-	cursor: pointer;
-	position: absolute;
-	background-image: url("png/button_yes.png");
-	background-size: cover;
-	border: none;
-	width: 20%;
-	right: 30%;
-	bottom: 5%;
-	padding-top: 10%;
-}
-#newlife2_no {
-	cursor: pointer;
-	position: absolute;
-	background-image: url("png/button_no.png");
-	background-size: cover;
-	border: none;
-	width: 20%;
-	right: 5%;
-	bottom: 5%;
-	padding-top: 10%;
-}
-/*Continue Life Overlay*/
-#continuelife_tab {
-	position: fixed;
-	display: fixed;
-	width: 50%;
-	height: 70%;
-	left: 25%;
-	top: 15%;
-	background-color: rgba(255,255,255,0.7);
-	animation-name: continuelife_tab_animation;
-	animation-duration: 1s;
-}
-#continuelife_container {
-	overflow-x: hidden;
-	overflow-y: auto;
-	max-height: 100%;
-	max-width: 100%;
-}
-#continuelife_close {
-	position: absolute;
-	width: 5%;
-	right: 3%;
-	top: 3%;
-	padding-top: 5%;
-}
-.continuelife_savefile {
-	border: 1px solid black;
-	transition: 0.5s all;
-    -webkit-transition: 0.5s all;
-    -moz-transition: 0.5s all;
-}
-.continuelife_savefile:hover {
-	background-color: white;
-	transition: 0.5s all;
-    -webkit-transition: 0.5s all;
-    -moz-transition: 0.5s all;
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
-.continuelife_savefile:not(#continuelife_savefile10){
-	border-bottom: 0px;
-}
-#continuelife_div {
-	position: relative;
-	display: block;
-	left: 3%;
-	width: 85%;
-}
-#continuelife_div table{
-	width: 100%;
-}
-.continuelife_savefile_no {
-	font-size: 36px;
-	width: 20%;
-}
-.continuelife_savefile_name {
-	font-size: 36px;
-	width: 80%;
-	text-align: right;
-}
-.continuelife_savefile_age {
-	
-}
-.continuelife_savefile_date {
-	text-align: right;
-}
+ /*Home*/
+ #home_logo {
+ 	position: fixed;
+ 	width: 35%;
+ 	top: 5%;
+ 	left: 32.5%;
+ }
 
-/*Continue Life Secondary Overlay*/
-#continuelife2_tab {
-	position: fixed;
-	display: fixed;
-	width: 30%;
-	height: 30%;
-	left: 35%;
-	top: 35%;
-	background-color: rgba(255,255,255,0.7);
-	animation-name: continuelife2_tab_animation;
-	animation-duration: 1s;
-	overflow-x: hidden;
-	overflow-y: auto;
-}
-#continuelife2_close {
-	width: 6%;
-	right: 3%;
-	top: 5%;
-	padding-top: 6%;
-}
-#continuelife2_p {
-    position: relative;
-	left: 3%;
-	padding: 5px;
-	width: 94%;
-}
-#continuelife2_yes {
-	cursor: pointer;
-	position: absolute;
-	background-image: url("png/button_yes.png");
-	background-size: cover;
-	border: none;
-	width: 20%;
-	right: 30%;
-	bottom: 5%;
-	padding-top: 10%;
-}
-#continuelife2_no {
-	cursor: pointer;
-	position: absolute;
-	background-image: url("png/button_no.png");
-	background-size: cover;
-	border: none;
-	width: 20%;
-	right: 5%;
-	bottom: 5%;
-	padding-top: 10%;
-}
+ .home_buttons {
+ 	font-family: "Open Sans", sans-serif;
+ 	position: fixed;
+ 	width: 10%;
+ 	height: 5%;
+ 	left: 45%;
+ 	background-image: url("homebutton_background.png");
+ 	background-size: cover;
+ 	border: none;
+ 	font-size: 16px;
+ }
 
-/*Past Live Overlay*/
-#pastlives_tab {
-	position: fixed;
-	display: fixed;
-	width: 50%;
-	height: 70%;
-	left: 25%;
-	top: 15%;
-	background-color: rgba(255,255,255,0.7);
-	animation-name: continuelife_tab_animation;
-	animation-duration: 1s;
-}
-#pastlives_container {
-	overflow-x: hidden;
-	overflow-y: auto;
-	max-height: 100%;
-	max-width: 100%;
-}
-#pastlives_close {
-	width: 6%;
-	right: 3%;
-	top: 3%;
-	padding-top: 6%;
-}
-#pastlives_tab h1 {
-	padding-bottom: 10px;
-}
-#pastlives_tab p {
-	position: relative;
-	display: block;
-	left: 3%;
-	width: 85%;
-}
-#pastlives_div {
-	position: relative;
-	display: block;
-	left: 3%;
-	width: 85%;
-}
-#pastlives_div table{
-	width: 100%;
-}
-.pastlives_save_no {
-	font-size: 36px;
-	width: 30%;
-}
-.pastlives_save_name {
-	font-size: 36px;
-	width: 70%;
-	text-align: right;
-}
-.pastlives_save_age {
-	
-}
-.pastlives_save_date ,.pastlives_save_career {
-	text-align: right;
-}
-.pastlives_save {
-	border: 1px solid black;
-	transition: 0.5s all;
-    -webkit-transition: 0.5s all;
-    -moz-transition: 0.5s all;
-}
-.pastlives_save:hover {
-	background-color: white;
-	transition: 0.5s all;
-    -webkit-transition: 0.5s all;
-    -moz-transition: 0.5s all;
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
-.pastlives_save:not(#pastlives_save30){
-	border-bottom: 0px;
-}
+ #home_version {
+ 	position: fixed;
+ 	display: flex;
+ 	height: 4%;
+ 	width: 15%;
+ 	top: 96%;
+ 	font-size: 24px;
+ 	max-width: 40%;
+ 	color: white;
+ }
 
-/*Past Life Secondary Overlay*/
-#pastlives2_tab {
-	overflow-x: hidden;
-	overflow-y: auto;
-	position: fixed;
-	display: fixed;
-	width: 50%;
-	height: 70%;
-	left: 25%;
-	top: 15%;
-	background-color: rgba(255,255,255,0.7);
-	animation-name: continuelife_tab_animation;
-	animation-duration: 1s;
-}
-#pastlives2_close {
-	width: 6%;
-	right: 3%;
-	top: 3%;
-	padding-top: 6%;
-}
-#pastlives2_container {
-	max-width: 100%;
-}
+ #newlife {
+ 	top: 35%;
+ 	cursor: pointer;
+ 	/* Add a pointer on hover */
+ }
 
-/*Settings Overlay*/
-#settings_tab {
-	position: fixed;
-	display: fixed;
-	width: 30%;
-	height: 60%;
-	left: 35%;
-	top: 20%;
-	background-color: rgba(255,255,255,0.7);
-	animation-name: newlife_tab_animation;
-	animation-duration: 1s;
-	color: black;
-}
-#settings_container {
-	overflow-x: hidden;
-	overflow-y: auto;
-	max-height: 85%;
-	max-width: 95%;
-}
-#settings_close {
-	width: 6%;
-	right: 3%;
-	top: 3%;
-	padding-top: 6%;
-}
-#settings_tab h3{
-	position: relative;
-	left: 3%;
-}
-#settings_volume {
-	position: relative;
-	-webkit-appearance: none;
-	width: 90%;
-	height: 25px;
-	background: #d3d3d3;
-	outline: none;
-	opacity: 0.7;
-	-webkit-transition: 0.2s;
-	transition: opacity 0.2s;
-}
-#settings_volume:hover {
-	opacity: 1;
-}
-#settings_volume::-webkit-slider-thumb {
-	-webkit-appearance: none;
-	appearance: none;
-	width: 25px;
-	height: 25px;
-	background: #4CAF50;
-	cursor: pointer;
-}
-#settings_volume::-moz-range-thumb {
-	width: 25px;
-	height: 25px;
-	background: #4CAF50;
-	cursor: pointer;
-}
-#settings_theme {
-	position: relative;
-	left: 3%;
-	width: 192px;
-	height: 108px;
-	background-size: cover;
-}
-#settings_tab input {
-    position: relative;
-    left: 3%;
-    font-family: "Open Sans", sans-serif;
-}
-#settings_tab p {
-	position: relative;
-	left: 3%;
-	font-weight: 100;
-	font-size: 10px;
-	width: 94%;
-}
-#settings_save {
-	cursor: pointer;
-	position: absolute;
-	display: block;
-	background-image: url("png/button_save.png");
-	background-size: cover;
-	border: none;
-	width: 30%;
-	bottom: 3%;
-	right: 3%;
-	padding-top: 10%;
-}
-#settings2_tab {
-	position: fixed;
-	display: fixed;
-	width: 30%;
-	height: 20%;
-	left: 35%;
-	top: 40%;
-	background-color: rgba(255,255,255,0.7);
-	animation-name: continuelife2_tab_animation;
-	animation-duration: 1s;
-	overflow-x: hidden;
-	overflow-y: auto;
-}
-#settings2_h2 {
-	position: absolute;
-	left: 3%;
-}
-#settings2_close {
-	width: 6%;
-	right: 3%;
-	top: 5%;
-	padding-top: 6%;
-}
-#settings2_yes {
-	cursor: pointer;
-	position: absolute;
-	background-image: url("png/button_yes.png");
-	background-size: cover;
-	border: none;
-	width: 20%;
-	right: 30%;
-	bottom: 5%;
-	padding-top: 10%;
-}
-#settings2_no {
-	cursor: pointer;
-	position: absolute;
-	background-image: url("png/button_no.png");
-	background-size: cover;
-	border: none;
-	width: 20%;
-	right: 5%;
-	bottom: 5%;
-	padding-top: 10%;
-}
-/*Credits Overlay*/
-#credits_tab {
-	position: fixed;
-	display: fixed;
-	width: 30%;
-	height: 60%;
-	left: 35%;
-	top: 20%;
-	background-color: rgba(255,255,255,0.7);
-	animation-name: newlife_tab_animation;
-	animation-duration: 1s;
-}
-#credits_container {
-	position: relative;
-	max-height: 100%;
-	max-width: 100%;
-	overflow-x: hidden;
-	overflow-y: auto;
-}
-#credits_close {
-	width: 6%;
-	right: 3%;
-	top: 3%;
-	padding-top: 6%;
-}
-#credits_tab h1 {
-	padding: 10px 0px;
-}
-#credits_tab h2 {
-	position: relative;
-	left: 3%;
-	font-weight: 100;
-	font-size: 16px;
-	width: 94%;
-	padding: 0px;
-}
-#credits_tab h3 {
-	position: relative;
-	left: 3%;
-	font-weight: 100;
-	font-size: 12px;
-	width: 94%;
-	padding: 0px;
-	line-height: 15px;
-}
-/*Main Tab*/
-#main_body {
-	color: white;
-}
+ #continuelife {
+ 	top: 45%;
+ 	cursor: pointer;
+ 	/* Add a pointer on hover */
+ }
 
-/*Main diary section*/
-#main_diary {
-	position: fixed;
-	background-color: rgba(0,0,0,0.5);
-	width: 67.5%;
-	height: 72.5%;
-	left: 2.5%;
-	top: 2.5%;
-}
-#main_diary_body {
-	position: relative;
-	width: 98%;
-	height: 80%;
-	overflow-x: hidden;
-	overflow-y: auto;
-}
-#main_diary p {
-	position: relative;
-	padding: 0% 3% 0% 0%;
-	left: 3%;
-}
+ #pastlives {
+ 	top: 55%;
+ 	cursor: pointer;
+ 	/* Add a pointer on hover */
+ }
 
-/*Main Info section*/
-#main_info {
-	position: fixed;
-	background-color: rgba(0,0,0,0.5);
-	width: 25%;
-	height: 72.5%;
-	left: 72.5%;
-	top: 2.5%;
-}
-#main_info_body {
-	padding: 0.5% 3.5%;
-}
-.main_info_p {
-	line-height: 80%;
-}
+ #settings {
+ 	top: 65%;
+ 	cursor: pointer;
+ 	/* Add a pointer on hover */
 
-/*Main Actions section*/
-#main_actions {
-	position: fixed;
-	background-color: rgba(0,0,0,0.5);
-	width: 67.5%;
-	height: 20%;
-	left: 2.5%;
-	top: 77.5%;
-}
-.main_actions_icons {
-	position: relative;
-	cursor: pointer;
-	height: 80%;
-	top: 10%;
-	margin: 0% 2%;
-	overflow-x: auto;
-	overflow-y: hidden;
-}
+ }
 
-/*Main Control section*/
-#main_control {
-	position: fixed;
-	background-color: rgba(0,0,0,0.5);
-	width: 25%;
-	height: 20%;
-	left: 72.5%;
-	top: 77.5%;
-}
-#main_control div, #main_info div {
-	position: relative;
-	left: 3%;
-}
-#main_control_pause {
-	position: fixed;
-	width: 3%;
-	left: 74%;
-	padding-top: 3%;
-	background-image: url(png/button_pause.png);
-	background-size: cover;
-	border: none;
-	cursor: pointer; /* Add a pointer on hover */
-}
-#main_control_start {
-	position: fixed;
-	width: 3%;
-	left: 79%;
-	padding-top: 3%;
-	background-image: url(png/button_play.png);
-	background-size: cover;
-	border: none;
-	cursor: pointer; /* Add a pointer on hover */
-}
-#main_control_speed {
-	position: fixed;
-	width: 10%;
-	height: 2%;
-	left: 84%;
-	top: 91%;
-	background: #d3d3d3;
-	outline: none;
-	opacity: 0.7;
-	-webkit-transition: 0.2s;
-	transition: opacity 0.2s;
-}
-#main_control_speed:hover {
-	opacity: 1;
-}
-#main_control_speed::-webkit-slider-thumb {
-	-webkit-appearance: none;
-	width: 10%;
-	height: 150%;
-	background: #4CAF50;
-	cursor: pointer;
-}
-#main_control_speed::-moz-range-thumb {
-	width: 10%;
-	height: 150%;
-	background: #4CAF50;
-	cursor: pointer;
-}
-#education_effort_input {
-	width: 100%;
-	height: 2%;
-	left: 84%;
-	top: 91%;
-	background: #d3d3d3;
-	outline: none;
-	opacity: 0.7;
-	-webkit-transition: 0.2s;
-	transition: opacity 0.2s;
-}
-#education_effort_input:hover {
-	opacity: 1;
-}
-#education_effort_input::-webkit-slider-thumb {
-	-webkit-appearance: none;
-	width: 5%;
-	height: 150%;
-	background: #4CAF50;
-	cursor: pointer;
-}
-#education_effort_input::-moz-range-thumb {
-	width: 5%;
-	height: 150%;
-	background: #4CAF50;
-	cursor: pointer;
-}
+ #credits {
+ 	top: 75%;
+ 	cursor: pointer;
+ 	/* Add a pointer on hover */
+ }
 
-/*Death overlay*/
-#death_tab {
-	position: fixed;
-	display: fixed;
-	width: 30%;
-	height: 60%;
-	left: 35%;
-	top: 20%;
-	background-color: rgba(255,255,255,0.7);
-	animation-name: newlife_tab_animation;
-	animation-duration: 1s;
-}
-#death_container {
-	position: relative;
-	left: 3%;
-	max-height: 85%;
-	max-width: 92%;
-	overflow-x: hidden;
-	overflow-y: auto;
-}
-#death_container h1 {
-	text-align: center;
-	color: black;
-	font-size: 36px;
-}
-#death_container img {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	width: 60%;
-}
-#death_container p {
-	font-size: 18px;
-	line-height: 24px;
-	color: black;
-	margin: 8px 0px;
-}
-#death_endlife {
-	cursor: pointer;
-	position: absolute;
-	display: block;
-	background-image: url("png/button_end.png");
-	background-size: cover;
-	border: none;
-	width: 30%;
-	bottom: 3%;
-	right: 36%;
-	padding-top: 10%;
-}
-#death_preservelife {
-	cursor: pointer;
-	position: absolute;
-	display: block;
-	background-image: url("png/button_preserve.png");
-	background-size: cover;
-	border: none;
-	width: 30%;
-	bottom: 3%;
-	right: 3%;
-	padding-top: 10%;
-}
+ .overlay {
+ 	/*The overlay dims the screen when active, also contains the specified tab*/
+ 	position: fixed;
+ 	/* Sit on top of the page content */
+ 	display: none;
+ 	/* Hidden by default */
+ 	width: 100%;
+ 	/* Full width (cover the whole page) */
+ 	height: 100%;
+ 	/* Full height (cover the whole page) */
+ 	top: 0;
+ 	left: 0;
+ 	right: 0;
+ 	bottom: 0;
+ 	background-color: rgba(0, 0, 0, 0.5);
+ 	/* Black background with opacity */
+ 	z-index: 2;
+ 	/* Specify a stack order in case you're using a different order for other elements */
+ 	animation-name: overlay_animation;
+ 	animation-duration: 1s
+ }
 
-/*Save overlay*/
-#save_tab {
-	position: fixed;
-	display: fixed;
-	width: 30%;
-	height: 50%;
-	left: 35%;
-	top: 25%;
-	background-color: rgba(255,255,255,0.7);
-	animation-name: continuelife2_tab_animation;
-	animation-duration: 1s;
-	overflow-x: hidden;
-	overflow-y: auto;
-}
-#save_close {
-	width: 6%;
-	right: 3%;
-	top: 5%;
-	padding-top: 6%;
-}
-#save_tab h2 {
-	color: black;
-	position: relative;
-	width: 90%;
-}
-#save_container {
-	position: relative;
-	width: 80%;
-	left: 5%;
-	color: black;
-	overflow-x: hidden;
-	overflow-y: auto;
-}
-.save_div {
-	border: 1px solid black;
-	transition: 0.5s all;
-    -webkit-transition: 0.5s all;
-    -moz-transition: 0.5s all;
-}
-.save_div:hover {
-	background-color: white;
-	transition: 0.5s all;
-    -webkit-transition: 0.5s all;
-    -moz-transition: 0.5s all;
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
-.save_div:not(#save_div_10){
-	border-bottom: 0px;
-}
+ h1 {
+ 	position: relative;
+ 	display: block;
+ 	left: 3%;
+ 	font-size: 48px;
+ 	font-weight: 300;
+ 	height: 10px;
+ 	line-height: 20px;
+ }
 
-/*Education overlay*/
-#education_tab {
-	position: fixed;
-	display: fixed;
-	width: 30%;
-	height: 50%;
-	left: 35%;
-	top: 25%;
-	background-color: rgba(255,255,255,0.7);
-	animation-name: continuelife2_tab_animation;
-	animation-duration: 1s;
-	overflow-x: hidden;
-	overflow-y: auto;
-}
-#education_close {
-	width: 6%;
-	right: 3%;
-	top: 5%;
-	padding-top: 6%;
-}
-#education_tab h2 {
-	color: black;
-	position: relative;
-	width: 90%;
-}
-#education_container {
-	position: relative;
-	width: 80%;
-	left: 5%;
-	color: black;
-	overflow-x: hidden;
-	overflow-y: auto;
-}
-#death_endlife {
-	cursor: pointer;
-	position: absolute;
-	display: block;
-	background-image: url("png/button_end.png");
-	background-size: cover;
-	border: none;
-	width: 30%;
-	bottom: 3%;
-	right: 36%;
-	padding-top: 10%;
-}
+ /*Error Overlays*/
+ #notsupported_overlay {
+ 	background-image: url("png/notsupported.png");
+ 	background-size: cover;
+ 	z-index: 100;
+ }
 
-/*End overlay*/
-#end_tab {
-	position: fixed;
-	display: fixed;
-	width: 30%;
-	height: 30%;
-	left: 35%;
-	top: 35%;
-	background-color: rgba(255,255,255,0.7);
-	animation-name: continuelife2_tab_animation;
-	animation-duration: 1s;
-	overflow-x: hidden;
-	overflow-y: auto;
-}
-#end_close {
-	width: 6%;
-	right: 3%;
-	top: 5%;
-	padding-top: 6%;
-}
-#end_yes {
-	cursor: pointer;
-	position: absolute;
-	background-image: url("png/button_yes.png");
-	background-size: cover;
-	border: none;
-	width: 20%;
-	right: 30%;
-	bottom: 5%;
-	padding-top: 10%;
-}
-#end_no {
-	cursor: pointer;
-	position: absolute;
-	background-image: url("png/button_no.png");
-	background-size: cover;
-	border: none;
-	width: 20%;
-	right: 5%;
-	bottom: 5%;
-	padding-top: 10%;
-}
-#end_tab h2 {
-	color: black;
-	position: relative;
-	left: 3%;
-	width: 90%;
-}
+ @media only screen and (max-width: 1250px) {
+ 	#toosmall_overlay {
+ 		display: block;
+ 	}
+ }
 
-/*Preserve overlay*/
-#preserve_tab {
-	position: fixed;
-	display: fixed;
-	width: 30%;
-	height: 50%;
-	left: 35%;
-	top: 25%;
-	background-color: rgba(255,255,255,0.7);
-	animation-name: continuelife2_tab_animation;
-	animation-duration: 1s;
-	overflow-x: hidden;
-	overflow-y: auto;
-}
-#preserve_close {
-	width: 6%;
-	right: 3%;
-	top: 5%;
-	padding-top: 6%;
-}
-#preserve_tab h2 {
-	color: black;
-	position: relative;
-	width: 90%;
-}
-#preserve_container {
-	position: relative;
-	width: 80%;
-	left: 5%;
-	color: black;
-	overflow-x: hidden;
-	overflow-y: auto;
-}
-.preserve_div {
-	border: 1px solid black;
-	transition: 0.5s all;
-    -webkit-transition: 0.5s all;
-    -moz-transition: 0.5s all;
-}
-.preserve_div:hover {
-	background-color: white;
-	transition: 0.5s all;
-    -webkit-transition: 0.5s all;
-    -moz-transition: 0.5s all;
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
-.preserve_div:not(#preserve_div_30){
-	border-bottom: 0px;
-}
+ #toosmall_tab {
+ 	position: fixed;
+ 	display: fixed;
+ 	width: 30%;
+ 	height: 80%;
+ 	left: 35%;
+ 	top: 10%;
+ 	background-color: rgba(255, 255, 255, 0.7);
+ 	animation-name: width30_animation;
+ 	animation-duration: 1s;
+ 	overflow-x: hidden;
+ 	overflow-y: auto;
+ }
 
-/*Custom Animations*/
-@keyframes overlay_animation {
-	from {background-color: rgba(0,0,0,0);}
-	to {background-color: rgba(0,0,0,0.5)}
-}
-@keyframes newlife_tab_animation {
-	from {left: -55%;}
-	to {left: 35%;}
-}
-@keyframes continuelife_tab_animation {
-	from {left: -55%;}
-	to {left: 25%;}
-}
-@keyframes continuelife2_tab_animation {
-	from {left: -55%;}
-	to {left: 35%;}
-}
+ #toosmall_tab h2,
+ #toosmall_tab p {
+ 	position: relative;
+ 	left: 3%;
+ 	width: 94%;
+ 	color: black;
+ }
+
+ #toosmall_tab img {
+ 	position: relative;
+ 	left: 3%;
+ 	width: 370px;
+ }
+
+ #notstarted_tab {
+ 	position: fixed;
+ 	display: fixed;
+ 	width: 30%;
+ 	height: 25%;
+ 	left: 35%;
+ 	top: 37.5%;
+ 	background-color: rgba(255, 255, 255, 0.7);
+ 	animation-name: width30_animation;
+ 	animation-duration: 1s;
+ 	overflow-x: hidden;
+ 	overflow-y: auto;
+ }
+
+ #notstarted_tab h2,
+ #notstarted_tab p {
+ 	position: relative;
+ 	left: 3%;
+ 	width: 94%;
+ 	color: black;
+ }
+
+ /*New Life Overlay*/
+ #newlife_tab {
+ 	position: fixed;
+ 	display: fixed;
+ 	width: 30%;
+ 	height: 60%;
+ 	left: 35%;
+ 	top: 20%;
+ 	background-color: rgba(255, 255, 255, 0.7);
+ 	animation-name: width30_animation;
+ 	animation-duration: 1s;
+ }
+
+ #newlife_container {
+ 	position: relative;
+ 	max-height: 100%;
+ 	max-width: 100%;
+ 	overflow-x: hidden;
+ 	overflow-y: auto;
+ }
+
+ #newlife_close {
+ 	width: 6%;
+ 	right: 3%;
+ 	top: 3%;
+ 	padding-top: 6%;
+ }
+
+ #newlife_start {
+ 	cursor: pointer;
+ 	position: absolute;
+ 	display: block;
+ 	background-image: url("png/button_start.png");
+ 	background-size: cover;
+ 	border: none;
+ 	width: 30%;
+ 	bottom: 3%;
+ 	right: 3%;
+ 	padding-top: 10%;
+ }
+
+ #newlife_tab h2 {
+ 	position: relative;
+ 	display: block;
+ 	left: 3%;
+ 	font-size: 20px;
+ 	font-weight: 300;
+ 	height: auto;
+ 	width: 88%;
+ }
+
+ #newlife_tab h3 {
+ 	position: relative;
+ 	display: block;
+ 	left: 3%;
+ 	font-size: 10px;
+ 	font-weight: 600;
+ 	height: auto;
+ 	width: 88%;
+ 	line-height: 30px;
+ }
+
+ #newlife_tab p {
+ 	position: relative;
+ 	display: block;
+ 	left: 3%;
+ 	font-size: 16px;
+ 	font-weight: 300;
+ 	height: auto;
+ 	line-height: 16px;
+ }
+
+ #newlife_tab input {
+ 	position: relative;
+ 	left: 3%;
+ 	font-family: "Open Sans", sans-serif;
+ }
+
+ #newlife2_tab {
+ 	position: fixed;
+ 	width: 30%;
+ 	height: 25%;
+ 	left: 35%;
+ 	top: 40%;
+ 	background-color: rgba(255, 255, 255, 0.7);
+ 	animation-name: width30_animation;
+ 	animation-duration: 1s;
+ 	overflow-x: hidden;
+ 	overflow-y: auto;
+ }
+
+ #newlife2_tab p {
+ 	position: relative;
+ 	left: 3%;
+ 	width: 94%;
+ 	padding: 5px 10px 10px 5px;
+ }
+
+ #newlife2_close {
+ 	width: 6%;
+ 	right: 3%;
+ 	top: 5%;
+ 	padding-top: 6%;
+ }
+
+ #newlife2_yes {
+ 	cursor: pointer;
+ 	position: absolute;
+ 	background-image: url("png/button_yes.png");
+ 	background-size: cover;
+ 	border: none;
+ 	width: 20%;
+ 	right: 30%;
+ 	bottom: 5%;
+ 	padding-top: 10%;
+ }
+
+ #newlife2_no {
+ 	cursor: pointer;
+ 	position: absolute;
+ 	background-image: url("png/button_no.png");
+ 	background-size: cover;
+ 	border: none;
+ 	width: 20%;
+ 	right: 5%;
+ 	bottom: 5%;
+ 	padding-top: 10%;
+ }
+
+ /*Continue Life Overlay*/
+ #continuelife_tab {
+ 	position: fixed;
+ 	display: fixed;
+ 	width: 50%;
+ 	height: 70%;
+ 	left: 25%;
+ 	top: 15%;
+ 	background-color: rgba(255, 255, 255, 0.7);
+ 	animation-name: width50_animation;
+ 	animation-duration: 1s;
+ }
+
+ #continuelife_container {
+ 	overflow-x: hidden;
+ 	overflow-y: auto;
+ 	max-height: 100%;
+ 	max-width: 100%;
+ }
+
+ #continuelife_close {
+ 	position: absolute;
+ 	width: 5%;
+ 	right: 3%;
+ 	top: 3%;
+ 	padding-top: 5%;
+ }
+
+ .continuelife_savefile {
+ 	border: 1px solid black;
+ 	transition: 0.5s all;
+ 	-webkit-transition: 0.5s all;
+ 	-moz-transition: 0.5s all;
+ }
+
+ .continuelife_savefile:hover {
+ 	background-color: white;
+ 	transition: 0.5s all;
+ 	-webkit-transition: 0.5s all;
+ 	-moz-transition: 0.5s all;
+ 	padding-top: 10px;
+ 	padding-bottom: 10px;
+ }
+
+ .continuelife_savefile:not(#continuelife_savefile10) {
+ 	border-bottom: 0px;
+ }
+
+ #continuelife_div {
+ 	position: relative;
+ 	display: block;
+ 	left: 3%;
+ 	width: 85%;
+ }
+
+ #continuelife_div table {
+ 	width: 100%;
+ }
+
+ .continuelife_savefile_no {
+ 	font-size: 36px;
+ 	width: 20%;
+ }
+
+ .continuelife_savefile_name {
+ 	font-size: 36px;
+ 	width: 80%;
+ 	text-align: right;
+ }
+
+ .continuelife_savefile_age {}
+
+ .continuelife_savefile_date {
+ 	text-align: right;
+ }
+
+ /*Continue Life Secondary Overlay*/
+ #continuelife2_tab {
+ 	position: fixed;
+ 	display: fixed;
+ 	width: 30%;
+ 	height: 30%;
+ 	left: 35%;
+ 	top: 35%;
+ 	background-color: rgba(255, 255, 255, 0.7);
+ 	animation-name: width30_animation;
+ 	animation-duration: 1s;
+ 	overflow-x: hidden;
+ 	overflow-y: auto;
+ }
+
+ #continuelife2_close {
+ 	width: 6%;
+ 	right: 3%;
+ 	top: 5%;
+ 	padding-top: 6%;
+ }
+
+ #continuelife2_p {
+ 	position: relative;
+ 	left: 3%;
+ 	padding: 5px;
+ 	width: 94%;
+ }
+
+ #continuelife2_yes {
+ 	cursor: pointer;
+ 	position: absolute;
+ 	background-image: url("png/button_yes.png");
+ 	background-size: cover;
+ 	border: none;
+ 	width: 20%;
+ 	right: 30%;
+ 	bottom: 5%;
+ 	padding-top: 10%;
+ }
+
+ #continuelife2_no {
+ 	cursor: pointer;
+ 	position: absolute;
+ 	background-image: url("png/button_no.png");
+ 	background-size: cover;
+ 	border: none;
+ 	width: 20%;
+ 	right: 5%;
+ 	bottom: 5%;
+ 	padding-top: 10%;
+ }
+
+ /*Past Live Overlay*/
+ #pastlives_tab {
+ 	position: fixed;
+ 	display: fixed;
+ 	width: 50%;
+ 	height: 70%;
+ 	left: 25%;
+ 	top: 15%;
+ 	background-color: rgba(255, 255, 255, 0.7);
+ 	animation-name: width50_animation;
+ 	animation-duration: 1s;
+ }
+
+ #pastlives_container {
+ 	overflow-x: hidden;
+ 	overflow-y: auto;
+ 	max-height: 100%;
+ 	max-width: 100%;
+ }
+
+ #pastlives_close {
+ 	width: 6%;
+ 	right: 3%;
+ 	top: 3%;
+ 	padding-top: 6%;
+ }
+
+ #pastlives_tab h1 {
+ 	padding-bottom: 10px;
+ }
+
+ #pastlives_tab p {
+ 	position: relative;
+ 	display: block;
+ 	left: 3%;
+ 	width: 85%;
+ }
+
+ #pastlives_div {
+ 	position: relative;
+ 	display: block;
+ 	left: 3%;
+ 	width: 85%;
+ }
+
+ #pastlives_div table {
+ 	width: 100%;
+ }
+
+ .pastlives_save_no {
+ 	font-size: 36px;
+ 	width: 30%;
+ }
+
+ .pastlives_save_name {
+ 	font-size: 36px;
+ 	width: 70%;
+ 	text-align: right;
+ }
+
+ .pastlives_save_age {}
+
+ .pastlives_save_date,
+ .pastlives_save_career {
+ 	text-align: right;
+ }
+
+ .pastlives_save {
+ 	border: 1px solid black;
+ 	transition: 0.5s all;
+ 	-webkit-transition: 0.5s all;
+ 	-moz-transition: 0.5s all;
+ }
+
+ .pastlives_save:hover {
+ 	background-color: white;
+ 	transition: 0.5s all;
+ 	-webkit-transition: 0.5s all;
+ 	-moz-transition: 0.5s all;
+ 	padding-top: 10px;
+ 	padding-bottom: 10px;
+ }
+
+ .pastlives_save:not(#pastlives_save30) {
+ 	border-bottom: 0px;
+ }
+
+ /*Past Life Secondary Overlay*/
+ #pastlives2_tab {
+ 	overflow-x: hidden;
+ 	overflow-y: auto;
+ 	position: fixed;
+ 	display: fixed;
+ 	width: 50%;
+ 	height: 70%;
+ 	left: 25%;
+ 	top: 15%;
+ 	background-color: rgba(255, 255, 255, 0.7);
+ 	animation-name: width50_animation;
+ 	animation-duration: 1s;
+ }
+
+ #pastlives2_close {
+ 	width: 6%;
+ 	right: 3%;
+ 	top: 3%;
+ 	padding-top: 6%;
+ }
+
+ #pastlives2_container {
+ 	max-width: 100%;
+ }
+
+ /*Settings Overlay*/
+ #settings_tab {
+ 	position: fixed;
+ 	display: fixed;
+ 	width: 30%;
+ 	height: 60%;
+ 	left: 35%;
+ 	top: 20%;
+ 	background-color: rgba(255, 255, 255, 0.7);
+ 	animation-name: width30_animation;
+ 	animation-duration: 1s;
+ 	color: black;
+ }
+
+ #settings_container {
+ 	overflow-x: hidden;
+ 	overflow-y: auto;
+ 	max-height: 85%;
+ 	max-width: 95%;
+ }
+
+ #settings_close {
+ 	width: 6%;
+ 	right: 3%;
+ 	top: 3%;
+ 	padding-top: 6%;
+ }
+
+ #settings_tab h3 {
+ 	position: relative;
+ 	left: 3%;
+ }
+
+ #settings_volume {
+ 	position: relative;
+ 	-webkit-appearance: none;
+ 	width: 90%;
+ 	height: 25px;
+ 	background: #d3d3d3;
+ 	outline: none;
+ 	opacity: 0.7;
+ 	-webkit-transition: 0.2s;
+ 	transition: opacity 0.2s;
+ }
+
+ #settings_volume:hover {
+ 	opacity: 1;
+ }
+
+ #settings_volume::-webkit-slider-thumb {
+ 	-webkit-appearance: none;
+ 	appearance: none;
+ 	width: 25px;
+ 	height: 25px;
+ 	background: #4CAF50;
+ 	cursor: pointer;
+ }
+
+ #settings_volume::-moz-range-thumb {
+ 	width: 25px;
+ 	height: 25px;
+ 	background: #4CAF50;
+ 	cursor: pointer;
+ }
+
+ #settings_theme {
+ 	position: relative;
+ 	left: 3%;
+ 	width: 192px;
+ 	height: 108px;
+ 	background-size: cover;
+ }
+
+ #settings_tab input {
+ 	position: relative;
+ 	left: 3%;
+ 	font-family: "Open Sans", sans-serif;
+ }
+
+ #settings_tab p {
+ 	position: relative;
+ 	left: 3%;
+ 	font-weight: 100;
+ 	font-size: 10px;
+ 	width: 94%;
+ }
+
+ #settings_save {
+ 	cursor: pointer;
+ 	position: absolute;
+ 	display: block;
+ 	background-image: url("png/button_save.png");
+ 	background-size: cover;
+ 	border: none;
+ 	width: 30%;
+ 	bottom: 3%;
+ 	right: 3%;
+ 	padding-top: 10%;
+ }
+
+ /*Settings Secondary Overlay*/
+ #settings2_tab {
+ 	position: fixed;
+ 	display: fixed;
+ 	width: 30%;
+ 	height: 20%;
+ 	left: 35%;
+ 	top: 40%;
+ 	background-color: rgba(255, 255, 255, 0.7);
+ 	animation-name: width30_animation;
+ 	animation-duration: 1s;
+ 	overflow-x: hidden;
+ 	overflow-y: auto;
+ }
+
+ #settings2_h2 {
+ 	position: absolute;
+ 	left: 3%;
+ }
+
+ #settings2_close {
+ 	width: 6%;
+ 	right: 3%;
+ 	top: 5%;
+ 	padding-top: 6%;
+ }
+
+ #settings2_yes {
+ 	cursor: pointer;
+ 	position: absolute;
+ 	background-image: url("png/button_yes.png");
+ 	background-size: cover;
+ 	border: none;
+ 	width: 20%;
+ 	right: 30%;
+ 	bottom: 5%;
+ 	padding-top: 10%;
+ }
+
+ #settings2_no {
+ 	cursor: pointer;
+ 	position: absolute;
+ 	background-image: url("png/button_no.png");
+ 	background-size: cover;
+ 	border: none;
+ 	width: 20%;
+ 	right: 5%;
+ 	bottom: 5%;
+ 	padding-top: 10%;
+ }
+
+ /*Credits Overlay*/
+ #credits_tab {
+ 	position: fixed;
+ 	display: fixed;
+ 	width: 30%;
+ 	height: 60%;
+ 	left: 35%;
+ 	top: 20%;
+ 	background-color: rgba(255, 255, 255, 0.7);
+ 	animation-name: width30_animation;
+ 	animation-duration: 1s;
+ }
+
+ #credits_container {
+ 	position: relative;
+ 	max-height: 100%;
+ 	max-width: 100%;
+ 	overflow-x: hidden;
+ 	overflow-y: auto;
+ }
+
+ #credits_close {
+ 	width: 6%;
+ 	right: 3%;
+ 	top: 3%;
+ 	padding-top: 6%;
+ }
+
+ #credits_tab h1 {
+ 	padding: 10px 0px;
+ }
+
+ #credits_tab h2 {
+ 	position: relative;
+ 	left: 3%;
+ 	font-weight: 100;
+ 	font-size: 16px;
+ 	width: 94%;
+ 	padding: 0px;
+ }
+
+ #credits_tab h3 {
+ 	position: relative;
+ 	left: 3%;
+ 	font-weight: 100;
+ 	font-size: 12px;
+ 	width: 94%;
+ 	padding: 0px;
+ 	line-height: 15px;
+ }
+
+ /*Main Tab*/
+ #main_body {
+ 	color: white;
+ }
+
+ /*Main Diary section*/
+ #main_diary {
+ 	position: fixed;
+ 	background-color: rgba(0, 0, 0, 0.5);
+ 	width: 67.5%;
+ 	height: 72.5%;
+ 	left: 2.5%;
+ 	top: 2.5%;
+ }
+
+ #main_diary_body {
+ 	position: relative;
+ 	width: 98%;
+ 	height: 80%;
+ 	overflow-x: hidden;
+ 	overflow-y: auto;
+ }
+
+ #main_diary p {
+ 	position: relative;
+ 	padding: 0% 3% 0% 0%;
+ 	left: 3%;
+ }
+
+ /*Main Info section*/
+ #main_info {
+ 	position: fixed;
+ 	background-color: rgba(0, 0, 0, 0.5);
+ 	width: 25%;
+ 	height: 72.5%;
+ 	left: 72.5%;
+ 	top: 2.5%;
+ }
+
+ #main_info_body {
+ 	padding: 0.5% 3.5%;
+ }
+
+ .main_info_p {
+ 	line-height: 80%;
+ }
+
+ /*Main Actions section*/
+ #main_actions {
+ 	position: fixed;
+ 	background-color: rgba(0, 0, 0, 0.5);
+ 	width: 67.5%;
+ 	height: 20%;
+ 	left: 2.5%;
+ 	top: 77.5%;
+ }
+
+ .main_actions_icons {
+ 	position: relative;
+ 	cursor: pointer;
+ 	height: 80%;
+ 	top: 10%;
+ 	margin: 0% 2%;
+ 	overflow-x: auto;
+ 	overflow-y: hidden;
+ }
+
+ /*Main Control section*/
+ #main_control {
+ 	position: fixed;
+ 	background-color: rgba(0, 0, 0, 0.5);
+ 	width: 25%;
+ 	height: 20%;
+ 	left: 72.5%;
+ 	top: 77.5%;
+ }
+
+ #main_control div,
+ #main_info div {
+ 	position: relative;
+ 	left: 3%;
+ }
+
+ #main_control_pause {
+ 	position: fixed;
+ 	width: 3%;
+ 	left: 74%;
+ 	padding-top: 3%;
+ 	background-image: url(png/button_pause.png);
+ 	background-size: cover;
+ 	border: none;
+ 	cursor: pointer;
+ 	/* Add a pointer on hover */
+ }
+
+ #main_control_start {
+ 	position: fixed;
+ 	width: 3%;
+ 	left: 79%;
+ 	padding-top: 3%;
+ 	background-image: url(png/button_play.png);
+ 	background-size: cover;
+ 	border: none;
+ 	cursor: pointer;
+ 	/* Add a pointer on hover */
+ }
+
+ #main_control_speed {
+ 	position: fixed;
+ 	width: 10%;
+ 	height: 2%;
+ 	left: 84%;
+ 	top: 91%;
+ 	background: #d3d3d3;
+ 	outline: none;
+ 	opacity: 0.7;
+ 	-webkit-transition: 0.2s;
+ 	transition: opacity 0.2s;
+ }
+
+ #main_control_speed:hover {
+ 	opacity: 1;
+ }
+
+ #main_control_speed::-webkit-slider-thumb {
+ 	-webkit-appearance: none;
+ 	width: 10%;
+ 	height: 150%;
+ 	background: #4CAF50;
+ 	cursor: pointer;
+ }
+
+ #main_control_speed::-moz-range-thumb {
+ 	width: 10%;
+ 	height: 150%;
+ 	background: #4CAF50;
+ 	cursor: pointer;
+ }
+
+ #education_effort_input {
+ 	width: 100%;
+ 	height: 2%;
+ 	left: 84%;
+ 	top: 91%;
+ 	background: #d3d3d3;
+ 	outline: none;
+ 	opacity: 0.7;
+ 	-webkit-transition: 0.2s;
+ 	transition: opacity 0.2s;
+ }
+
+ #education_effort_input:hover {
+ 	opacity: 1;
+ }
+
+ #education_effort_input::-webkit-slider-thumb {
+ 	-webkit-appearance: none;
+ 	width: 5%;
+ 	height: 150%;
+ 	background: #4CAF50;
+ 	cursor: pointer;
+ }
+
+ #education_effort_input::-moz-range-thumb {
+ 	width: 5%;
+ 	height: 150%;
+ 	background: #4CAF50;
+ 	cursor: pointer;
+ }
+
+ /*Death overlay*/
+ #death_tab {
+ 	position: fixed;
+ 	display: fixed;
+ 	width: 30%;
+ 	height: 60%;
+ 	left: 35%;
+ 	top: 20%;
+ 	background-color: rgba(255, 255, 255, 0.7);
+ 	animation-name: width30_animation;
+ 	animation-duration: 1s;
+ }
+
+ #death_container {
+ 	position: relative;
+ 	left: 3%;
+ 	max-height: 85%;
+ 	max-width: 92%;
+ 	overflow-x: hidden;
+ 	overflow-y: auto;
+ }
+
+ #death_container h1 {
+ 	text-align: center;
+ 	color: black;
+ 	font-size: 36px;
+ }
+
+ #death_container img {
+ 	display: block;
+ 	margin-left: auto;
+ 	margin-right: auto;
+ 	width: 60%;
+ }
+
+ #death_container p {
+ 	font-size: 18px;
+ 	line-height: 24px;
+ 	color: black;
+ 	margin: 8px 0px;
+ }
+
+ #death_endlife {
+ 	cursor: pointer;
+ 	position: absolute;
+ 	display: block;
+ 	background-image: url("png/button_end.png");
+ 	background-size: cover;
+ 	border: none;
+ 	width: 30%;
+ 	bottom: 3%;
+ 	right: 36%;
+ 	padding-top: 10%;
+ }
+
+ #death_preservelife {
+ 	cursor: pointer;
+ 	position: absolute;
+ 	display: block;
+ 	background-image: url("png/button_preserve.png");
+ 	background-size: cover;
+ 	border: none;
+ 	width: 30%;
+ 	bottom: 3%;
+ 	right: 3%;
+ 	padding-top: 10%;
+ }
+
+ /*Save overlay*/
+ #save_tab {
+ 	position: fixed;
+ 	display: fixed;
+ 	width: 30%;
+ 	height: 50%;
+ 	left: 35%;
+ 	top: 25%;
+ 	background-color: rgba(255, 255, 255, 0.7);
+ 	animation-name: width30_animation;
+ 	animation-duration: 1s;
+ 	overflow-x: hidden;
+ 	overflow-y: auto;
+ }
+
+ #save_close {
+ 	width: 6%;
+ 	right: 3%;
+ 	top: 5%;
+ 	padding-top: 6%;
+ }
+
+ #save_tab h2 {
+ 	color: black;
+ 	position: relative;
+ 	width: 90%;
+ }
+
+ #save_container {
+ 	position: relative;
+ 	width: 80%;
+ 	left: 5%;
+ 	color: black;
+ 	overflow-x: hidden;
+ 	overflow-y: auto;
+ }
+
+ .save_div {
+ 	border: 1px solid black;
+ 	transition: 0.5s all;
+ 	-webkit-transition: 0.5s all;
+ 	-moz-transition: 0.5s all;
+ }
+
+ .save_div:hover {
+ 	background-color: white;
+ 	transition: 0.5s all;
+ 	-webkit-transition: 0.5s all;
+ 	-moz-transition: 0.5s all;
+ 	padding-top: 5px;
+ 	padding-bottom: 5px;
+ }
+
+ .save_div:not(#save_div_10) {
+ 	border-bottom: 0px;
+ }
+
+ /*Education overlay*/
+ #education_tab {
+ 	position: fixed;
+ 	display: fixed;
+ 	width: 30%;
+ 	height: 50%;
+ 	left: 35%;
+ 	top: 25%;
+ 	background-color: rgba(255, 255, 255, 0.7);
+ 	animation-name: width30_animation;
+ 	animation-duration: 1s;
+ 	overflow-x: hidden;
+ 	overflow-y: auto;
+ }
+
+ #education_close {
+ 	width: 6%;
+ 	right: 3%;
+ 	top: 5%;
+ 	padding-top: 6%;
+ }
+
+ #education_tab h2 {
+ 	color: black;
+ 	position: relative;
+ 	width: 90%;
+ }
+
+ #education_container {
+ 	position: relative;
+ 	width: 80%;
+ 	left: 5%;
+ 	color: black;
+ 	overflow-x: hidden;
+ 	overflow-y: auto;
+ }
+
+ #death_endlife {
+ 	cursor: pointer;
+ 	position: absolute;
+ 	display: block;
+ 	background-image: url("png/button_end.png");
+ 	background-size: cover;
+ 	border: none;
+ 	width: 30%;
+ 	bottom: 3%;
+ 	right: 36%;
+ 	padding-top: 10%;
+ }
+
+ /*End overlay*/
+ #end_tab {
+ 	position: fixed;
+ 	display: fixed;
+ 	width: 30%;
+ 	height: 30%;
+ 	left: 35%;
+ 	top: 35%;
+ 	background-color: rgba(255, 255, 255, 0.7);
+ 	animation-name: width30_animation;
+ 	animation-duration: 1s;
+ 	overflow-x: hidden;
+ 	overflow-y: auto;
+ }
+
+ #end_close {
+ 	width: 6%;
+ 	right: 3%;
+ 	top: 5%;
+ 	padding-top: 6%;
+ }
+
+ #end_yes {
+ 	cursor: pointer;
+ 	position: absolute;
+ 	background-image: url("png/button_yes.png");
+ 	background-size: cover;
+ 	border: none;
+ 	width: 20%;
+ 	right: 30%;
+ 	bottom: 5%;
+ 	padding-top: 10%;
+ }
+
+ #end_no {
+ 	cursor: pointer;
+ 	position: absolute;
+ 	background-image: url("png/button_no.png");
+ 	background-size: cover;
+ 	border: none;
+ 	width: 20%;
+ 	right: 5%;
+ 	bottom: 5%;
+ 	padding-top: 10%;
+ }
+
+ #end_tab h2 {
+ 	color: black;
+ 	position: relative;
+ 	left: 3%;
+ 	width: 90%;
+ }
+
+ /*Preserve overlay*/
+ #preserve_tab {
+ 	position: fixed;
+ 	display: fixed;
+ 	width: 30%;
+ 	height: 50%;
+ 	left: 35%;
+ 	top: 25%;
+ 	background-color: rgba(255, 255, 255, 0.7);
+ 	animation-name: width30_animation;
+ 	animation-duration: 1s;
+ 	overflow-x: hidden;
+ 	overflow-y: auto;
+ }
+
+ #preserve_close {
+ 	width: 6%;
+ 	right: 3%;
+ 	top: 5%;
+ 	padding-top: 6%;
+ }
+
+ #preserve_tab h2 {
+ 	color: black;
+ 	position: relative;
+ 	width: 90%;
+ }
+
+ #preserve_container {
+ 	position: relative;
+ 	width: 80%;
+ 	left: 5%;
+ 	color: black;
+ 	overflow-x: hidden;
+ 	overflow-y: auto;
+ }
+
+ .preserve_div {
+ 	border: 1px solid black;
+ 	transition: 0.5s all;
+ 	-webkit-transition: 0.5s all;
+ 	-moz-transition: 0.5s all;
+ }
+
+ .preserve_div:hover {
+ 	background-color: white;
+ 	transition: 0.5s all;
+ 	-webkit-transition: 0.5s all;
+ 	-moz-transition: 0.5s all;
+ 	padding-top: 5px;
+ 	padding-bottom: 5px;
+ }
+
+ .preserve_div:not(#preserve_div_30) {
+ 	border-bottom: 0px;
+ }
+
+ /*Custom Animations*/
+ @keyframes overlay_animation {
+ 	from {
+ 		background-color: rgba(0, 0, 0, 0);
+ 	}
+
+ 	to {
+ 		background-color: rgba(0, 0, 0, 0.5)
+ 	}
+ }
+
+ @keyframes width30_animation {
+ 	from {
+ 		left: -55%;
+ 	}
+
+ 	to {
+ 		left: 35%;
+ 	}
+ }
+
+ @keyframes width50_animation {
+ 	from {
+ 		left: -55%;
+ 	}
+
+ 	to {
+ 		left: 25%;
+ 	}
+ }

@@ -1,8 +1,7 @@
-Current Version: 0.2.4.208281
-Released: 28/08/2022 12:33pm
+Current Version: 0.2.4.208282
+Released: 28/08/2022 04:07pm
 
-Support for Firefox now officially ended, all remnants removed
-Deleted database.json
+Animation Names changed
 
 Version Number meaning
 First number: 0 means the game is still in development and not complete, 1 means the game is out
