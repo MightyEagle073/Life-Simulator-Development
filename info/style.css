@@ -11,7 +11,8 @@ other internal properties*/
 
 :root {
   /* colors */
-  --background-color-black: rgba(0,0,0,0.5);
+  --background-color-lighter-black: rgba(0,0,0,0.5);
+  --background-color-darker-black:rgba(0,0,0,0.8);
   --button-color-red: #f30c0c;
   --button-color-gradient: linear-gradient(140deg, rgba(255,128,128,1) 0%, rgba(255,108,108,1) 36%, rgba(255,0,0,1) 58%, rgba(255,0,0,1) 100%);
   /* margin and padding */
@@ -31,33 +32,29 @@ other internal properties*/
   --font-size-button: 1.2rem;
   --font-size-text: 0.8rem;
   --color-white: #ffffff;
+  --color-black: #000000;
+  --color-grey: #888888;
+  /* scrollbar */
+  --scrollbar-width: 4px;
+  /* animation */
+  --transition-duration-short: 0.5s;
 }
 
 /* custom scrollbar */
 /* width */
 ::-webkit-scrollbar {
-  width: 9px;
+  width: var(--scrollbar-width);
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888; 
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  opacity: 0
 }
 
 /* global section from ./data/style.css */
 html{
 	height: 100%;
-  min-width: 768px;
+  min-width: 45.5rem;
 }
 body{
 	margin: 0; 
@@ -112,12 +109,14 @@ header {
 /* header >> title-container at middle */
 .title-container {
   display: flex;
+  margin: 0 var(--margin-global);
   border-radius: var(--border-radius-global);
   background-image: var(--button-color-gradient);
   min-width: 30%;
   font-size: var(--font-size-h2);
   justify-content: center;
   align-items: center;
+  flex-grow: 1;
   flex-shrink: 1;
   overflow-x: hidden; 
 }
@@ -132,8 +131,8 @@ header {
 }
 .button-container .nav-btn {
   display: flex;
-  background-color: var(--background-color-black);
-  border-radius: 90px;
+  background-color: var(--background-color-lighter-black);
+  border-radius: var(--border-radius-global);
   padding: 0 var(--padding-global);
   width: var(--width-button);
   min-width: var(--min-width-button);
@@ -141,6 +140,12 @@ header {
   text-align: center;
   justify-content: center;
   align-items: center;
+  transition: var(--transition-duration-short);
+}
+.button-container .nav-btn:hover {
+  background-color: transparent;
+  background-image: var(--button-color-gradient);
+  color: var(--color-black);
 }
 
 /* main, content section */
@@ -158,18 +163,15 @@ main {
 }
 /* main >> container >> guide-global-container */
 .guide-global-container {
-  background-color: brown;
   display: flex;
   height: 26rem;
   flex-grow: 2;
   flex-basis: 30rem;
 }
 /* main >> container >> guide-global-container >> guide-title-container */
-.guide-title-container {
-  background-color: cyan; 
-}
 ul.guide-title-list {
   display: flex;
+  background-color: var(--background-color-lighter-black);
   height: 100%;
   min-width: 10rem;
   overflow-y: scroll;
@@ -179,21 +181,52 @@ ul.guide-title-list {
   /* set scrollbar on left trick */
   transform: scaleX(-1);
 }
-li.guide-title {
-  display: inline-block;
+.guide-title-list:hover::-webkit-scrollbar-thumb {
+  background: var(--color-white);
+}
+.guide-title-list li {
+  width: 100%;
 }
 .guide-title {
+  display: block;
   margin: auto;
-  padding: 0.2rem var(--padding-button);
+  border: none;
+  background-color: transparent;
+  padding: var(--padding-button) 0;
+  height: 100%;
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
   font-size: var(--font-size-button);
+  color: var(--font-color-white);
   text-align: center;
    /* set scrollbar on left trick */
    transform: scaleX(-1);
 }
+.guide-title:hover {
+  background-color: none;
+  background-image: var(--button-color-gradient);
+  color: var(--color-white);
+}
+.guide-title:active {
+  background-color: var(--color-black);
+  background-image: none;
+}
+.guide-title-readed {
+  color: var(--color-grey);
+}
+.guide-title-reading {
+  /* this is an add on layer of color */
+  background-color: rgba(0,0,0,0.6);
+}
 /* main >> container >> guide-global-container >> guide-local-container */
 .guide-local-container {
+  background-color: var(--background-color-darker-black);
   padding: 0 var(--padding-global);
+  flex-grow: 1;
   overflow-y: scroll;
+}
+.guide-local-container:hover::-webkit-scrollbar-thumb {
+  background: var(--color-white);
 }
 .guide p {
   font-size: var(--font-size-text);
@@ -203,7 +236,7 @@ li.guide-title {
 /* main >> container >> credit-global-container */
 .credit-global-container {
   display: flex;
-  background-color: blue;
+  background-color: var(--background-color-darker-black);
   padding: 0 var(--padding-global);
   max-height: 26rem;
   overflow-y:scroll;
@@ -211,6 +244,9 @@ li.guide-title {
   flex-grow: 1;
   flex-basis: 12rem;
   gap: 0.4rem;
+}
+.credit-global-container:hover::-webkit-scrollbar-thumb {
+  background: var(--color-white);
 }
 .credit-global-title{
   margin-top: 0.4rem;
@@ -223,11 +259,10 @@ li.guide-title {
   font-size: var(--font-size-text);
 }
 .footnote {
-  margin-bottom: 0.4rem;
-  font-size: 0.2rem;
+  font-size: var(--font-size-text);
 }
 /* for other screen size */
-@media only screen and (max-width: 780px) {
+@media only screen and (max-width: 45.5rem) {
   .credit-global-container {
     margin-bottom: 2rem;
   }
