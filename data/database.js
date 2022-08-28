@@ -1,24 +1,26 @@
 const database = {
 	//Theme Names
 	theme_names: [
-		null, 
-		"1_sunset.jpg", 
-		"2_forest.jpg", 
-		"3_cityscape.jpg", 
-		"4_rainy.jpg", 
-		"5_blocks.jpg", 
-		"6_paint.jpg", 
-		"7_moon.jpg", 
-		"8_waterfall.jpg", 
-		"9_hexagon.jpg", 
-		"10_road.jpg", 
-		"11_valley.jpg", 
+		null,
+		"1_sunset.jpg",
+		"2_forest.jpg",
+		"3_cityscape.jpg",
+		"4_rainy.jpg",
+		"5_blocks.jpg",
+		"6_paint.jpg",
+		"7_moon.jpg",
+		"8_waterfall.jpg",
+		"9_hexagon.jpg",
+		"10_road.jpg",
+		"11_valley.jpg",
 		"12_train.jpg",
 	],
 	//Default Life Information - Life information before the life is first created
 	life_information: {
+		//Crucial information for running, never shown to the player 
 		//Status: 0 = Doesn't Exist, 1 = Alive, 2 = Dead
 		status: 0, //Integer from 0-2, changed to 1 when life is created
+		version: "0.3 beta",
 		//Life Information
 		age: {
 			years: 0, // Integer >= 0
@@ -43,7 +45,7 @@ const database = {
 			day: 1, //Integer from 0-31, changed when life is created
 		},
 		diary: "Click the play button on the bottom right corner to start your life!", //String
-		dsb: 0, //Integer
+		dsb: 0, //Integer, never shown to the player
 		gender: "m", //String, either "m" or "f", changed when life is created
 		name: {
 			first: "John", //String, changed when life is created

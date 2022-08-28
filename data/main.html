@@ -1,193 +1,210 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Life Simulator</title>
-		<link href="style.css" type="text/css" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-		<link href="logo.png" rel="icon">
-		<script src="jquery-3.4.1.min.js"></script>
-		<script src="jquery.fittext.js"></script>
-		<script src="js.cookie.min.js"></script>
-		<script src="database.js"></script>
-		<script src="functions.js"></script>
- 	</head>
-	<body id="main_body">
-		<a href = "https://www.mozilla.org/en-US/firefox/new/">
-			<div id="notsupported_overlay" class="overlay"></div>
-		</a>
-		<div id="toosmall_overlay" class="overlay">
-			<div id="toosmall_tab">
-				<h2>Your window size is too small!</h2>
-				<p>Please adjust your window size so that Lightning Mcqueen is fully visible. You can do this by either enlarging or fullscreening your window or pressing Ctrl and - (Windows) or Cmd and - (Mac). </p>
-				<img src="png/mcqueen.png" alt="McQueen">
-			</div>
+
+<head>
+	<meta charset="utf-8">
+	<title>Life Simulator</title>
+	<link href="style.css" type="text/css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+	<link href="logo.png" rel="icon">
+	<script src="jquery-3.4.1.min.js"></script>
+	<script src="jquery.fittext.js"></script>
+	<script src="js.cookie.min.js"></script>
+	<script src="database.js"></script>
+	<script src="functions.js"></script>
+</head>
+
+<body id="main_body">
+	<a href="https://www.mozilla.org/en-US/firefox/new/">
+		<div id="notsupported_overlay" class="overlay"></div>
+	</a>
+	<div id="toosmall_overlay" class="overlay">
+		<div id="toosmall_tab">
+			<h2>Your window size is too small!</h2>
+			<p>Please adjust your window size so that Lightning Mcqueen is fully visible. You can do this by either
+				enlarging or fullscreening your window or pressing Ctrl and - (Windows) or Cmd and - (Mac). </p>
+			<img src="png/mcqueen.png" alt="McQueen">
 		</div>
-		<div id="notstarted_overlay" class="overlay">
-			<div id="notstarted_tab">
-				<h2>Woah, not so fast!</h2>
-				<p>Life Simulator has detected that you haven't even started your life yet. Open home.html to either continue or start a new life.</p>
-			</div>
+	</div>
+	<div id="notstarted_overlay" class="overlay">
+		<div id="notstarted_tab">
+			<h2>Woah, not so fast!</h2>
+			<p>Life Simulator has detected that you haven't even started your life yet. Open home.html to either
+				continue or start a new life.</p>
 		</div>
-		<audio id="main_audio_death">
-			<source src="audio/death.mp3" type="audio/mpeg">
-		</audio>
-		<div id="main_diary">
-			<div id="main_diary_head">
-				<h1 id="main_diary_h1">John Smith's Diary</h1>
-			</div>
-			<div id="main_diary_body">
-				<p id="main_diary_info">Welcome to the diary! This contains all events that has happened in your character's life.</p>
-				<p id="main_diary_p">Click the play button on the bottom right corner to start your life! <br></p>
-			</div>
+	</div>
+	<audio id="main_audio_death">
+		<source src="audio/death.mp3" type="audio/mpeg">
+	</audio>
+	<div id="main_diary">
+		<div id="main_diary_head">
+			<h1 id="main_diary_h1">John Smith's Diary</h1>
 		</div>
-		<div id="main_info">
-			<div id="main_info_head">
-				<h1 id="main_info_h1">Info</h1>
-			</div>
-			<div id="main_info_body">
-				<p class="main_info_p" id="main_info_age">Age: 18 years 0 days</p>
-				<p class="main_info_p" id="main_info_gender">Gender: Male</p>
-				<p class="main_info_p" id="main_info_birthday">Birthday: 1970/1/1</p>
-			</div>
+		<div id="main_diary_body">
+			<p id="main_diary_info">Welcome to the diary! This contains all events that has happened in your character's
+				life.</p>
+			<p id="main_diary_p">Click the play button on the bottom right corner to start your life! <br></p>
 		</div>
-		<div id="main_actions">
-			<img class="main_actions_icons" src="png/actions_education.png" alt="Education" onClick="overlay('education_overlay', 'block')">
-			<img class="main_actions_icons" src="png/actions_save.png" alt="Save" onClick="overlay('save_overlay', 'block')">
-			<img class="main_actions_icons" src="png/actions_settings.png" alt="Settings" onClick="overlay('settings_overlay', 'block')">
+	</div>
+	<div id="main_info">
+		<div id="main_info_head">
+			<h1 id="main_info_h1">Info</h1>
 		</div>
-		<div id="main_control">
-			<div id="main_control_date">
-				<h1 id="main_control_currentdate">1970/1/1</h1>
-				<button id="main_control_pause" onclick="timepause()"></button>
-				<button id="main_control_start" onclick="timestart()"></button>
-				<input id="main_control_speed" type="range" min="0" max="100" value="0" name="speed">
+		<div id="main_info_body">
+			<p class="main_info_p" id="main_info_age">Age: 18 years 0 days</p>
+			<p class="main_info_p" id="main_info_gender">Gender: Male</p>
+			<p class="main_info_p" id="main_info_birthday">Birthday: 1970/1/1</p>
+		</div>
+	</div>
+	<div id="main_actions">
+		<img class="main_actions_icons" src="png/actions_education.png" alt="Education"
+			onClick="overlay('education_overlay', 'block')">
+		<img class="main_actions_icons" src="png/actions_save.png" alt="Save"
+			onClick="overlay('save_overlay', 'block')">
+		<img class="main_actions_icons" src="png/actions_settings.png" alt="Settings"
+			onClick="overlay('settings_overlay', 'block')">
+	</div>
+	<div id="main_control">
+		<div id="main_control_date">
+			<h1 id="main_control_currentdate">1970/1/1</h1>
+			<button id="main_control_pause" onclick="timepause()"></button>
+			<button id="main_control_start" onclick="timestart()"></button>
+			<input id="main_control_speed" type="range" min="0" max="100" value="0" name="speed">
+		</div>
+	</div>
+	<div id="education_overlay" class="overlay">
+		<div id="education_tab">
+			<div id="education_container">
+				<h2>Education Details</h2>
+				<p id="education_school">You are not currently enrolled in a school!</p>
+				<p id="education_grade">Your parents will automatically enrol you in Primary School at the age of 4
+					years and 7 months.</p>
+				<h3 id="education_effort_h3">Adjust effort put into schooling:</h3>
+				<input id="education_effort_input" type="range" min="0" max="100" value="50" name="education_effort">
+				<button id="education_view" onclick="overlay('education2_overlay', 'block')"></button>
 			</div>
+			<button id="education_close" class="close" onclick="overlay('education_overlay', 'none')"></button>
 		</div>
-		<div id="education_overlay" class="overlay">
-			<div id="education_tab">
-				<div id="education_container">
-					<h2>Education Details</h2>
-					<p id="education_school">You are not currently enrolled in a school!</p>
-					<p id="education_grade">Your parents will automatically enrol you in Primary School at the age of 4 years and 7 months.</p>
-					<h3 id="education_effort_h3">Adjust effort put into schooling:</h3>
-					<input id="education_effort_input" type="range" min="0" max="100" value="50" name="education_effort">
-					<button id="education_view" onclick="overlay('education2_overlay', 'block')"></button>
+	</div>
+	<div id="save_overlay" class="overlay">
+		<div id="save_tab">
+			<div id="save_container">
+				<h2>Choose a slot for your life to be saved.</h2>
+				<div class="save_div" id="save_div_1" onClick="save_life(1)">Life 1: Empty</div>
+				<div class="save_div" id="save_div_2" onClick="save_life(2)">Life 2: Empty</div>
+				<div class="save_div" id="save_div_3" onClick="save_life(3)">Life 3: Empty</div>
+				<div class="save_div" id="save_div_4" onClick="save_life(4)">Life 4: Empty</div>
+				<div class="save_div" id="save_div_5" onClick="save_life(5)">Life 5: Empty</div>
+				<div class="save_div" id="save_div_6" onClick="save_life(6)">Life 6: Empty</div>
+				<div class="save_div" id="save_div_7" onClick="save_life(7)">Life 7: Empty</div>
+				<div class="save_div" id="save_div_8" onClick="save_life(8)">Life 8: Empty</div>
+				<div class="save_div" id="save_div_9" onClick="save_life(9)">Life 9: Empty</div>
+				<div class="save_div" id="save_div_10" onClick="save_life(10)">Life 10: Empty</div>
+			</div>
+			<br>
+			<button id="save_close" class="close" onclick="overlay('save_overlay', 'none')"></button>
+		</div>
+	</div>
+	<div id="settings_overlay" class="overlay">
+		<div id="settings_tab">
+			<div id="settings_container">
+				<h1 id="settings_h1">Settings</h1>
+				<h3>Volume</h3>
+				<input id="settings_volume" type="range" min="0" max="100" name="volume">
+				<h3>Theme</h3>
+				<button id="settings_theme" onclick="settings_theme()"></button>
+				<h3>Game Speed</h3>
+				<label for="settings_gamespeed1"><input id="settings_gamespeed1" name="gamespeed" type="radio"
+						value="1"> &nbsp;&nbsp;&nbsp;Slow</label>
+				<label for="settings_gamespeed2"><input id="settings_gamespeed2" name="gamespeed" type="radio"
+						value="2"> &nbsp;&nbsp;&nbsp;Medium</label>
+				<label for="settings_gamespeed3"><input id="settings_gamespeed3" name="gamespeed" type="radio"
+						value="3"> &nbsp;&nbsp;&nbsp;Fast</label>
+				<p>The Game Speed adjusts the amounts of events that will happen in your life. For a fast game but
+					uneventful life, choose fast. For a slow game but a life packed full of events, choose slow. For a
+					balanced game, choose medium.</p>
+				<div id="settings2_overlay" class="overlay">
+					<div id="settings2_tab">
+						<button id="settings2_close" class="close"
+							onclick="overlay('settings2_overlay', 'none')"></button>
+						<h2 id="settings2_h2">Save your current settings?</h2>
+						<button id="settings2_yes" onclick="settings_save()"></button>
+						<button id="settings2_no" onclick="overlay('settings2_overlay', 'none')"></button>
+					</div>
 				</div>
-				<button id="education_close" class="close" onclick="overlay('education_overlay', 'none')"></button>
+			</div>
+			<button id="settings_close" class="close" onclick="overlay('settings_overlay', 'none')"></button>
+			<button id="settings_save" onclick="settings_sure()"></button>
+		</div>
+	</div>
+	<div id="death_overlay" class="overlay">
+		<div id="death_tab">
+			<div id="death_container">
+				<h1>You have perished.</h1>
+				<img src="png/tombstone.png" alt="tombstone">
+				<p id="death_died">John Smith died on 1970/1/1.</p>
+				<p id="death_age">He was at a young age of 18 years 0 days.</p>
+			</div>
+			<button id="death_endlife" onClick="overlay('end_overlay','block')"></button>
+			<button id="death_preservelife" onClick=preserve()></button>
+		</div>
+		<div id="end_overlay" class="overlay">
+			<div id="end_tab">
+				<h2>Are you sure you want to end this life? This life will be gone forever, as if it never happened!
+				</h2>
+				<button id="end_close" class="close" onclick="overlay('end_overlay', 'none')"></button>
+				<button id="end_yes" onclick="endlife()"></button>
+				<button id="end_no" onclick="overlay('end_overlay', 'none')"></button>
 			</div>
 		</div>
-		<div id="save_overlay" class="overlay">
-			<div id="save_tab">
-				<div id="save_container">
-					<h2>Choose a slot for your life to be saved.</h2>
-					<div class="save_div" id="save_div_1" onClick="save_life(1)">Life 1: Empty</div>
-					<div class="save_div" id="save_div_2" onClick="save_life(2)">Life 2: Empty</div>
-					<div class="save_div" id="save_div_3" onClick="save_life(3)">Life 3: Empty</div>
-					<div class="save_div" id="save_div_4" onClick="save_life(4)">Life 4: Empty</div>
-					<div class="save_div" id="save_div_5" onClick="save_life(5)">Life 5: Empty</div>
-					<div class="save_div" id="save_div_6" onClick="save_life(6)">Life 6: Empty</div>
-					<div class="save_div" id="save_div_7" onClick="save_life(7)">Life 7: Empty</div>
-					<div class="save_div" id="save_div_8" onClick="save_life(8)">Life 8: Empty</div>
-					<div class="save_div" id="save_div_9" onClick="save_life(9)">Life 9: Empty</div>
-					<div class="save_div" id="save_div_10" onClick="save_life(10)">Life 10: Empty</div>
+		<div id="preserve_overlay" class="overlay">
+			<div id="preserve_tab">
+				<div id="preserve_container">
+					<h2>Choose a slot for your life to be preserved.</h2>
+					<div class="preserve_div" id="preserve_div_1" onClick="preserve_life(1)">Life 1: Empty</div>
+					<div class="preserve_div" id="preserve_div_2" onClick="preserve_life(2)">Life 2: Empty</div>
+					<div class="preserve_div" id="preserve_div_3" onClick="preserve_life(3)">Life 3: Empty</div>
+					<div class="preserve_div" id="preserve_div_4" onClick="preserve_life(4)">Life 4: Empty</div>
+					<div class="preserve_div" id="preserve_div_5" onClick="preserve_life(5)">Life 5: Empty</div>
+					<div class="preserve_div" id="preserve_div_6" onClick="preserve_life(6)">Life 6: Empty</div>
+					<div class="preserve_div" id="preserve_div_7" onClick="preserve_life(7)">Life 7: Empty</div>
+					<div class="preserve_div" id="preserve_div_8" onClick="preserve_life(8)">Life 8: Empty</div>
+					<div class="preserve_div" id="preserve_div_9" onClick="preserve_life(9)">Life 9: Empty</div>
+					<div class="preserve_div" id="preserve_div_10" onClick="preserve_life(10)">Life 10: Empty</div>
+					<div class="preserve_div" id="preserve_div_11" onClick="preserve_life(11)">Life 11: Empty</div>
+					<div class="preserve_div" id="preserve_div_12" onClick="preserve_life(12)">Life 12: Empty</div>
+					<div class="preserve_div" id="preserve_div_13" onClick="preserve_life(13)">Life 13: Empty</div>
+					<div class="preserve_div" id="preserve_div_14" onClick="preserve_life(14)">Life 14: Empty</div>
+					<div class="preserve_div" id="preserve_div_15" onClick="preserve_life(15)">Life 15: Empty</div>
+					<div class="preserve_div" id="preserve_div_16" onClick="preserve_life(16)">Life 16: Empty</div>
+					<div class="preserve_div" id="preserve_div_17" onClick="preserve_life(17)">Life 17: Empty</div>
+					<div class="preserve_div" id="preserve_div_18" onClick="preserve_life(18)">Life 18: Empty</div>
+					<div class="preserve_div" id="preserve_div_19" onClick="preserve_life(19)">Life 19: Empty</div>
+					<div class="preserve_div" id="preserve_div_20" onClick="preserve_life(20)">Life 20: Empty</div>
+					<div class="preserve_div" id="preserve_div_21" onClick="preserve_life(21)">Life 21: Empty</div>
+					<div class="preserve_div" id="preserve_div_22" onClick="preserve_life(22)">Life 22: Empty</div>
+					<div class="preserve_div" id="preserve_div_23" onClick="preserve_life(23)">Life 23: Empty</div>
+					<div class="preserve_div" id="preserve_div_24" onClick="preserve_life(24)">Life 24: Empty</div>
+					<div class="preserve_div" id="preserve_div_25" onClick="preserve_life(25)">Life 25: Empty</div>
+					<div class="preserve_div" id="preserve_div_26" onClick="preserve_life(26)">Life 26: Empty</div>
+					<div class="preserve_div" id="preserve_div_27" onClick="preserve_life(27)">Life 27: Empty</div>
+					<div class="preserve_div" id="preserve_div_28" onClick="preserve_life(28)">Life 28: Empty</div>
+					<div class="preserve_div" id="preserve_div_29" onClick="preserve_life(29)">Life 29: Empty</div>
+					<div class="preserve_div" id="preserve_div_30" onClick="preserve_life(30)">Life 30: Empty</div>
 				</div>
 				<br>
-				<button id="save_close" class="close" onclick="overlay('save_overlay', 'none')"></button>
+				<button id="preserve_close" class="close" onclick="overlay('preserve_overlay', 'none')"></button>
 			</div>
 		</div>
-		<div id="settings_overlay" class="overlay">
-			<div id="settings_tab">
-				<div id="settings_container">
-					<h1 id="settings_h1">Settings</h1>
-					<h3>Volume</h3>
-					<input id="settings_volume" type="range" min="0" max="100" name="volume">
-					<h3>Theme</h3>
-					<button id="settings_theme" onclick="settings_theme()"></button>
-					<h3>Game Speed</h3>
-					<label for="settings_gamespeed1"><input id="settings_gamespeed1" name="gamespeed" type="radio" value="1"> &nbsp;&nbsp;&nbsp;Slow</label>
-					<label for="settings_gamespeed2"><input id="settings_gamespeed2" name="gamespeed" type="radio" value="2"> &nbsp;&nbsp;&nbsp;Medium</label>
-					<label for="settings_gamespeed3"><input id="settings_gamespeed3" name="gamespeed" type="radio" value="3"> &nbsp;&nbsp;&nbsp;Fast</label>
-					<p>The Game Speed adjusts the amounts of events that will happen in your life. For a fast game but uneventful life, choose fast. For a slow game but a life packed full of events, choose slow. For a balanced game, choose medium.</p>
-					<div id="settings2_overlay" class="overlay">
-						<div id="settings2_tab">
-							<button id="settings2_close" class="close" onclick="overlay('settings2_overlay', 'none')"></button>
-							<h2 id="settings2_h2">Save your current settings?</h2>
-							<button id="settings2_yes" onclick="settings_save()"></button>
-							<button id="settings2_no" onclick="overlay('settings2_overlay', 'none')"></button>
-						</div>
-					</div>
-				</div>
-				<button id="settings_close" class="close" onclick="overlay('settings_overlay', 'none')"></button>
-				<button id="settings_save" onclick="settings_sure()"></button>
-			</div>
-		</div>
-		<div id="death_overlay" class="overlay">
-			<div id="death_tab">
-				<div id="death_container">
-					<h1>You have perished.</h1>
-					<img src="png/tombstone.png" alt="tombstone">
-					<p id="death_died">John Smith died on 1970/1/1.</p>
-					<p id="death_age">He was at a young age of 18 years 0 days.</p>
-				</div>
-				<button id="death_endlife" onClick="overlay('end_overlay','block')"></button>
-				<button id="death_preservelife" onClick=preserve()></button>
-			</div>
-			<div id="end_overlay" class="overlay">
-				<div id="end_tab">
-					<h2>Are you sure you want to end this life? This life will be gone forever, as if it never happened!</h2>
-					<button id="end_close" class="close" onclick="overlay('end_overlay', 'none')"></button>
-					<button id="end_yes" onclick="endlife()"></button>
-					<button id="end_no" onclick="overlay('end_overlay', 'none')"></button>
-				</div>
-			</div>
-			<div id="preserve_overlay" class="overlay">
-				<div id="preserve_tab">
-					<div id="preserve_container">
-						<h2>Choose a slot for your life to be preserved.</h2>
-						<div class="preserve_div" id="preserve_div_1" onClick="preserve_life(1)">Life 1: Empty</div>
-						<div class="preserve_div" id="preserve_div_2" onClick="preserve_life(2)">Life 2: Empty</div>
-						<div class="preserve_div" id="preserve_div_3" onClick="preserve_life(3)">Life 3: Empty</div>
-						<div class="preserve_div" id="preserve_div_4" onClick="preserve_life(4)">Life 4: Empty</div>
-						<div class="preserve_div" id="preserve_div_5" onClick="preserve_life(5)">Life 5: Empty</div>
-						<div class="preserve_div" id="preserve_div_6" onClick="preserve_life(6)">Life 6: Empty</div>
-						<div class="preserve_div" id="preserve_div_7" onClick="preserve_life(7)">Life 7: Empty</div>
-						<div class="preserve_div" id="preserve_div_8" onClick="preserve_life(8)">Life 8: Empty</div>
-						<div class="preserve_div" id="preserve_div_9" onClick="preserve_life(9)">Life 9: Empty</div>
-						<div class="preserve_div" id="preserve_div_10" onClick="preserve_life(10)">Life 10: Empty</div>
-						<div class="preserve_div" id="preserve_div_11" onClick="preserve_life(11)">Life 11: Empty</div>
-						<div class="preserve_div" id="preserve_div_12" onClick="preserve_life(12)">Life 12: Empty</div>
-						<div class="preserve_div" id="preserve_div_13" onClick="preserve_life(13)">Life 13: Empty</div>
-						<div class="preserve_div" id="preserve_div_14" onClick="preserve_life(14)">Life 14: Empty</div>
-						<div class="preserve_div" id="preserve_div_15" onClick="preserve_life(15)">Life 15: Empty</div>
-						<div class="preserve_div" id="preserve_div_16" onClick="preserve_life(16)">Life 16: Empty</div>
-						<div class="preserve_div" id="preserve_div_17" onClick="preserve_life(17)">Life 17: Empty</div>
-						<div class="preserve_div" id="preserve_div_18" onClick="preserve_life(18)">Life 18: Empty</div>
-						<div class="preserve_div" id="preserve_div_19" onClick="preserve_life(19)">Life 19: Empty</div>
-						<div class="preserve_div" id="preserve_div_20" onClick="preserve_life(20)">Life 20: Empty</div>
-						<div class="preserve_div" id="preserve_div_21" onClick="preserve_life(21)">Life 21: Empty</div>
-						<div class="preserve_div" id="preserve_div_22" onClick="preserve_life(22)">Life 22: Empty</div>
-						<div class="preserve_div" id="preserve_div_23" onClick="preserve_life(23)">Life 23: Empty</div>
-						<div class="preserve_div" id="preserve_div_24" onClick="preserve_life(24)">Life 24: Empty</div>
-						<div class="preserve_div" id="preserve_div_25" onClick="preserve_life(25)">Life 25: Empty</div>
-						<div class="preserve_div" id="preserve_div_26" onClick="preserve_life(26)">Life 26: Empty</div>
-						<div class="preserve_div" id="preserve_div_27" onClick="preserve_life(27)">Life 27: Empty</div>
-						<div class="preserve_div" id="preserve_div_28" onClick="preserve_life(28)">Life 28: Empty</div>
-						<div class="preserve_div" id="preserve_div_29" onClick="preserve_life(29)">Life 29: Empty</div>
-						<div class="preserve_div" id="preserve_div_30" onClick="preserve_life(30)">Life 30: Empty</div>
-					</div>
-					<br>
-					<button id="preserve_close" class="close" onclick="overlay('preserve_overlay', 'none')"></button>
-				</div>
-			</div>
-		</div>
-		<script src="loadmain.js"></script> 
-		<script type="text/javascript">
-			// Adjuts size of text within the html
-			$("#main_diary_h1").fitText(20);
-			$("#main_info_h1").fitText(8);
-			$("#main_control_currentdate").fitText(6);
-			$(".main_info_p").fitText(20);
-		</script>
-	</body>
+	</div>
+	<script src="loadmain.js"></script>
+	<script type="text/javascript">
+		// Adjuts size of text within the html
+		$("#main_diary_h1").fitText(20);
+		$("#main_info_h1").fitText(8);
+		$("#main_control_currentdate").fitText(6);
+		$(".main_info_p").fitText(20);
+	</script>
+</body>
+
 </html>

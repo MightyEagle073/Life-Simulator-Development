@@ -171,7 +171,12 @@ function endlife() {
 document.getElementById("save_overlay").style.display = "block";
 for (let i = 1; i <= 10; i++) {
 	if (JSON.parse(localStorage.getItem("current_info"))[i]["status"] == 1) {
-		document.getElementById(`save_div_${i}`).innerHTML = `Life ${i}: ` + JSON.parse(localStorage.getItem("current_info"))[i]["name"]["first"] + " " + JSON.parse(localStorage.getItem("current_info"))[i]["name"]["last"];
+		if (JSON.parse(localStorage.getItem("current_info"))[i]["version"] == "0.3 beta") {
+			document.getElementById(`save_div_${i}`).innerHTML = `Life ${i}: ` + JSON.parse(localStorage.getItem("current_info"))[i]["name"]["first"] + " " + JSON.parse(localStorage.getItem("current_info"))[i]["name"]["last"];
+		}
+		else {
+			document.getElementById(`save_div_${i}`).innerHTML = "Incompatible Life Stored"
+		}
 	}
 }
 
@@ -180,7 +185,12 @@ function preserve() {
 	document.getElementById("preserve_overlay").style.display = "block";
 	for (let i = 1; i <= 30; i++) {
 		if (JSON.parse(localStorage.getItem("past_info"))[i]["status"] == 2) {
-			document.getElementById(`preserve_div_${i}`).innerHTML = `Life ${i}: ` + JSON.parse(localStorage.getItem("past_info"))[i]["name"]["first"] + " " + JSON.parse(localStorage.getItem("past_info"))[i]["name"]["last"];
+			if (JSON.parse(localStorage.getItem("past_info"))[i]["version"] == "0.3 beta") {
+				document.getElementById(`preserve_div_${i}`).innerHTML = `Life ${i}: ` + JSON.parse(localStorage.getItem("current_info"))[i]["name"]["first"] + " " + JSON.parse(localStorage.getItem("past_info"))[i]["name"]["last"];
+			}
+			else {
+				document.getElementById(`preserve_div_${i}`).innerHTML = "Incompatible Life Stored"
+			}
 		}
 	}
 }

@@ -1,7 +1,9 @@
-Current Version: 0.2.4.208282
-Released: 28/08/2022 04:07pm
+Current Version: 0.2.4.208283
+Released: 28/08/2022 05:06pm
 
-Animation Names changed
+Changes from 0.2.4.208282:
++ Version numbers added into life information
+- More remnants of Firefox cookie transferring deleted
 
 Version Number meaning
 First number: 0 means the game is still in development and not complete, 1 means the game is out

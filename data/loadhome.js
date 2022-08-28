@@ -48,20 +48,34 @@ if (localStorage.getItem("life_transfer") != null) {
 //Segment H5: This function changes the text in continue life section according to profile.js
 for (let i = 1; i <= 10; i++) {
 	if (JSON.parse(localStorage.getItem("current_info"))[i]["status"] == 1) {
-		document.getElementById(`continuelife_savefile${i}_name`).innerHTML = JSON.parse(localStorage.getItem("current_info"))[i]["name"]["first"] + " " + JSON.parse(localStorage.getItem("current_info"))[i]["name"]["last"];
-		document.getElementById(`continuelife_savefile${i}_age`).innerHTML = "Age: " + JSON.parse(localStorage.getItem("current_info"))[i]["age"]["years"];
-		document.getElementById(`continuelife_savefile${i}_date`).innerHTML = "Date: " + dict_to_date(JSON.parse(localStorage.getItem("current_info"))[i]["date"]);
+		if (JSON.parse(localStorage.getItem("current_info"))[i]["version"] == "0.3 beta") {
+			document.getElementById(`continuelife_savefile${i}_name`).innerHTML = JSON.parse(localStorage.getItem("current_info"))[i]["name"]["first"] + " " + JSON.parse(localStorage.getItem("current_info"))[i]["name"]["last"];
+			document.getElementById(`continuelife_savefile${i}_age`).innerHTML = "Age: " + JSON.parse(localStorage.getItem("current_info"))[i]["age"]["years"];
+			document.getElementById(`continuelife_savefile${i}_date`).innerHTML = "Date: " + dict_to_date(JSON.parse(localStorage.getItem("current_info"))[i]["date"]);
+		}
+		else {
+			document.getElementById(`continuelife_savefile${i}_name`).innerHTML = "Incompatible!"
+			document.getElementById(`continuelife_savefile${i}_date`).innerHTML = `An life from version ${JSON.parse(localStorage.getItem("current_info"))[i]["version"]} is stored here.`;
+		}
+
 	}
 }
 
 //Segment H6: This function changes the text in the past lives section according to profile.js
 for (let i = 1; i <= 30; i++) {
 	if (JSON.parse(localStorage.getItem("past_info"))[i]["status"] == 2) {
-		document.getElementById(`pastlives_save${i}_name`).innerHTML = JSON.parse(localStorage.getItem("past_info"))[i]["name"]["first"] + " " + JSON.parse(localStorage.getItem("past_info"))[i]["name"]["last"];
-		document.getElementById(`pastlives_save${i}_age`).innerHTML = "Age: " + JSON.parse(localStorage.getItem("past_info"))[i]["age"]["years"];
-		document.getElementById(`pastlives_save${i}_date`).innerHTML = "Lifespan: " + dict_to_date(JSON.parse(localStorage.getItem("past_info"))[i]["birthday"]) + " - " + dict_to_date(JSON.parse(localStorage.getItem("past_info"))[i]["date"]);
-		document.getElementById(`pastlives_save${i}_wealth`).innerHTML = "Net Worth: $" + JSON.parse(localStorage.getItem("past_info"))[i]["net_worth"];
-		document.getElementById(`pastlives_save${i}_career`).innerHTML = "Career: " + JSON.parse(localStorage.getItem("past_info"))[i]["career"]["longest"];
+
+		if (JSON.parse(localStorage.getItem("past_info"))[i]["version"] == "0.3 beta") {
+			document.getElementById(`pastlives_save${i}_name`).innerHTML = JSON.parse(localStorage.getItem("past_info"))[i]["name"]["first"] + " " + JSON.parse(localStorage.getItem("past_info"))[i]["name"]["last"];
+			document.getElementById(`pastlives_save${i}_age`).innerHTML = "Age: " + JSON.parse(localStorage.getItem("past_info"))[i]["age"]["years"];
+			document.getElementById(`pastlives_save${i}_date`).innerHTML = "Lifespan: " + dict_to_date(JSON.parse(localStorage.getItem("past_info"))[i]["birthday"]) + " - " + dict_to_date(JSON.parse(localStorage.getItem("past_info"))[i]["date"]);
+			document.getElementById(`pastlives_save${i}_wealth`).innerHTML = "Net Worth: $" + JSON.parse(localStorage.getItem("past_info"))[i]["net_worth"];
+			document.getElementById(`pastlives_save${i}_career`).innerHTML = "Career: " + JSON.parse(localStorage.getItem("past_info"))[i]["career"]["longest"];
+		}
+		else {
+			document.getElementById(`pastlives_save${i}_name`).innerHTML = "Incompatible!"
+			document.getElementById(`pastlives_save${i}_date`).innerHTML = `An life from version ${JSON.parse(localStorage.getItem("past_info"))[i]["version"]} is stored here.`;
+		}
 	}
 }
 
@@ -104,14 +118,14 @@ $(document).ready(function () {
 //Segment H12: This function changes the text on the secondary overlay according to which life has been chosen
 function continueFn(life_no) {
 	life_no_temp = life_no
-	if (JSON.parse(localStorage.getItem("current_info"))[life_no]["status"] == 1) {
+	if (JSON.parse(localStorage.getItem("current_info"))[life_no]["status"] == 1 && JSON.parse(localStorage.getItem("current_info"))[life_no]["version"] == "0.3 beta") {
 		document.getElementById("continuelife2_h1").innerHTML = "Continue Life " + life_no.toString() + "?";
 		document.getElementById("continuelife2_p").innerHTML = "Would you like to continue the life of <strong>" + JSON.parse(localStorage.getItem("current_info"))[life_no]["name"]["first"] + " " + JSON.parse(localStorage.getItem("current_info"))[life_no]["name"]["last"] + "</strong>, aged <strong>" + JSON.parse(localStorage.getItem("current_info"))[life_no]["age"]["years"] + "</strong>, from <strong>" + dict_to_date(JSON.parse(localStorage.getItem("current_info"))[life_no]["date"]) + "</strong>?";
 		document.getElementById("continuelife2_overlay").style.display = "block";
 	}
 }
 function pastFn(life_no) {
-	if (JSON.parse(localStorage.getItem("current_info"))[life_no]["status"] == 2) {
+	if (JSON.parse(localStorage.getItem("current_info"))[life_no]["status"] == 2 && JSON.parse(localStorage.getItem("current_info"))[life_no]["version"] == "0.3 beta") {
 		document.getElementById("pastlives2_overlay").style.display = "block";
 		document.getElementById("pastlives2_h1").innerHTML = JSON.parse(localStorage.getItem("past_info"))[life_no]["name"]["first"] + " " + JSON.parse(localStorage.getItem("past_info"))[life_no]["name"]["last"] + "'s diary"
 		document.getElementById("pastlives2_p").innerHTML = JSON.parse(localStorage.getItem("past_info"))[life_no]["diary"]
@@ -121,7 +135,6 @@ function pastFn(life_no) {
 //Segment H13: This function loads the game onto the main tab
 function continuelife() {
 	localStorage.setItem("life_transfer", JSON.stringify(JSON.parse(localStorage.getItem("current_info"))[life_no_temp]))
-	cookie_transfer()
 	window.location.href = "data/main.html"
 }
 
@@ -217,6 +230,5 @@ function createlife() {
 	info["date"] = info["birthday"] = calendar_to_dict(newdate_temp)
 	info["gender"] = newgender_temp
 	localStorage.setItem("life_transfer", JSON.stringify(info))
-	cookie_transfer()
 	window.location.href = "data/main.html"
 }
