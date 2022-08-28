@@ -43,10 +43,10 @@ function date_add(input, days) {
 function switch_theme() {
 	for (let i = 1; i <= database["theme_names"].length - 1; i++) {
 		if (parseInt(localStorage.getItem("settings_theme")) == i) {
-			if (document.getElementById("home_body") != null){
+			if (document.getElementById("home_body") != null) {
 				document.getElementById("home_body").style.backgroundImage = `url('data/wallpapers/${database["theme_names"][i]}')`;
 			}
-			else if (document.getElementById("main_body") != null){
+			else if (document.getElementById("main_body") != null) {
 				document.getElementById("main_body").style.backgroundImage = `url('wallpapers/${database["theme_names"][i]}')`;
 			}
 			document.getElementById("settings_theme").style.backgroundImage = `url('data/wallpapers/previews/${database["theme_names"][i]}')`;

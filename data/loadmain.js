@@ -1,30 +1,6 @@
-//Segment M1: Checks if local storage work
-localStorage.setItem("test", 1)
-if (localStorage.getItem("test") != 1) {
+//Segment M1: Checks if user is using an unsupported brower
+if (navigator.userAgent.indexOf("Firefox") != -1) {
 	document.getElementById("notsupported_overlay").style.display = "block";
-}
-else {
-	localStorage.removeItem("test")
-}
-
-//Segment M2: Firefox Cookie Transfer
-if(navigator.userAgent.indexOf("Firefox") != -1) {
-	if (Cookies.get("transfer") == 1) {
-		for (let i = 1; i < database["transfer"].length; i++) {
-			localStorage.setItem(database["transfer"][i], Cookies.get(database["transfer"][i]))
-		}
-		Cookies.set("transfer", 0)
-		console.log("Cookie transfer successful")
-	}
-}
-function cookie_transfer() {
-	if(navigator.userAgent.indexOf("Firefox") != -1) {
-		console.log("Commenced cookie transfer")
-		Cookies.set("transfer", 1)
-		for (let i = 1; i < database["transfer"]; i++) {
-			Cookies.set(database["transfer"][i], localStorage.getItem(database["transfer"][i]))
-		}
-	}
 }
 
 //Segment M3: Initialises Life

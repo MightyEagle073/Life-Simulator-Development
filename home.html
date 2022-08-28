@@ -17,9 +17,7 @@
 
 <body id="home_body">
 	<!--Not Supported-->
-	<a href="https://www.mozilla.org/en-US/firefox/new/">
-		<div id="notsupported_overlay" class="overlay"></div>
-	</a>
+	<div id="notsupported_overlay" class="overlay"></div>
 	<!--Window Size Too Small-->
 	<div id="toosmall_overlay" class="overlay">
 		<div id="toosmall_tab">
@@ -218,7 +216,8 @@
 				</div>
 				<div id="continuelife2_overlay" class="overlay">
 					<div id="continuelife2_tab">
-						<button id="continuelife2_close" class="close" onclick="overlay('newlife_overlay', 'block')"></button>
+						<button id="continuelife2_close" class="close"
+							onclick="overlay('newlife_overlay', 'block')"></button>
 						<h1 id="continuelife2_h1">Continue life 0?</h1>
 						<p id="continuelife2_p">Would you like to continue the life of <strong>John Smith</strong>, aged
 							<strong>18</strong>, from <strong>1970/1/1</strong>?
@@ -237,7 +236,8 @@
 			<div id="pastlives_container">
 				<button id="pastlives_close" class="close" onclick="overlay('pastlives_overlay', 'none')"></button>
 				<h1>Past Lives</h1>
-				<p>This is the gallery of all the lives you have once lived that you chose to preserve. Click on a life to read their diary.</p>
+				<p>This is the gallery of all the lives you have once lived that you chose to preserve. Click on a life
+					to read their diary.</p>
 				<p><i>They say you die twice. One time when you stop breathing and a second time, a bit later on, when
 						somebody says your name for the last time.</i> - Banksy</p>
 				<div id="pastlives_div">
@@ -756,13 +756,15 @@
 				<div>
 					<div id="pastlives2_overlay" class="overlay">
 						<div id="pastlives2_tab">
-							<button id="pastlives2_close" class="close" onclick="overlay('pastlives2_overlay', 'none')"></button>
+							<button id="pastlives2_close" class="close"
+								onclick="overlay('pastlives2_overlay', 'none')"></button>
 							<div id="pastlives2_container">
 								<h1 id="pastlives2_h1">John Smith's diary</h1>
-								<p id="pastlives2_p">01/01/1970 - I have been brought into this world. <br>01/01/2050 - I died due to natural causes. I was aged 80 years and 0 days when I died. <br></p>
+								<p id="pastlives2_p">01/01/1970 - I have been brought into this world. <br>01/01/2050 -
+									I died due to natural causes. I was aged 80 years and 0 days when I died. <br></p>
 							</div>
 						</div>
-					</div>	
+					</div>
 				</div>
 			</div>
 		</div>
@@ -787,7 +789,8 @@
 					balanced game, choose medium.</p>
 				<div id="settings2_overlay" class="overlay">
 					<div id="settings2_tab">
-						<button id="settings2_close" class="close" onclick="overlay('settings2_overlay', 'none')"></button>
+						<button id="settings2_close" class="close"
+							onclick="overlay('settings2_overlay', 'none')"></button>
 						<h2 id="settings2_h2">Save your current settings?</h2>
 						<button id="settings2_yes" onclick="settings_save()"></button>
 						<button id="settings2_no" onclick="overlay('settings2_overlay', 'none')"></button>

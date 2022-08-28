@@ -1,8 +1,8 @@
-Current Version: 0.2.4.208271
-Released: 27/08/2022 04:41am
+Current Version: 0.2.4.208281
+Released: 28/08/2022 12:33pm
 
-Completely redesigned storage system, life information now using JSON instead of previous local storage variables
-Death now shows lifespan instead of death date
+Support for Firefox now officially ended, all remnants removed
+Deleted database.json
 
 Version Number meaning
 First number: 0 means the game is still in development and not complete, 1 means the game is out

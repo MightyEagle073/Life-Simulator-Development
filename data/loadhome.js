@@ -1,4 +1,9 @@
-//Segment H1: Sets local storage values to default values if not already set
+//Segment H1: Checks if user is using an unsupported brower
+if (navigator.userAgent.indexOf("Firefox") != -1) {
+	document.getElementById("notsupported_overlay").style.display = "block";
+}
+
+//Segment H2: Sets local storage values to default values if not already set
 if (localStorage.getItem("firstlaunch") == null) {
 	//Segment H1a: Sets default local storage values except for current and past life
 	localStorage.setItem("settings_volume", 100);
@@ -18,30 +23,10 @@ if (localStorage.getItem("firstlaunch") == null) {
 	console.log("All Local Storage set to default values");
 }
 
-//Segment H2: Sets first launch variable to 1, then checks if local storage work
+//Segment H3: Sets first launch variable to 1, then checks if local storage work
 localStorage.setItem("firstlaunch", 1)
 if (localStorage.getItem("firstlaunch") != 1) {
 	document.getElementById("notsupported_overlay").style.display = "block";
-}
-
-//Segment H3: Firefox Cookie Transfer
-if(navigator.userAgent.indexOf("Firefox") != -1) {
-	if (Cookies.get("transfer") == 1) {
-		for (let i = 1; i < database["transfer"].length; i++) {
-			localStorage.setItem(database["transfer"][i], Cookies.get(database["transfer"][i]))
-		}
-		Cookies.set("transfer", 0)
-		console.log("Cookie transfer successful")
-	}
-}
-function cookie_transfer() {
-	if(navigator.userAgent.indexOf("Firefox") != -1) {
-		console.log("Commenced cookie transfer")
-		Cookies.set("transfer", 1)
-		for (let i = 0; i < database["transfer"].length; i++) {
-			Cookies.set(database["transfer"][i], localStorage.getItem(database["transfer"][i]))
-		}
-	}
 }
 
 //Segment H4: Transfers any information over from main.html
