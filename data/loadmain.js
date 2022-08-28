@@ -12,8 +12,8 @@ else {
 	document.getElementById("notstarted_overlay").style.display = "block";
 }
 
-//Segment M4: This function changes the theme depending on which one has been chosen by profile.js
-switch_theme()
+//Segment M4: This function changes the settings according to setting local storages
+settings_initialise()
 
 //Segment M5: This segment changes the life information on the diary (top left) and information (top right) tabs
 document.getElementById("main_diary_h1").innerHTML = life_info["name"]["first"] + " " + life_info["name"]["last"] + "'s Diary"

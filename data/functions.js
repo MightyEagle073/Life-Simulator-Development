@@ -45,16 +45,33 @@ function switch_theme() {
 		if (parseInt(localStorage.getItem("settings_theme")) == i) {
 			if (document.getElementById("home_body") != null) {
 				document.getElementById("home_body").style.backgroundImage = `url('data/wallpapers/${database["theme_names"][i]}')`;
+				document.getElementById("settings_theme").style.backgroundImage = `url('data/wallpapers/previews/${database["theme_names"][i]}')`;
 			}
 			else if (document.getElementById("main_body") != null) {
 				document.getElementById("main_body").style.backgroundImage = `url('wallpapers/${database["theme_names"][i]}')`;
+				document.getElementById("settings_theme").style.backgroundImage = `url('wallpapers/previews/${database["theme_names"][i]}')`;
 			}
-			document.getElementById("settings_theme").style.backgroundImage = `url('data/wallpapers/previews/${database["theme_names"][i]}')`;
 		}
 	}
 }
 
-//Function 4: settings_save() - Saves all changes made in the settings overlay to the local storage
+//Function 4: settings_initialise() - Changes all the values of the settings according to local storage
+function settings_initialise() {
+	document.getElementById("settings_volume").value = localStorage.getItem("settings_volume");
+	if (parseInt(localStorage.getItem("gamespeed")) == 1) {
+		document.getElementById("settings_gamespeed1").checked = true;
+	}
+	else if (parseInt(localStorage.getItem("gamespeed")) == 2) {
+		document.getElementById("settings_gamespeed2").checked = true;
+	}
+	else {
+		document.getElementById("settings_gamespeed3").checked = true;
+	}
+	switch_theme()
+}
+
+
+//Function 5: settings_save() - Saves all changes made in the settings overlay to the local storage
 function settings_save() {
 	localStorage.setItem("settings_volume", volume_temp);
 	localStorage.setItem("settings_theme", theme_temp);
@@ -63,7 +80,7 @@ function settings_save() {
 	overlay("settings2_overlay", "none")
 }
 
-//Function 5: overlay() - Turns the overlays either on or off
+//Function 6: overlay() - Turns the overlays either on or off
 function overlay(overlay_name, display_type) {
 	document.getElementById(overlay_name).style.display = display_type;
 }

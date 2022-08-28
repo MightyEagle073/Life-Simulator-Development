@@ -80,17 +80,7 @@ for (let i = 1; i <= 30; i++) {
 }
 
 //Segment H7: This function changes the settings according to setting local storages
-document.getElementById("settings_volume").value = localStorage.getItem("settings_volume");
-if (parseInt(localStorage.getItem("gamespeed")) == 1) {
-	document.getElementById("settings_gamespeed1").checked = true;
-}
-else if (parseInt(localStorage.getItem("gamespeed")) == 2) {
-	document.getElementById("settings_gamespeed2").checked = true;
-}
-else {
-	document.getElementById("settings_gamespeed3").checked = true;
-}
-switch_theme() //Defined in functions.js
+settings_initialise() //Defined in functions.js
 
 //Segment H9: This function creates temporary variables that can later be changed
 var volume_temp = parseInt(localStorage.getItem("settings_volume"));
