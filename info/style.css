@@ -8,6 +8,7 @@ height
 width
 other internal properties*/
 /* standard values */
+
 :root {
   /* colors */
   --background-color-black: rgba(0,0,0,0.5);
@@ -17,7 +18,7 @@ other internal properties*/
   --margin-global: 1.4rem;
   --border-radius-global: 90px;
   --padding-global: 1rem;
-  --padding-button: 0.2rem;
+  --padding-button: 0.4rem;
   /* width and height standards */
   --width-logo: 25rem;
   --min-width-logo: 35%;
@@ -25,16 +26,38 @@ other internal properties*/
   --width-button: 6rem;
   --min-width-button: 5%;
   /* font standard */
-  --font-size-h2: 2.4rem;
+  --font-size-h2: clamp(1.4rem, 3vw, 2.4rem);
   --font-size-h3: 1rem;
   --font-size-button: 1.2rem;
   --font-size-text: 0.8rem;
   --color-white: #ffffff;
 }
 
+/* custom scrollbar */
+/* width */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
 /* global section from ./data/style.css */
 html{
 	height: 100%;
+  min-width: 768px;
 }
 body{
 	margin: 0; 
@@ -75,13 +98,12 @@ a {
 header {
   display: flex;
   margin: var(--margin-global);
-  overflow: hidden;
   justify-content: space-between;
 }
 /* header >> logo-container at top left */
 .logo-container {
-  width: var(--width-logo);
-  min-width: var(--min-width-logo);
+  flex-basis: var(--width-logo);
+  flex-shrink: 0;
 }
 .logo-container img{
   height: 100%;
@@ -92,11 +114,11 @@ header {
   display: flex;
   border-radius: var(--border-radius-global);
   background-image: var(--button-color-gradient);
-  padding: 0 var(--padding-global);
   min-width: 30%;
   font-size: var(--font-size-h2);
   justify-content: center;
   align-items: center;
+  flex-shrink: 1;
   overflow-x: hidden; 
 }
 /* header >> button-container at top right */
@@ -138,6 +160,7 @@ main {
 .guide-global-container {
   background-color: brown;
   display: flex;
+  height: 26rem;
   flex-grow: 2;
   flex-basis: 30rem;
 }
@@ -149,18 +172,28 @@ ul.guide-title-list {
   display: flex;
   height: 100%;
   min-width: 10rem;
+  overflow-y: scroll;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  /* set scrollbar on left trick */
+  transform: scaleX(-1);
+}
+li.guide-title {
+  display: inline-block;
 }
 .guide-title {
-  padding: var(--padding-button);
+  margin: auto;
+  padding: 0.2rem var(--padding-button);
   font-size: var(--font-size-button);
   text-align: center;
+   /* set scrollbar on left trick */
+   transform: scaleX(-1);
 }
 /* main >> container >> guide-global-container >> guide-local-container */
 .guide-local-container {
   padding: 0 var(--padding-global);
+  overflow-y: scroll;
 }
 .guide p {
   font-size: var(--font-size-text);
@@ -171,13 +204,16 @@ ul.guide-title-list {
 .credit-global-container {
   display: flex;
   background-color: blue;
-  padding: var(--padding-button) var(--padding-global);
+  padding: 0 var(--padding-global);
+  max-height: 26rem;
+  overflow-y:scroll;
   flex-direction: column;
   flex-grow: 1;
   flex-basis: 12rem;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 .credit-global-title{
+  margin-top: 0.4rem;
   font-size: var(--font-size-button);
 }
  .credit-local-title {
@@ -187,9 +223,12 @@ ul.guide-title-list {
   font-size: var(--font-size-text);
 }
 .footnote {
+  margin-bottom: 0.4rem;
   font-size: 0.2rem;
 }
-/* bottom space filler */
-.space-filler {
-  height: var(--margin-global);
+/* for other screen size */
+@media only screen and (max-width: 780px) {
+  .credit-global-container {
+    margin-bottom: 2rem;
+  }
 }
