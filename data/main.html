@@ -77,13 +77,13 @@
 			<div id="education_container">
 				<h2>Education Details</h2>
 				<p id="education_school">You are not currently enrolled in a school!</p>
-				<p id="education_grade">Your parents will automatically enrol you in Primary School at the age of 4
+				<p id="education_grade">Your parents will automatically enrol you in Primary School after you turn 4
 					years and 210 days.</p>
 				<p id="education_marks"></p>
 				<h3 id="education_effort_h3">Adjust effort put into studying:</h3>
 				<div id="education_effort_div">
 					<input id="education_effort_input" type="range" min="0" max="100" name="education_effort" onchange="education_effort_save()" disabled>
-					<p id="education_effort_level">50%: Occasional studying</p>
+					<p id="education_effort_level">Effort text: You shouldn't see this!</p>
 					<p id="education_effort_warning"></p>
 				</div>
 			</div>
@@ -139,6 +139,18 @@
 			</div>
 			<button id="settings_close" class="close" onclick="overlay('settings_overlay', 'none')"></button>
 			<button id="settings_save" onclick="settings_sure()"></button>
+		</div>
+	</div>
+	<div id="notification_overlay" class="overlay">
+		<div id="notification_tab">
+			<div id="notification_container">
+				<h1 id="notification_h1">Hi.</h1>
+				<h2 id="notification_h2">Good to see you.</h2>
+				<h3 id="notification_h3">This is a notification.</h3>
+				<p id="notification_p_1">You shouldn't see this text. If you are seeing this then something has gone bonkers in the code.</p>
+				<p id="notification_p_2">Please report this to the developers.</p>
+			</div>
+			<button id="notification_close" class="close" onclick="overlay('notification_overlay', 'none')"></button>
 		</div>
 	</div>
 	<div id="death_overlay" class="overlay">

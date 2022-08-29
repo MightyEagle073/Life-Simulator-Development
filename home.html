@@ -40,8 +40,8 @@
 	<button class="home_buttons" id="settings" onclick="overlay('settings_overlay', 'block')">
 		Settings
 	</button>
-	<button class="home_buttons" id="credits" onclick="overlay('credits_overlay', 'block')">
-		Credits
+	<button class="home_buttons" id="information">
+		Information
 	</button>
 	<div id="newlife_overlay" class="overlay">
 		<div id="newlife_tab">
@@ -55,9 +55,9 @@
 				<input id="newlife_surname" type="text" required>
 				<p id="newlife_enter_gender">Gender</p>
 				<label for="newlife_gender_male"><input id="newlife_gender_male" type="radio" value="male" name="gender"
-						required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Male</label>
+						required>&nbsp;&nbsp;Male&nbsp;&nbsp;</label>
 				<label for="newlife_gender_female"><input id="newlife_gender_female" type="radio" value="female"
-						name="gender" required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Female</label>
+						name="gender" required>&nbsp;&nbsp;Female&nbsp;&nbsp;</label>
 				<p id="newlife_enter_dob">Date of Birth</p>
 				<input id="newlife_dob" type="date" required>
 				<h3>The game will start from this day onwards.</h3>
@@ -67,11 +67,13 @@
 		</div>
 		<div id="newlife2_overlay" class="overlay">
 			<div id="newlife2_tab">
-				<button id="newlife2_close" class="close" onclick="overlay('newlife2_overlay', 'none')"></button>
-				<h1 id="newlife2_h1">Start New Life?</h1>
-				<p id="newlife2_p">Would you like to start the life of <strong>John Smith</strong> starting from
-					<strong>1970/1/1?</strong>
-				</p>
+			<button id="newlife2_close" class="close" onclick="overlay('newlife2_overlay', 'none')"></button>
+				<div id="newlife2_container">
+					<h1 id="newlife2_h1">Start New Life?</h1>
+					<p id="newlife2_p">Would you like to start the life of <strong>John Smith</strong> starting from
+						<strong>1970/1/1?</strong>
+					</p>
+				</div>
 				<button id="newlife2_yes" onclick="createlife()"></button>
 				<button id="newlife2_no" onclick="overlay('newlife2_overlay', 'none')"></button>
 			</div>
@@ -216,11 +218,13 @@
 				<div id="continuelife2_overlay" class="overlay">
 					<div id="continuelife2_tab">
 						<button id="continuelife2_close" class="close"
-							onclick="overlay('newlife_overlay', 'block')"></button>
-						<h1 id="continuelife2_h1">Continue life 0?</h1>
-						<p id="continuelife2_p">Would you like to continue the life of <strong>John Smith</strong>, aged
+							onclick="overlay('continuelife2_overlay', 'none')"></button>
+						<div id="continuelife2_container">
+							<h1 id="continuelife2_h1">Continue life 0?</h1>
+							<p id="continuelife2_p">Would you like to continue the life of <strong>John Smith</strong>, aged
 							<strong>18</strong>, from <strong>1970/1/1</strong>?
-						</p>
+							</p>
+						</div>
 						<button id="continuelife2_yes" onclick="continuelife()"></button>
 						<button id="continuelife2_no" onclick="overlay('continuelife2_overlay', 'none')"></button>
 					</div>
@@ -778,11 +782,11 @@
 				<button id="settings_theme" onclick="settings_theme()"></button>
 				<h3>Game Speed</h3>
 				<label for="settings_gamespeed1"><input id="settings_gamespeed1" name="gamespeed" type="radio"
-						value="1"> &nbsp;&nbsp;&nbsp;Slow</label>
+						value="1">&nbsp;Slow&nbsp;&nbsp;&nbsp;</label>
 				<label for="settings_gamespeed2"><input id="settings_gamespeed2" name="gamespeed" type="radio"
-						value="2"> &nbsp;&nbsp;&nbsp;Medium</label>
+						value="2">&nbsp;Medium&nbsp;&nbsp;&nbsp;</label>
 				<label for="settings_gamespeed3"><input id="settings_gamespeed3" name="gamespeed" type="radio"
-						value="3"> &nbsp;&nbsp;&nbsp;Fast</label>
+						value="3">&nbsp;Fast&nbsp;&nbsp;&nbsp;</label>
 				<p>The Game Speed adjusts the amounts of events that will happen in your life. For a fast game but
 					uneventful life, choose slow. For a slow game but a life packed full of events, choose fast. For a
 					balanced game, choose medium.</p>
@@ -798,32 +802,6 @@
 			</div>
 			<button id="settings_close" class="close" onclick="overlay('settings_overlay', 'none')"></button>
 			<button id="settings_save" onclick="settings_sure()"></button>
-		</div>
-	</div>
-	<div id="credits_overlay" class="overlay">
-		<div id="credits_tab">
-			<div id="credits_container">
-				<h1>Credits</h1>
-				<h2>Programming, Design and Management: Oscar Liang</h2>
-				<h2>Font Used: Open Sans (For all Projects)</h2>
-				<h2><strong>Wallpapers from reddit.com/r/wallpapers</strong></h2>
-				<h3>Sunset by AxiomDesign</h3>
-				<h3>Forest by Mikael Gustafsson</h3>
-				<h3>Cityscape by Louis Coyle</h3>
-				<h3>Rainy by slippypenguin</h3>
-				<h3>Blocks by Foxerbit</h3>
-				<h3>Paint by Foxerbit</h3>
-				<h3>Moon by ProductAdda</h3>
-				<h3>Valley by Foxerbit</h3>
-				<h3>Train by nyaoayn</h3>
-				<h3></h3>
-				<h2><strong>Scripts Used:</strong></h2>
-				<h3>FitText by davatron5000</h3>
-				<h3>Js-Cookie by Michael De Boey</h3>
-				<br>
-				<h3>Life simulator is part of the 2020 Year 12 Software Design &#38 Development Major Project.</h3>
-			</div>
-			<button id="credits_close" class="close" onclick="overlay('credits_overlay', 'none')"></button>
 		</div>
 	</div>
 	<div id="home_version">

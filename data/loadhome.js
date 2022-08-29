@@ -115,7 +115,7 @@ function continueFn(life_no) {
 	}
 }
 function pastFn(life_no) {
-	if (JSON.parse(localStorage.getItem("current_info"))[life_no]["status"] == 2 && JSON.parse(localStorage.getItem("current_info"))[life_no]["version"] == "0.3 beta") {
+	if (JSON.parse(localStorage.getItem("past_info"))[life_no]["status"] == 2 && JSON.parse(localStorage.getItem("current_info"))[life_no]["version"] == "0.3 beta") {
 		document.getElementById("pastlives2_overlay").style.display = "block";
 		document.getElementById("pastlives2_h1").innerHTML = JSON.parse(localStorage.getItem("past_info"))[life_no]["name"]["first"] + " " + JSON.parse(localStorage.getItem("past_info"))[life_no]["name"]["last"] + "'s diary"
 		document.getElementById("pastlives2_p").innerHTML = JSON.parse(localStorage.getItem("past_info"))[life_no]["diary"]

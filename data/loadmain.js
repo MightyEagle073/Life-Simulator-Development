@@ -67,7 +67,8 @@ function settings_theme() {
 	}
 }
 
-//Segment M10: These functions are related to the education overlays
+//Segment M10: These functions are related to education
+//Segment M10a: This function determines what the text should be below the education slider
 function education_effort_update() {
 	if (life_info["education"]["effort"] == 0) {
 		document.getElementById("education_effort_level").innerHTML = `${life_info["education"]["effort"]}%: What is school?`
@@ -99,6 +100,7 @@ function education_effort_update() {
 	}
 }
 
+//Segment M10b: This function updates all information in the education overlay once the education button has been pressed
 function education_open() {
 	overlay("education_overlay", "block")
 	if (life_info["education"]["level"] != 0) {
@@ -118,8 +120,10 @@ function education_open() {
 		document.getElementById("education_effort_input").removeAttribute("disabled")
 		document.getElementById("education_effort_input").value = life_info["education"]["effort"]
 	}
+	education_effort_update()
 }
 
+//Segment M10c: This function updates the text below the slider upon detecting a change in the slider value
 function education_effort_save() {
 	life_info["education"]["effort"] = document.getElementById("education_effort_input").value
 	education_effort_update()
@@ -167,7 +171,7 @@ function progress() {
 		//Task 2: Advances time by one day
 		life_info["date"] = date_add(life_info["date"], 1)
 		//Task 3: Player gets older by one day. If the month and day of the current day and the month and day of the character's birthday matches, the age goes up by 1. Else, the days goes up by 1.
-		if (life_info["date"]["month"] == life_info["birthday"]["month"] && life_info["date"]["day"] == life_info["birthday"]["day"]) {
+		if (mmddcode(life_info["date"]) == mmddcode(life_info["birthday"])) {
 			life_info["age"]["years"]++
 			life_info["age"]["days"] = 0
 		}
@@ -176,8 +180,29 @@ function progress() {
 		}
 		//Task 4: Active days since birth goes up by one. DSB is never displayed to the player.
 		life_info["dsb"]++
-		//Task 5: Determines whether the player will die naturally today. If so, end the game. Chances will get higher and higher based on the DSB of player.
-		var death_x = Math.random()
+		//Task 5: Determines whether the player will be enrolled into school or go up a grade
+		//Task 5a: If player is of age and can start school
+		let t5a_old_enough = ydddcode(life_info["age"]) >= database["education"]["enrolment_age"]
+		let t5a_date_match = mmddcode(life_info["date"]) == database["education"]["grades"]["primary"]["start_date"][1]
+		let t5a_not_enrolled_yet = life_info["education"]["level"] == 0
+		if (t5a_old_enough && t5a_date_match && t5a_not_enrolled_yet) {
+			life_info["education"]["level"] = 1
+			life_info["education"]["grade"] = 1
+			life_info["education"]["school"] = Math.floor(Math.random() * 20 + 1)
+			document.getElementById("notification_h1").style.display = "none"
+			document.getElementById("notification_h2").style.display = "block"
+			document.getElementById("notification_h3").style.display = "none"
+			document.getElementById("notification_p_1").style.display = "block"
+			document.getElementById("notification_p_2").style.display = "block"
+			document.getElementById("notification_h2").innerHTML = "Welcome to school!"
+			document.getElementById("notification_p_1").innerHTML = `Your parents have enrolled you into ${database["education"]["schools"]["primary"][life_info["education"]["school"]]}, where you will be starting ${database["education"]["grades"]["primary"]["names"][life_info["education"]["grade"]]} from today.`
+			document.getElementById("notification_p_2").innerHTML = "Study hard, get good grades and have a bright future!"
+			life_info["diary"] = life_info["diary"] + dict_to_date(life_info["date"]) + `- I started my first day of school at ${database["education"]["schools"]["primary"][life_info["education"]["school"]]}, where I started ${database["education"]["grades"]["primary"]["names"][life_info["education"]["grade"]]}. <br>`
+			overlay('notification_overlay', 'block')
+			breakfn = 1
+		}
+		//Task 6: Determines whether the player will die naturally today. If so, end the game. Chances will get higher and higher based on the DSB of player.
+		let death_x = Math.random()
 		if (Math.pow(10, (life_info["dsb"]) * 0.0001) >= 10000000 * death_x) {
 			breakfn = 2
 			life_info["status"] = 2
@@ -196,11 +221,11 @@ function progress() {
 					break;
 			}
 		}
-		//Task 6: Updates information throughout the HTML
+		//Task 7: Updates information throughout the HTML
 		document.getElementById("main_control_currentdate").innerHTML = dict_to_date(life_info["date"])
 		document.getElementById("main_info_age").innerHTML = "Age: " + life_info["age"]["years"] + " years " + life_info["age"]["days"] + " days"
 		document.getElementById("main_diary_p").innerHTML = life_info["diary"]
-		//Task 7: Wait a period of time before advancing to the next day.
+		//Task 8: Wait a period of time before advancing to the next day.
 		wait(1000 * (Math.pow(10, (-0.03 * document.getElementById("main_control_speed").value))) - 1)
 	}
 }

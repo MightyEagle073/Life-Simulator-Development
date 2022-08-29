@@ -76,6 +76,7 @@ const database = {
 		"past_info",
 		"life_transfer",
 	],
+	//Database information related to education
 	education: {
 		//List of Schools
 		schools: {
@@ -129,27 +130,19 @@ const database = {
 		//List of Grade Names
 		grades: {
 			primary: {
-				names: [
-					null,
-					"Year 1",
-					"Year 2",
-					"Year 3",
-					"Year 4",
-					"Year 5",
-					"Year 6",
-				]
+				names: [null, "Kindergarten", "Year 1", "Year 2", "Year 3", "Year 4", "Year 5",	"Year 6"],
+				difficulty: [null, 5, 15, 20, 25, 30, 35, 45],
+				start_date: [null, 131, 131, 131, 131, 131, 131, 131],
+				end_date: [null, 1215, 1215, 1215, 1215, 1215, 1215, 1215],
 			},
 			secondary: {
-				names: [
-					null,
-					"Year 7",
-					"Year 8",
-					"Year 9",
-					"Year 10",
-					"Year 11",
-					"Year 12",
-				]
+				names: [null, "Year 7", "Year 8", "Year 9", "Year 10", "Year 11", "Year 12"],
+				difficulty: [null, 60, 65, 75, 80, 95, 120],
+				start_date: [null, 131, 131, 131, 131, 131, 131, 1012],
+				end_date: [null, 1215, 1215, 1215, 1215, 1215, 925, 1106],
 			}
-		}
+		},
+		enrolment_age: 4210
 	}
+	//Popup InnerHTMLs
 }
