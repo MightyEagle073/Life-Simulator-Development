@@ -929,6 +929,15 @@ h1 {
 	cursor: pointer;
 }
 
+#education_effort_level {
+	text-align: center;
+	margin: 3px;
+}
+
+#education_effort_warning {
+	margin: 3px;
+}
+
 /*Death overlay*/
 #death_tab {
 	position: fixed;

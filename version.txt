@@ -1,9 +1,9 @@
-Current Version: 0.2.4.208284
-Released: 28/08/2022 11:35pm
+Current Version: 0.2.4.208291
+Released: 29/08/2022 06:13pm
 
-Changes from 0.2.4.208283:
-* Fixed Bug where settings won't initialise in main.html
-! Initialising settings now a function instead of on the load scripts
+Changes from 0.2.4.208284:
++ Improved and added education overlay information
+* Fixed a bug with the theme preview inside settings
 
 Version Number meaning
 First number: 0 means the game is still in development and not complete, 1 means the game is out

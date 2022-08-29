@@ -58,7 +58,7 @@
 	</div>
 	<div id="main_actions">
 		<img class="main_actions_icons" src="png/actions_education.png" alt="Education"
-			onClick="overlay('education_overlay', 'block')">
+			onClick="education_open()">
 		<img class="main_actions_icons" src="png/actions_save.png" alt="Save"
 			onClick="overlay('save_overlay', 'block')">
 		<img class="main_actions_icons" src="png/actions_settings.png" alt="Settings"
@@ -78,10 +78,14 @@
 				<h2>Education Details</h2>
 				<p id="education_school">You are not currently enrolled in a school!</p>
 				<p id="education_grade">Your parents will automatically enrol you in Primary School at the age of 4
-					years and 7 months.</p>
-				<h3 id="education_effort_h3">Adjust effort put into schooling:</h3>
-				<input id="education_effort_input" type="range" min="0" max="100" value="50" name="education_effort">
-				<button id="education_view" onclick="overlay('education2_overlay', 'block')"></button>
+					years and 210 days.</p>
+				<p id="education_marks"></p>
+				<h3 id="education_effort_h3">Adjust effort put into studying:</h3>
+				<div id="education_effort_div">
+					<input id="education_effort_input" type="range" min="0" max="100" name="education_effort" onchange="education_effort_save()" disabled>
+					<p id="education_effort_level">50%: Occasional studying</p>
+					<p id="education_effort_warning"></p>
+				</div>
 			</div>
 			<button id="education_close" class="close" onclick="overlay('education_overlay', 'none')"></button>
 		</div>

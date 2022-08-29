@@ -62,9 +62,67 @@ function settings_theme() {
 	}
 	for (let i = 1; i <= database_theme_names.length - 1; i++) {
 		if (theme_temp == i) {
-			document.getElementById("settings_theme").style.backgroundImage = `url('wallpapers/previews/${database_theme_names[i]}')`;
+			document.getElementById("settings_theme").style.backgroundImage = `url('wallpapers/previews/${database["theme_names"][i]}')`;
 		}
 	}
+}
+
+//Segment M10: These functions are related to the education overlays
+function education_effort_update() {
+	if (life_info["education"]["effort"] == 0) {
+		document.getElementById("education_effort_level").innerHTML = `${life_info["education"]["effort"]}%: What is school?`
+		document.getElementById("education_effort_warning").innerHTML = `WARNING: Putting no effort into studying might get you expelled from the school!`
+	}
+	else if (life_info["education"]["effort"] >= 1 && life_info["education"]["effort"] <= 20) {
+		document.getElementById("education_effort_level").innerHTML = `${life_info["education"]["effort"]}%: Slacking off`
+		document.getElementById("education_effort_warning").innerHTML = ""
+	}
+	else if (life_info["education"]["effort"] >= 21 && life_info["education"]["effort"] <= 40) {
+		document.getElementById("education_effort_level").innerHTML = `${life_info["education"]["effort"]}%: Doing bare minimums`
+		document.getElementById("education_effort_warning").innerHTML = ""
+	}
+	else if (life_info["education"]["effort"] >= 41 && life_info["education"]["effort"] <= 60) {
+		document.getElementById("education_effort_level").innerHTML = `${life_info["education"]["effort"]}%: Occasional studying`
+		document.getElementById("education_effort_warning").innerHTML = ""
+	}
+	else if (life_info["education"]["effort"] >= 61 && life_info["education"]["effort"] <= 80) {
+		document.getElementById("education_effort_level").innerHTML = `${life_info["education"]["effort"]}%: Absorbing the content`
+		document.getElementById("education_effort_warning").innerHTML = ""
+	}
+	else if (life_info["education"]["effort"] >= 81 && life_info["education"]["effort"] <= 99) {
+		document.getElementById("education_effort_level").innerHTML = `${life_info["education"]["effort"]}%: Nose to the grindstone`
+		document.getElementById("education_effort_warning").innerHTML = ""
+	}
+	else if (life_info["education"]["effort"] == 100) {
+		document.getElementById("education_effort_level").innerHTML = `${life_info["education"]["effort"]}%: STRIVING FOR SUCCESS`
+		document.getElementById("education_effort_warning").innerHTML = `WARNING: Putting this much effort into studying is extremely stressful and might cause depression!`
+	}
+}
+
+function education_open() {
+	overlay("education_overlay", "block")
+	if (life_info["education"]["level"] != 0) {
+		if (life_info["education"]["level"] == 1) {
+			document.getElementById("education_school").innerHTML = `School: ${database["education"]["schools"]["primary"][life_info["education"]["school"]]}`
+			document.getElementById("education_grade").innerHTML = `Grade: ${database["education"]["grades"]["primary"]["names"][life_info["education"]["grade"]]}`
+		}
+		else if (life_info["education"]["level"] == 2) {
+			document.getElementById("education_school").innerHTML = `School: ${database["education"]["schools"]["secondary"][life_info["education"]["school"]]}`
+			document.getElementById("education_grade").innerHTML = `Grade: ${database["education"]["grades"]["secondary"]["names"][life_info["education"]["grade"]]}`
+		}
+		else if (life_info["education"]["level"] == 3) {
+			document.getElementById("education_school").innerHTML = `School: ${database["education"]["schools"]["tertiary"][life_info["education"]["school"]]}`
+			document.getElementById("education_grade").innerHTML = `Grade: ${database["education"]["grades"]["tertiary"]["names"][life_info["education"]["grade"]]}`
+		}
+		document.getElementById("education_marks").innerHTML = `Marks: ${[life_info["education"]["marks"]]}%`
+		document.getElementById("education_effort_input").removeAttribute("disabled")
+		document.getElementById("education_effort_input").value = life_info["education"]["effort"]
+	}
+}
+
+function education_effort_save() {
+	life_info["education"]["effort"] = document.getElementById("education_effort_input").value
+	education_effort_update()
 }
 
 //Segment M11: This function adds the wait function, which tells the program to hold for a given amount of milliseconds
@@ -163,7 +221,6 @@ function timepause() {
 
 //Segment M15: This function ends the life of the current player without saving
 function endlife() {
-	cookie_transfer()
 	window.location.href = "../home.html"
 }
 
@@ -199,7 +256,6 @@ function preserve() {
 function save_life(life_no) {
 	life_info["life_no"] = life_no
 	localStorage.setItem("life_transfer", JSON.stringify(life_info))
-	cookie_transfer()
 	window.location.href = "../home.html"
 }
 
@@ -207,7 +263,6 @@ function save_life(life_no) {
 function preserve_life(life_no) {
 	life_info["life_no"] = life_no
 	localStorage.setItem("life_transfer", JSON.stringify(life_info))
-	cookie_transfer()
 	window.location.href = "../home.html"
 }
 
