@@ -1,11 +1,10 @@
-Current Version: 0.2.4.208301
+Current Version: 0.2.4.208311
 Released: 30/08/2022 03:03am
 
-Changes from 0.2.4.208291:
-+ Player can now be enrolled into primary school
-+ Credits button now changed to information
-# All content inside tabs are now wrapped inside of a container
-- Removed Credits
+Changes from 0.2.4.208301:
++ Education system now completely working
++ New next date function
+* Fixed a bug where there was more start/end dates than grade names in the education database
 
 Version Number meaning
 First number: 0 means the game is still in development and not complete, 1 means the game is out

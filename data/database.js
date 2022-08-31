@@ -20,7 +20,7 @@ const database = {
 		//Crucial information for running, never shown to the player 
 		//Status: 0 = Doesn't Exist, 1 = Alive, 2 = Dead
 		version: "0.3 beta",
-		status: 0, //Integer from 0-2, changed to 1 when life is created
+		status: 0, //Integer from 0-2, changed to 1 when life is created (0 = Not born yet, 1 = Alive, 2 = Dead)
 		//Life Information
 		age: {
 			years: 0, // Integer >= 0
@@ -47,11 +47,13 @@ const database = {
 		diary: "Click the play button on the bottom right corner to start your life!", //String
 		dsb: 0, //Integer, never shown to the player
 		education: {
-			level: 0,
-			grade: 0,
-			school: 0,
-			marks: 50,
-			effort: 50,
+			status: 0, //Integer from 0-3 (0 = Not in school yet, 1 = In school, 2 = On Holidays, 3 = Graduated)
+			level: 0, //Integer from 0-3
+			grade: 0, //Integer <= 0
+			school: 0, //Integer <= 0
+			daysIntoGrade: 0, //Integer <= 0
+			marks: 50, //Integer between 0-100
+			effort: 50, //Integer between 0-100
 		},
 		gender: "m", //String, either "m" or "f", changed when life is created
 		name: {
@@ -78,6 +80,8 @@ const database = {
 	],
 	//Database information related to education
 	education: {
+		//List of Levels
+		levels: ["none", "primary", "secondary", "tertiary"],
 		//List of Schools
 		schools: {
 			primary: [
@@ -125,7 +129,7 @@ const database = {
 				"Sir Joseph Banks High School",
 				"South Sydney High School",
 				"Turramurra High School",
-			]
+			],
 		},
 		//List of Grade Names
 		grades: {
@@ -138,9 +142,9 @@ const database = {
 			secondary: {
 				names: [null, "Year 7", "Year 8", "Year 9", "Year 10", "Year 11", "Year 12"],
 				difficulty: [null, 60, 65, 75, 80, 95, 120],
-				start_date: [null, 131, 131, 131, 131, 131, 131, 1012],
-				end_date: [null, 1215, 1215, 1215, 1215, 1215, 925, 1106],
-			}
+				start_date: [null, 131, 131, 131, 131, 131, 1012],
+				end_date: [null, 1215, 1215, 1215, 1215, 925, 1106],
+			},
 		},
 		enrolment_age: 4210
 	}
