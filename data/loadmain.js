@@ -6,6 +6,7 @@ if (navigator.userAgent.indexOf("Firefox") != -1) {
 //Segment M3: Initialises Life
 if (localStorage.getItem("life_transfer") != null) {
 	var life_info = JSON.parse(localStorage.getItem("life_transfer"))
+	var diaryreplace_array = []
 	localStorage.removeItem("life_transfer")
 }
 else {
@@ -104,18 +105,8 @@ function education_effort_update() {
 function education_open() {
 	overlay("education_overlay", "block")
 	if (life_info["education"]["level"] != 0) {
-		if (life_info["education"]["level"] == 1) {
-			document.getElementById("education_school").innerHTML = `School: ${database["education"]["schools"]["primary"][life_info["education"]["school"]]}`
-			document.getElementById("education_grade").innerHTML = `Grade: ${database["education"]["grades"]["primary"]["names"][life_info["education"]["grade"]]}`
-		}
-		else if (life_info["education"]["level"] == 2) {
-			document.getElementById("education_school").innerHTML = `School: ${database["education"]["schools"]["secondary"][life_info["education"]["school"]]}`
-			document.getElementById("education_grade").innerHTML = `Grade: ${database["education"]["grades"]["secondary"]["names"][life_info["education"]["grade"]]}`
-		}
-		else if (life_info["education"]["level"] == 3) {
-			document.getElementById("education_school").innerHTML = `School: ${database["education"]["schools"]["tertiary"][life_info["education"]["school"]]}`
-			document.getElementById("education_grade").innerHTML = `Grade: ${database["education"]["grades"]["tertiary"]["names"][life_info["education"]["grade"]]}`
-		}
+		document.getElementById("education_school").innerHTML = `School: ${database["education"]["schools"][database["education"]["levels"][life_info["education"]["level"]]][life_info["education"]["school"]]}`
+		document.getElementById("education_grade").innerHTML = `Grade: ${database["education"]["grades"][database["education"]["levels"][life_info["education"]["level"]]]["names"][life_info["education"]["grade"]]}`
 		document.getElementById("education_marks").innerHTML = `Marks: ${[life_info["education"]["marks"]]}%`
 		document.getElementById("education_effort_input").removeAttribute("disabled")
 		document.getElementById("education_effort_input").value = life_info["education"]["effort"]
@@ -161,7 +152,7 @@ function diaryreplace(input) {
 	return output
 }
 
-//Segment M13: This segment defines progress(), which forwards the game by one day, and determines what happens during that day. Instead of dividing this into subsegments, this segment will be divided into tasks. This version (0.3.0) will perform 8 tasks for each iteration, and will be labelled as such. Future versions may perform more and more tasks per iteration. Not all tasks may be performed in an iteration. 
+//Segment M13: This segment defines progress(), which forwards the game by one day, and determines what happens during that day. Instead of dividing this into subsegments, this segment will be divided into tasks. This version (0.3.0) will perform 9 tasks for each iteration, and will be labelled as such. Future versions may perform more and more tasks per iteration. Not all tasks may be performed in an iteration. 
 function progress() {
 	if (breakfn == 0) {
 		//Task 1: Upon starting the game, player's life begins, log birth into diary. Only performed during first day of player's life.
@@ -180,28 +171,224 @@ function progress() {
 		}
 		//Task 4: Active days since birth goes up by one. DSB is never displayed to the player.
 		life_info["dsb"]++
-		//Task 5: Determines whether the player will be enrolled into school or go up a grade
-		//Task 5a: If player is of age and can start school
-		let t5a_old_enough = ydddcode(life_info["age"]) >= database["education"]["enrolment_age"]
-		let t5a_date_match = mmddcode(life_info["date"]) == database["education"]["grades"]["primary"]["start_date"][1]
-		let t5a_not_enrolled_yet = life_info["education"]["level"] == 0
-		if (t5a_old_enough && t5a_date_match && t5a_not_enrolled_yet) {
+		//Task 5: Education milestones (starting or graduating)
+		//Task 5a: Starting primary school
+		if (
+			ydddcode(life_info["age"]) >= database["education"]["enrolment_age"] &&
+			mmddcode(life_info["date"]) == database["education"]["grades"]["primary"]["start_date"][1] &&
+			life_info["education"]["level"] == 0
+		) {
 			life_info["education"]["level"] = 1
 			life_info["education"]["grade"] = 1
 			life_info["education"]["school"] = Math.floor(Math.random() * 20 + 1)
+			life_info["education"]["status"] = 1
 			document.getElementById("notification_h1").style.display = "none"
 			document.getElementById("notification_h2").style.display = "block"
 			document.getElementById("notification_h3").style.display = "none"
 			document.getElementById("notification_p_1").style.display = "block"
 			document.getElementById("notification_p_2").style.display = "block"
+			let string_newSchool = database["education"]["schools"]["primary"][life_info["education"]["school"]]
+			let string_newGrade = database["education"]["grades"]["primary"]["names"][life_info["education"]["grade"]]
 			document.getElementById("notification_h2").innerHTML = "Welcome to school!"
-			document.getElementById("notification_p_1").innerHTML = `Your parents have enrolled you into ${database["education"]["schools"]["primary"][life_info["education"]["school"]]}, where you will be starting ${database["education"]["grades"]["primary"]["names"][life_info["education"]["grade"]]} from today.`
+			document.getElementById("notification_p_1").innerHTML = `Your parents have enrolled you into ${string_newSchool}, where you will be starting ${string_newGrade} from today.`
 			document.getElementById("notification_p_2").innerHTML = "Study hard, get good grades and have a bright future!"
-			life_info["diary"] = life_info["diary"] + dict_to_date(life_info["date"]) + `- I started my first day of school at ${database["education"]["schools"]["primary"][life_info["education"]["school"]]}, where I started ${database["education"]["grades"]["primary"]["names"][life_info["education"]["grade"]]}. <br>`
+			life_info["diary"] = life_info["diary"] + dict_to_date(life_info["date"]) + `- I started my first day of school at ${string_newSchool}, where I started ${string_newGrade}. <br>`
 			overlay('notification_overlay', 'block')
 			breakfn = 1
 		}
-		//Task 6: Determines whether the player will die naturally today. If so, end the game. Chances will get higher and higher based on the DSB of player.
+		//Task 5b: Starting a new grade
+		else if (
+			database["education"]["grades"][database["education"]["levels"][life_info["education"]["level"]]] != null &&
+			mmddcode(life_info["date"]) == database["education"]["grades"][database["education"]["levels"][life_info["education"]["level"]]]["start_date"][parseInt([life_info["education"]["grade"]]) + 1] &&
+			life_info["education"]["level"] != 0 &&
+			database["education"]["grades"][database["education"]["levels"][life_info["education"]["level"]]]["names"][parseInt([life_info["education"]["grade"]]) + 1] != null
+		) {
+			life_info["education"]["grade"] ++
+			life_info["education"]["status"] = 1
+			if (localStorage.getItem("settings_gamespeed") <= 2) {
+				document.getElementById("notification_h1").style.display = "none"
+				document.getElementById("notification_h2").style.display = "block"
+				document.getElementById("notification_h3").style.display = "none"
+				document.getElementById("notification_p_1").style.display = "block"
+				document.getElementById("notification_p_2").style.display = "block"
+				let string_newGrade = database
+					["education"]
+					["grades"]
+					[database["education"]["levels"][life_info["education"]["level"]]]
+					["names"]
+					[life_info["education"]["grade"]]
+				document.getElementById("notification_h2").innerHTML = `Back to school!`
+				document.getElementById("notification_p_1").innerHTML = `Holidays are over, as you will start ${string_newGrade} from today.`
+				document.getElementById("notification_p_2").innerHTML = "Study harder, as content will get harder!"
+				life_info["diary"] = life_info["diary"] + dict_to_date(life_info["date"]) + `- I started ${string_newGrade}. <br>`
+				overlay('notification_overlay', 'block')
+				breakfn = 1
+			}
+		}
+		//Task 5c: Starting a new school
+		else if (
+			database["education"]["grades"][database["education"]["levels"][parseInt(life_info["education"]["level"]) + 1]] != null &&
+			mmddcode(life_info["date"]) == database["education"]["grades"][database["education"]["levels"][parseInt(life_info["education"]["level"]) + 1]]["start_date"][1] &&
+			life_info["education"]["level"] != 0 &&
+			database["education"]["grades"][database["education"]["levels"][life_info["education"]["level"]]]["names"][parseInt([life_info["education"]["grade"]]) + 1] == null &&
+			database["education"]["grades"][database["education"]["levels"][parseInt(life_info["education"]["level"]) + 1]] != null
+		) {
+			life_info["education"]["level"] ++
+			life_info["education"]["grade"] = 1
+			life_info["education"]["school"] = Math.floor(Math.random() * 20 + 1)
+			life_info["education"]["status"] = 1
+			document.getElementById("notification_h1").style.display = "none"
+			document.getElementById("notification_h2").style.display = "block"
+			document.getElementById("notification_h3").style.display = "none"
+			document.getElementById("notification_p_1").style.display = "block"
+			document.getElementById("notification_p_2").style.display = "block"
+			let string_newSchool = database
+				["education"]
+				["schools"]
+				[database["education"]["levels"][life_info["education"]["level"]]]
+				[life_info["education"]["school"]]
+			let string_newGrade = database
+				["education"]
+				["grades"]
+				[database["education"]["levels"][life_info["education"]["level"]]]
+				["names"]
+				[life_info["education"]["grade"]]
+			document.getElementById("notification_h2").innerHTML = `Time for a new school!`
+			document.getElementById("notification_p_1").innerHTML = `Today you start a brand new school at ${string_newSchool}, where you will be starting ${string_newGrade} from today.`
+			document.getElementById("notification_p_2").innerHTML = "Time to make some new friends!"
+			life_info["diary"] = life_info["diary"] + dict_to_date(life_info["date"]) + `- I was enrolled into a new school at ${string_newSchool}, where I started ${string_newGrade}. <br>`
+			overlay('notification_overlay', 'block')
+			breakfn = 1
+		}
+		//Task 5d: Graduating a grade
+		else if (
+			database["education"]["grades"][database["education"]["levels"][life_info["education"]["level"]]] != null &&
+			mmddcode(life_info["date"]) == database["education"]["grades"][database["education"]["levels"][life_info["education"]["level"]]]["end_date"][life_info["education"]["grade"]] &&
+			database["education"]["grades"][database["education"]["levels"][life_info["education"]["level"]]]["names"][parseInt([life_info["education"]["grade"]]) + 1] != null &&
+			life_info["education"]["daysIntoGrade"] > 180
+		) {
+			life_info["education"]["status"] = 2
+			life_info["education"]["daysIntoGrade"] = 0
+			if (localStorage.getItem("settings_gamespeed") <= 2) {
+				document.getElementById("notification_h1").style.display = "none"
+				document.getElementById("notification_h2").style.display = "block"
+				document.getElementById("notification_h3").style.display = "none"
+				document.getElementById("notification_p_1").style.display = "block"
+				document.getElementById("notification_p_2").style.display = "block"
+				let string_mark = life_info["education"]["marks"]
+				let string_grade = database
+					["education"]
+					["grades"]
+					[database["education"]["levels"][life_info["education"]["level"]]]
+					["names"]
+					[life_info["education"]["grade"]]
+				let string_nextGrade = database
+					["education"]
+					["grades"]
+					[database["education"]["levels"][life_info["education"]["level"]]]
+					["names"]
+					[parseInt(life_info["education"]["grade"]) + 1]
+				let start_date = database
+					["education"]
+					["grades"]
+					[database["education"]["levels"][life_info["education"]["level"]]]
+					["start_date"]
+					[parseInt(life_info["education"]["grade"]) + 1]
+				let string_startDate = dict_to_date(date_next(life_info["date"], start_date))
+				document.getElementById("notification_h2").innerHTML = `That's a wrap!`
+				document.getElementById("notification_p_1").innerHTML = `You have completed ${string_grade} with a mark of ${string_mark}%.`
+				document.getElementById("notification_p_2").innerHTML = `Start ${string_nextGrade} on ${string_startDate}.`
+				life_info["diary"] = life_info["diary"] + dict_to_date(life_info["date"]) + `- I finished ${string_grade} with a mark of ${string_mark}%. <br>`
+				overlay('notification_overlay', 'block')
+				breakfn = 1
+			}
+		}
+		//Task 5e: Graduating a level
+		else if (
+			database["education"]["grades"][database["education"]["levels"][life_info["education"]["level"]]] != null &&
+			mmddcode(life_info["date"]) == database["education"]["grades"][database["education"]["levels"][life_info["education"]["level"]]]["end_date"][life_info["education"]["grade"]] &&
+			database["education"]["grades"][database["education"]["levels"][life_info["education"]["level"]]]["names"][parseInt([life_info["education"]["grade"]]) + 1] == null &&
+			database["education"]["grades"][database["education"]["levels"][parseInt(life_info["education"]["level"]) + 1]] != null &&
+			life_info["education"]["daysIntoGrade"] > 180
+		) {
+			life_info["education"]["status"] = 2
+			life_info["education"]["daysIntoGrade"] = 0
+			document.getElementById("notification_h1").style.display = "none"
+			document.getElementById("notification_h2").style.display = "block"
+			document.getElementById("notification_h3").style.display = "none"
+			document.getElementById("notification_p_1").style.display = "block"
+			document.getElementById("notification_p_2").style.display = "block"
+			let string_mark = life_info["education"]["marks"]
+			let string_grade = database
+				["education"]
+				["grades"]
+				[database["education"]["levels"][life_info["education"]["level"]]]
+				["names"]
+				[life_info["education"]["grade"]]
+			let string_school = database
+				["education"]
+				["schools"]
+				[database["education"]["levels"][life_info["education"]["level"]]]
+				[life_info["education"]["school"]]
+			let string_nextGrade = database
+				["education"]
+				["grades"]
+				[database["education"]["levels"][parseInt(life_info["education"]["level"]) + 1]]
+				["names"]
+				[1]
+			let start_date = database
+				["education"]
+				["grades"]
+				[database["education"]["levels"][parseInt(life_info["education"]["level"]) + 1]]
+				["start_date"]
+				[1]
+			let string_startDate = dict_to_date(date_next(life_info["date"], start_date))
+			document.getElementById("notification_h2").innerHTML = `Farewell, old friends!`
+			document.getElementById("notification_p_1").innerHTML = `You have graduated at ${string_school}! Your mark at ${string_grade} was ${string_mark}%.`
+			document.getElementById("notification_p_2").innerHTML = `You will be enrolled into a new school on ${string_startDate}, where you'll be starting ${string_nextGrade}.`
+			life_info["diary"] = life_info["diary"] + dict_to_date(life_info["date"]) + `- I graduated at ${string_school}. My mark at ${string_grade} was ${string_mark}%. <br>`
+			overlay('notification_overlay', 'block')
+			breakfn = 1
+		}
+		//Task 5f: Graduating school
+		else if (
+			database["education"]["grades"][database["education"]["levels"][life_info["education"]["level"]]] != null &&
+			mmddcode(life_info["date"]) == database["education"]["grades"][database["education"]["levels"][life_info["education"]["level"]]]["end_date"][life_info["education"]["grade"]] &&
+			database["education"]["grades"][database["education"]["levels"][life_info["education"]["level"]]]["names"][parseInt([life_info["education"]["grade"]]) + 1] == null &&
+			database["education"]["grades"][database["education"]["levels"][parseInt(life_info["education"]["level"]) + 1]] == null &&
+			life_info["education"]["status"] == 1 &&
+			life_info["education"]["daysIntoGrade"] > 180
+		) {
+			life_info["education"]["status"] = 3
+			document.getElementById("notification_h1").style.display = "none"
+			document.getElementById("notification_h2").style.display = "block"
+			document.getElementById("notification_h3").style.display = "none"
+			document.getElementById("notification_p_1").style.display = "block"
+			document.getElementById("notification_p_2").style.display = "block"
+			let string_mark = life_info["education"]["marks"]
+			let string_grade = database
+				["education"]
+				["grades"]
+				[database["education"]["levels"][life_info["education"]["level"]]]
+				["names"]
+				[life_info["education"]["grade"]]
+			let string_school = database
+				["education"]
+				["schools"]
+				[database["education"]["levels"][life_info["education"]["level"]]]
+				[life_info["education"]["school"]]
+			document.getElementById("notification_h2").innerHTML = `Onwards!`
+			document.getElementById("notification_p_1").innerHTML = `You have graduated at ${string_school}! Your mark at ${string_grade} was ${string_mark}%.`
+			document.getElementById("notification_p_2").innerHTML = `With that, your schooling career is finished. Time to find a job!`
+			life_info["diary"] = life_info["diary"] + dict_to_date(life_info["date"]) + `- I graduated at ${string_school}. My mark at ${string_grade} was ${string_mark}%. <br>`
+			overlay('notification_overlay', 'block')
+			breakfn = 1
+		}
+		//Task 6: Education system
+		if (life_info["education"]["status"] == 1) {
+			life_info["education"]["daysIntoGrade"]++
+		}
+		//Task 7: Determines whether the player will die naturally today. If so, end the game. Chances will get higher and higher based on the DSB of player.
 		let death_x = Math.random()
 		if (Math.pow(10, (life_info["dsb"]) * 0.0001) >= 10000000 * death_x) {
 			breakfn = 2
@@ -221,11 +408,11 @@ function progress() {
 					break;
 			}
 		}
-		//Task 7: Updates information throughout the HTML
+		//Task 8: Updates information throughout the HTML
 		document.getElementById("main_control_currentdate").innerHTML = dict_to_date(life_info["date"])
 		document.getElementById("main_info_age").innerHTML = "Age: " + life_info["age"]["years"] + " years " + life_info["age"]["days"] + " days"
 		document.getElementById("main_diary_p").innerHTML = life_info["diary"]
-		//Task 8: Wait a period of time before advancing to the next day.
+		//Task 9: Wait a period of time before advancing to the next day.
 		wait(1000 * (Math.pow(10, (-0.03 * document.getElementById("main_control_speed").value))) - 1)
 	}
 }

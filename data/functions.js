@@ -27,7 +27,18 @@ function calendar_to_dict(input) {
 	}
 }
 
-//Function 2: date_progress() - Adds a specified amount of days to the input date
+//Function 2: These functions convert various multi dimension objects into code
+//Function 2a: MMDDcode() - Converts library of dates into MMDD code
+function mmddcode(input) {
+	return input["month"] * 100 + input["day"]
+}
+//Function 2b: YDDDcode() - Converts years and days of age into code
+function ydddcode(input) {
+	return input["years"] * 1000 + input["days"]
+}
+
+//Function 3: These functions calculates various date related things
+//Function 3a: date_progress() - Adds a specified amount of days to the input date
 function date_add(input, days) {
 	unix_a = new Date(input["year"] + "/" + input["month"] + "/" + input["day"])
 	unix_b = new Date((unix_a.getTime() + days * 86400000) + 3600000)
@@ -40,16 +51,29 @@ function date_add(input, days) {
 		day: day,
 	}
 }
+//Function 3b: date_next() - Finds when the next time this date will occur, which is at least atLeast days in the future
+function date_next(input, mmdd, atLeast) {
+	if (atLeast = null) {
+		atLeast == 0
+	}
+	newInput = date_add(input, atLeast)
+	if (mmdd > mmddcode(newInput)) {
+		return {
+			year: newInput["year"],
+			month: Math.floor(mmdd/100),
+			day: mmdd % 100,
+		}
+	}
+	else {
+		return {
+			year: newInput["year"] + 1,
+			month: Math.floor(mmdd/100),
+			day: mmdd % 100,
+		}
+	}
+}
 
-//Function 3: These functions convert various multi dimension objects into code
-//Function 1a: MMDDcode() - Converts library of dates into MMDD code
-function mmddcode(input) {
-	return input["month"] * 100 + input["day"]
-}
-//Function 3b: YDDDcode() - Converts years and days of age into code
-function ydddcode(input) {
-	return input["years"] * 1000 + input["days"]
-}
+
 
 //Function 4: switch_theme() - Switches the background of the webpage and on the settings button
 function switch_theme() {
