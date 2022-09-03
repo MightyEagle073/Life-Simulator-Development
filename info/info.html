@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<link
+			href="https://fonts.googleapis.com/css?family=Open+Sans"
+			rel="stylesheet"
+			type="text/css"
+		/>
+		<link href="../data/logo.png" rel="icon" />
+		<title>Information Page</title>
+	</head>
+	<body>
+		<!-- page flex container -->
+		<div class="global-container">
+			<!-- header or navigation bar -->
+			<header>
+				<!-- logo -->
+				<div class="logo-container">
+					<img src="../data/homelogo.png" alt="logo" />
+				</div>
+				<!-- page title -->
+				<div class="title-container">
+					<span class="title">Information Page</span>
+				</div>
+				<!-- buttons, for navigation -->
+				<div class="button-container">
+					<!-- button, this <a> has been used as a <button> -->
+					<a class="nav-btn" href="../home.html">
+						<span class="return-btn">Return Home</span>
+					</a>
+					<!-- end of return button -->
+				</div>
+				<!-- end of buttons -->
+			</header>
+			<!-- end of header or navigation bar -->
+			<!-- main, for contents -->
+			<main>
+				<!-- contents -->
+				<div class="container">
+					<!-- left large container -->
+					<div class="guide-global-container">
+						<ul class="guide-title-list">
+							<!-- guide title -->
+							<li><button class="guide-title">Sample</button></li>
+							<!-- end of guide title -->
+						</ul>
+						<div class="guide-local-container">
+							<!-- guide display, detail will be fetched from infoData.js -->
+							<article class="guide">
+								<p>Sample Paragraph</p>
+							</article>
+							<!-- end of guide display -->
+						</div>
+						<!-- end of guide area-->
+					</div>
+					<!-- end of left large container -->
+
+					<!-- right small container -->
+					<div class="credit-global-container">
+						<span class="space-filler-small"></span>
+						<span class="credit-global-title">Credits</span>
+						<!-- credit for developers -->
+						<div class="credit-local-container">
+							<ul class="credit-list credit-list-developers"></ul>
+						</div>
+						<!-- credit for font use -->
+						<span class="credit-local-title">
+							Font Used: Open Sans (For all Projects)
+						</span>
+						<!-- credit for wallpaper use-->
+						<span class="credit-local-title">
+							Wallpapers from
+							<a
+								href="https://www.reddit.com/r/wallpapers/"
+								target="_blank"
+								rel="noopener noreferrer"
+								>reddit.com/r/wallpapers</a
+							>
+						</span>
+						<div class="credit-local-container">
+							<ul class="credit-list credit-list-wallpapers"></ul>
+						</div>
+						<!-- credit for script use-->
+						<span class="credit-local-title"> Scripts Used: </span>
+						<div class="credit-local-container">
+							<ul class="credit-list credit-list-scripts"></ul>
+						</div>
+						<span class="space-filler-small"></span>
+					</div>
+					<!-- end of right small container -->
+				</div>
+				<!-- end of contents -->
+			</main>
+		</div>
+		<!-- end of main -->
+		<!-- footer, for future use such as version indicator -->
+		<!-- <footer></footer> -->
+		<!-- end of footer -->
+		<!-- js codes -->
+		<script src="info.js"></script>
+		<!-- end of js codes -->
+	</body>
+</html>
