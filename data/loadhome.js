@@ -219,6 +219,14 @@ function createlife() {
 	info["name"]["last"] = newsurname_temp
 	info["date"] = info["birthday"] = calendar_to_dict(newdate_temp)
 	info["gender"] = newgender_temp
+    let iqX = Math.random()
+    if (iqX >= 0.5) {
+        info["iq"] = (Math.round(8 * Math.PI * Math.pow(Math.asin(2 * iqX - 1), 2.5) + 100))
+    }
+    else {
+        iqX = 1 - iqX
+        info["iq"] = (Math.round(-5 * Math.PI * Math.pow(Math.asin(2 * iqX - 1), 2.5) + 100))
+    }
 	localStorage.setItem("life_transfer", JSON.stringify(info))
 	window.location.href = "data/main.html"
 }

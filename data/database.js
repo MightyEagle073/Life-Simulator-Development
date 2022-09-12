@@ -56,6 +56,7 @@ const database = {
 			effort: 50, //Integer between 0-100
 		},
 		gender: "m", //String, either "m" or "f", changed when life is created
+		iq: 0, //Integer < 0, generated when life is created
 		name: {
 			first: "John", //String, changed when life is created
 			last: "Smith", //String, changed when life is created
@@ -136,14 +137,14 @@ const database = {
 			primary: {
 				names: [null, "Kindergarten", "Year 1", "Year 2", "Year 3", "Year 4", "Year 5",	"Year 6"],
 				difficulty: [null, 5, 15, 20, 25, 30, 35, 45],
-				start_date: [null, 131, 131, 131, 131, 131, 131, 131],
-				end_date: [null, 1215, 1215, 1215, 1215, 1215, 1215, 1215],
+				start_date: [null, 131, 131, 131, 131, 131, 131, 131], //MMDD code of when the grade will start
+				end_date: [null, 1215, 1215, 1215, 1215, 1215, 1215, 1215], //MMDD code of when the grade will end
 			},
 			secondary: {
 				names: [null, "Year 7", "Year 8", "Year 9", "Year 10", "Year 11", "Year 12"],
 				difficulty: [null, 60, 65, 75, 80, 95, 120],
-				start_date: [null, 131, 131, 131, 131, 131, 1012],
-				end_date: [null, 1215, 1215, 1215, 1215, 925, 1106],
+				start_date: [null, 131, 131, 131, 131, 131, 1012], //MMDD code of when the grade will start
+				end_date: [null, 1215, 1215, 1215, 1215, 925, 1106], //MMDD code of when the grade will end
 			},
 		},
 		enrolment_age: 4210

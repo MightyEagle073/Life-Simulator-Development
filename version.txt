@@ -1,10 +1,10 @@
-Current Version: 0.2.4.208311
-Released: 30/08/2022 03:03am
+Current Version: 0.2.4.209131
+Released: 13/09/2022 01:08am
 
-Changes from 0.2.4.208301:
-+ Education system now completely working
-+ New next date function
-* Fixed a bug where there was more start/end dates than grade names in the education database
+Changes from 0.2.4.208311:
++ New mark determination system
++ Added graduation sounds
++ Added IQ system
 
 Version Number meaning
 First number: 0 means the game is still in development and not complete, 1 means the game is out
