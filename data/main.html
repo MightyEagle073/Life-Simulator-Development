@@ -16,10 +16,10 @@
 
 <body id="main_body">
 	<a href="https://www.mozilla.org/en-US/firefox/new/">
-		<div id="notsupported_overlay" class="overlay"></div>
+		<div id="notSupported_overlay" class="overlay"></div>
 	</a>
-	<div id="toosmall_overlay" class="overlay">
-		<div id="toosmall_tab">
+	<div id="tooSmall_overlay" class="overlay">
+		<div id="tooSmall_tab">
 			<h2>Your window size is too small!</h2>
 			<p>Please adjust your window size so that Lightning Mcqueen is fully visible. You can do this by either
 				enlarging or fullscreening your window or pressing Ctrl and - (Windows) or Cmd and - (Mac). </p>
@@ -66,7 +66,7 @@
 	</div>
 	<div id="main_control">
 		<div id="main_control_date">
-			<h1 id="main_control_currentdate">1970/1/1</h1>
+			<h1 id="main_control_currentDate">1970/1/1</h1>
 			<button id="main_control_pause" onclick="timepause()"></button>
 			<button id="main_control_start" onclick="timestart()"></button>
 			<input id="main_control_speed" type="range" min="0" max="100" value="0" name="speed">
@@ -118,11 +118,11 @@
 				<h3>Theme</h3>
 				<button id="settings_theme" onclick="settings_theme()"></button>
 				<h3>Game Speed</h3>
-				<label for="settings_gamespeed1"><input id="settings_gamespeed1" name="gamespeed" type="radio"
+				<label for="settings_gameSpeed1"><input id="settings_gameSpeed1" name="gameSpeed" type="radio"
 						value="1"> &nbsp;&nbsp;&nbsp;Slow</label>
-				<label for="settings_gamespeed2"><input id="settings_gamespeed2" name="gamespeed" type="radio"
+				<label for="settings_gameSpeed2"><input id="settings_gameSpeed2" name="gameSpeed" type="radio"
 						value="2"> &nbsp;&nbsp;&nbsp;Medium</label>
-				<label for="settings_gamespeed3"><input id="settings_gamespeed3" name="gamespeed" type="radio"
+				<label for="settings_gameSpeed3"><input id="settings_gameSpeed3" name="gameSpeed" type="radio"
 						value="3"> &nbsp;&nbsp;&nbsp;Fast</label>
 				<p>The Game Speed adjusts the amounts of events that will happen in your life. For a fast game but
 					uneventful life, choose fast. For a slow game but a life packed full of events, choose slow. For a
@@ -161,15 +161,15 @@
 				<p id="death_died">John Smith died on 1970/1/1.</p>
 				<p id="death_age">He was at a young age of 18 years 0 days.</p>
 			</div>
-			<button id="death_endlife" onClick="overlay('end_overlay','block')"></button>
-			<button id="death_preservelife" onClick=preserve()></button>
+			<button id="death_endLife" onClick="overlay('end_overlay','block')"></button>
+			<button id="death_preserveLife" onClick=preserveLife()></button>
 		</div>
 		<div id="end_overlay" class="overlay">
 			<div id="end_tab">
 				<h2>Are you sure you want to end this life? This life will be gone forever, as if it never happened!
 				</h2>
 				<button id="end_close" class="close" onclick="overlay('end_overlay', 'none')"></button>
-				<button id="end_yes" onclick="endlife()"></button>
+				<button id="end_yes" onclick="endLife()"></button>
 				<button id="end_no" onclick="overlay('end_overlay', 'none')"></button>
 			</div>
 		</div>
@@ -218,7 +218,7 @@
 		// Adjuts size of text within the html
 		$("#main_diary_h1").fitText(20);
 		$("#main_info_h1").fitText(8);
-		$("#main_control_currentdate").fitText(6);
+		$("#main_control_currentDate").fitText(6);
 		$(".main_info_p").fitText(20);
 	</script>
 </body>

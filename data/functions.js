@@ -1,21 +1,21 @@
 //Function 1: These functions converts various date formats
-//Function 1a: dict_to_date() - Converts library of dates into readable date or time
-function dict_to_date(input) {
-	let year = input["year"].toString()
-	let month = input["month"].toString()
-	let day = input["day"].toString()
+//Function 1a: convert_dict_date() - Converts library of dates into readable date or time
+function convert_dict_date(input) {
+	let year = input.year.toString()
+	let month = input.month.toString()
+	let day = input.day.toString()
 	return ("0" + day).slice(-2) + "/" + ("0" + month).slice(-2) + "/" + year
 }
-//Function 1b: calendar_to_date() - Converts the calendar input in the new life overlay to readable date or time
-function calendar_to_date(input) {
+//Function 1b: convert_calendar_date() - Converts the calendar input in the new life overlay to readable date or time
+function convert_calendar_date(input) {
 	let unix = new Date(input)
 	let year = unix.getFullYear().toString();
 	let month = (unix.getMonth() + 1).toString();
 	let day = unix.getDate().toString();
 	return ("0" + day).slice(-2) + "/" + ("0" + month).slice(-2) + "/" + year
 }
-//Function 1c: calendar_to_dict() - Converts the calendar input into library of dates
-function calendar_to_dict(input) {
+//Function 1c: convert_calendar_dict() - Converts the calendar input into library of dates
+function convert_calendar_dict(input) {
 	let unix = new Date(input)
 	let year = unix.getFullYear();
 	let month = (unix.getMonth() + 1);
@@ -28,19 +28,19 @@ function calendar_to_dict(input) {
 }
 
 //Function 2: These functions convert various multi dimension objects into code
-//Function 2a: MMDDcode() - Converts library of dates into MMDD code
-function mmddcode(input) {
-	return input["month"] * 100 + input["day"]
+//Function 2a: code_mmdd() - Converts library of dates into MMDD code
+function code_mmdd(input) {
+	return input.month * 100 + input.day
 }
-//Function 2b: YDDDcode() - Converts years and days of age into code
-function ydddcode(input) {
-	return input["years"] * 1000 + input["days"]
+//Function 2b: code_yddd() - Converts years and days of age into code
+function code_yddd(input) {
+	return input.years * 1000 + input.days
 }
 
 //Function 3: These functions calculates various date related things
-//Function 3a: date_progress() - Adds a specified amount of days to the input date
+//Function 3a: date_add() - Adds a specified amount of days to the input date
 function date_add(input, days) {
-	unix_a = new Date(input["year"] + "/" + input["month"] + "/" + input["day"])
+	unix_a = new Date(input.year + "/" + input.month + "/" + input.day)
 	unix_b = new Date((unix_a.getTime() + days * 86400000) + 3600000)
 	let year = unix_b.getFullYear();
 	let month = (unix_b.getMonth() + 1);
@@ -57,16 +57,16 @@ function date_next(input, mmdd, atLeast) {
 		atLeast == 0
 	}
 	newInput = date_add(input, atLeast)
-	if (mmdd > mmddcode(newInput)) {
+	if (mmdd > code_mmdd(newInput)) {
 		return {
-			year: newInput["year"],
+			year: newInput.year,
 			month: Math.floor(mmdd/100),
 			day: mmdd % 100,
 		}
 	}
 	else {
 		return {
-			year: newInput["year"] + 1,
+			year: newInput.year + 1,
 			month: Math.floor(mmdd/100),
 			day: mmdd % 100,
 		}
@@ -75,17 +75,17 @@ function date_next(input, mmdd, atLeast) {
 
 
 
-//Function 4: switch_theme() - Switches the background of the webpage and on the settings button
-function switch_theme() {
-	for (let i = 1; i <= database["theme_names"].length - 1; i++) {
+//Function 4: switchTheme() - Switches the background of the webpage and on the settings button
+function switchTheme() {
+	for (let i = 1; i <= database.themeNames.length - 1; i++) {
 		if (parseInt(localStorage.getItem("settings_theme")) == i) {
 			if (document.getElementById("home_body") != null) {
-				document.getElementById("home_body").style.backgroundImage = `url('data/wallpapers/${database["theme_names"][i]}')`;
-				document.getElementById("settings_theme").style.backgroundImage = `url('data/wallpapers/previews/${database["theme_names"][i]}')`;
+				document.getElementById("home_body").style.backgroundImage = `url('data/wallpapers/${database.themeNames[i]}')`;
+				document.getElementById("settings_theme").style.backgroundImage = `url('data/wallpapers/previews/${database.themeNames[i]}')`;
 			}
 			else if (document.getElementById("main_body") != null) {
-				document.getElementById("main_body").style.backgroundImage = `url('wallpapers/${database["theme_names"][i]}')`;
-				document.getElementById("settings_theme").style.backgroundImage = `url('wallpapers/previews/${database["theme_names"][i]}')`;
+				document.getElementById("main_body").style.backgroundImage = `url('wallpapers/${database.themeNames[i]}')`;
+				document.getElementById("settings_theme").style.backgroundImage = `url('wallpapers/previews/${database.themeNames[i]}')`;
 			}
 		}
 	}
@@ -94,16 +94,16 @@ function switch_theme() {
 //Function 5: settings_initialise() - Changes all the values of the settings according to local storage
 function settings_initialise() {
 	document.getElementById("settings_volume").value = localStorage.getItem("settings_volume");
-	if (parseInt(localStorage.getItem("gamespeed")) == 1) {
-		document.getElementById("settings_gamespeed1").checked = true;
+	if (parseInt(localStorage.getItem("gameSpeed")) == 1) {
+		document.getElementById("settings_gameSpeed1").checked = true;
 	}
-	else if (parseInt(localStorage.getItem("gamespeed")) == 2) {
-		document.getElementById("settings_gamespeed2").checked = true;
+	else if (parseInt(localStorage.getItem("gameSpeed")) == 2) {
+		document.getElementById("settings_gameSpeed2").checked = true;
 	}
 	else {
-		document.getElementById("settings_gamespeed3").checked = true;
+		document.getElementById("settings_gameSpeed3").checked = true;
 	}
-	switch_theme()
+	switchTheme()
 }
 
 
@@ -111,12 +111,12 @@ function settings_initialise() {
 function settings_save() {
 	localStorage.setItem("settings_volume", volume_temp);
 	localStorage.setItem("settings_theme", theme_temp);
-	localStorage.setItem("settings_gamespeed", gamespeed_temp);
-	switch_theme()
+	localStorage.setItem("settings_gameSpeed", gameSpeed_temp);
+	switchTheme()
 	overlay("settings2_overlay", "none")
 }
 
 //Function 7: overlay() - Turns the overlays either on or off
-function overlay(overlay_name, display_type) {
-	document.getElementById(overlay_name).style.display = display_type;
+function overlay(overlayName, displayType) {
+	document.getElementById(overlayName).style.display = displayType;
 }

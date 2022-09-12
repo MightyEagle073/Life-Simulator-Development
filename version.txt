@@ -1,10 +1,11 @@
-Current Version: 0.2.4.209131
+Current Version: 0.2.4.209132
 Released: 13/09/2022 01:08am
 
-Changes from 0.2.4.208311:
-+ New mark determination system
-+ Added graduation sounds
-+ Added IQ system
+Changes from 0.2.4.209131:
+# Object labelling changed to . instead of [""] where possible
+# Some underscores changed to camel case
+# Changed some variable/function names
+* Fixed a bug where the diary would display the player's dob instead of the current date when first launched
 
 Version Number meaning
 First number: 0 means the game is still in development and not complete, 1 means the game is out

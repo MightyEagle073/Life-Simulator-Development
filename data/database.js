@@ -1,6 +1,6 @@
 const database = {
 	//Theme Names
-	theme_names: [
+	themeNames: [
 		null,
 		"1_sunset.jpg",
 		"2_forest.jpg",
@@ -16,7 +16,7 @@ const database = {
 		"12_train.jpg",
 	],
 	//Default Life Information - Life information before the life is first created
-	life_information: {
+	lifeInformation: {
 		//Crucial information for running, never shown to the player 
 		//Status: 0 = Doesn't Exist, 1 = Alive, 2 = Dead
 		version: "0.3 beta",
@@ -61,12 +61,12 @@ const database = {
 			first: "John", //String, changed when life is created
 			last: "Smith", //String, changed when life is created
 		},
-		net_worth: 0.0, //Float >= 0
+		netWorth: 0.0, //Float >= 0
 		//Life number - To be used when transferring
-		life_no: 0
+		lifeNo: 0
 	},
 	//Diary Entries
-	diary_entries: {
+	diaryEntries: {
 		born: " - I have been brought into this world. <br>",
 		death: " - I died due to natural causes. I was aged {age,years} years and {age,days} days when I died. <br>",
 	},
@@ -75,9 +75,9 @@ const database = {
 		"settings_volume",
 		"settings_theme",
 		"settings_gamespeed",
-		"current_info",
-		"past_info",
-		"life_transfer",
+		"currentInfo",
+		"pastInfo",
+		"lifeTransfer",
 	],
 	//Database information related to education
 	education: {
@@ -137,17 +137,16 @@ const database = {
 			primary: {
 				names: [null, "Kindergarten", "Year 1", "Year 2", "Year 3", "Year 4", "Year 5",	"Year 6"],
 				difficulty: [null, 5, 15, 20, 25, 30, 35, 45],
-				start_date: [null, 131, 131, 131, 131, 131, 131, 131], //MMDD code of when the grade will start
-				end_date: [null, 1215, 1215, 1215, 1215, 1215, 1215, 1215], //MMDD code of when the grade will end
+				startDate: [null, 131, 131, 131, 131, 131, 131, 131], //MMDD code of when the grade will start
+				endDate: [null, 1215, 1215, 1215, 1215, 1215, 1215, 1215], //MMDD code of when the grade will end
 			},
 			secondary: {
 				names: [null, "Year 7", "Year 8", "Year 9", "Year 10", "Year 11", "Year 12"],
 				difficulty: [null, 60, 65, 75, 80, 95, 120],
-				start_date: [null, 131, 131, 131, 131, 131, 1012], //MMDD code of when the grade will start
-				end_date: [null, 1215, 1215, 1215, 1215, 925, 1106], //MMDD code of when the grade will end
+				startDate: [null, 131, 131, 131, 131, 131, 1012], //MMDD code of when the grade will start
+				endDate: [null, 1215, 1215, 1215, 1215, 925, 1106], //MMDD code of when the grade will end
 			},
 		},
-		enrolment_age: 4210
+		enrolmentAge: 4210
 	}
-	//Popup InnerHTMLs
 }

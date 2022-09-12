@@ -16,10 +16,10 @@
 
 <body id="home_body">
 	<!--Not Supported-->
-	<div id="notsupported_overlay" class="overlay"></div>
+	<div id="notSupported_overlay" class="overlay"></div>
 	<!--Window Size Too Small-->
-	<div id="toosmall_overlay" class="overlay">
-		<div id="toosmall_tab">
+	<div id="tooSmall_overlay" class="overlay">
+		<div id="tooSmall_tab">
 			<h2>Your window size is too small!</h2>
 			<p>Please adjust your window size so that Lightning Mcqueen is fully visible. You can do this by either
 				enlarging or fullscreening your window or pressing Ctrl and - (Windows) or Cmd and - (Mac). </p>
@@ -28,13 +28,13 @@
 	</div>
 	<!--Buttons-->
 	<img id="home_logo" src="data/homelogo.png" alt="Logo">
-	<button class="home_buttons" id="newlife" onclick="overlay('newlife_overlay', 'block')">
+	<button class="home_buttons" id="newLife" onclick="overlay('newLife_overlay', 'block')">
 		New Life
 	</button>
-	<button class="home_buttons" id="continuelife" onclick="overlay('continuelife_overlay', 'block')">
+	<button class="home_buttons" id="continueLife" onclick="overlay('continueLife_overlay', 'block')">
 		Continue Life
 	</button>
-	<button class="home_buttons" id="pastlives" onclick="overlay('pastlives_overlay', 'block')">
+	<button class="home_buttons" id="pastLives" onclick="overlay('pastLives_overlay', 'block')">
 		Past Lives
 	</button>
 	<button class="home_buttons" id="settings" onclick="overlay('settings_overlay', 'block')">
@@ -43,727 +43,727 @@
 	<button class="home_buttons" id="information">
 		Information
 	</button>
-	<div id="newlife_overlay" class="overlay">
-		<div id="newlife_tab">
-			<div id="newlife_container">
+	<div id="newLife_overlay" class="overlay">
+		<div id="newLife_tab">
+			<div id="newLife_container">
 				<h1>Start a new life!</h1>
-				<h2 id="newlife_main">Are you ready to begin an 80-year journey in the world we know as "life"? Fill in
+				<h2 id="newLife_main">Are you ready to begin an 80-year journey in the world we know as "life"? Fill in
 					the information about your character and we're ready to start! </h2>
-				<p id="newlife_enter_firstname">First Name</p>
-				<input id="newlife_firstname" type="text" required>
-				<p id="newlife_enter_surname">Surname</p>
-				<input id="newlife_surname" type="text" required>
-				<p id="newlife_enter_gender">Gender</p>
-				<label for="newlife_gender_male"><input id="newlife_gender_male" type="radio" value="male" name="gender"
+				<p id="newLife_enter_firstname">First Name</p>
+				<input id="newLife_firstname" type="text" required>
+				<p id="newLife_enter_surname">Surname</p>
+				<input id="newLife_surname" type="text" required>
+				<p id="newLife_enter_gender">Gender</p>
+				<label for="newLife_gender_male"><input id="newLife_gender_male" type="radio" value="male" name="gender"
 						required>&nbsp;&nbsp;Male&nbsp;&nbsp;</label>
-				<label for="newlife_gender_female"><input id="newlife_gender_female" type="radio" value="female"
+				<label for="newLife_gender_female"><input id="newLife_gender_female" type="radio" value="female"
 						name="gender" required>&nbsp;&nbsp;Female&nbsp;&nbsp;</label>
-				<p id="newlife_enter_dob">Date of Birth</p>
-				<input id="newlife_dob" type="date" required>
+				<p id="newLife_enter_dob">Date of Birth</p>
+				<input id="newLife_dob" type="date" required>
 				<h3>The game will start from this day onwards.</h3>
 			</div>
-			<button id="newlife_close" class="close" onclick="overlay('newlife_overlay', 'none')"></button>
-			<button id="newlife_start" onClick="newlife_sure()"></button>
+			<button id="newLife_close" class="close" onclick="overlay('newLife_overlay', 'none')"></button>
+			<button id="newLife_start" onClick="newLife_sure()"></button>
 		</div>
-		<div id="newlife2_overlay" class="overlay">
-			<div id="newlife2_tab">
-			<button id="newlife2_close" class="close" onclick="overlay('newlife2_overlay', 'none')"></button>
-				<div id="newlife2_container">
-					<h1 id="newlife2_h1">Start New Life?</h1>
-					<p id="newlife2_p">Would you like to start the life of <strong>John Smith</strong> starting from
+		<div id="newLife2_overlay" class="overlay">
+			<div id="newLife2_tab">
+			<button id="newLife2_close" class="close" onclick="overlay('newLife2_overlay', 'none')"></button>
+				<div id="newLife2_container">
+					<h1 id="newLife2_h1">Start New Life?</h1>
+					<p id="newLife2_p">Would you like to start the life of <strong>John Smith</strong> starting from
 						<strong>1970/1/1?</strong>
 					</p>
 				</div>
-				<button id="newlife2_yes" onclick="createlife()"></button>
-				<button id="newlife2_no" onclick="overlay('newlife2_overlay', 'none')"></button>
+				<button id="newLife2_yes" onclick="createlife()"></button>
+				<button id="newLife2_no" onclick="overlay('newLife2_overlay', 'none')"></button>
 			</div>
 		</div>
 	</div>
-	<div id="continuelife_overlay" class="overlay">
-		<div id="continuelife_tab">
-			<div id="continuelife_container">
+	<div id="continueLife_overlay" class="overlay">
+		<div id="continueLife_tab">
+			<div id="continueLife_container">
 				<h1>Choose the life to continue!</h1><br>
-				<div id="continuelife_div">
-					<div id="continuelife_savefile1" class="continuelife_savefile" onClick="continueFn(1)">
+				<div id="continueLife_div">
+					<div id="continueLife_saveFile1" class="continueLife_saveFile" onClick="continueFn(1)">
 						<table>
-							<tr class="continuelife_savefile_main" id="continuelife_savefile1_main">
-								<td class="continuelife_savefile_no" id="continuelife_savefile1_no">1</td>
-								<td class="continuelife_savefile_name" id="continuelife_savefile1_name">Empty</td>
+							<tr class="continueLife_saveFile_main" id="continueLife_saveFile1_main">
+								<td class="continueLife_saveFile_no" id="continueLife_saveFile1_no">1</td>
+								<td class="continueLife_saveFile_name" id="continueLife_saveFile1_name">Empty</td>
 							</tr>
-							<tr class="continuelife_savefile_sub" id="continuelife_savefile1_sub">
-								<td class="continuelife_savefile_age" id="continuelife_savefile1_age"></td>
-								<td class="continuelife_savefile_date" id="continuelife_savefile1_date">Create a life in
+							<tr class="continueLife_saveFile_sub" id="continueLife_saveFile1_sub">
+								<td class="continueLife_saveFile_age" id="continueLife_saveFile1_age"></td>
+								<td class="continueLife_saveFile_date" id="continueLife_saveFile1_date">Create a life in
 									the new lives menu!</td>
 							</tr>
 						</table>
 					</div>
-					<div id="continuelife_savefile2" class="continuelife_savefile" onClick="continueFn(2)">
+					<div id="continueLife_saveFile2" class="continueLife_saveFile" onClick="continueFn(2)">
 						<table>
-							<tr class="continuelife_savefile_main" id="continuelife_savefile2_main">
-								<td class="continuelife_savefile_no" id="continuelife_savefile2_no">2</td>
-								<td class="continuelife_savefile_name" id="continuelife_savefile2_name">Empty</td>
+							<tr class="continueLife_saveFile_main" id="continueLife_saveFile2_main">
+								<td class="continueLife_saveFile_no" id="continueLife_saveFile2_no">2</td>
+								<td class="continueLife_saveFile_name" id="continueLife_saveFile2_name">Empty</td>
 							</tr>
-							<tr class="continuelife_savefile_sub" id="continuelife_savefile2_sub">
-								<td class="continuelife_savefile_age" id="continuelife_savefile2_age"></td>
-								<td class="continuelife_savefile_date" id="continuelife_savefile2_date">Create a life in
+							<tr class="continueLife_saveFile_sub" id="continueLife_saveFile2_sub">
+								<td class="continueLife_saveFile_age" id="continueLife_saveFile2_age"></td>
+								<td class="continueLife_saveFile_date" id="continueLife_saveFile2_date">Create a life in
 									the new lives menu!</td>
 							</tr>
 						</table>
 					</div>
-					<div id="continuelife_savefile3" class="continuelife_savefile" onClick="continueFn(3)">
+					<div id="continueLife_saveFile3" class="continueLife_saveFile" onClick="continueFn(3)">
 						<table>
-							<tr class="continuelife_savefile_main" id="continuelife_savefile3_main">
-								<td class="continuelife_savefile_no" id="continuelife_savefile3_no">3</td>
-								<td class="continuelife_savefile_name" id="continuelife_savefile3_name">Empty</td>
+							<tr class="continueLife_saveFile_main" id="continueLife_saveFile3_main">
+								<td class="continueLife_saveFile_no" id="continueLife_saveFile3_no">3</td>
+								<td class="continueLife_saveFile_name" id="continueLife_saveFile3_name">Empty</td>
 							</tr>
-							<tr class="continuelife_savefile_sub" id="continuelife_savefile3_sub">
-								<td class="continuelife_savefile_age" id="continuelife_savefile3_age"></td>
-								<td class="continuelife_savefile_date" id="continuelife_savefile3_date">Create a life in
+							<tr class="continueLife_saveFile_sub" id="continueLife_saveFile3_sub">
+								<td class="continueLife_saveFile_age" id="continueLife_saveFile3_age"></td>
+								<td class="continueLife_saveFile_date" id="continueLife_saveFile3_date">Create a life in
 									the new lives menu!</td>
 							</tr>
 						</table>
 					</div>
-					<div id="continuelife_savefile4" class="continuelife_savefile" onClick="continueFn(4)">
+					<div id="continueLife_saveFile4" class="continueLife_saveFile" onClick="continueFn(4)">
 						<table>
-							<tr class="continuelife_savefile_main" id="continuelife_savefile4_main">
-								<td class="continuelife_savefile_no" id="continuelife_savefile4_no">4</td>
-								<td class="continuelife_savefile_name" id="continuelife_savefile4_name">Empty</td>
+							<tr class="continueLife_saveFile_main" id="continueLife_saveFile4_main">
+								<td class="continueLife_saveFile_no" id="continueLife_saveFile4_no">4</td>
+								<td class="continueLife_saveFile_name" id="continueLife_saveFile4_name">Empty</td>
 							</tr>
-							<tr class="continuelife_savefile_sub" id="continuelife_savefile4_sub">
-								<td class="continuelife_savefile_age" id="continuelife_savefile4_age"></td>
-								<td class="continuelife_savefile_date" id="continuelife_savefile4_date">Create a life in
+							<tr class="continueLife_saveFile_sub" id="continueLife_saveFile4_sub">
+								<td class="continueLife_saveFile_age" id="continueLife_saveFile4_age"></td>
+								<td class="continueLife_saveFile_date" id="continueLife_saveFile4_date">Create a life in
 									the new lives menu!</td>
 							</tr>
 						</table>
 					</div>
-					<div id="continuelife_savefile5" class="continuelife_savefile" onClick="continueFn(5)">
+					<div id="continueLife_saveFile5" class="continueLife_saveFile" onClick="continueFn(5)">
 						<table>
-							<tr class="continuelife_savefile_main" id="continuelife_savefile5_main">
-								<td class="continuelife_savefile_no" id="continuelife_savefile5_no">5</td>
-								<td class="continuelife_savefile_name" id="continuelife_savefile5_name">Empty</td>
+							<tr class="continueLife_saveFile_main" id="continueLife_saveFile5_main">
+								<td class="continueLife_saveFile_no" id="continueLife_saveFile5_no">5</td>
+								<td class="continueLife_saveFile_name" id="continueLife_saveFile5_name">Empty</td>
 							</tr>
-							<tr class="continuelife_savefile_sub" id="continuelife_savefile5_sub">
-								<td class="continuelife_savefile_age" id="continuelife_savefile5_age"></td>
-								<td class="continuelife_savefile_date" id="continuelife_savefile5_date">Create a life in
+							<tr class="continueLife_saveFile_sub" id="continueLife_saveFile5_sub">
+								<td class="continueLife_saveFile_age" id="continueLife_saveFile5_age"></td>
+								<td class="continueLife_saveFile_date" id="continueLife_saveFile5_date">Create a life in
 									the new lives menu!</td>
 							</tr>
 						</table>
 					</div>
-					<div id="continuelife_savefile6" class="continuelife_savefile" onClick="continueFn(6)">
+					<div id="continueLife_saveFile6" class="continueLife_saveFile" onClick="continueFn(6)">
 						<table>
-							<tr class="continuelife_savefile_main" id="continuelife_savefile6_main">
-								<td class="continuelife_savefile_no" id="continuelife_savefile6_no">6</td>
-								<td class="continuelife_savefile_name" id="continuelife_savefile6_name">Empty</td>
+							<tr class="continueLife_saveFile_main" id="continueLife_saveFile6_main">
+								<td class="continueLife_saveFile_no" id="continueLife_saveFile6_no">6</td>
+								<td class="continueLife_saveFile_name" id="continueLife_saveFile6_name">Empty</td>
 							</tr>
-							<tr class="continuelife_savefile_sub" id="continuelife_savefile6_sub">
-								<td class="continuelife_savefile_age" id="continuelife_savefile6_age"></td>
-								<td class="continuelife_savefile_date" id="continuelife_savefile6_date">Create a life in
+							<tr class="continueLife_saveFile_sub" id="continueLife_saveFile6_sub">
+								<td class="continueLife_saveFile_age" id="continueLife_saveFile6_age"></td>
+								<td class="continueLife_saveFile_date" id="continueLife_saveFile6_date">Create a life in
 									the new lives menu!</td>
 							</tr>
 						</table>
 					</div>
-					<div id="continuelife_savefile7" class="continuelife_savefile" onClick="continueFn(7)">
+					<div id="continueLife_saveFile7" class="continueLife_saveFile" onClick="continueFn(7)">
 						<table>
-							<tr class="continuelife_savefile_main" id="continuelife_savefile7_main">
-								<td class="continuelife_savefile_no" id="continuelife_savefile7_no">7</td>
-								<td class="continuelife_savefile_name" id="continuelife_savefile7_name">Empty</td>
+							<tr class="continueLife_saveFile_main" id="continueLife_saveFile7_main">
+								<td class="continueLife_saveFile_no" id="continueLife_saveFile7_no">7</td>
+								<td class="continueLife_saveFile_name" id="continueLife_saveFile7_name">Empty</td>
 							</tr>
-							<tr class="continuelife_savefile_sub" id="continuelife_savefile7_sub">
-								<td class="continuelife_savefile_age" id="continuelife_savefile7_age"></td>
-								<td class="continuelife_savefile_date" id="continuelife_savefile7_date">Create a life in
+							<tr class="continueLife_saveFile_sub" id="continueLife_saveFile7_sub">
+								<td class="continueLife_saveFile_age" id="continueLife_saveFile7_age"></td>
+								<td class="continueLife_saveFile_date" id="continueLife_saveFile7_date">Create a life in
 									the new lives menu!</td>
 							</tr>
 						</table>
 					</div>
-					<div id="continuelife_savefile8" class="continuelife_savefile" onClick="continueFn(8)">
+					<div id="continueLife_saveFile8" class="continueLife_saveFile" onClick="continueFn(8)">
 						<table>
-							<tr class="continuelife_savefile_main" id="continuelife_savefile8_main">
-								<td class="continuelife_savefile_no" id="continuelife_savefile8_no">8</td>
-								<td class="continuelife_savefile_name" id="continuelife_savefile8_name">Empty</td>
+							<tr class="continueLife_saveFile_main" id="continueLife_saveFile8_main">
+								<td class="continueLife_saveFile_no" id="continueLife_saveFile8_no">8</td>
+								<td class="continueLife_saveFile_name" id="continueLife_saveFile8_name">Empty</td>
 							</tr>
-							<tr class="continuelife_savefile_sub" id="continuelife_savefile8_sub">
-								<td class="continuelife_savefile_age" id="continuelife_savefile8_age"></td>
-								<td class="continuelife_savefile_date" id="continuelife_savefile8_date">Create a life in
+							<tr class="continueLife_saveFile_sub" id="continueLife_saveFile8_sub">
+								<td class="continueLife_saveFile_age" id="continueLife_saveFile8_age"></td>
+								<td class="continueLife_saveFile_date" id="continueLife_saveFile8_date">Create a life in
 									the new lives menu!</td>
 							</tr>
 						</table>
 					</div>
-					<div id="continuelife_savefile9" class="continuelife_savefile" onClick="continueFn(9)">
+					<div id="continueLife_saveFile9" class="continueLife_saveFile" onClick="continueFn(9)">
 						<table>
-							<tr class="continuelife_savefile_main" id="continuelife_savefile9_main">
-								<td class="continuelife_savefile_no" id="continuelife_savefile9_no">9</td>
-								<td class="continuelife_savefile_name" id="continuelife_savefile9_name">Empty</td>
+							<tr class="continueLife_saveFile_main" id="continueLife_saveFile9_main">
+								<td class="continueLife_saveFile_no" id="continueLife_saveFile9_no">9</td>
+								<td class="continueLife_saveFile_name" id="continueLife_saveFile9_name">Empty</td>
 							</tr>
-							<tr class="continuelife_savefile_sub" id="continuelife_savefile9_sub">
-								<td class="continuelife_savefile_age" id="continuelife_savefile9_age"></td>
-								<td class="continuelife_savefile_date" id="continuelife_savefile9_date">Create a life in
+							<tr class="continueLife_saveFile_sub" id="continueLife_saveFile9_sub">
+								<td class="continueLife_saveFile_age" id="continueLife_saveFile9_age"></td>
+								<td class="continueLife_saveFile_date" id="continueLife_saveFile9_date">Create a life in
 									the new lives menu!</td>
 							</tr>
 						</table>
 					</div>
-					<div id="continuelife_savefile10" class="continuelife_savefile" onClick="continueFn(10)">
+					<div id="continueLife_saveFile10" class="continueLife_saveFile" onClick="continueFn(10)">
 						<table>
-							<tr class="continuelife_savefile_main" id="continuelife_savefile10_main">
-								<td class="continuelife_savefile_no" id="continuelife_savefile10_no">10</td>
-								<td class="continuelife_savefile_name" id="continuelife_savefile10_name">Empty</td>
+							<tr class="continueLife_saveFile_main" id="continueLife_saveFile10_main">
+								<td class="continueLife_saveFile_no" id="continueLife_saveFile10_no">10</td>
+								<td class="continueLife_saveFile_name" id="continueLife_saveFile10_name">Empty</td>
 							</tr>
-							<tr class="continuelife_savefile_sub" id="continuelife_savefile10_sub">
-								<td class="continuelife_savefile_age" id="continuelife_savefile10_age"></td>
-								<td class="continuelife_savefile_date" id="continuelife_savefile10_date">Create a life
+							<tr class="continueLife_saveFile_sub" id="continueLife_saveFile10_sub">
+								<td class="continueLife_saveFile_age" id="continueLife_saveFile10_age"></td>
+								<td class="continueLife_saveFile_date" id="continueLife_saveFile10_date">Create a life
 									in the new lives menu!</td>
 							</tr>
 						</table>
 					</div>
 				</div>
-				<div id="continuelife2_overlay" class="overlay">
-					<div id="continuelife2_tab">
-						<button id="continuelife2_close" class="close"
-							onclick="overlay('continuelife2_overlay', 'none')"></button>
-						<div id="continuelife2_container">
-							<h1 id="continuelife2_h1">Continue life 0?</h1>
-							<p id="continuelife2_p">Would you like to continue the life of <strong>John Smith</strong>, aged
+				<div id="continueLife2_overlay" class="overlay">
+					<div id="continueLife2_tab">
+						<button id="continueLife2_close" class="close"
+							onclick="overlay('continueLife2_overlay', 'none')"></button>
+						<div id="continueLife2_container">
+							<h1 id="continueLife2_h1">Continue life 0?</h1>
+							<p id="continueLife2_p">Would you like to continue the life of <strong>John Smith</strong>, aged
 							<strong>18</strong>, from <strong>1970/1/1</strong>?
 							</p>
 						</div>
-						<button id="continuelife2_yes" onclick="continuelife()"></button>
-						<button id="continuelife2_no" onclick="overlay('continuelife2_overlay', 'none')"></button>
+						<button id="continueLife2_yes" onclick="continueLife()"></button>
+						<button id="continueLife2_no" onclick="overlay('continueLife2_overlay', 'none')"></button>
 					</div>
 				</div>
 				<br><br><br>
 			</div>
-			<button id="continuelife_close" class="close" onclick="overlay('continuelife_overlay', 'none')"></button>
+			<button id="continueLife_close" class="close" onclick="overlay('continueLife_overlay', 'none')"></button>
 		</div>
 	</div>
-	<div id="pastlives_overlay" class="overlay">
-		<div id="pastlives_tab">
-			<div id="pastlives_container">
-				<button id="pastlives_close" class="close" onclick="overlay('pastlives_overlay', 'none')"></button>
+	<div id="pastLives_overlay" class="overlay">
+		<div id="pastLives_tab">
+			<div id="pastLives_container">
+				<button id="pastLives_close" class="close" onclick="overlay('pastLives_overlay', 'none')"></button>
 				<h1>Past Lives</h1>
 				<p>This is the gallery of all the lives you have once lived that you chose to preserve. Click on a life
 					to read their diary.</p>
 				<p><i>They say you die twice. One time when you stop breathing and a second time, a bit later on, when
 						somebody says your name for the last time.</i> - Banksy</p>
-				<div id="pastlives_div">
-					<div id="pastlives_save1" class="pastlives_save" onClick="pastFn(1)">
+				<div id="pastLives_div">
+					<div id="pastLives_save1" class="pastLives_save" onClick="pastFn(1)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save1_main">
-								<td class="pastlives_save_no" id="pastlives_save1_no">1</td>
-								<td class="pastlives_save_name" id="pastlives_save1_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save1_main">
+								<td class="pastLives_save_no" id="pastLives_save1_no">1</td>
+								<td class="pastLives_save_name" id="pastLives_save1_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save1_sub1">
-								<td class="pastlives_save_age" id="pastlives_save1_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save1_date">After the end of a life, click
+							<tr class="pastLives_save_sub1" id="pastLives_save1_sub1">
+								<td class="pastLives_save_age" id="pastLives_save1_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save1_date">After the end of a life, click
 									"Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save1_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save1_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save1_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save1_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save1_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save1_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save2" class="pastlives_save" onClick="pastFn(2)">
+					<div id="pastLives_save2" class="pastLives_save" onClick="pastFn(2)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save2_main">
-								<td class="pastlives_save_no" id="pastlives_save2_no">2</td>
-								<td class="pastlives_save_name" id="pastlives_save2_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save2_main">
+								<td class="pastLives_save_no" id="pastLives_save2_no">2</td>
+								<td class="pastLives_save_name" id="pastLives_save2_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save2_sub1">
-								<td class="pastlives_save_age" id="pastlives_save2_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save2_date">After the end of a life, click
+							<tr class="pastLives_save_sub1" id="pastLives_save2_sub1">
+								<td class="pastLives_save_age" id="pastLives_save2_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save2_date">After the end of a life, click
 									"Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save2_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save2_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save2_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save2_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save2_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save2_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save3" class="pastlives_save" onClick="pastFn(3)">
+					<div id="pastLives_save3" class="pastLives_save" onClick="pastFn(3)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save3_main">
-								<td class="pastlives_save_no" id="pastlives_save3_no">3</td>
-								<td class="pastlives_save_name" id="pastlives_save3_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save3_main">
+								<td class="pastLives_save_no" id="pastLives_save3_no">3</td>
+								<td class="pastLives_save_name" id="pastLives_save3_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save3_sub1">
-								<td class="pastlives_save_age" id="pastlives_save3_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save3_date">After the end of a life, click
+							<tr class="pastLives_save_sub1" id="pastLives_save3_sub1">
+								<td class="pastLives_save_age" id="pastLives_save3_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save3_date">After the end of a life, click
 									"Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save3_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save3_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save3_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save3_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save3_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save3_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save4" class="pastlives_save" onClick="pastFn(4)">
+					<div id="pastLives_save4" class="pastLives_save" onClick="pastFn(4)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save4_main">
-								<td class="pastlives_save_no" id="pastlives_save4_no">4</td>
-								<td class="pastlives_save_name" id="pastlives_save4_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save4_main">
+								<td class="pastLives_save_no" id="pastLives_save4_no">4</td>
+								<td class="pastLives_save_name" id="pastLives_save4_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save4_sub1">
-								<td class="pastlives_save_age" id="pastlives_save4_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save4_date">After the end of a life, click
+							<tr class="pastLives_save_sub1" id="pastLives_save4_sub1">
+								<td class="pastLives_save_age" id="pastLives_save4_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save4_date">After the end of a life, click
 									"Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save4_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save4_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save4_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save4_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save4_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save4_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save5" class="pastlives_save" onClick="pastFn(5)">
+					<div id="pastLives_save5" class="pastLives_save" onClick="pastFn(5)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save5_main">
-								<td class="pastlives_save_no" id="pastlives_save5_no">5</td>
-								<td class="pastlives_save_name" id="pastlives_save5_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save5_main">
+								<td class="pastLives_save_no" id="pastLives_save5_no">5</td>
+								<td class="pastLives_save_name" id="pastLives_save5_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save5_sub1">
-								<td class="pastlives_save_age" id="pastlives_save5_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save5_date">After the end of a life, click
+							<tr class="pastLives_save_sub1" id="pastLives_save5_sub1">
+								<td class="pastLives_save_age" id="pastLives_save5_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save5_date">After the end of a life, click
 									"Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save5_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save5_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save5_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save5_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save5_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save5_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save6" class="pastlives_save" onClick="pastFn(6)">
+					<div id="pastLives_save6" class="pastLives_save" onClick="pastFn(6)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save6_main">
-								<td class="pastlives_save_no" id="pastlives_save6_no">6</td>
-								<td class="pastlives_save_name" id="pastlives_save6_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save6_main">
+								<td class="pastLives_save_no" id="pastLives_save6_no">6</td>
+								<td class="pastLives_save_name" id="pastLives_save6_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save6_sub1">
-								<td class="pastlives_save_age" id="pastlives_save6_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save6_date">After the end of a life, click
+							<tr class="pastLives_save_sub1" id="pastLives_save6_sub1">
+								<td class="pastLives_save_age" id="pastLives_save6_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save6_date">After the end of a life, click
 									"Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save6_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save6_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save6_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save6_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save6_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save6_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save7" class="pastlives_save" onClick="pastFn(7)">
+					<div id="pastLives_save7" class="pastLives_save" onClick="pastFn(7)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save7_main">
-								<td class="pastlives_save_no" id="pastlives_save7_no">7</td>
-								<td class="pastlives_save_name" id="pastlives_save7_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save7_main">
+								<td class="pastLives_save_no" id="pastLives_save7_no">7</td>
+								<td class="pastLives_save_name" id="pastLives_save7_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save7_sub1">
-								<td class="pastlives_save_age" id="pastlives_save7_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save7_date">After the end of a life, click
+							<tr class="pastLives_save_sub1" id="pastLives_save7_sub1">
+								<td class="pastLives_save_age" id="pastLives_save7_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save7_date">After the end of a life, click
 									"Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save7_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save7_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save7_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save7_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save7_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save7_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save8" class="pastlives_save" onClick="pastFn(8)">
+					<div id="pastLives_save8" class="pastLives_save" onClick="pastFn(8)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save8_main">
-								<td class="pastlives_save_no" id="pastlives_save8_no">8</td>
-								<td class="pastlives_save_name" id="pastlives_save8_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save8_main">
+								<td class="pastLives_save_no" id="pastLives_save8_no">8</td>
+								<td class="pastLives_save_name" id="pastLives_save8_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save8_sub1">
-								<td class="pastlives_save_age" id="pastlives_save8_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save8_date">After the end of a life, click
+							<tr class="pastLives_save_sub1" id="pastLives_save8_sub1">
+								<td class="pastLives_save_age" id="pastLives_save8_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save8_date">After the end of a life, click
 									"Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save8_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save8_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save8_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save8_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save8_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save8_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save9" class="pastlives_save" onClick="pastFn(9)">
+					<div id="pastLives_save9" class="pastLives_save" onClick="pastFn(9)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save9_main">
-								<td class="pastlives_save_no" id="pastlives_save9_no">9</td>
-								<td class="pastlives_save_name" id="pastlives_save9_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save9_main">
+								<td class="pastLives_save_no" id="pastLives_save9_no">9</td>
+								<td class="pastLives_save_name" id="pastLives_save9_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save9_sub1">
-								<td class="pastlives_save_age" id="pastlives_save9_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save9_date">After the end of a life, click
+							<tr class="pastLives_save_sub1" id="pastLives_save9_sub1">
+								<td class="pastLives_save_age" id="pastLives_save9_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save9_date">After the end of a life, click
 									"Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save9_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save9_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save9_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save9_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save9_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save9_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save10" class="pastlives_save" onClick="pastFn(10)">
+					<div id="pastLives_save10" class="pastLives_save" onClick="pastFn(10)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save10_main">
-								<td class="pastlives_save_no" id="pastlives_save10_no">10</td>
-								<td class="pastlives_save_name" id="pastlives_save10_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save10_main">
+								<td class="pastLives_save_no" id="pastLives_save10_no">10</td>
+								<td class="pastLives_save_name" id="pastLives_save10_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save10_sub1">
-								<td class="pastlives_save_age" id="pastlives_save10_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save10_date">After the end of a life,
+							<tr class="pastLives_save_sub1" id="pastLives_save10_sub1">
+								<td class="pastLives_save_age" id="pastLives_save10_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save10_date">After the end of a life,
 									click "Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save10_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save10_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save10_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save10_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save10_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save10_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save11" class="pastlives_save" onClick="pastFn(11)">
+					<div id="pastLives_save11" class="pastLives_save" onClick="pastFn(11)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save11_main">
-								<td class="pastlives_save_no" id="pastlives_save11_no">11</td>
-								<td class="pastlives_save_name" id="pastlives_save11_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save11_main">
+								<td class="pastLives_save_no" id="pastLives_save11_no">11</td>
+								<td class="pastLives_save_name" id="pastLives_save11_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save11_sub1">
-								<td class="pastlives_save_age" id="pastlives_save11_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save11_date">After the end of a life,
+							<tr class="pastLives_save_sub1" id="pastLives_save11_sub1">
+								<td class="pastLives_save_age" id="pastLives_save11_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save11_date">After the end of a life,
 									click "Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save11_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save11_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save11_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save11_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save11_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save11_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save12" class="pastlives_save" onClick="pastFn(12)">
+					<div id="pastLives_save12" class="pastLives_save" onClick="pastFn(12)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save12_main">
-								<td class="pastlives_save_no" id="pastlives_save12_no">12</td>
-								<td class="pastlives_save_name" id="pastlives_save12_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save12_main">
+								<td class="pastLives_save_no" id="pastLives_save12_no">12</td>
+								<td class="pastLives_save_name" id="pastLives_save12_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save12_sub1">
-								<td class="pastlives_save_age" id="pastlives_save12_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save12_date">After the end of a life,
+							<tr class="pastLives_save_sub1" id="pastLives_save12_sub1">
+								<td class="pastLives_save_age" id="pastLives_save12_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save12_date">After the end of a life,
 									click "Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save12_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save12_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save12_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save12_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save12_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save12_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save13" class="pastlives_save" onClick="pastFn(13)">
+					<div id="pastLives_save13" class="pastLives_save" onClick="pastFn(13)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save13_main">
-								<td class="pastlives_save_no" id="pastlives_save13_no">13</td>
-								<td class="pastlives_save_name" id="pastlives_save13_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save13_main">
+								<td class="pastLives_save_no" id="pastLives_save13_no">13</td>
+								<td class="pastLives_save_name" id="pastLives_save13_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save13_sub1">
-								<td class="pastlives_save_age" id="pastlives_save13_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save13_date">After the end of a life,
+							<tr class="pastLives_save_sub1" id="pastLives_save13_sub1">
+								<td class="pastLives_save_age" id="pastLives_save13_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save13_date">After the end of a life,
 									click "Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save13_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save13_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save13_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save13_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save13_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save13_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save14" class="pastlives_save" onClick="pastFn(14)">
+					<div id="pastLives_save14" class="pastLives_save" onClick="pastFn(14)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save14_main">
-								<td class="pastlives_save_no" id="pastlives_save14_no">14</td>
-								<td class="pastlives_save_name" id="pastlives_save14_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save14_main">
+								<td class="pastLives_save_no" id="pastLives_save14_no">14</td>
+								<td class="pastLives_save_name" id="pastLives_save14_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save14_sub1">
-								<td class="pastlives_save_age" id="pastlives_save14_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save14_date">After the end of a life,
+							<tr class="pastLives_save_sub1" id="pastLives_save14_sub1">
+								<td class="pastLives_save_age" id="pastLives_save14_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save14_date">After the end of a life,
 									click "Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save14_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save14_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save14_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save14_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save14_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save14_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save15" class="pastlives_save" onClick="pastFn(15)">
+					<div id="pastLives_save15" class="pastLives_save" onClick="pastFn(15)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save15_main">
-								<td class="pastlives_save_no" id="pastlives_save15_no">15</td>
-								<td class="pastlives_save_name" id="pastlives_save15_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save15_main">
+								<td class="pastLives_save_no" id="pastLives_save15_no">15</td>
+								<td class="pastLives_save_name" id="pastLives_save15_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save15_sub1">
-								<td class="pastlives_save_age" id="pastlives_save15_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save15_date">After the end of a life,
+							<tr class="pastLives_save_sub1" id="pastLives_save15_sub1">
+								<td class="pastLives_save_age" id="pastLives_save15_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save15_date">After the end of a life,
 									click "Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save15_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save15_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save15_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save15_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save15_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save15_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save16" class="pastlives_save" onClick="pastFn(16)">
+					<div id="pastLives_save16" class="pastLives_save" onClick="pastFn(16)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save16_main">
-								<td class="pastlives_save_no" id="pastlives_save16_no">16</td>
-								<td class="pastlives_save_name" id="pastlives_save16_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save16_main">
+								<td class="pastLives_save_no" id="pastLives_save16_no">16</td>
+								<td class="pastLives_save_name" id="pastLives_save16_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save16_sub1">
-								<td class="pastlives_save_age" id="pastlives_save16_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save16_date">After the end of a life,
+							<tr class="pastLives_save_sub1" id="pastLives_save16_sub1">
+								<td class="pastLives_save_age" id="pastLives_save16_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save16_date">After the end of a life,
 									click "Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save16_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save16_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save16_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save16_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save16_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save16_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save17" class="pastlives_save" onClick="pastFn(17)">
+					<div id="pastLives_save17" class="pastLives_save" onClick="pastFn(17)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save17_main">
-								<td class="pastlives_save_no" id="pastlives_save17_no">17</td>
-								<td class="pastlives_save_name" id="pastlives_save17_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save17_main">
+								<td class="pastLives_save_no" id="pastLives_save17_no">17</td>
+								<td class="pastLives_save_name" id="pastLives_save17_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save17_sub1">
-								<td class="pastlives_save_age" id="pastlives_save17_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save17_date">After the end of a life,
+							<tr class="pastLives_save_sub1" id="pastLives_save17_sub1">
+								<td class="pastLives_save_age" id="pastLives_save17_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save17_date">After the end of a life,
 									click "Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save17_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save17_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save17_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save17_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save17_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save17_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save18" class="pastlives_save" onClick="pastFn(18)">
+					<div id="pastLives_save18" class="pastLives_save" onClick="pastFn(18)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save18_main">
-								<td class="pastlives_save_no" id="pastlives_save18_no">18</td>
-								<td class="pastlives_save_name" id="pastlives_save18_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save18_main">
+								<td class="pastLives_save_no" id="pastLives_save18_no">18</td>
+								<td class="pastLives_save_name" id="pastLives_save18_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save18_sub1">
-								<td class="pastlives_save_age" id="pastlives_save18_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save18_date">After the end of a life,
+							<tr class="pastLives_save_sub1" id="pastLives_save18_sub1">
+								<td class="pastLives_save_age" id="pastLives_save18_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save18_date">After the end of a life,
 									click "Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save18_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save18_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save18_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save18_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save18_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save18_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save19" class="pastlives_save" onClick="pastFn(19)">
+					<div id="pastLives_save19" class="pastLives_save" onClick="pastFn(19)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save19_main">
-								<td class="pastlives_save_no" id="pastlives_save19_no">19</td>
-								<td class="pastlives_save_name" id="pastlives_save19_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save19_main">
+								<td class="pastLives_save_no" id="pastLives_save19_no">19</td>
+								<td class="pastLives_save_name" id="pastLives_save19_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save19_sub1">
-								<td class="pastlives_save_age" id="pastlives_save19_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save19_date">After the end of a life,
+							<tr class="pastLives_save_sub1" id="pastLives_save19_sub1">
+								<td class="pastLives_save_age" id="pastLives_save19_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save19_date">After the end of a life,
 									click "Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save19_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save19_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save19_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save19_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save19_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save19_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save20" class="pastlives_save" onClick="pastFn(20)">
+					<div id="pastLives_save20" class="pastLives_save" onClick="pastFn(20)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save20_main">
-								<td class="pastlives_save_no" id="pastlives_save20_no">20</td>
-								<td class="pastlives_save_name" id="pastlives_save20_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save20_main">
+								<td class="pastLives_save_no" id="pastLives_save20_no">20</td>
+								<td class="pastLives_save_name" id="pastLives_save20_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save20_sub1">
-								<td class="pastlives_save_age" id="pastlives_save20_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save20_date">After the end of a life,
+							<tr class="pastLives_save_sub1" id="pastLives_save20_sub1">
+								<td class="pastLives_save_age" id="pastLives_save20_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save20_date">After the end of a life,
 									click "Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save20_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save20_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save20_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save20_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save20_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save20_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save21" class="pastlives_save" onClick="pastFn(21)">
+					<div id="pastLives_save21" class="pastLives_save" onClick="pastFn(21)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save21_main">
-								<td class="pastlives_save_no" id="pastlives_save21_no">21</td>
-								<td class="pastlives_save_name" id="pastlives_save21_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save21_main">
+								<td class="pastLives_save_no" id="pastLives_save21_no">21</td>
+								<td class="pastLives_save_name" id="pastLives_save21_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save21_sub1">
-								<td class="pastlives_save_age" id="pastlives_save21_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save21_date">After the end of a life,
+							<tr class="pastLives_save_sub1" id="pastLives_save21_sub1">
+								<td class="pastLives_save_age" id="pastLives_save21_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save21_date">After the end of a life,
 									click "Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save21_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save21_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save21_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save21_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save21_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save21_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save22" class="pastlives_save" onClick="pastFn(22)">
+					<div id="pastLives_save22" class="pastLives_save" onClick="pastFn(22)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save22_main">
-								<td class="pastlives_save_no" id="pastlives_save22_no">22</td>
-								<td class="pastlives_save_name" id="pastlives_save22_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save22_main">
+								<td class="pastLives_save_no" id="pastLives_save22_no">22</td>
+								<td class="pastLives_save_name" id="pastLives_save22_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save22_sub1">
-								<td class="pastlives_save_age" id="pastlives_save22_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save22_date">After the end of a life,
+							<tr class="pastLives_save_sub1" id="pastLives_save22_sub1">
+								<td class="pastLives_save_age" id="pastLives_save22_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save22_date">After the end of a life,
 									click "Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save22_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save22_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save22_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save22_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save22_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save22_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save23" class="pastlives_save" onClick="pastFn(23)">
+					<div id="pastLives_save23" class="pastLives_save" onClick="pastFn(23)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save23_main">
-								<td class="pastlives_save_no" id="pastlives_save23_no">23</td>
-								<td class="pastlives_save_name" id="pastlives_save23_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save23_main">
+								<td class="pastLives_save_no" id="pastLives_save23_no">23</td>
+								<td class="pastLives_save_name" id="pastLives_save23_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save23_sub1">
-								<td class="pastlives_save_age" id="pastlives_save23_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save23_date">After the end of a life,
+							<tr class="pastLives_save_sub1" id="pastLives_save23_sub1">
+								<td class="pastLives_save_age" id="pastLives_save23_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save23_date">After the end of a life,
 									click "Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save23_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save23_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save23_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save23_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save23_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save23_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save24" class="pastlives_save" onClick="pastFn(24)">
+					<div id="pastLives_save24" class="pastLives_save" onClick="pastFn(24)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save24_main">
-								<td class="pastlives_save_no" id="pastlives_save24_no">24</td>
-								<td class="pastlives_save_name" id="pastlives_save24_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save24_main">
+								<td class="pastLives_save_no" id="pastLives_save24_no">24</td>
+								<td class="pastLives_save_name" id="pastLives_save24_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save24_sub1">
-								<td class="pastlives_save_age" id="pastlives_save24_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save24_date">After the end of a life,
+							<tr class="pastLives_save_sub1" id="pastLives_save24_sub1">
+								<td class="pastLives_save_age" id="pastLives_save24_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save24_date">After the end of a life,
 									click "Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save24_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save24_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save24_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save24_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save24_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save24_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save25" class="pastlives_save" onClick="pastFn(25)">
+					<div id="pastLives_save25" class="pastLives_save" onClick="pastFn(25)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save25_main">
-								<td class="pastlives_save_no" id="pastlives_save25_no">25</td>
-								<td class="pastlives_save_name" id="pastlives_save25_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save25_main">
+								<td class="pastLives_save_no" id="pastLives_save25_no">25</td>
+								<td class="pastLives_save_name" id="pastLives_save25_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save25_sub1">
-								<td class="pastlives_save_age" id="pastlives_save25_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save25_date">After the end of a life,
+							<tr class="pastLives_save_sub1" id="pastLives_save25_sub1">
+								<td class="pastLives_save_age" id="pastLives_save25_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save25_date">After the end of a life,
 									click "Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save25_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save25_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save25_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save25_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save25_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save25_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save26" class="pastlives_save" onClick="pastFn(26)">
+					<div id="pastLives_save26" class="pastLives_save" onClick="pastFn(26)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save26_main">
-								<td class="pastlives_save_no" id="pastlives_save26_no">26</td>
-								<td class="pastlives_save_name" id="pastlives_save26_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save26_main">
+								<td class="pastLives_save_no" id="pastLives_save26_no">26</td>
+								<td class="pastLives_save_name" id="pastLives_save26_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save26_sub1">
-								<td class="pastlives_save_age" id="pastlives_save26_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save26_date">After the end of a life,
+							<tr class="pastLives_save_sub1" id="pastLives_save26_sub1">
+								<td class="pastLives_save_age" id="pastLives_save26_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save26_date">After the end of a life,
 									click "Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save26_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save26_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save26_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save26_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save26_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save26_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save27" class="pastlives_save" onClick="pastFn(27)">
+					<div id="pastLives_save27" class="pastLives_save" onClick="pastFn(27)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save27_main">
-								<td class="pastlives_save_no" id="pastlives_save27_no">27</td>
-								<td class="pastlives_save_name" id="pastlives_save27_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save27_main">
+								<td class="pastLives_save_no" id="pastLives_save27_no">27</td>
+								<td class="pastLives_save_name" id="pastLives_save27_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save27_sub1">
-								<td class="pastlives_save_age" id="pastlives_save27_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save27_date">After the end of a life,
+							<tr class="pastLives_save_sub1" id="pastLives_save27_sub1">
+								<td class="pastLives_save_age" id="pastLives_save27_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save27_date">After the end of a life,
 									click "Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save27_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save27_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save27_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save27_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save27_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save27_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save28" class="pastlives_save" onClick="pastFn(28)">
+					<div id="pastLives_save28" class="pastLives_save" onClick="pastFn(28)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save28_main">
-								<td class="pastlives_save_no" id="pastlives_save28_no">28</td>
-								<td class="pastlives_save_name" id="pastlives_save28_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save28_main">
+								<td class="pastLives_save_no" id="pastLives_save28_no">28</td>
+								<td class="pastLives_save_name" id="pastLives_save28_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save28_sub1">
-								<td class="pastlives_save_age" id="pastlives_save28_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save28_date">After the end of a life,
+							<tr class="pastLives_save_sub1" id="pastLives_save28_sub1">
+								<td class="pastLives_save_age" id="pastLives_save28_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save28_date">After the end of a life,
 									click "Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save28_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save28_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save28_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save28_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save28_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save28_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save29" class="pastlives_save" onClick="pastFn(29)">
+					<div id="pastLives_save29" class="pastLives_save" onClick="pastFn(29)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save29_main">
-								<td class="pastlives_save_no" id="pastlives_save29_no">29</td>
-								<td class="pastlives_save_name" id="pastlives_save29_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save29_main">
+								<td class="pastLives_save_no" id="pastLives_save29_no">29</td>
+								<td class="pastLives_save_name" id="pastLives_save29_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save29_sub1">
-								<td class="pastlives_save_age" id="pastlives_save29_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save29_date">After the end of a life,
+							<tr class="pastLives_save_sub1" id="pastLives_save29_sub1">
+								<td class="pastLives_save_age" id="pastLives_save29_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save29_date">After the end of a life,
 									click "Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save29_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save29_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save29_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save29_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save29_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save29_career"></td>
 							</tr>
 						</table>
 					</div>
-					<div id="pastlives_save30" class="pastlives_save" onClick="pastFn(30)">
+					<div id="pastLives_save30" class="pastLives_save" onClick="pastFn(30)">
 						<table>
-							<tr class="pastlives_save_main" id="pastlives_save30_main">
-								<td class="pastlives_save_no" id="pastlives_save30_no">30</td>
-								<td class="pastlives_save_name" id="pastlives_save30_name">Empty</td>
+							<tr class="pastLives_save_main" id="pastLives_save30_main">
+								<td class="pastLives_save_no" id="pastLives_save30_no">30</td>
+								<td class="pastLives_save_name" id="pastLives_save30_name">Empty</td>
 							</tr>
-							<tr class="pastlives_save_sub1" id="pastlives_save30_sub1">
-								<td class="pastlives_save_age" id="pastlives_save30_age"></td>
-								<td class="pastlives_save_date" id="pastlives_save30_date">After the end of a life,
+							<tr class="pastLives_save_sub1" id="pastLives_save30_sub1">
+								<td class="pastLives_save_age" id="pastLives_save30_age"></td>
+								<td class="pastLives_save_date" id="pastLives_save30_date">After the end of a life,
 									click "Preserve Life" to have your life remembered for all of eternity!</td>
 							</tr>
-							<tr class="pastlives_save_sub2" id="pastlives_save30_sub2">
-								<td class="pastlives_save_wealth" id="pastlives_save30_wealth"></td>
-								<td class="pastlives_save_career" id="pastlives_save30_career"></td>
+							<tr class="pastLives_save_sub2" id="pastLives_save30_sub2">
+								<td class="pastLives_save_wealth" id="pastLives_save30_wealth"></td>
+								<td class="pastLives_save_career" id="pastLives_save30_career"></td>
 							</tr>
 						</table>
 					</div>
 				</div>
 				<br><br><br>
 				<div>
-					<div id="pastlives2_overlay" class="overlay">
-						<div id="pastlives2_tab">
-							<button id="pastlives2_close" class="close"
-								onclick="overlay('pastlives2_overlay', 'none')"></button>
-							<div id="pastlives2_container">
-								<h1 id="pastlives2_h1">John Smith's diary</h1>
-								<p id="pastlives2_p">01/01/1970 - I have been brought into this world. <br>01/01/2050 -
+					<div id="pastLives2_overlay" class="overlay">
+						<div id="pastLives2_tab">
+							<button id="pastLives2_close" class="close"
+								onclick="overlay('pastLives2_overlay', 'none')"></button>
+							<div id="pastLives2_container">
+								<h1 id="pastLives2_h1">John Smith's diary</h1>
+								<p id="pastLives2_p">01/01/1970 - I have been brought into this world. <br>01/01/2050 -
 									I died due to natural causes. I was aged 80 years and 0 days when I died. <br></p>
 							</div>
 						</div>
@@ -781,11 +781,11 @@
 				<h3>Theme</h3>
 				<button id="settings_theme" onclick="settings_theme()"></button>
 				<h3>Game Speed</h3>
-				<label for="settings_gamespeed1"><input id="settings_gamespeed1" name="gamespeed" type="radio"
+				<label for="settings_gameSpeed1"><input id="settings_gameSpeed1" name="gameSpeed" type="radio"
 						value="1">&nbsp;Slow&nbsp;&nbsp;&nbsp;</label>
-				<label for="settings_gamespeed2"><input id="settings_gamespeed2" name="gamespeed" type="radio"
+				<label for="settings_gameSpeed2"><input id="settings_gameSpeed2" name="gameSpeed" type="radio"
 						value="2">&nbsp;Medium&nbsp;&nbsp;&nbsp;</label>
-				<label for="settings_gamespeed3"><input id="settings_gamespeed3" name="gamespeed" type="radio"
+				<label for="settings_gameSpeed3"><input id="settings_gameSpeed3" name="gameSpeed" type="radio"
 						value="3">&nbsp;Fast&nbsp;&nbsp;&nbsp;</label>
 				<p>The Game Speed adjusts the amounts of events that will happen in your life. For a fast game but
 					uneventful life, choose slow. For a slow game but a life packed full of events, choose fast. For a

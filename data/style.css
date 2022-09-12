@@ -82,19 +82,19 @@ img {
 	color: white;
 }
 
-#newlife {
+#newLife {
 	top: 35%;
 	cursor: pointer;
 	/* Add a pointer on hover */
 }
 
-#continuelife {
+#continueLife {
 	top: 45%;
 	cursor: pointer;
 	/* Add a pointer on hover */
 }
 
-#pastlives {
+#pastLives {
 	top: 55%;
 	cursor: pointer;
 	/* Add a pointer on hover */
@@ -114,19 +114,19 @@ img {
 }
 
 /*Error Overlays*/
-#notsupported_overlay {
-	background-image: url("png/notsupported.png");
+#notSupported_overlay {
+	background-image: url("png/notSupported.png");
 	background-size: cover;
 	z-index: 100;
 }
 
 @media only screen and (max-width: 1250px) {
-	#toosmall_overlay {
+	#tooSmall_overlay {
 		display: block;
 	}
 }
 
-#toosmall_tab {
+#tooSmall_tab {
 	position: fixed;
 	display: fixed;
 	width: 30%;
@@ -140,21 +140,21 @@ img {
 	overflow-y: auto;
 }
 
-#toosmall_tab h2,
-#toosmall_tab p {
+#tooSmall_tab h2,
+#tooSmall_tab p {
 	position: relative;
 	left: 3%;
 	width: 94%;
 	color: black;
 }
 
-#toosmall_tab img {
+#tooSmall_tab img {
 	position: relative;
 	left: 3%;
 	width: 370px;
 }
 
-#notstarted_tab {
+#notStarted_tab {
 	position: fixed;
 	display: fixed;
 	width: 30%;
@@ -168,8 +168,8 @@ img {
 	overflow-y: auto;
 }
 
-#notstarted_tab h2,
-#notstarted_tab p {
+#notStarted_tab h2,
+#notStarted_tab p {
 	position: relative;
 	left: 3%;
 	width: 94%;
@@ -177,7 +177,7 @@ img {
 }
 
 /*New Life Overlay*/
-#newlife_tab {
+#newLife_tab {
 	position: fixed;
 	display: fixed;
 	width: 30%;
@@ -191,20 +191,20 @@ img {
 	overflow-y: auto;
 }
 
-#newlife_container {
+#newLife_container {
 	position: relative;
 	left: 3%;
 	width: 88%;
 }
 
-#newlife_close {
+#newLife_close {
 	width: 6%;
 	right: 3%;
 	top: 3%;
 	padding-top: 6%;
 }
 
-#newlife_start {
+#newLife_start {
 	cursor: pointer;
 	position: absolute;
 	display: block;
@@ -217,7 +217,7 @@ img {
 	padding-top: 10%;
 }
 
-#newlife_tab h1 {
+#newLife_tab h1 {
 	position: relative;
 	display: block;
 	font-size: 40px;
@@ -226,7 +226,7 @@ img {
 	line-height: 20px;
 }
 
-#newlife_tab h2 {
+#newLife_tab h2 {
 	position: relative;
 	display: block;
 	font-size: 20px;
@@ -234,7 +234,7 @@ img {
 	height: auto;
 }
 
-#newlife_tab h3 {
+#newLife_tab h3 {
 	position: relative;
 	display: block;
 	font-size: 10px;
@@ -243,7 +243,7 @@ img {
 	line-height: 30px;
 }
 
-#newlife_tab p {
+#newLife_tab p {
 	position: relative;
 	display: block;
 	font-size: 16px;
@@ -252,12 +252,12 @@ img {
 	line-height: 16px;
 }
 
-#newlife_tab input {
+#newLife_tab input {
 	position: relative;
 	font-family: "Open Sans", sans-serif;
 }
 
-#newlife2_tab {
+#newLife2_tab {
 	position: fixed;
 	width: 30%;
 	height: 25%;
@@ -270,7 +270,7 @@ img {
 	overflow-y: auto;
 }
 
-#newlife2_tab h1 {
+#newLife2_tab h1 {
 	position: relative;
 	font-size: 40px;
 	font-weight: 300;
@@ -278,26 +278,26 @@ img {
 	line-height: 20px;
 }
 
-#newlife2_tab p {
+#newLife2_tab p {
 	position: relative;
 	padding: 5px 0px;
 }
 
-#newlife2_container {
+#newLife2_container {
 	position: relative;
 	left: 3%;
 	width: 87%;
 	height: 70%;
 }
 
-#newlife2_close {
+#newLife2_close {
 	width: 6%;
 	right: 3%;
 	top: 5%;
 	padding-top: 6%;
 }
 
-#newlife2_yes {
+#newLife2_yes {
 	cursor: pointer;
 	position: absolute;
 	background-image: url("png/button_yes.png");
@@ -309,7 +309,7 @@ img {
 	padding-top: 10%;
 }
 
-#newlife2_no {
+#newLife2_no {
 	cursor: pointer;
 	position: absolute;
 	background-image: url("png/button_no.png");
@@ -322,7 +322,7 @@ img {
 }
 
 /*Continue Life Overlay*/
-#continuelife_tab {
+#continueLife_tab {
 	position: fixed;
 	display: fixed;
 	width: 50%;
@@ -336,13 +336,13 @@ img {
 	overflow-y: auto;
 }
 
-#continuelife_container {
+#continueLife_container {
 	display: block;
 	margin-left: 3%;
 	width: 87%;
 }
 
-#continuelife_tab h1 {
+#continueLife_tab h1 {
 	position: relative;
 	font-size: 40px;
 	font-weight: 300;
@@ -350,7 +350,7 @@ img {
 	line-height: 20px;
 }
 
-#continuelife_close {
+#continueLife_close {
 	position: absolute;
 	width: 5%;
 	right: 3%;
@@ -358,14 +358,14 @@ img {
 	padding-top: 5%;
 }
 
-.continuelife_savefile {
+.continueLife_saveFile {
 	border: 1px solid black;
 	transition: 0.5s all;
 	-webkit-transition: 0.5s all;
 	-moz-transition: 0.5s all;
 }
 
-.continuelife_savefile:hover {
+.continueLife_saveFile:hover {
 	background-color: white;
 	transition: 0.5s all;
 	-webkit-transition: 0.5s all;
@@ -374,36 +374,36 @@ img {
 	padding-bottom: 10px;
 }
 
-.continuelife_savefile:not(#continuelife_savefile10) {
+.continueLife_saveFile:not(#continueLife_saveFile10) {
 	border-bottom: 0px;
 }
 
-#continuelife_div {
+#continueLife_div {
 	position: relative;
 	display: block;
 	width: 100%;
 }
 
-#continuelife_div table {
+#continueLife_div table {
 	width: 100%;
 }
 
-.continuelife_savefile_no {
+.continueLife_saveFile_no {
 	font-size: 36px;
 	width: 20%;
 }
 
-.continuelife_savefile_name {
+.continueLife_saveFile_name {
 	font-size: 36px;
 	width: 80%;
 	text-align: right;
 }
-.continuelife_savefile_date {
+.continueLife_saveFile_date {
 	text-align: right;
 }
 
 /*Continue Life Secondary Overlay*/
-#continuelife2_tab {
+#continueLife2_tab {
 	position: fixed;
 	width: 30%;
 	height: 25%;
@@ -416,7 +416,7 @@ img {
 	overflow-y: auto;
 }
 
-#continuelife2_tab h1 {
+#continueLife2_tab h1 {
 	position: relative;
 	font-size: 40px;
 	font-weight: 300;
@@ -424,26 +424,26 @@ img {
 	line-height: 20px;
 }
 
-#continuelife2_tab p {
+#continueLife2_tab p {
 	position: relative;
 	padding: 5px 0px;
 }
 
-#continuelife2_container {
+#continueLife2_container {
 	position: relative;
 	left: 3%;
 	width: 87%;
 	height: 70%;
 }
 
-#continuelife2_close {
+#continueLife2_close {
 	width: 6%;
 	right: 3%;
 	top: 5%;
 	padding-top: 6%;
 }
 
-#continuelife2_yes {
+#continueLife2_yes {
 	cursor: pointer;
 	position: absolute;
 	background-image: url("png/button_yes.png");
@@ -455,7 +455,7 @@ img {
 	padding-top: 10%;
 }
 
-#continuelife2_no {
+#continueLife2_no {
 	cursor: pointer;
 	position: absolute;
 	background-image: url("png/button_no.png");
@@ -468,7 +468,7 @@ img {
 }
 
 /*Past Live Overlay*/
-#pastlives_tab {
+#pastLives_tab {
 	position: fixed;
 	display: fixed;
 	width: 50%;
@@ -482,61 +482,61 @@ img {
 	overflow-y: auto;
 }
 
-#pastlives_container {
+#pastLives_container {
 	width: 87%;
 	margin-left: 3%;
 }
 
-#pastlives_close {
+#pastLives_close {
 	width: 6%;
 	right: 3%;
 	top: 3%;
 	padding-top: 6%;
 }
 
-#pastlives_tab h1 {
+#pastLives_tab h1 {
 	padding-bottom: 10px;
 	font-size: 40px;
 	font-weight: 300;
 }
 
-#pastlives_tab p {
+#pastLives_tab p {
 	position: relative;
 	display: block;
 }
 
-#pastlives_div {
+#pastLives_div {
 	position: relative;
 	display: block;
 }
 
-#pastlives_div table {
+#pastLives_div table {
 	width: 100%;
 }
 
-.pastlives_save_no {
+.pastLives_save_no {
 	font-size: 36px;
 	width: 30%;
 }
 
-.pastlives_save_name {
+.pastLives_save_name {
 	font-size: 36px;
 	width: 70%;
 	text-align: right;
 }
-.pastlives_save_date,
-.pastlives_save_career {
+.pastLives_save_date,
+.pastLives_save_career {
 	text-align: right;
 }
 
-.pastlives_save {
+.pastLives_save {
 	border: 1px solid black;
 	transition: 0.5s all;
 	-webkit-transition: 0.5s all;
 	-moz-transition: 0.5s all;
 }
 
-.pastlives_save:hover {
+.pastLives_save:hover {
 	background-color: white;
 	transition: 0.5s all;
 	-webkit-transition: 0.5s all;
@@ -545,12 +545,12 @@ img {
 	padding-bottom: 10px;
 }
 
-.pastlives_save:not(#pastlives_save30) {
+.pastLives_save:not(#pastLives_save30) {
 	border-bottom: 0px;
 }
 
 /*Past Life Secondary Overlay*/
-#pastlives2_tab {
+#pastLives2_tab {
 	overflow-x: hidden;
 	overflow-y: auto;
 	position: fixed;
@@ -564,20 +564,20 @@ img {
 	animation-duration: 1s;
 }
 
-#pastlives2_close {
+#pastLives2_close {
 	width: 6%;
 	right: 3%;
 	top: 3%;
 	padding-top: 6%;
 }
 
-#pastlives2_tab h1 {
+#pastLives2_tab h1 {
 	padding-bottom: 10px;
 	font-size: 40px;
 	font-weight: 300;
 }
 
-#pastlives2_container {
+#pastLives2_container {
 	max-width: 100%;
 	margin-left: 3%;
 	width: 87%;
@@ -940,7 +940,7 @@ img {
 	margin: 8px 0px;
 }
 
-#death_endlife {
+#death_endLife {
 	cursor: pointer;
 	position: absolute;
 	display: block;
@@ -953,7 +953,7 @@ img {
 	padding-top: 10%;
 }
 
-#death_preservelife {
+#death_preserveLife {
 	cursor: pointer;
 	position: absolute;
 	display: block;
