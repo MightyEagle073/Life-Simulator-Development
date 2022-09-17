@@ -37,7 +37,12 @@ const database = {
 				job: [], //Array of integers >= 0
 				level: [], //Array of integers > 0
 			},
-			longest: 0, //Integer >= 0
+			past: {
+				job: [], //Array of integers >= 0
+				level: [], //Array of integers > 0
+				start: [], //Array of date libraries
+				end: [], //Array of date libraries
+			},
 		},
 		date: {
 			year: 1970, //Integer >= 0, changed when life is created

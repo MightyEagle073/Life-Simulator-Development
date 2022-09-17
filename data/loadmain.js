@@ -10,7 +10,7 @@ if (localStorage.getItem("lifeTransfer") != null) {
 	localStorage.removeItem("lifeTransfer")
 }
 else {
-	document.getElementById("notstarted_overlay").style.display = "block";
+	document.getElementById("notStarted_overlay").style.display = "block";
 }
 
 //Segment M4: This function changes the settings according to setting local storages
@@ -29,8 +29,9 @@ switch (lifeInfo.gender) {
 	default:
 		document.getElementById("main_info_gender").innerHTML = "Gender: Error! You might want to restart your game."
 }
+document.getElementById("main_info_balance").innerHTML = "Balance: $" + lifeInfo.balance
+document.getElementById("main_info_netWorth").innerHTML = "Net Worth: $" + lifeInfo.netWorth
 document.getElementById("main_info_birthday").innerHTML = "Birthday:" + " " + convert_dict_date(lifeInfo.birthday)
-console.log(convert_dict_date(lifeInfo.date))
 document.getElementById("main_control_currentDate").innerHTML = convert_dict_date(lifeInfo.date)
 document.getElementById("main_control_speed").value = 0
 
@@ -343,8 +344,8 @@ function progress() {
 			let newMark_iq = lifeInfo.iq
 			let newMark_mark = lifeInfo.education.marks
 			let newMark_difficulty = database.education.grades[database.education.levels[lifeInfo.education.level]].difficulty[parseInt([lifeInfo.education.grade])]
-			let newMark_workDone = (5 + Math.pow(newMark_effort, 0.8)) * newMark_iq * (100 - newMark_mark) / 1000000
-			let newMark_workLoad = (1 + Math.pow(newMark_difficulty, 0.6)) / 200
+			let newMark_workDone = (5 + Math.pow(newMark_effort, 0.8)) * newMark_iq * (100 - newMark_mark) / 500000
+			let newMark_workLoad = (1 + Math.pow(newMark_difficulty, 0.6)) / 100
 			let markAdded = newMark_workDone - newMark_workLoad
 			if (lifeInfo.education.marks >= 1 || markAdded > 0) {
 				lifeInfo.education.marks += markAdded
@@ -373,6 +374,8 @@ function progress() {
 		//Task 8: Updates information throughout the HTML
 		document.getElementById("main_control_currentDate").innerHTML = convert_dict_date(lifeInfo.date)
 		document.getElementById("main_info_age").innerHTML = "Age: " + lifeInfo.age.years + " years " + lifeInfo.age.days + " days"
+		document.getElementById("main_info_balance").innerHTML = "Balance: " + lifeInfo.balance.toLocaleString("en-AU", {style: "currency", currency: "AUD"})
+		document.getElementById("main_info_netWorth").innerHTML = "Net Worth: " + lifeInfo.netWorth.toLocaleString("en-AU", {style: "currency", currency: "AUD"})
 		document.getElementById("main_diary_p").innerHTML = lifeInfo.diary
 		//Task 9: Wait a period of time before advancing to the next day.
 		wait(1000 * (Math.pow(10, (-0.03 * document.getElementById("main_control_speed").value))) - 1)
