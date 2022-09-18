@@ -29,8 +29,8 @@ switch (lifeInfo.gender) {
 	default:
 		document.getElementById("main_info_gender").innerHTML = "Gender: Error! You might want to restart your game."
 }
-document.getElementById("main_info_balance").innerHTML = "Balance: $" + lifeInfo.balance
-document.getElementById("main_info_netWorth").innerHTML = "Net Worth: $" + lifeInfo.netWorth
+document.getElementById("main_info_balance").innerHTML = "Balance: " + lifeInfo.balance.toLocaleString("en-AU", {style: "currency", currency: "AUD"})
+document.getElementById("main_info_netWorth").innerHTML = "Net Worth: " + lifeInfo.netWorth.toLocaleString("en-AU", {style: "currency", currency: "AUD"})
 document.getElementById("main_info_birthday").innerHTML = "Birthday:" + " " + convert_dict_date(lifeInfo.birthday)
 document.getElementById("main_control_currentDate").innerHTML = convert_dict_date(lifeInfo.date)
 document.getElementById("main_control_speed").value = 0
@@ -57,17 +57,13 @@ function settings_sure() {
 
 //Segment M9: This function changes the value of the settings theme button
 function settings_theme() {
-	if (theme_temp == database_themeNames.length - 1) {
+	if (theme_temp == database.themeNames.length - 1) {
 		theme_temp = 1
 	}
 	else {
 		theme_temp = theme_temp + 1
 	}
-	for (let i = 1; i <= database_themeNames.length - 1; i++) {
-		if (theme_temp == i) {
-			document.getElementById("settings_theme").style.backgroundImage = `url('wallpapers/previews/${database.themeNames[i]}')`;
-		}
-	}
+	document.getElementById("settings_theme").style.backgroundImage = `url('wallpapers/previews/${database.themeNames[theme_temp]}')`;
 }
 
 //Segment M10: These functions are related to education
