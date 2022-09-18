@@ -1,10 +1,8 @@
-Current Version: 0.2.4.209181
-Released: 18/09/2022 02:43am
+Current Version: 0.2.4.209182
+Released: 18/09/2022 09:19pm
 
-Changes from 0.2.4.209132:
-# Added camel case to notstarted
-# Added net worth and balance to life info panel
-# Studying is now more effective
+Changes from 0.2.4.209181:
+* Fixed a few bugs
 
 Version Number meaning
 First number: 0 means the game is still in development and not complete, 1 means the game is out
