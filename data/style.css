@@ -6,7 +6,7 @@ html {
 body {
 	font-family: "Open Sans", sans-serif;
 	font-weight: 300;
-	background-color: #FFFFFF;
+	background-color: #ffffff;
 	box-sizing: border-box;
 	margin: 0;
 	max-width: 100%;
@@ -16,7 +16,12 @@ body {
 }
 
 img {
-	alt: "Image cannot be loaded"
+	alt: "Image cannot be loaded";
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
 }
 
 .close {
@@ -47,7 +52,7 @@ img {
 	z-index: 2;
 	/* Specify a stack order in case you're using a different order for other elements */
 	animation-name: overlay_animation;
-	animation-duration: 1s
+	animation-duration: 1s;
 }
 
 /*Home*/
@@ -104,7 +109,6 @@ img {
 	top: 65%;
 	cursor: pointer;
 	/* Add a pointer on hover */
-
 }
 
 #information {
@@ -642,14 +646,14 @@ img {
 	appearance: none;
 	width: 25px;
 	height: 25px;
-	background: #4CAF50;
+	background: #4caf50;
 	cursor: pointer;
 }
 
 #settings_volume::-moz-range-thumb {
 	width: 25px;
 	height: 25px;
-	background: #4CAF50;
+	background: #4caf50;
 	cursor: pointer;
 }
 
@@ -884,14 +888,14 @@ img {
 	-webkit-appearance: none;
 	width: 10%;
 	height: 150%;
-	background: #4CAF50;
+	background: #4caf50;
 	cursor: pointer;
 }
 
 #main_control_speed::-moz-range-thumb {
 	width: 10%;
 	height: 150%;
-	background: #4CAF50;
+	background: #4caf50;
 	cursor: pointer;
 }
 
@@ -1094,14 +1098,14 @@ img {
 	-webkit-appearance: none;
 	width: 5%;
 	height: 150%;
-	background: #4CAF50;
+	background: #4caf50;
 	cursor: pointer;
 }
 
 #education_effort_input::-moz-range-thumb {
 	width: 5%;
 	height: 150%;
-	background: #4CAF50;
+	background: #4caf50;
 	cursor: pointer;
 }
 
@@ -1262,7 +1266,7 @@ img {
 	}
 
 	to {
-		background-color: rgba(0, 0, 0, 0.5)
+		background-color: rgba(0, 0, 0, 0.5);
 	}
 }
 

@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html>
-
+	<head>
+		<meta charset="utf-8" />
+		<title>Life Simulator</title>
+		<link href="data/style.css" type="text/css" rel="stylesheet" />
+		<link
+			href="https://fonts.googleapis.com/css?family=Open+Sans"
+			rel="stylesheet"
+			type="text/css"
+		/>
+		<link href="data/logo.png" rel="icon" />
+		<script src="data/jquery-3.4.1.min.js"></script>
+		<script src="data/jquery.fittext.js"></script>
+		<script src="data/js.cookie.min.js"></script>
+		<script src="data/database.js"></script>
+		<script src="data/functions.js"></script>
+	</head>
 <head>
 	<meta charset="utf-8">
 	<title>Life Simulator</title>
@@ -228,8 +243,12 @@
 						<button id="continueLife2_yes" onclick="continueLife()"></button>
 						<button id="continueLife2_no" onclick="overlay('continueLife2_overlay', 'none')"></button>
 					</div>
+					<button id="newlife2_yes" onclick="createlife()"></button>
+					<button
+						id="newlife2_no"
+						onclick="overlay('newlife2_overlay', 'none')"
+					></button>
 				</div>
-				<br><br><br>
 			</div>
 			<button id="continueLife_close" class="close" onclick="overlay('continueLife_overlay', 'none')"></button>
 		</div>
@@ -754,6 +773,7 @@
 							</tr>
 						</table>
 					</div>
+					<br /><br /><br />
 				</div>
 				<br><br><br>
 				<div>
@@ -799,19 +819,21 @@
 						<button id="settings2_no" onclick="overlay('settings2_overlay', 'none')"></button>
 					</div>
 				</div>
+				<button
+					id="settings_close"
+					class="close"
+					onclick="overlay('settings_overlay', 'none')"
+				></button>
+				<button id="settings_save" onclick="settings_sure()"></button>
 			</div>
-			<button id="settings_close" class="close" onclick="overlay('settings_overlay', 'none')"></button>
-			<button id="settings_save" onclick="settings_sure()"></button>
 		</div>
-	</div>
-	<div id="home_version">
-		Version: 0.3.0 (Beta - Not to be used for actual gameplay)
-	</div>
-	<script type="text/javascript">
-		// Adjusts size of text within the html
-		$("#home_version").fitText(40);
-	</script>
-	<script src="data/loadhome.js"></script>
-</body>
-
+		<div id="home_version">
+			Version: 0.3.0 (Beta - Not to be used for actual gameplay)
+		</div>
+		<script type="text/javascript">
+			// Adjusts size of text within the html
+			$("#home_version").fitText(40);
+		</script>
+		<script src="data/loadhome.js"></script>
+	</body>
 </html>
