@@ -68,13 +68,13 @@ let guideTitleClickHandler = (guideTitles, current, previous) => {
 		guideTitles[previous].classList.remove("guide-title-reading");
 	}
 	// 2
-	guideParagraph.textContent = guides[guideKeys[current]];
+	guideParagraph.innerHTML = guides[guideKeys[current]];
 };
 
 // !this is a function that has exact same purpose to switch_theme() in function.js, but the former is not a valid global function and should be updated
 let switch_theme_tommyVersion = (DOMobject) => {
 	DOMobject.style.backgroundImage = `url('../data/wallpapers/${
-		database["theme_names"][localStorage.getItem("settings_theme")]
+		database["themeNames"][localStorage.getItem("settings_theme")]
 	}')`;
 };
 
