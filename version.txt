@@ -1,12 +1,10 @@
-Current Version: 0.2.4.209241
-Released: 24/09/2022 12:37am
+Current Version: 0.2.4.209261
+Released: 26/09/2022 02:56am
 
-Changes from 0.2.4.209182:
-# Settings local storages now integrated into one local storage
-# jQuery integration
-# All js files now gone through prettier
-# Major code tweaking
-# Most double quote formats with variables and plus signs now converted to ES6 format
+Changes from 0.2.4.209241:
++ New script system, all scripts now stored in scripts folder
++ Some scripts are now split into others
++ Managed file system a bit better
 
 Version Number meaning
 First number: 0 means the game is still in development and not complete, 1 means the game is out

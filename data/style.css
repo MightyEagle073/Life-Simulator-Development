@@ -1,1287 +1,1286 @@
 /*Universal*/
 html {
-	height: 100%;
+    height: 100%;
 }
 
 body {
-	font-family: "Open Sans", sans-serif;
-	font-weight: 300;
-	background-color: #FFFFFF;
-	box-sizing: border-box;
-	margin: 0;
-	max-width: 100%;
-	overflow-x: hidden;
-	overflow-y: auto;
-	background-size: cover;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    margin: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-size: cover;
 }
 
 img {
-	alt: "Image cannot be loaded"
+    alt: "Image cannot be loaded";
 }
 
 .close {
-	cursor: pointer;
-	/* Add a pointer on hover */
-	position: absolute;
-	background-image: url("png/button_close.png");
-	background-size: cover;
-	border: none;
+    cursor: pointer;
+    /* Add a pointer on hover */
+    position: absolute;
+    background-image: url("png/button_close.png");
+    background-size: cover;
+    border: none;
 }
 
 .overlay {
-	/*The overlay dims the screen when active, also contains the specified tab*/
-	position: fixed;
-	/* Sit on top of the page content */
-	display: none;
-	/* Hidden by default */
-	width: 100%;
-	/* Full width (cover the whole page) */
-	height: 100%;
-	/* Full height (cover the whole page) */
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: rgba(0, 0, 0, 0.5);
-	/* Black background with opacity */
-	z-index: 2;
-	/* Specify a stack order in case you're using a different order for other elements */
-	animation-name: overlay_animation;
-	animation-duration: 1s
+    /*The overlay dims the screen when active, also contains the specified tab*/
+    position: fixed;
+    /* Sit on top of the page content */
+    display: none;
+    /* Hidden by default */
+    width: 100%;
+    /* Full width (cover the whole page) */
+    height: 100%;
+    /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Black background with opacity */
+    z-index: 2;
+    /* Specify a stack order in case you're using a different order for other elements */
+    animation-name: overlay_animation;
+    animation-duration: 1s;
 }
 
 /*Home*/
 #home_logo {
-	position: fixed;
-	width: 35%;
-	top: 5%;
-	left: 32.5%;
+    position: fixed;
+    width: 35%;
+    top: 5%;
+    left: 32.5%;
 }
 
 .home_buttons {
-	font-family: "Open Sans", sans-serif;
-	position: fixed;
-	width: 10%;
-	height: 5%;
-	left: 45%;
-	background-image: url("homebutton_background.png");
-	background-size: cover;
-	border: none;
-	font-size: 16px;
+    font-family: "Open Sans", sans-serif;
+    position: fixed;
+    width: 10%;
+    height: 5%;
+    left: 45%;
+    background-image: url("png/homeButton_background.png");
+    background-size: cover;
+    border: none;
+    font-size: 16px;
 }
 
 #home_version {
-	position: fixed;
-	display: flex;
-	height: 4%;
-	left: 0.5%;
-	width: 99%;
-	top: 96%;
-	font-size: 24px;
-	max-width: 40%;
-	color: white;
+    position: fixed;
+    display: flex;
+    height: 4%;
+    left: 0.5%;
+    width: 99%;
+    top: 96%;
+    font-size: 24px;
+    max-width: 40%;
+    color: white;
 }
 
 #newLife {
-	top: 35%;
-	cursor: pointer;
-	/* Add a pointer on hover */
+    top: 35%;
+    cursor: pointer;
+    /* Add a pointer on hover */
 }
 
 #continueLife {
-	top: 45%;
-	cursor: pointer;
-	/* Add a pointer on hover */
+    top: 45%;
+    cursor: pointer;
+    /* Add a pointer on hover */
 }
 
 #pastLives {
-	top: 55%;
-	cursor: pointer;
-	/* Add a pointer on hover */
+    top: 55%;
+    cursor: pointer;
+    /* Add a pointer on hover */
 }
 
 #settings {
-	top: 65%;
-	cursor: pointer;
-	/* Add a pointer on hover */
-
+    top: 65%;
+    cursor: pointer;
+    /* Add a pointer on hover */
 }
 
 #information {
-	top: 75%;
-	cursor: pointer;
-	/* Add a pointer on hover */
+    top: 75%;
+    cursor: pointer;
+    /* Add a pointer on hover */
 }
 
 /*Error Overlays*/
 #notSupported_overlay {
-	background-image: url("png/notSupported.png");
-	background-size: cover;
-	z-index: 100;
+    background-image: url("png/notSupported.png");
+    background-size: cover;
+    z-index: 100;
 }
 
 @media only screen and (max-width: 1250px) {
-	#tooSmall_overlay {
-		display: block;
-	}
+    #tooSmall_overlay {
+        display: block;
+    }
 }
 
 #tooSmall_tab {
-	position: fixed;
-	display: fixed;
-	width: 30%;
-	height: 80%;
-	left: 35%;
-	top: 10%;
-	background-color: rgba(255, 255, 255, 0.7);
-	animation-name: width30_animation;
-	animation-duration: 1s;
-	overflow-x: hidden;
-	overflow-y: auto;
+    position: fixed;
+    display: fixed;
+    width: 30%;
+    height: 80%;
+    left: 35%;
+    top: 10%;
+    background-color: rgba(255, 255, 255, 0.7);
+    animation-name: width30_animation;
+    animation-duration: 1s;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #tooSmall_tab h2,
 #tooSmall_tab p {
-	position: relative;
-	left: 3%;
-	width: 94%;
-	color: black;
+    position: relative;
+    left: 3%;
+    width: 94%;
+    color: black;
 }
 
 #tooSmall_tab img {
-	position: relative;
-	left: 3%;
-	width: 370px;
+    position: relative;
+    left: 3%;
+    width: 370px;
 }
 
 #notStarted_tab {
-	position: fixed;
-	display: fixed;
-	width: 30%;
-	height: 25%;
-	left: 35%;
-	top: 37.5%;
-	background-color: rgba(255, 255, 255, 0.7);
-	animation-name: width30_animation;
-	animation-duration: 1s;
-	overflow-x: hidden;
-	overflow-y: auto;
+    position: fixed;
+    display: fixed;
+    width: 30%;
+    height: 25%;
+    left: 35%;
+    top: 37.5%;
+    background-color: rgba(255, 255, 255, 0.7);
+    animation-name: width30_animation;
+    animation-duration: 1s;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #notStarted_tab h2,
 #notStarted_tab p {
-	position: relative;
-	left: 3%;
-	width: 94%;
-	color: black;
+    position: relative;
+    left: 3%;
+    width: 94%;
+    color: black;
 }
 
 /*New Life Overlay*/
 #newLife_tab {
-	position: fixed;
-	display: fixed;
-	width: 30%;
-	height: 60%;
-	left: 35%;
-	top: 20%;
-	background-color: rgba(255, 255, 255, 0.7);
-	animation-name: width30_animation;
-	animation-duration: 1s;
-	overflow-x: hidden;
-	overflow-y: auto;
+    position: fixed;
+    display: fixed;
+    width: 30%;
+    height: 60%;
+    left: 35%;
+    top: 20%;
+    background-color: rgba(255, 255, 255, 0.7);
+    animation-name: width30_animation;
+    animation-duration: 1s;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #newLife_container {
-	position: relative;
-	left: 3%;
-	width: 88%;
+    position: relative;
+    left: 3%;
+    width: 88%;
 }
 
 #newLife_close {
-	width: 6%;
-	right: 3%;
-	top: 3%;
-	padding-top: 6%;
+    width: 6%;
+    right: 3%;
+    top: 3%;
+    padding-top: 6%;
 }
 
 #newLife_start {
-	cursor: pointer;
-	position: absolute;
-	display: block;
-	background-image: url("png/button_start.png");
-	background-size: cover;
-	border: none;
-	width: 30%;
-	bottom: 3%;
-	right: 3%;
-	padding-top: 10%;
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    background-image: url("png/button_start.png");
+    background-size: cover;
+    border: none;
+    width: 30%;
+    bottom: 3%;
+    right: 3%;
+    padding-top: 10%;
 }
 
 #newLife_tab h1 {
-	position: relative;
-	display: block;
-	font-size: 40px;
-	font-weight: 300;
-	height: 10px;
-	line-height: 20px;
+    position: relative;
+    display: block;
+    font-size: 40px;
+    font-weight: 300;
+    height: 10px;
+    line-height: 20px;
 }
 
 #newLife_tab h2 {
-	position: relative;
-	display: block;
-	font-size: 20px;
-	font-weight: 300;
-	height: auto;
+    position: relative;
+    display: block;
+    font-size: 20px;
+    font-weight: 300;
+    height: auto;
 }
 
 #newLife_tab h3 {
-	position: relative;
-	display: block;
-	font-size: 10px;
-	font-weight: 600;
-	height: auto;
-	line-height: 30px;
+    position: relative;
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    height: auto;
+    line-height: 30px;
 }
 
 #newLife_tab p {
-	position: relative;
-	display: block;
-	font-size: 16px;
-	font-weight: 300;
-	height: auto;
-	line-height: 16px;
+    position: relative;
+    display: block;
+    font-size: 16px;
+    font-weight: 300;
+    height: auto;
+    line-height: 16px;
 }
 
 #newLife_tab input {
-	position: relative;
-	font-family: "Open Sans", sans-serif;
+    position: relative;
+    font-family: "Open Sans", sans-serif;
 }
 
 #newLife2_tab {
-	position: fixed;
-	width: 30%;
-	height: 25%;
-	left: 35%;
-	top: 40%;
-	background-color: rgba(255, 255, 255, 0.7);
-	animation-name: width30_animation;
-	animation-duration: 1s;
-	overflow-x: hidden;
-	overflow-y: auto;
+    position: fixed;
+    width: 30%;
+    height: 25%;
+    left: 35%;
+    top: 40%;
+    background-color: rgba(255, 255, 255, 0.7);
+    animation-name: width30_animation;
+    animation-duration: 1s;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #newLife2_tab h1 {
-	position: relative;
-	font-size: 40px;
-	font-weight: 300;
-	height: 10px;
-	line-height: 20px;
+    position: relative;
+    font-size: 40px;
+    font-weight: 300;
+    height: 10px;
+    line-height: 20px;
 }
 
 #newLife2_tab p {
-	position: relative;
-	padding: 5px 0px;
+    position: relative;
+    padding: 5px 0px;
 }
 
 #newLife2_container {
-	position: relative;
-	left: 3%;
-	width: 87%;
-	height: 70%;
+    position: relative;
+    left: 3%;
+    width: 87%;
+    height: 70%;
 }
 
 #newLife2_close {
-	width: 6%;
-	right: 3%;
-	top: 5%;
-	padding-top: 6%;
+    width: 6%;
+    right: 3%;
+    top: 5%;
+    padding-top: 6%;
 }
 
 #newLife2_yes {
-	cursor: pointer;
-	position: absolute;
-	background-image: url("png/button_yes.png");
-	background-size: cover;
-	border: none;
-	width: 20%;
-	right: 30%;
-	bottom: 5%;
-	padding-top: 10%;
+    cursor: pointer;
+    position: absolute;
+    background-image: url("png/button_yes.png");
+    background-size: cover;
+    border: none;
+    width: 20%;
+    right: 30%;
+    bottom: 5%;
+    padding-top: 10%;
 }
 
 #newLife2_no {
-	cursor: pointer;
-	position: absolute;
-	background-image: url("png/button_no.png");
-	background-size: cover;
-	border: none;
-	width: 20%;
-	right: 5%;
-	bottom: 5%;
-	padding-top: 10%;
+    cursor: pointer;
+    position: absolute;
+    background-image: url("png/button_no.png");
+    background-size: cover;
+    border: none;
+    width: 20%;
+    right: 5%;
+    bottom: 5%;
+    padding-top: 10%;
 }
 
 /*Continue Life Overlay*/
 #continueLife_tab {
-	position: fixed;
-	display: fixed;
-	width: 50%;
-	height: 70%;
-	left: 25%;
-	top: 15%;
-	background-color: rgba(255, 255, 255, 0.7);
-	animation-name: width50_animation;
-	animation-duration: 1s;
-	overflow-x: hidden;
-	overflow-y: auto;
+    position: fixed;
+    display: fixed;
+    width: 50%;
+    height: 70%;
+    left: 25%;
+    top: 15%;
+    background-color: rgba(255, 255, 255, 0.7);
+    animation-name: width50_animation;
+    animation-duration: 1s;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #continueLife_container {
-	display: block;
-	margin-left: 3%;
-	width: 87%;
+    display: block;
+    margin-left: 3%;
+    width: 87%;
 }
 
 #continueLife_tab h1 {
-	position: relative;
-	font-size: 40px;
-	font-weight: 300;
-	height: 10px;
-	line-height: 20px;
+    position: relative;
+    font-size: 40px;
+    font-weight: 300;
+    height: 10px;
+    line-height: 20px;
 }
 
 #continueLife_close {
-	position: absolute;
-	width: 5%;
-	right: 3%;
-	top: 3%;
-	padding-top: 5%;
+    position: absolute;
+    width: 5%;
+    right: 3%;
+    top: 3%;
+    padding-top: 5%;
 }
 
 .continueLife_saveFile {
-	border: 1px solid black;
-	transition: 0.5s all;
-	-webkit-transition: 0.5s all;
-	-moz-transition: 0.5s all;
+    border: 1px solid black;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
 }
 
 .continueLife_saveFile:hover {
-	background-color: white;
-	transition: 0.5s all;
-	-webkit-transition: 0.5s all;
-	-moz-transition: 0.5s all;
-	padding-top: 10px;
-	padding-bottom: 10px;
+    background-color: white;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .continueLife_saveFile:not(#continueLife_saveFile10) {
-	border-bottom: 0px;
+    border-bottom: 0px;
 }
 
 #continueLife_div {
-	position: relative;
-	display: block;
-	width: 100%;
+    position: relative;
+    display: block;
+    width: 100%;
 }
 
 #continueLife_div table {
-	width: 100%;
+    width: 100%;
 }
 
 .continueLife_saveFile_no {
-	font-size: 36px;
-	width: 20%;
+    font-size: 36px;
+    width: 20%;
 }
 
 .continueLife_saveFile_name {
-	font-size: 36px;
-	width: 80%;
-	text-align: right;
+    font-size: 36px;
+    width: 80%;
+    text-align: right;
 }
 .continueLife_saveFile_date {
-	text-align: right;
+    text-align: right;
 }
 
 /*Continue Life Secondary Overlay*/
 #continueLife2_tab {
-	position: fixed;
-	width: 30%;
-	height: 25%;
-	left: 35%;
-	top: 40%;
-	background-color: rgba(255, 255, 255, 0.7);
-	animation-name: width30_animation;
-	animation-duration: 1s;
-	overflow-x: hidden;
-	overflow-y: auto;
+    position: fixed;
+    width: 30%;
+    height: 25%;
+    left: 35%;
+    top: 40%;
+    background-color: rgba(255, 255, 255, 0.7);
+    animation-name: width30_animation;
+    animation-duration: 1s;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #continueLife2_tab h1 {
-	position: relative;
-	font-size: 40px;
-	font-weight: 300;
-	height: 10px;
-	line-height: 20px;
+    position: relative;
+    font-size: 40px;
+    font-weight: 300;
+    height: 10px;
+    line-height: 20px;
 }
 
 #continueLife2_tab p {
-	position: relative;
-	padding: 5px 0px;
+    position: relative;
+    padding: 5px 0px;
 }
 
 #continueLife2_container {
-	position: relative;
-	left: 3%;
-	width: 87%;
-	height: 70%;
+    position: relative;
+    left: 3%;
+    width: 87%;
+    height: 70%;
 }
 
 #continueLife2_close {
-	width: 6%;
-	right: 3%;
-	top: 5%;
-	padding-top: 6%;
+    width: 6%;
+    right: 3%;
+    top: 5%;
+    padding-top: 6%;
 }
 
 #continueLife2_yes {
-	cursor: pointer;
-	position: absolute;
-	background-image: url("png/button_yes.png");
-	background-size: cover;
-	border: none;
-	width: 20%;
-	right: 30%;
-	bottom: 5%;
-	padding-top: 10%;
+    cursor: pointer;
+    position: absolute;
+    background-image: url("png/button_yes.png");
+    background-size: cover;
+    border: none;
+    width: 20%;
+    right: 30%;
+    bottom: 5%;
+    padding-top: 10%;
 }
 
 #continueLife2_no {
-	cursor: pointer;
-	position: absolute;
-	background-image: url("png/button_no.png");
-	background-size: cover;
-	border: none;
-	width: 20%;
-	right: 5%;
-	bottom: 5%;
-	padding-top: 10%;
+    cursor: pointer;
+    position: absolute;
+    background-image: url("png/button_no.png");
+    background-size: cover;
+    border: none;
+    width: 20%;
+    right: 5%;
+    bottom: 5%;
+    padding-top: 10%;
 }
 
 /*Past Live Overlay*/
 #pastLives_tab {
-	position: fixed;
-	display: fixed;
-	width: 50%;
-	height: 70%;
-	left: 25%;
-	top: 15%;
-	background-color: rgba(255, 255, 255, 0.7);
-	animation-name: width50_animation;
-	animation-duration: 1s;
-	overflow-x: hidden;
-	overflow-y: auto;
+    position: fixed;
+    display: fixed;
+    width: 50%;
+    height: 70%;
+    left: 25%;
+    top: 15%;
+    background-color: rgba(255, 255, 255, 0.7);
+    animation-name: width50_animation;
+    animation-duration: 1s;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #pastLives_container {
-	width: 87%;
-	margin-left: 3%;
+    width: 87%;
+    margin-left: 3%;
 }
 
 #pastLives_close {
-	width: 6%;
-	right: 3%;
-	top: 3%;
-	padding-top: 6%;
+    width: 6%;
+    right: 3%;
+    top: 3%;
+    padding-top: 6%;
 }
 
 #pastLives_tab h1 {
-	padding-bottom: 10px;
-	font-size: 40px;
-	font-weight: 300;
+    padding-bottom: 10px;
+    font-size: 40px;
+    font-weight: 300;
 }
 
 #pastLives_tab p {
-	position: relative;
-	display: block;
+    position: relative;
+    display: block;
 }
 
 #pastLives_div {
-	position: relative;
-	display: block;
+    position: relative;
+    display: block;
 }
 
 #pastLives_div table {
-	width: 100%;
+    width: 100%;
 }
 
 .pastLives_save_no {
-	font-size: 36px;
-	width: 30%;
+    font-size: 36px;
+    width: 30%;
 }
 
 .pastLives_save_name {
-	font-size: 36px;
-	width: 70%;
-	text-align: right;
+    font-size: 36px;
+    width: 70%;
+    text-align: right;
 }
 .pastLives_save_date,
 .pastLives_save_career {
-	text-align: right;
+    text-align: right;
 }
 
 .pastLives_save {
-	border: 1px solid black;
-	transition: 0.5s all;
-	-webkit-transition: 0.5s all;
-	-moz-transition: 0.5s all;
+    border: 1px solid black;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
 }
 
 .pastLives_save:hover {
-	background-color: white;
-	transition: 0.5s all;
-	-webkit-transition: 0.5s all;
-	-moz-transition: 0.5s all;
-	padding-top: 10px;
-	padding-bottom: 10px;
+    background-color: white;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .pastLives_save:not(#pastLives_save30) {
-	border-bottom: 0px;
+    border-bottom: 0px;
 }
 
 /*Past Life Secondary Overlay*/
 #pastLives2_tab {
-	overflow-x: hidden;
-	overflow-y: auto;
-	position: fixed;
-	display: fixed;
-	width: 50%;
-	height: 70%;
-	left: 25%;
-	top: 15%;
-	background-color: rgba(255, 255, 255, 0.7);
-	animation-name: width50_animation;
-	animation-duration: 1s;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: fixed;
+    display: fixed;
+    width: 50%;
+    height: 70%;
+    left: 25%;
+    top: 15%;
+    background-color: rgba(255, 255, 255, 0.7);
+    animation-name: width50_animation;
+    animation-duration: 1s;
 }
 
 #pastLives2_close {
-	width: 6%;
-	right: 3%;
-	top: 3%;
-	padding-top: 6%;
+    width: 6%;
+    right: 3%;
+    top: 3%;
+    padding-top: 6%;
 }
 
 #pastLives2_tab h1 {
-	padding-bottom: 10px;
-	font-size: 40px;
-	font-weight: 300;
+    padding-bottom: 10px;
+    font-size: 40px;
+    font-weight: 300;
 }
 
 #pastLives2_container {
-	max-width: 100%;
-	margin-left: 3%;
-	width: 87%;
+    max-width: 100%;
+    margin-left: 3%;
+    width: 87%;
 }
 
 /*Settings Overlay*/
 #settings_tab {
-	position: fixed;
-	display: fixed;
-	width: 30%;
-	height: 60%;
-	left: 35%;
-	top: 20%;
-	background-color: rgba(255, 255, 255, 0.7);
-	animation-name: width30_animation;
-	animation-duration: 1s;
-	color: black;
+    position: fixed;
+    display: fixed;
+    width: 30%;
+    height: 60%;
+    left: 35%;
+    top: 20%;
+    background-color: rgba(255, 255, 255, 0.7);
+    animation-name: width30_animation;
+    animation-duration: 1s;
+    color: black;
 }
 
 #settings_container {
-	max-height: 85%;
-	width: 82%;
-	margin-left: 5%;
-	overflow-x: hidden;
-	overflow-y: auto;
+    max-height: 85%;
+    width: 82%;
+    margin-left: 5%;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #settings_close {
-	width: 6%;
-	right: 3%;
-	top: 3%;
-	padding-top: 6%;
+    width: 6%;
+    right: 3%;
+    top: 3%;
+    padding-top: 6%;
 }
 
 #settings_tab h1 {
-	font-size: 40px;
-	font-weight: 300;
+    font-size: 40px;
+    font-weight: 300;
 }
 
 #settings_tab h3 {
-	position: relative;
+    position: relative;
 }
 
 #settings_volume {
-	position: relative;
-	-webkit-appearance: none;
-	height: 25px;
-	width: 100%;
-	background: #d3d3d3;
-	outline: none;
-	opacity: 0.7;
-	-webkit-transition: 0.2s;
-	transition: opacity 0.2s;
+    position: relative;
+    -webkit-appearance: none;
+    height: 25px;
+    width: 100%;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
 }
 
 #settings_volume:hover {
-	opacity: 1;
+    opacity: 1;
 }
 
 #settings_volume::-webkit-slider-thumb {
-	-webkit-appearance: none;
-	appearance: none;
-	width: 25px;
-	height: 25px;
-	background: #4CAF50;
-	cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #4caf50;
+    cursor: pointer;
 }
 
 #settings_volume::-moz-range-thumb {
-	width: 25px;
-	height: 25px;
-	background: #4CAF50;
-	cursor: pointer;
+    width: 25px;
+    height: 25px;
+    background: #4caf50;
+    cursor: pointer;
 }
 
 #settings_theme {
-	position: relative;
-	width: 192px;
-	height: 108px;
-	background-size: cover;
+    position: relative;
+    width: 192px;
+    height: 108px;
+    background-size: cover;
 }
 
 #settings_tab input {
-	position: relative;
-	font-family: "Open Sans", sans-serif;
+    position: relative;
+    font-family: "Open Sans", sans-serif;
 }
 
 #settings_tab p {
-	position: relative;
-	font-weight: 100;
-	font-size: 10px;
+    position: relative;
+    font-weight: 100;
+    font-size: 10px;
 }
 
 #settings_save {
-	cursor: pointer;
-	position: absolute;
-	display: block;
-	background-image: url("png/button_save.png");
-	background-size: cover;
-	border: none;
-	width: 30%;
-	bottom: 3%;
-	right: 3%;
-	padding-top: 10%;
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    background-image: url("png/button_save.png");
+    background-size: cover;
+    border: none;
+    width: 30%;
+    bottom: 3%;
+    right: 3%;
+    padding-top: 10%;
 }
 
 /*Settings Secondary Overlay*/
 #settings2_tab {
-	position: fixed;
-	display: fixed;
-	width: 30%;
-	height: 20%;
-	left: 35%;
-	top: 40%;
-	background-color: rgba(255, 255, 255, 0.7);
-	animation-name: width30_animation;
-	animation-duration: 1s;
-	overflow-x: hidden;
-	overflow-y: auto;
+    position: fixed;
+    display: fixed;
+    width: 30%;
+    height: 20%;
+    left: 35%;
+    top: 40%;
+    background-color: rgba(255, 255, 255, 0.7);
+    animation-name: width30_animation;
+    animation-duration: 1s;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #settings2_h2 {
-	position: absolute;
-	left: 3%;
+    position: absolute;
+    left: 3%;
 }
 
 #settings2_close {
-	width: 6%;
-	right: 3%;
-	top: 5%;
-	padding-top: 6%;
+    width: 6%;
+    right: 3%;
+    top: 5%;
+    padding-top: 6%;
 }
 
 #settings2_yes {
-	cursor: pointer;
-	position: absolute;
-	background-image: url("png/button_yes.png");
-	background-size: cover;
-	border: none;
-	width: 20%;
-	right: 30%;
-	bottom: 5%;
-	padding-top: 10%;
+    cursor: pointer;
+    position: absolute;
+    background-image: url("png/button_yes.png");
+    background-size: cover;
+    border: none;
+    width: 20%;
+    right: 30%;
+    bottom: 5%;
+    padding-top: 10%;
 }
 
 #settings2_no {
-	cursor: pointer;
-	position: absolute;
-	background-image: url("png/button_no.png");
-	background-size: cover;
-	border: none;
-	width: 20%;
-	right: 5%;
-	bottom: 5%;
-	padding-top: 10%;
+    cursor: pointer;
+    position: absolute;
+    background-image: url("png/button_no.png");
+    background-size: cover;
+    border: none;
+    width: 20%;
+    right: 5%;
+    bottom: 5%;
+    padding-top: 10%;
 }
 
 /*Main Tab*/
 #main_body {
-	color: white;
+    color: white;
 }
 
 /*Main Diary section*/
 #main_diary {
-	position: fixed;
-	background-color: rgba(0, 0, 0, 0.5);
-	width: 67.5%;
-	height: 72.5%;
-	left: 2.5%;
-	top: 2.5%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 67.5%;
+    height: 72.5%;
+    left: 2.5%;
+    top: 2.5%;
 }
 
 #main_diary_body {
-	position: relative;
-	width: 98%;
-	height: 80%;
-	overflow-x: hidden;
-	overflow-y: auto;
+    position: relative;
+    width: 98%;
+    height: 80%;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #main_diary h1 {
-	font-size: 40px;
-	font-weight: 300;
-	line-height: 20px;
-	margin-left: 3%;
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 20px;
+    margin-left: 3%;
 }
 
 #main_diary p {
-	position: relative;
-	padding: 0% 3% 0% 0%;
-	left: 3%;
+    position: relative;
+    padding: 0% 3% 0% 0%;
+    left: 3%;
 }
 
 /*Main Info section*/
 #main_info {
-	position: fixed;
-	background-color: rgba(0, 0, 0, 0.5);
-	width: 25%;
-	height: 72.5%;
-	left: 72.5%;
-	top: 2.5%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 25%;
+    height: 72.5%;
+    left: 72.5%;
+    top: 2.5%;
 }
 
 #main_info_body {
-	padding: 0.5% 3.5%;
+    padding: 0.5% 3.5%;
 }
 
 #main_info h1 {
-	font-size: 40px;
-	font-weight: 300;
-	line-height: 20px;
-	margin-left: 3%;
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 20px;
+    margin-left: 3%;
 }
 
 .main_info_p {
-	line-height: 80%;
+    line-height: 80%;
 }
 
 /*Main Actions section*/
 #main_actions {
-	position: fixed;
-	background-color: rgba(0, 0, 0, 0.5);
-	width: 67.5%;
-	height: 20%;
-	left: 2.5%;
-	top: 77.5%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 67.5%;
+    height: 20%;
+    left: 2.5%;
+    top: 77.5%;
 }
 
 .main_actions_icons {
-	position: relative;
-	cursor: pointer;
-	height: 80%;
-	top: 10%;
-	margin: 0% 2%;
-	overflow-x: auto;
-	overflow-y: hidden;
+    position: relative;
+    cursor: pointer;
+    height: 80%;
+    top: 10%;
+    margin: 0% 2%;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 /*Main Control section*/
 #main_control {
-	position: fixed;
-	background-color: rgba(0, 0, 0, 0.5);
-	width: 25%;
-	height: 20%;
-	left: 72.5%;
-	top: 77.5%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 25%;
+    height: 20%;
+    left: 72.5%;
+    top: 77.5%;
 }
 
 #main_control h1 {
-	font-size: 40px;
-	font-weight: 300;
-	line-height: 20px;
-	margin-left: 3%;
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 20px;
+    margin-left: 3%;
 }
 
 #main_control div,
 #main_info div {
-	position: relative;
-	left: 3%;
+    position: relative;
+    left: 3%;
 }
 
 #main_control_pause {
-	position: fixed;
-	width: 3%;
-	left: 74%;
-	padding-top: 3%;
-	background-image: url(png/button_pause.png);
-	background-size: cover;
-	border: none;
-	cursor: pointer;
-	/* Add a pointer on hover */
+    position: fixed;
+    width: 3%;
+    left: 74%;
+    padding-top: 3%;
+    background-image: url(png/button_pause.png);
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    /* Add a pointer on hover */
 }
 
 #main_control_start {
-	position: fixed;
-	width: 3%;
-	left: 79%;
-	padding-top: 3%;
-	background-image: url(png/button_play.png);
-	background-size: cover;
-	border: none;
-	cursor: pointer;
-	/* Add a pointer on hover */
+    position: fixed;
+    width: 3%;
+    left: 79%;
+    padding-top: 3%;
+    background-image: url(png/button_play.png);
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    /* Add a pointer on hover */
 }
 
 #main_control_speed {
-	position: fixed;
-	width: 10%;
-	height: 2%;
-	left: 84%;
-	top: 91%;
-	background: #d3d3d3;
-	outline: none;
-	opacity: 0.7;
-	-webkit-transition: 0.2s;
-	transition: opacity 0.2s;
+    position: fixed;
+    width: 10%;
+    height: 2%;
+    left: 84%;
+    top: 91%;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
 }
 
 #main_control_speed:hover {
-	opacity: 1;
+    opacity: 1;
 }
 
 #main_control_speed::-webkit-slider-thumb {
-	-webkit-appearance: none;
-	width: 10%;
-	height: 150%;
-	background: #4CAF50;
-	cursor: pointer;
+    -webkit-appearance: none;
+    width: 10%;
+    height: 150%;
+    background: #4caf50;
+    cursor: pointer;
 }
 
 #main_control_speed::-moz-range-thumb {
-	width: 10%;
-	height: 150%;
-	background: #4CAF50;
-	cursor: pointer;
+    width: 10%;
+    height: 150%;
+    background: #4caf50;
+    cursor: pointer;
 }
 
 /*Death overlay*/
 #death_tab {
-	position: fixed;
-	display: fixed;
-	width: 30%;
-	height: 60%;
-	left: 35%;
-	top: 20%;
-	background-color: rgba(255, 255, 255, 0.7);
-	animation-name: width30_animation;
-	animation-duration: 1s;
+    position: fixed;
+    display: fixed;
+    width: 30%;
+    height: 60%;
+    left: 35%;
+    top: 20%;
+    background-color: rgba(255, 255, 255, 0.7);
+    animation-name: width30_animation;
+    animation-duration: 1s;
 }
 
 #death_container {
-	position: relative;
-	left: 3%;
-	max-height: 85%;
-	max-width: 92%;
-	overflow-x: hidden;
-	overflow-y: auto;
+    position: relative;
+    left: 3%;
+    max-height: 85%;
+    max-width: 92%;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #death_container h1 {
-	text-align: center;
-	color: black;
-	font-size: 36px;
-	font-weight: 300;
-	line-height: 20px;
-	margin-left: 3%;
+    text-align: center;
+    color: black;
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 20px;
+    margin-left: 3%;
 }
 
 #death_container img {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	width: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
 }
 
 #death_container p {
-	font-size: 18px;
-	line-height: 24px;
-	color: black;
-	margin: 8px 0px;
+    font-size: 18px;
+    line-height: 24px;
+    color: black;
+    margin: 8px 0px;
 }
 
 #death_endLife {
-	cursor: pointer;
-	position: absolute;
-	display: block;
-	background-image: url("png/button_end.png");
-	background-size: cover;
-	border: none;
-	width: 30%;
-	bottom: 3%;
-	right: 36%;
-	padding-top: 10%;
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    background-image: url("png/button_end.png");
+    background-size: cover;
+    border: none;
+    width: 30%;
+    bottom: 3%;
+    right: 36%;
+    padding-top: 10%;
 }
 
 #death_preserveLife {
-	cursor: pointer;
-	position: absolute;
-	display: block;
-	background-image: url("png/button_preserve.png");
-	background-size: cover;
-	border: none;
-	width: 30%;
-	bottom: 3%;
-	right: 3%;
-	padding-top: 10%;
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    background-image: url("png/button_preserve.png");
+    background-size: cover;
+    border: none;
+    width: 30%;
+    bottom: 3%;
+    right: 3%;
+    padding-top: 10%;
 }
 
 /*Save overlay*/
 #save_tab {
-	position: fixed;
-	display: fixed;
-	width: 30%;
-	height: 50%;
-	left: 35%;
-	top: 25%;
-	background-color: rgba(255, 255, 255, 0.7);
-	animation-name: width30_animation;
-	animation-duration: 1s;
-	overflow-x: hidden;
-	overflow-y: auto;
+    position: fixed;
+    display: fixed;
+    width: 30%;
+    height: 50%;
+    left: 35%;
+    top: 25%;
+    background-color: rgba(255, 255, 255, 0.7);
+    animation-name: width30_animation;
+    animation-duration: 1s;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #save_close {
-	width: 6%;
-	right: 3%;
-	top: 5%;
-	padding-top: 6%;
+    width: 6%;
+    right: 3%;
+    top: 5%;
+    padding-top: 6%;
 }
 
 #save_tab h2 {
-	color: black;
-	position: relative;
-	width: 90%;
+    color: black;
+    position: relative;
+    width: 90%;
 }
 
 #save_container {
-	position: relative;
-	width: 80%;
-	left: 5%;
-	color: black;
-	overflow-x: hidden;
-	overflow-y: auto;
+    position: relative;
+    width: 80%;
+    left: 5%;
+    color: black;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .save_div {
-	border: 1px solid black;
-	transition: 0.5s all;
-	-webkit-transition: 0.5s all;
-	-moz-transition: 0.5s all;
+    border: 1px solid black;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
 }
 
 .save_div:hover {
-	background-color: white;
-	transition: 0.5s all;
-	-webkit-transition: 0.5s all;
-	-moz-transition: 0.5s all;
-	padding-top: 5px;
-	padding-bottom: 5px;
+    background-color: white;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .save_div:not(#save_div_10) {
-	border-bottom: 0px;
+    border-bottom: 0px;
 }
 
 /*Education overlay*/
 #education_tab {
-	position: fixed;
-	display: fixed;
-	width: 30%;
-	height: 50%;
-	left: 35%;
-	top: 25%;
-	background-color: rgba(255, 255, 255, 0.7);
-	animation-name: width30_animation;
-	animation-duration: 1s;
-	overflow-x: hidden;
-	overflow-y: auto;
+    position: fixed;
+    display: fixed;
+    width: 30%;
+    height: 50%;
+    left: 35%;
+    top: 25%;
+    background-color: rgba(255, 255, 255, 0.7);
+    animation-name: width30_animation;
+    animation-duration: 1s;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #education_close {
-	width: 6%;
-	right: 3%;
-	top: 5%;
-	padding-top: 6%;
+    width: 6%;
+    right: 3%;
+    top: 5%;
+    padding-top: 6%;
 }
 
 #education_tab h2 {
-	color: black;
-	position: relative;
-	width: 90%;
+    color: black;
+    position: relative;
+    width: 90%;
 }
 
 #education_container {
-	position: relative;
-	width: 80%;
-	left: 5%;
-	color: black;
-	overflow-x: hidden;
-	overflow-y: auto;
+    position: relative;
+    width: 80%;
+    left: 5%;
+    color: black;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #death_endlife {
-	cursor: pointer;
-	position: absolute;
-	display: block;
-	background-image: url("png/button_end.png");
-	background-size: cover;
-	border: none;
-	width: 30%;
-	bottom: 3%;
-	right: 36%;
-	padding-top: 10%;
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    background-image: url("png/button_end.png");
+    background-size: cover;
+    border: none;
+    width: 30%;
+    bottom: 3%;
+    right: 36%;
+    padding-top: 10%;
 }
 
 /*Education effort sction*/
 #education_effort_input {
-	width: 100%;
-	height: 2%;
-	left: 84%;
-	top: 91%;
-	background: #d3d3d3;
-	outline: none;
-	opacity: 0.7;
-	-webkit-transition: 0.2s;
-	transition: opacity 0.2s;
+    width: 100%;
+    height: 2%;
+    left: 84%;
+    top: 91%;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
 }
 
 #education_effort_input:hover {
-	opacity: 1;
+    opacity: 1;
 }
 
 #education_effort_input::-webkit-slider-thumb {
-	-webkit-appearance: none;
-	width: 5%;
-	height: 150%;
-	background: #4CAF50;
-	cursor: pointer;
+    -webkit-appearance: none;
+    width: 5%;
+    height: 150%;
+    background: #4caf50;
+    cursor: pointer;
 }
 
 #education_effort_input::-moz-range-thumb {
-	width: 5%;
-	height: 150%;
-	background: #4CAF50;
-	cursor: pointer;
+    width: 5%;
+    height: 150%;
+    background: #4caf50;
+    cursor: pointer;
 }
 
 #education_effort_level {
-	text-align: center;
-	margin: 3px;
+    text-align: center;
+    margin: 3px;
 }
 
 #education_effort_warning {
-	margin: 3px;
+    margin: 3px;
 }
 
 /*Notifications*/
 #notification_tab {
-	position: fixed;
-	display: fixed;
-	width: 30%;
-	height: 30%;
-	left: 35%;
-	top: 35%;
-	background-color: rgba(255, 255, 255, 0.7);
-	animation-name: width30_animation;
-	animation-duration: 1s;
-	overflow-x: hidden;
-	overflow-y: auto;
+    position: fixed;
+    display: fixed;
+    width: 30%;
+    height: 30%;
+    left: 35%;
+    top: 35%;
+    background-color: rgba(255, 255, 255, 0.7);
+    animation-name: width30_animation;
+    animation-duration: 1s;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #notification_close {
-	width: 6%;
-	right: 3%;
-	top: 5%;
-	padding-top: 6%;
+    width: 6%;
+    right: 3%;
+    top: 5%;
+    padding-top: 6%;
 }
 
 #notification_container {
-	position: relative;
-	width: 80%;
-	left: 5%;
-	color: black;
-	overflow-x: hidden;
-	overflow-y: auto;
+    position: relative;
+    width: 80%;
+    left: 5%;
+    color: black;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 /*End overlay*/
 #end_tab {
-	position: fixed;
-	display: fixed;
-	width: 30%;
-	height: 30%;
-	left: 35%;
-	top: 35%;
-	background-color: rgba(255, 255, 255, 0.7);
-	animation-name: width30_animation;
-	animation-duration: 1s;
-	overflow-x: hidden;
-	overflow-y: auto;
+    position: fixed;
+    display: fixed;
+    width: 30%;
+    height: 30%;
+    left: 35%;
+    top: 35%;
+    background-color: rgba(255, 255, 255, 0.7);
+    animation-name: width30_animation;
+    animation-duration: 1s;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #end_close {
-	width: 6%;
-	right: 3%;
-	top: 5%;
-	padding-top: 6%;
+    width: 6%;
+    right: 3%;
+    top: 5%;
+    padding-top: 6%;
 }
 
 #end_yes {
-	cursor: pointer;
-	position: absolute;
-	background-image: url("png/button_yes.png");
-	background-size: cover;
-	border: none;
-	width: 20%;
-	right: 30%;
-	bottom: 5%;
-	padding-top: 10%;
+    cursor: pointer;
+    position: absolute;
+    background-image: url("png/button_yes.png");
+    background-size: cover;
+    border: none;
+    width: 20%;
+    right: 30%;
+    bottom: 5%;
+    padding-top: 10%;
 }
 
 #end_no {
-	cursor: pointer;
-	position: absolute;
-	background-image: url("png/button_no.png");
-	background-size: cover;
-	border: none;
-	width: 20%;
-	right: 5%;
-	bottom: 5%;
-	padding-top: 10%;
+    cursor: pointer;
+    position: absolute;
+    background-image: url("png/button_no.png");
+    background-size: cover;
+    border: none;
+    width: 20%;
+    right: 5%;
+    bottom: 5%;
+    padding-top: 10%;
 }
 
 #end_tab h2 {
-	color: black;
-	position: relative;
-	left: 3%;
-	width: 90%;
+    color: black;
+    position: relative;
+    left: 3%;
+    width: 90%;
 }
 
 /*Preserve overlay*/
 #preserve_tab {
-	position: fixed;
-	display: fixed;
-	width: 30%;
-	height: 50%;
-	left: 35%;
-	top: 25%;
-	background-color: rgba(255, 255, 255, 0.7);
-	animation-name: width30_animation;
-	animation-duration: 1s;
-	overflow-x: hidden;
-	overflow-y: auto;
+    position: fixed;
+    display: fixed;
+    width: 30%;
+    height: 50%;
+    left: 35%;
+    top: 25%;
+    background-color: rgba(255, 255, 255, 0.7);
+    animation-name: width30_animation;
+    animation-duration: 1s;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #preserve_close {
-	width: 6%;
-	right: 3%;
-	top: 5%;
-	padding-top: 6%;
+    width: 6%;
+    right: 3%;
+    top: 5%;
+    padding-top: 6%;
 }
 
 #preserve_tab h2 {
-	color: black;
-	position: relative;
-	width: 90%;
+    color: black;
+    position: relative;
+    width: 90%;
 }
 
 #preserve_container {
-	position: relative;
-	width: 80%;
-	left: 5%;
-	color: black;
-	overflow-x: hidden;
-	overflow-y: auto;
+    position: relative;
+    width: 80%;
+    left: 5%;
+    color: black;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .preserve_div {
-	border: 1px solid black;
-	transition: 0.5s all;
-	-webkit-transition: 0.5s all;
-	-moz-transition: 0.5s all;
+    border: 1px solid black;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
 }
 
 .preserve_div:hover {
-	background-color: white;
-	transition: 0.5s all;
-	-webkit-transition: 0.5s all;
-	-moz-transition: 0.5s all;
-	padding-top: 5px;
-	padding-bottom: 5px;
+    background-color: white;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .preserve_div:not(#preserve_div_30) {
-	border-bottom: 0px;
+    border-bottom: 0px;
 }
 
 /*Custom Animations*/
 @keyframes overlay_animation {
-	from {
-		background-color: rgba(0, 0, 0, 0);
-	}
+    from {
+        background-color: rgba(0, 0, 0, 0);
+    }
 
-	to {
-		background-color: rgba(0, 0, 0, 0.5)
-	}
+    to {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
 }
 
 @keyframes width30_animation {
-	from {
-		left: -55%;
-	}
+    from {
+        left: -55%;
+    }
 
-	to {
-		left: 35%;
-	}
+    to {
+        left: 35%;
+    }
 }
 
 @keyframes width50_animation {
-	from {
-		left: -55%;
-	}
+    from {
+        left: -55%;
+    }
 
-	to {
-		left: 25%;
-	}
+    to {
+        left: 25%;
+    }
 }

@@ -1,3 +1,6 @@
+//This script contains all the constant datas required to run Life Simulator. The information here does not change, unless changed by developer.
+// ! This javascript file might be split into multiple databases in the future.
+
 const database = {
     //Theme Names
     themeNames: [
@@ -81,11 +84,6 @@ const database = {
         lifeNo: 0,
     },
 
-    //Diary Entries
-    diaryEntries: {
-        born: " - I have been brought into this world. <br>",
-        death: " - I died due to natural causes. I was aged {age,years} years and {age,days} days when I died. <br>",
-    },
     //Database information related to education
     education: {
         //List of Levels

@@ -6,18 +6,24 @@
         <link href="style.css" type="text/css" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" />
         <link href="logo.png" rel="icon" />
-        <script src="jquery-3.4.1.min.js"></script>
-        <script src="jquery.fittext.js"></script>
-        <script src="js.cookie.min.js"></script>
-        <script src="database.js"></script>
-        <script src="functions.js"></script>
-        <script src="loadmain.js" defer></script>
+        <script src="scripts/public/jquery-3.4.1.min.js"></script>
+        <script src="scripts/public/jquery.fittext.js"></script>
+        <script src="scripts/public/js.cookie.min.js"></script>
+        <script src="scripts/functions/career.js"></script>
+        <script src="scripts/functions/deadLife.js"></script>
+        <script src="scripts/functions/control.js"></script>
+        <script src="scripts/functions/dates.js"></script>
+        <script src="scripts/functions/deadLife.js"></script>
+        <script src="scripts/functions/education.js"></script>
+        <script src="scripts/functions/misc.js"></script>
+        <script src="scripts/functions/progress.js"></script>
+        <script src="scripts/functions/settings.js"></script>
+        <script src="scripts/database.js"></script>
+        <script src="scripts/loadmain.js" defer></script>
     </head>
 
     <body id="main_body">
-        <a href="https://www.mozilla.org/en-US/firefox/new/">
-            <div id="notSupported_overlay" class="overlay"></div>
-        </a>
+        <div id="notSupported_overlay" class="overlay"></div>
         <div id="tooSmall_overlay" class="overlay">
             <div id="tooSmall_tab">
                 <h2>Your window size is too small!</h2>
@@ -100,16 +106,16 @@
             <div id="save_tab">
                 <div id="save_container">
                     <h2>Choose a slot for your life to be saved.</h2>
-                    <div class="save_div" id="save_div_1" onClick="save_life(1)">Life 1: Empty</div>
-                    <div class="save_div" id="save_div_2" onClick="save_life(2)">Life 2: Empty</div>
-                    <div class="save_div" id="save_div_3" onClick="save_life(3)">Life 3: Empty</div>
-                    <div class="save_div" id="save_div_4" onClick="save_life(4)">Life 4: Empty</div>
-                    <div class="save_div" id="save_div_5" onClick="save_life(5)">Life 5: Empty</div>
-                    <div class="save_div" id="save_div_6" onClick="save_life(6)">Life 6: Empty</div>
-                    <div class="save_div" id="save_div_7" onClick="save_life(7)">Life 7: Empty</div>
-                    <div class="save_div" id="save_div_8" onClick="save_life(8)">Life 8: Empty</div>
-                    <div class="save_div" id="save_div_9" onClick="save_life(9)">Life 9: Empty</div>
-                    <div class="save_div" id="save_div_10" onClick="save_life(10)">Life 10: Empty</div>
+                    <div class="save_div" id="save_div_1" onClick="transferLife(1)">Life 1: Empty</div>
+                    <div class="save_div" id="save_div_2" onClick="transferLife(2)">Life 2: Empty</div>
+                    <div class="save_div" id="save_div_3" onClick="transferLife(3)">Life 3: Empty</div>
+                    <div class="save_div" id="save_div_4" onClick="transferLife(4)">Life 4: Empty</div>
+                    <div class="save_div" id="save_div_5" onClick="transferLife(5)">Life 5: Empty</div>
+                    <div class="save_div" id="save_div_6" onClick="transferLife(6)">Life 6: Empty</div>
+                    <div class="save_div" id="save_div_7" onClick="transferLife(7)">Life 7: Empty</div>
+                    <div class="save_div" id="save_div_8" onClick="transferLife(8)">Life 8: Empty</div>
+                    <div class="save_div" id="save_div_9" onClick="transferLife(9)">Life 9: Empty</div>
+                    <div class="save_div" id="save_div_10" onClick="transferLife(10)">Life 10: Empty</div>
                 </div>
                 <br />
                 <button id="save_close" class="close" onclick="displayType('save_overlay', 'none')"></button>
@@ -125,13 +131,13 @@
                     <button id="settings_theme" onclick="settings_theme()"></button>
                     <h3>Game Speed</h3>
                     <label for="settings_gameSpeed1"
-                        ><input id="settings_gameSpeed1" name="gameSpeed" type="radio" value="1" /> &nbsp;&nbsp;&nbsp;Slow</label
+                        ><input id="settings_gameSpeed1" name="gameSpeed" type="radio" value="1" /> Slow&nbsp;&nbsp;&nbsp;</label
                     >
                     <label for="settings_gameSpeed2"
-                        ><input id="settings_gameSpeed2" name="gameSpeed" type="radio" value="2" /> &nbsp;&nbsp;&nbsp;Medium</label
+                        ><input id="settings_gameSpeed2" name="gameSpeed" type="radio" value="2" /> Medium&nbsp;&nbsp;&nbsp;</label
                     >
                     <label for="settings_gameSpeed3"
-                        ><input id="settings_gameSpeed3" name="gameSpeed" type="radio" value="3" /> &nbsp;&nbsp;&nbsp;Fast</label
+                        ><input id="settings_gameSpeed3" name="gameSpeed" type="radio" value="3" /> Fast&nbsp;&nbsp;&nbsp;</label
                     >
                     <p>
                         The Game Speed adjusts the amounts of events that will happen in your life. For a fast game but uneventful life, choose fast.
@@ -171,7 +177,7 @@
                     <p id="death_age">He was at a young age of 18 years 0 days.</p>
                 </div>
                 <button id="death_endLife" onClick="displayType('end_overlay','block')"></button>
-                <button id="death_preserveLife" onClick="preserveLife()"></button>
+                <button id="death_preserveLife" onClick="displayType('preserve_overlay', 'block');"></button>
             </div>
             <div id="end_overlay" class="overlay">
                 <div id="end_tab">
@@ -185,36 +191,36 @@
                 <div id="preserve_tab">
                     <div id="preserve_container">
                         <h2>Choose a slot for your life to be preserved.</h2>
-                        <div class="preserve_div" id="preserve_div_1" onClick="preserve_life(1)">Life 1: Empty</div>
-                        <div class="preserve_div" id="preserve_div_2" onClick="preserve_life(2)">Life 2: Empty</div>
-                        <div class="preserve_div" id="preserve_div_3" onClick="preserve_life(3)">Life 3: Empty</div>
-                        <div class="preserve_div" id="preserve_div_4" onClick="preserve_life(4)">Life 4: Empty</div>
-                        <div class="preserve_div" id="preserve_div_5" onClick="preserve_life(5)">Life 5: Empty</div>
-                        <div class="preserve_div" id="preserve_div_6" onClick="preserve_life(6)">Life 6: Empty</div>
-                        <div class="preserve_div" id="preserve_div_7" onClick="preserve_life(7)">Life 7: Empty</div>
-                        <div class="preserve_div" id="preserve_div_8" onClick="preserve_life(8)">Life 8: Empty</div>
-                        <div class="preserve_div" id="preserve_div_9" onClick="preserve_life(9)">Life 9: Empty</div>
-                        <div class="preserve_div" id="preserve_div_10" onClick="preserve_life(10)">Life 10: Empty</div>
-                        <div class="preserve_div" id="preserve_div_11" onClick="preserve_life(11)">Life 11: Empty</div>
-                        <div class="preserve_div" id="preserve_div_12" onClick="preserve_life(12)">Life 12: Empty</div>
-                        <div class="preserve_div" id="preserve_div_13" onClick="preserve_life(13)">Life 13: Empty</div>
-                        <div class="preserve_div" id="preserve_div_14" onClick="preserve_life(14)">Life 14: Empty</div>
-                        <div class="preserve_div" id="preserve_div_15" onClick="preserve_life(15)">Life 15: Empty</div>
-                        <div class="preserve_div" id="preserve_div_16" onClick="preserve_life(16)">Life 16: Empty</div>
-                        <div class="preserve_div" id="preserve_div_17" onClick="preserve_life(17)">Life 17: Empty</div>
-                        <div class="preserve_div" id="preserve_div_18" onClick="preserve_life(18)">Life 18: Empty</div>
-                        <div class="preserve_div" id="preserve_div_19" onClick="preserve_life(19)">Life 19: Empty</div>
-                        <div class="preserve_div" id="preserve_div_20" onClick="preserve_life(20)">Life 20: Empty</div>
-                        <div class="preserve_div" id="preserve_div_21" onClick="preserve_life(21)">Life 21: Empty</div>
-                        <div class="preserve_div" id="preserve_div_22" onClick="preserve_life(22)">Life 22: Empty</div>
-                        <div class="preserve_div" id="preserve_div_23" onClick="preserve_life(23)">Life 23: Empty</div>
-                        <div class="preserve_div" id="preserve_div_24" onClick="preserve_life(24)">Life 24: Empty</div>
-                        <div class="preserve_div" id="preserve_div_25" onClick="preserve_life(25)">Life 25: Empty</div>
-                        <div class="preserve_div" id="preserve_div_26" onClick="preserve_life(26)">Life 26: Empty</div>
-                        <div class="preserve_div" id="preserve_div_27" onClick="preserve_life(27)">Life 27: Empty</div>
-                        <div class="preserve_div" id="preserve_div_28" onClick="preserve_life(28)">Life 28: Empty</div>
-                        <div class="preserve_div" id="preserve_div_29" onClick="preserve_life(29)">Life 29: Empty</div>
-                        <div class="preserve_div" id="preserve_div_30" onClick="preserve_life(30)">Life 30: Empty</div>
+                        <div class="preserve_div" id="preserve_div_1" onClick="transferLife(1)">Life 1: Empty</div>
+                        <div class="preserve_div" id="preserve_div_2" onClick="transferLife(2)">Life 2: Empty</div>
+                        <div class="preserve_div" id="preserve_div_3" onClick="transferLife(3)">Life 3: Empty</div>
+                        <div class="preserve_div" id="preserve_div_4" onClick="transferLife(4)">Life 4: Empty</div>
+                        <div class="preserve_div" id="preserve_div_5" onClick="transferLife(5)">Life 5: Empty</div>
+                        <div class="preserve_div" id="preserve_div_6" onClick="transferLife(6)">Life 6: Empty</div>
+                        <div class="preserve_div" id="preserve_div_7" onClick="transferLife(7)">Life 7: Empty</div>
+                        <div class="preserve_div" id="preserve_div_8" onClick="transferLife(8)">Life 8: Empty</div>
+                        <div class="preserve_div" id="preserve_div_9" onClick="transferLife(9)">Life 9: Empty</div>
+                        <div class="preserve_div" id="preserve_div_10" onClick="transferLife(10)">Life 10: Empty</div>
+                        <div class="preserve_div" id="preserve_div_11" onClick="transferLife(11)">Life 11: Empty</div>
+                        <div class="preserve_div" id="preserve_div_12" onClick="transferLife(12)">Life 12: Empty</div>
+                        <div class="preserve_div" id="preserve_div_13" onClick="transferLife(13)">Life 13: Empty</div>
+                        <div class="preserve_div" id="preserve_div_14" onClick="transferLife(14)">Life 14: Empty</div>
+                        <div class="preserve_div" id="preserve_div_15" onClick="transferLife(15)">Life 15: Empty</div>
+                        <div class="preserve_div" id="preserve_div_16" onClick="transferLife(16)">Life 16: Empty</div>
+                        <div class="preserve_div" id="preserve_div_17" onClick="transferLife(17)">Life 17: Empty</div>
+                        <div class="preserve_div" id="preserve_div_18" onClick="transferLife(18)">Life 18: Empty</div>
+                        <div class="preserve_div" id="preserve_div_19" onClick="transferLife(19)">Life 19: Empty</div>
+                        <div class="preserve_div" id="preserve_div_20" onClick="transferLife(20)">Life 20: Empty</div>
+                        <div class="preserve_div" id="preserve_div_21" onClick="transferLife(21)">Life 21: Empty</div>
+                        <div class="preserve_div" id="preserve_div_22" onClick="transferLife(22)">Life 22: Empty</div>
+                        <div class="preserve_div" id="preserve_div_23" onClick="transferLife(23)">Life 23: Empty</div>
+                        <div class="preserve_div" id="preserve_div_24" onClick="transferLife(24)">Life 24: Empty</div>
+                        <div class="preserve_div" id="preserve_div_25" onClick="transferLife(25)">Life 25: Empty</div>
+                        <div class="preserve_div" id="preserve_div_26" onClick="transferLife(26)">Life 26: Empty</div>
+                        <div class="preserve_div" id="preserve_div_27" onClick="transferLife(27)">Life 27: Empty</div>
+                        <div class="preserve_div" id="preserve_div_28" onClick="transferLife(28)">Life 28: Empty</div>
+                        <div class="preserve_div" id="preserve_div_29" onClick="transferLife(29)">Life 29: Empty</div>
+                        <div class="preserve_div" id="preserve_div_30" onClick="transferLife(30)">Life 30: Empty</div>
                     </div>
                     <br />
                     <button id="preserve_close" class="close" onclick="displayType('preserve_overlay', 'none')"></button>

@@ -6,12 +6,17 @@
         <link href="data/style.css" type="text/css" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" />
         <link href="data/logo.png" rel="icon" />
-        <script src="data/jquery-3.4.1.min.js"></script>
-        <script src="data/jquery.fittext.js"></script>
-        <script src="data/js.cookie.min.js"></script>
-        <script src="data/database.js"></script>
-        <script src="data/functions.js"></script>
-        <script src="data/loadhome.js" defer></script>
+        <script src="data/scripts/public/jquery-3.4.1.min.js"></script>
+        <script src="data/scripts/public/jquery.fittext.js"></script>
+        <script src="data/scripts/public/js.cookie.min.js"></script>
+        <script src="data/scripts/functions/continueLife.js"></script>
+        <script src="data/scripts/functions/dates.js"></script>
+        <script src="data/scripts/functions/deadLife.js"></script>
+        <script src="data/scripts/functions/misc.js"></script>
+        <script src="data/scripts/functions/newLife.js"></script>
+        <script src="data/scripts/functions/settings.js"></script>
+        <script src="data/scripts/database.js"></script>
+        <script src="data/scripts/loadhome.js" defer></script>
     </head>
     <body id="home_body">
         <!--Not Supported-->
@@ -28,7 +33,7 @@
             </div>
         </div>
         <!--Buttons-->
-        <img id="home_logo" src="data/homelogo.png" alt="Logo" />
+        <img id="home_logo" src="data/logo_big.png" alt="Logo" />
         <button class="home_buttons" id="newLife" onclick="displayType('newLife_overlay', 'block')">New Life</button>
         <button class="home_buttons" id="continueLife" onclick="displayType('continueLife_overlay', 'block')">Continue Life</button>
         <button class="home_buttons" id="pastLives" onclick="displayType('pastLives_overlay', 'block')">Past Lives</button>
