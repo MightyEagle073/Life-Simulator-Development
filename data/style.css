@@ -594,14 +594,13 @@ img {
     animation-name: width30_animation;
     animation-duration: 1s;
     color: black;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #settings_container {
-    max-height: 85%;
     width: 82%;
     margin-left: 5%;
-    overflow-x: hidden;
-    overflow-y: auto;
 }
 
 #settings_close {
@@ -672,15 +671,17 @@ img {
 
 #settings_save {
     cursor: pointer;
-    position: absolute;
+    position: relative;
     display: block;
     background-image: url("png/button_save.png");
     background-size: cover;
     border: none;
-    width: 30%;
+    width: 35%;
+    height: 15%;
     bottom: 3%;
-    right: 3%;
-    padding-top: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding-top: 11%;
 }
 
 /*Settings Secondary Overlay*/
