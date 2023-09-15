@@ -66,6 +66,7 @@
         </div>
         <div id="main_actions">
             <img class="main_actions_icons" src="png/actions_education.png" alt="Education" onClick="education_open()" />
+            <img class="main_actions_icons" src="png/actions_career.png" alt="Careers" onClick="career_open()" />
             <img class="main_actions_icons" src="png/actions_save.png" alt="Save" onClick="displayType('save_overlay', 'block')" />
             <img class="main_actions_icons" src="png/actions_settings.png" alt="Settings" onClick="displayType('settings_overlay', 'block')" />
         </div>
@@ -93,13 +94,36 @@
                             max="100"
                             name="education_effort"
                             onchange="education_effort_save()"
-                            disabled
-                        />
+                            disabled />
                         <p id="education_effort_level">Effort text: You shouldn't see this!</p>
                         <p id="education_effort_warning"></p>
                     </div>
                 </div>
                 <button id="education_close" class="close" onclick="displayType('education_overlay', 'none')"></button>
+            </div>
+        </div>
+        <div id="career_overlay" class="overlay">
+            <div id="career_tab">
+                <div id="career_container">
+                    <h2>Career Details</h2>
+                    <p id="career_job">You shouldn't see this!</p>
+                    <p id="career_level">Please report this problem to the developers.</p>
+                    <p id="career_progress">This doesn't normally happen.</p>
+                    <h3 id="career_effort_h3">Adjust effort put into working:</h3>
+                    <div id="career_effort_div">
+                        <input
+                            id="career_effort_input"
+                            type="range"
+                            min="0"
+                            max="100"
+                            name="career_effort"
+                            onchange="career_effort_save()"
+                            disabled />
+                        <p id="career_effort_level">Effort text: You shouldn't see this!</p>
+                        <p id="career_effort_warning"></p>
+                    </div>
+                </div>
+                <button id="career_close" class="close" onclick="displayType('career_overlay', 'none')"></button>
             </div>
         </div>
         <div id="save_overlay" class="overlay">
@@ -130,9 +154,9 @@
                     <h3>Theme</h3>
                     <button id="settings_theme" onclick="settings_theme()"></button>
                     <h3>Game Speed</h3>
-                    <label for="settings_gameSpeed1"
-                        ><input id="settings_gameSpeed1" name="gameSpeed" type="radio" value="1" /> Slow&nbsp;&nbsp;&nbsp;</label
-                    >
+                    <label for="settings_gameSpeed1">
+                        <input id="settings_gameSpeed1" name="gameSpeed" type="radio" value="1" /> Slow&nbsp;&nbsp;&nbsp;
+                    </label>
                     <label for="settings_gameSpeed2"
                         ><input id="settings_gameSpeed2" name="gameSpeed" type="radio" value="2" /> Medium&nbsp;&nbsp;&nbsp;</label
                     >

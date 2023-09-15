@@ -195,45 +195,70 @@ function education_progress() {
 
 //Function 3: Determines what the text should be below the education slider
 function education_effort_update() {
-    if (lifeInfo.education.effort == 0) {
-        $("#education_effort_level").html(`${lifeInfo.education.effort}%: What is school?`);
+    let effort = lifeInfo.education.effort;
+    if (effort == 0) {
+        $("#education_effort_level").html(`${effort}%: What is school?`);
         $("#education_effort_warning").html(`WARNING: Putting no effort into studying might get you expelled from the school!`);
-    } else if (lifeInfo.education.effort >= 1 && lifeInfo.education.effort <= 20) {
-        $("#education_effort_level").html(`${lifeInfo.education.effort}%: Slacking off`);
+    } else if (effort >= 1 && effort <= 20) {
+        $("#education_effort_level").html(`${effort}%: Slacking off`); // TODO Name clash
         $("#education_effort_warning").html("");
-    } else if (lifeInfo.education.effort >= 21 && lifeInfo.education.effort <= 40) {
-        $("#education_effort_level").html(`${lifeInfo.education.effort}%: Doing bare minimums`);
+    } else if (effort >= 21 && effort <= 40) {
+        $("#education_effort_level").html(`${effort}%: Doing bare minimums`); // TODO Name clash
         $("#education_effort_warning").html("");
-    } else if (lifeInfo.education.effort >= 41 && lifeInfo.education.effort <= 60) {
-        $("#education_effort_level").html(`${lifeInfo.education.effort}%: Occasional studying`);
+    } else if (effort >= 41 && effort <= 60) {
+        $("#education_effort_level").html(`${effort}%: Occasional studying`);
         $("#education_effort_warning").html("");
-    } else if (lifeInfo.education.effort >= 61 && lifeInfo.education.effort <= 80) {
-        $("#education_effort_level").html(`${lifeInfo.education.effort}%: Absorbing the content`);
+    } else if (effort >= 61 && effort <= 80) {
+        $("#education_effort_level").html(`${effort}%: Absorbing the content`);
         $("#education_effort_warning").html("");
-    } else if (lifeInfo.education.effort >= 81 && lifeInfo.education.effort <= 99) {
-        $("#education_effort_level").html(`${lifeInfo.education.effort}%: Nose to the grindstone`);
+    } else if (effort >= 81 && effort <= 99) {
+        $("#education_effort_level").html(`${effort}%: Nose to the grindstone`); // TODO Name clash
         $("#education_effort_warning").html("");
-    } else if (lifeInfo.education.effort == 100) {
-        $("#education_effort_level").html(`${lifeInfo.education.effort}%: STRIVING FOR SUCCESS`);
+    } else if (effort == 100) {
+        $("#education_effort_level").html(`${effort}%: STRIVING FOR SUCCESS`);
         $("#education_effort_warning").html(`WARNING: Putting this much effort into studying is extremely stressful and might cause depression!`);
     }
 }
 
-//Segment 4: Updates all information in the education overlay once the education button has been pressed
+//Function 4: Updates all information in the education overlay once the education button has been pressed
 function education_open() {
+    let school = database.education.schools[database.education.levels[lifeInfo.education.level]][lifeInfo.education.school];
+    let grade = database.education.grades[database.education.levels[lifeInfo.education.level]].names[lifeInfo.education.grade];
+    let mark = Math.floor(lifeInfo.education.marks);
     displayType("education_overlay", "block");
-    if (lifeInfo.education.level != 0) {
-        $("#education_school").html(
-            `School: ${database.education.schools[database.education.levels[lifeInfo.education.level]][lifeInfo.education.school]}`
-        );
-        $("#education_grade").html(
-            `Grade: ${database.education.grades[database.education.levels[lifeInfo.education.level]].names[lifeInfo.education.grade]}`
-        );
-        $("#education_marks").html(`Marks: ${Math.floor(lifeInfo.education.marks)}%`);
-        $("#education_effort_input").removeAttr("disabled");
-        $("#education_effort_input").val(lifeInfo.education.effort);
-    }
+    $("#education_effort_input").val(lifeInfo.education.effort);
     education_effort_update();
+    if (lifeInfo.education.status == 0) {
+        $("#education_school").html(`You are not currently enrolled in a school!`);
+        $("#education_grade").html(
+            `Your parents will automatically enrol you in Primary School after you turn ${Math.floor(
+                database.education.enrolmentAge / 1000
+            )} years and ${database.education.enrolmentAge % 1000} days old.`
+        );
+        $("#education_marks").html(`Marks: ${mark}%`);
+        $("#education_effort_input").prop("disabled", "true");
+        $("#education_effort_level").html("");
+        $("#education_effort_warning").html("");
+    } else if (lifeInfo.education.status == 1) {
+        $("#education_school").html(`School: ${school}`);
+        $("#education_grade").html(`Grade: ${grade}`);
+        $("#education_marks").html(`Marks: ${mark}%`);
+        $("#education_effort_input").removeAttr("disabled");
+    } else if (lifeInfo.education.status == 2) {
+        $("#education_school").html(`School: ${school}`);
+        $("#education_grade").html(`Grade: ${grade}`);
+        $("#education_marks").html(`Marks: ${mark}%`);
+        $("#education_effort_input").prop("disabled", "true");
+        $("#education_effort_level").html("You are currently on holiday! Take this time to relax and don't stress too hard.");
+        $("#education_effort_warning").html("");
+    } else if (lifeInfo.education.status == 3) {
+        $("#education_school").html("You've graduated!");
+        $("#education_grade").html("Find a job by pressing the Careers option in the action bar.");
+        $("#education_marks").html(`Mark at ${grade}: ${mark}%`);
+        $("#education_effort_input").prop("disabled", "true");
+        $("#education_effort_level").html("");
+        $("#education_effort_warning").html("");
+    }
 }
 
 //Function 5: Updates the text below the slider upon detecting a change in the slider value

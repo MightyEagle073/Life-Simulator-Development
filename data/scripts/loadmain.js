@@ -53,10 +53,8 @@ for (let i = 1; i <= 10; i++) {
 //Segment M6: This function changes the text on the inside of the preserve life tab
 for (let i = 1; i <= 30; i++) {
     let pastInfo = JSON.parse(localStorage.getItem("pastInfo"))[i];
-    console.log(`2`);
     if (pastInfo.status == 2) {
         if (pastInfo.version == "0.3 beta") {
-            console.log(`3`);
             $(`#preserve_div_${i}`).html(`Life ${i}: ${pastInfo.name.first} ${pastInfo.name.last}`);
         } else {
             $(`#preserve_div_${i}`).html("Incompatible Life Stored");

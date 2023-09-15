@@ -84,7 +84,7 @@ const database = {
         lifeNo: 0,
     },
 
-    //Database information related to education
+    //Education system database
     education: {
         //List of Levels
         levels: ["none", "primary", "secondary", "tertiary"],
@@ -153,5 +153,140 @@ const database = {
             },
         },
         enrolmentAge: 4210,
+    },
+
+    //Career system database
+    careers: {
+        jobs: [
+            "Unemployed", //Job 0
+            {
+                profession: "Janitor", //Job 1
+                levels: [
+                    null, //Level 0
+                    "Toilet Cleaner", //Level 1
+                    "Room Cleaner", //Level 2
+                    "House Cleaner", //Level 3
+                    "Interior Glass Cleaner", //Level 4
+                    "Exterior Glass Cleaner", //Level 5
+                ],
+                wage: [null, 17, 19, 22, 26, 32],
+                requirements: {
+                    age: 18000,
+                    marks: 10,
+                },
+            },
+            {
+                profession: "Driver", //Job 2
+                levels: [
+                    null, //Level 0
+                    "Delivery Driver", //Level 1
+                    "Taxi Driver", //Level 2
+                    "Courier Driver", //Level 3
+                    "Surrogate Driver", //Level 4
+                    "Chauffeur", //Level 5
+                    "VIP Chauffeur", //Level 6
+                    "Limousine Driver", //Level 7
+                ],
+                wage: [null, 20, 25, 27, 33, 40, 47, 62],
+                requirements: {
+                    age: 18000,
+                    marks: 40,
+                },
+            },
+            {
+                profession: "Chef", //Job 3
+                levels: [
+                    null, //Level 0
+                    "Kitchen Porter", //Level 1
+                    "Junior Chef", //Level 2
+                    "Chef de Partie", //Level 3
+                    "Sous Chef", //Level 4
+                    "Chef de Cuisine", //Level 5
+                    "Executive Chef", //Level 6
+                ],
+                wage: [null, 24, 35, 44, 54, 78, 95],
+                requirements: {
+                    age: 18000,
+                    marks: 50,
+                },
+            },
+            {
+                profession: "Pilot", //Job 4
+                levels: [
+                    null, //Level 0
+                    "Crop Duster", //Level 1
+                    "Charter Pilot", //Level 2
+                    "Flight Instructor", //Level 3
+                    "Regional First Officer", //Level 4
+                    "Regional Captain", //Level 5
+                    "Narrow Body First Officer", //Level 6
+                    "Narrow Body Captain", //Level 7
+                    "Wide Body First Officer", //Level 8
+                    "Wide Body Captain", //Level 9
+                    "Jumob Jet First Officer", //Level 10
+                    "Jumbo Jet Captain", //Level 11
+                ],
+                wage: [null, 15, 20, 27, 38, 50, 48, 66, 63, 79, 75, 98],
+                requirements: {
+                    age: 18000,
+                    marks: 70,
+                },
+            },
+            {
+                profession: "Teacher", //Job 5
+                levels: [
+                    null, //Level 0
+                    "Substitute Teacher", //Level 1
+                    "Primary School Teacher", //Level 2
+                    "High School Teacher", //Level 3
+                    "Head Teacher", //Level 4
+                    "Professor", //Level 5
+                    "Head Professor", //Level 6
+                    "Master Professor", //Level 7
+                ],
+                wage: [null, 28, 38, 44, 57, 70, 95, 114],
+                requirements: {
+                    age: 18000,
+                    marks: 75,
+                },
+            },
+            {
+                profession: "Engineer", //Job 6
+                levels: [
+                    null, //Level 0
+                    "Assistant Engineer", //Level 1
+                    "Junior Engineer", //Level 2
+                    "Senior Engineer", //Level 3
+                    "Engineering Team Leader", //Level 4
+                    "Engineering General Manager", //Level 5
+                    "Deputy Engineering Chief", //Level 6
+                    "Engineering Chief", //Level 7
+                ],
+                wage: [null, 38, 45, 52, 69, 83, 108, 138],
+                requirements: {
+                    age: 18000,
+                    marks: 80,
+                },
+            },
+            {
+                profession: "Business", //Job 7
+                levels: [
+                    null, //Level 0
+                    "Reporter", //Level 1
+                    "Office Assistant", //Level 2
+                    "Supervisor", //Level 3
+                    "Associate Manager", //Level 4
+                    "Manager", //Level 5
+                    "Senior Manager", //Level 6
+                    "President", //Level 7
+                    "Chief Executive Officer", //Level 8
+                ],
+                wage: [null, 32, 49, 66, 84, 100, 125, 159, 231],
+                requirements: {
+                    age: 18000,
+                    marks: 85,
+                },
+            },
+        ],
     },
 };

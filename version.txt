@@ -1,10 +1,10 @@
-Current Version: 0.2.4.209261
-Released: 26/09/2022 02:56am
+Current Version: 0.2.4.209291
+Released: 29/09/2022 02:56am
 
-Changes from 0.2.4.209241:
-+ New script system, all scripts now stored in scripts folder
-+ Some scripts are now split into others
-+ Managed file system a bit better
+Changes from 0.2.4.209261:
++ Implemented basic career system interface
++ New Education text for when on holiday and after graduation
+- Education effort can no longer be changed while on holiday and after graduation
 
 Version Number meaning
 First number: 0 means the game is still in development and not complete, 1 means the game is out
