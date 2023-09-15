@@ -1,49 +1,56 @@
-//This script contains functions running all things related to starting a new life.
-//This script is used in home.html.
+// This script contains functions running all things related to starting a new life.
+// This script is used in home.html.
 
-//Function 1: This function activates when user tries to start a life
+// Function 1: This function activates when user tries to start a life
 function newLife_sure() {
-    //If first name is invalid
+    // If first name is invalid
     if ($("#newLife_firstName").val().length == 0) {
         $("#newLife2_h1").html("Invalid First Name!");
         $("#newLife2_p").html(
-            "Please enter a first name. Do you really want your character to live their life without a name? Imagine how much they'll get bullied!"
+            "Please enter a first name. Do you really want your character to live their life " +
+            "without a name? Imagine how much they'll get bullied!"
         );
         displayType("newLife2_yes", "none");
         displayType("newLife2_no", "none");
         displayType("newLife2_overlay", "block");
     }
-    //If surname is invalid
+    // If surname is invalid
     else if ($("#newLife_surname").val().length == 0) {
         $("#newLife2_h1").html("Invalid Surname!");
         $("#newLife2_p").html(
-            `Please enter a surname. You can't just have someone with a first name but no last name. Imagine your your birth certificate with just "John". That would be awkward wouldn't it?`
+            "Please enter a surname. You can't just have someone with a first name but no last name. " +
+            `Imagine your your birth certificate with just "John". That would be awkward wouldn't it?`
         );
         displayType("newLife2_yes", "none");
         displayType("newLife2_no", "none");
         displayType("newLife2_overlay", "block");
     }
-    //If gender is invalid
-    else if ($("#newLife_gender_male").prop("checked") == false && $("#newLife_gender_female").prop("checked") == false) {
+    // If gender is invalid
+    else if (
+        $("#newLife_gender_male").prop("checked") == false && 
+        $("#newLife_gender_female").prop("checked") == false
+    ) {
         $("#newLife2_h1").html("Invalid Gender!");
         $("#newLife2_p").html(
-            "Please enter a gender. I know some people don't really like to identify them as either Male or Female but you got to be born either of the two!"
+            "Please enter a gender. I know some people don't really like to identify them as " + 
+            "either Male or Female but you got to be born either of the two!"
         );
         displayType("newLife2_yes", "none");
         displayType("newLife2_no", "none");
         displayType("newLife2_overlay", "block");
     }
-    //If date is invalid
+    // If date is invalid
     else if ($("#newLife_dob").val().toString().length == 0) {
         $("#newLife2_h1").html("Invalid Date!");
         $("#newLife2_p").html(
-            "Please enter a date of birth. I haven't heard of anyone who was never born, and just exists. Maybe you're one but Life Simulator could only simulate lives of mortals!"
+            "Please enter a date of birth. I haven't heard of anyone who was never born, and " + 
+            "just exists. Maybe you're one but Life Simulator could only simulate lives of mortals!"
         );
         displayType("newLife2_yes", "none");
         displayType("newLife2_no", "none");
         displayType("newLife2_overlay", "block");
     }
-    //If all is valid
+    // If all is valid
     else {
         newFirstName_temp = $("#newLife_firstName").val();
         newSurname_temp = $("#newLife_surname").val();
@@ -65,7 +72,7 @@ function newLife_sure() {
     }
 }
 
-//Function 18- Activates when user is sure they want to start their life
+// Function 2 - Activates when user is sure they want to start their life
 function createlife() {
     let info = database.lifeInformation;
     info.status = 1;

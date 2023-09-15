@@ -1,7 +1,8 @@
-//This script is used to load functions running the control panel (starting and stopping time).
-//This script is used in main.html.
+// This script is used to load functions running the control panel (starting and 
+// stopping time).
+// This script is used in main.html.
 
-//Function 1: Activates when the play button is pressed
+// Function 1: Activates when the play button is pressed
 function timestart() {
     if (breakfn == 1) {
         breakfn = 0;
@@ -13,7 +14,7 @@ function timestart() {
     }
 }
 
-//Function 2: Activates when the pause button is pressed
+// Function 2: Activates when the pause button is pressed
 function timepause() {
     breakfn = 1;
 }

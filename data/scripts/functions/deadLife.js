@@ -1,7 +1,7 @@
-//This script contains functions running all things related to what will happen after a life ends.
-//This script is being used in home.html and main.html.
+// This script contains functions running all things related to what will happen after a life ends.
+// This script is being used in home.html and main.html.
 
-//Function 1: Activates when user clicks on a previous life in the past lives tab
+// Function 1: Activates when user clicks on a previous life in the past lives tab
 function pastFn(lifeNo) {
     let pastLife = JSON.parse(localStorage.getItem("pastInfo"))[lifeNo];
     if (pastLife.status == 2 && pastLife.version == "0.3 beta") {
@@ -11,7 +11,7 @@ function pastFn(lifeNo) {
     }
 }
 
-//Function 2: Activates when a user wants to end a life without preserving it
+// Function 2: Activates when a user wants to end a life without preserving it
 function endLife() {
     window.location.href = "../home.html";
 }

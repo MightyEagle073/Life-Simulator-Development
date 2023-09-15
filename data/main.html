@@ -6,6 +6,7 @@
         <link href="style.css" type="text/css" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" />
         <link href="logo.png" rel="icon" />
+        <script src="scripts/database.js"></script>
         <script src="scripts/public/jquery-3.4.1.min.js"></script>
         <script src="scripts/public/jquery.fittext.js"></script>
         <script src="scripts/public/js.cookie.min.js"></script>
@@ -18,7 +19,6 @@
         <script src="scripts/functions/misc.js"></script>
         <script src="scripts/functions/progress.js"></script>
         <script src="scripts/functions/settings.js"></script>
-        <script src="scripts/database.js"></script>
         <script src="scripts/loadmain.js" defer></script>
     </head>
 
@@ -175,9 +175,9 @@
                             <button id="settings2_no" onclick="displayType('settings2_overlay', 'none')"></button>
                         </div>
                     </div>
+                    <button id="settings_save" onclick="settings_sure()"></button>
                 </div>
                 <button id="settings_close" class="close" onclick="displayType('settings_overlay', 'none')"></button>
-                <button id="settings_save" onclick="settings_sure()"></button>
             </div>
         </div>
         <div id="notification_overlay" class="overlay">
