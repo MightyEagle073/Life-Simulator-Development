@@ -25,5 +25,5 @@ function continueLife() {
         "lifeTransfer", 
         JSON.stringify(JSON.parse(localStorage.getItem("currentInfo"))[lifeNo_temp])
     );
-    window.location.href = "data/main.html";
+    window.location.href = "main.html";
 }

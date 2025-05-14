@@ -40,28 +40,16 @@ function settings_theme() {
     } else {
         theme_temp = theme_temp + 1;
     }
-    if ($("#home_body").html()) {
-        $("#settings_theme").css(
-            "backgroundImage", 
-            `url('data/wallpapers/previews/${database.themeNames[theme_temp]}')`
-        );
-    } else if ($("#main_body").html()) {
-        $("#settings_theme").css(
-            "backgroundImage", 
-            `url('wallpapers/previews/${database.themeNames[theme_temp]}')`
-        );
-    }
+    $("#settings_theme").css(
+        "backgroundImage", 
+        `url('wallpapers/previews/${database.themeNames[theme_temp]}')`
+    );
 }
 
 //Function 5: applyTheme() - Switches the background of the webpage and on the settings button
 function applyTheme() {
     let settings = JSON.parse(localStorage.getItem("settings"));
     let currentTheme = database.themeNames[settings.theme]
-    if ($("#home_body").html()) {
-        document.body.style.backgroundImage = `url('data/wallpapers/${currentTheme}')`;
-        $("#settings_theme").css("backgroundImage", `url('data/wallpapers/previews/${currentTheme}')`);
-    } else if ($("#main_body").html()) {
-        document.body.style.backgroundImage = `url('wallpapers/${currentTheme}')`;
-        $("#settings_theme").css("backgroundImage", `url('wallpapers/previews/${currentTheme}')`);
-    }
+    document.body.style.backgroundImage = `url('wallpapers/${currentTheme}')`;
+    $("#settings_theme").css("backgroundImage", `url('wallpapers/previews/${currentTheme}')`);
 }

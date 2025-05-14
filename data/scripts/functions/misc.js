@@ -31,5 +31,5 @@ function diaryAdd(input) {
 function transferLife(lifeNo) {
     lifeInfo.lifeNo = lifeNo;
     localStorage.setItem("lifeTransfer", JSON.stringify(lifeInfo));
-    window.location.href = "../home.html";
+    window.location.href = "home.html";
 }

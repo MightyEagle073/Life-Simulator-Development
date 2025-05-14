@@ -1,6 +1,9 @@
 // This script is used to load main.html, and is run after all the html elements 
 // of main.html has been initialised.
 
+// import settings from "./functions/settings.js";
+// import misc from "./functions/misc.js";
+
 // Segment M1: Checks if user is using an unsupported brower
 if (navigator.userAgent.indexOf("Firefox") != -1) {
     displayType("notSupported_overlay", "block");
@@ -17,7 +20,7 @@ settings_initialise();
 // Segment M3: This segment changes the life information on the diary (top left) 
 // and information (top right) tabs
 let launch_balance = lifeInfo.balance.toLocaleString("en-AU", {style: "currency", currency: "AUD"})
-let launch_netWorth = lifeInfo.netWorth.toLocaleString("en-AU", {style: "currency", currency: "AUD"})
+let launch_netWorth = lifeInfo.netWorth.toLocaleString("en-AU", {styl: "currency", currency: "AUD"})
 $("#main_diary_h1").html(`${lifeInfo.name.first} ${lifeInfo.name.last}'s Diary`);
 $("#main_diary_p").html(`${lifeInfo.diary}`);
 $("#main_info_age").html(`Age: ${lifeInfo.age.years} years ${lifeInfo.age.days} days`);

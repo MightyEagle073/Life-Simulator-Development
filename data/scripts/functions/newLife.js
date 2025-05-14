@@ -88,5 +88,5 @@ function createlife() {
         info.iq = Math.round(-5 * Math.PI * Math.pow(Math.asin(2 * iqX - 1), 2.5) + 100);
     }
     localStorage.setItem("lifeTransfer", JSON.stringify(info));
-    window.location.href = "data/main.html";
+    window.location.href = "main.html";
 }

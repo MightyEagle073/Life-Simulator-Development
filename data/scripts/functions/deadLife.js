@@ -13,5 +13,5 @@ function pastFn(lifeNo) {
 
 // Function 2: Activates when a user wants to end a life without preserving it
 function endLife() {
-    window.location.href = "../home.html";
+    window.location.href = "home.html";
 }
