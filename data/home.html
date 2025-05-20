@@ -8,15 +8,7 @@
         <link href="logo.png" rel="icon" />
         <script src="scripts/public/jquery-3.4.1.min.js"></script>
         <script src="scripts/public/jquery.fittext.js"></script>
-        <script src="scripts/public/js.cookie.min.js"></script>
-        <script src="scripts/functions/continueLife.js"></script>
-        <script src="scripts/functions/dates.js"></script>
-        <script src="scripts/functions/deadLife.js"></script>
-        <script src="scripts/functions/misc.js"></script>
-        <script src="scripts/functions/newLife.js"></script>
-        <script src="scripts/functions/settings.js"></script>
-        <script src="scripts/database.js"></script>
-        <script src="scripts/loadhome.js" defer></script>
+        <script type="module" src="init.js" defer></script>
     </head>
     <body id="home_body">
         <!--Not Supported-->
@@ -35,10 +27,10 @@
         </div>
         <!--Buttons-->
         <img id="home_logo" src="logo_big.png" alt="Logo" />
-        <button class="home_buttons" id="newLife" onclick="displayType('newLife_overlay', 'block')">Ronald</button>
-        <button class="home_buttons" id="continueLife" onclick="displayType('continueLife_overlay', 'block')">Continue Life</button>
-        <button class="home_buttons" id="pastLives" onclick="displayType('pastLives_overlay', 'block')">Past Lives</button>
-        <button class="home_buttons" id="settings" onclick="displayType('settings_overlay', 'block')">Settings</button>
+        <button class="home_buttons" id="newLife">New Life</button>
+        <button class="home_buttons" id="continueLife">Continue Life</button>
+        <button class="home_buttons" id="pastLives">Past Lives</button>
+        <button class="home_buttons" id="settings">Settings</button>
         <button class="home_buttons" id="information">Information</button>
         <div id="newLife_overlay" class="overlay">
             <div id="newLife_tab">
@@ -63,12 +55,12 @@
                     <input id="newLife_dob" type="date" required />
                     <h3>The game will start from this day onwards.</h3>
                 </div>
-                <button id="newLife_close" class="close" onclick="displayType('newLife_overlay', 'none')"></button>
-                <button id="newLife_start" onClick="newLife_sure()"></button>
+                <button id="newLife_close" class="close"></button>
+                <button id="newLife_start"></button>
             </div>
             <div id="newLife2_overlay" class="overlay">
                 <div id="newLife2_tab">
-                    <button id="newLife2_close" class="close" onclick="displayType('newLife2_overlay', 'none')"></button>
+                    <button id="newLife2_close" class="close"></button>
                     <div id="newLife2_container">
                         <h1 id="newLife2_h1">Start New Life?</h1>
                         <p id="newLife2_p">
@@ -76,8 +68,8 @@
                             <strong>1970/1/1?</strong>
                         </p>
                     </div>
-                    <button id="newLife2_yes" onclick="createlife()"></button>
-                    <button id="newLife2_no" onclick="displayType('newLife2_overlay', 'none')"></button>
+                    <button id="newLife2_yes"></button>
+                    <button id="newLife2_no"></button>
                 </div>
             </div>
         </div>
@@ -87,7 +79,7 @@
                     <h1>Choose the life to continue!</h1>
                     <br />
                     <div id="continueLife_div">
-                        <div id="continueLife_saveFile1" class="continueLife_saveFile" onClick="continueFn(1)">
+                        <div id="continueLife_saveFile1" class="continueLife_saveFile">
                             <table>
                                 <tr class="continueLife_saveFile_main" id="continueLife_saveFile1_main">
                                     <td class="continueLife_saveFile_no" id="continueLife_saveFile1_no">1</td>
@@ -99,7 +91,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="continueLife_saveFile2" class="continueLife_saveFile" onClick="continueFn(2)">
+                        <div id="continueLife_saveFile2" class="continueLife_saveFile">
                             <table>
                                 <tr class="continueLife_saveFile_main" id="continueLife_saveFile2_main">
                                     <td class="continueLife_saveFile_no" id="continueLife_saveFile2_no">2</td>
@@ -111,7 +103,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="continueLife_saveFile3" class="continueLife_saveFile" onClick="continueFn(3)">
+                        <div id="continueLife_saveFile3" class="continueLife_saveFile">
                             <table>
                                 <tr class="continueLife_saveFile_main" id="continueLife_saveFile3_main">
                                     <td class="continueLife_saveFile_no" id="continueLife_saveFile3_no">3</td>
@@ -123,7 +115,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="continueLife_saveFile4" class="continueLife_saveFile" onClick="continueFn(4)">
+                        <div id="continueLife_saveFile4" class="continueLife_saveFile">
                             <table>
                                 <tr class="continueLife_saveFile_main" id="continueLife_saveFile4_main">
                                     <td class="continueLife_saveFile_no" id="continueLife_saveFile4_no">4</td>
@@ -135,7 +127,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="continueLife_saveFile5" class="continueLife_saveFile" onClick="continueFn(5)">
+                        <div id="continueLife_saveFile5" class="continueLife_saveFile">
                             <table>
                                 <tr class="continueLife_saveFile_main" id="continueLife_saveFile5_main">
                                     <td class="continueLife_saveFile_no" id="continueLife_saveFile5_no">5</td>
@@ -147,7 +139,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="continueLife_saveFile6" class="continueLife_saveFile" onClick="continueFn(6)">
+                        <div id="continueLife_saveFile6" class="continueLife_saveFile">
                             <table>
                                 <tr class="continueLife_saveFile_main" id="continueLife_saveFile6_main">
                                     <td class="continueLife_saveFile_no" id="continueLife_saveFile6_no">6</td>
@@ -159,7 +151,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="continueLife_saveFile7" class="continueLife_saveFile" onClick="continueFn(7)">
+                        <div id="continueLife_saveFile7" class="continueLife_saveFile">
                             <table>
                                 <tr class="continueLife_saveFile_main" id="continueLife_saveFile7_main">
                                     <td class="continueLife_saveFile_no" id="continueLife_saveFile7_no">7</td>
@@ -171,7 +163,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="continueLife_saveFile8" class="continueLife_saveFile" onClick="continueFn(8)">
+                        <div id="continueLife_saveFile8" class="continueLife_saveFile">
                             <table>
                                 <tr class="continueLife_saveFile_main" id="continueLife_saveFile8_main">
                                     <td class="continueLife_saveFile_no" id="continueLife_saveFile8_no">8</td>
@@ -183,7 +175,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="continueLife_saveFile9" class="continueLife_saveFile" onClick="continueFn(9)">
+                        <div id="continueLife_saveFile9" class="continueLife_saveFile">
                             <table>
                                 <tr class="continueLife_saveFile_main" id="continueLife_saveFile9_main">
                                     <td class="continueLife_saveFile_no" id="continueLife_saveFile9_no">9</td>
@@ -195,7 +187,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="continueLife_saveFile10" class="continueLife_saveFile" onClick="continueFn(10)">
+                        <div id="continueLife_saveFile10" class="continueLife_saveFile">
                             <table>
                                 <tr class="continueLife_saveFile_main" id="continueLife_saveFile10_main">
                                     <td class="continueLife_saveFile_no" id="continueLife_saveFile10_no">10</td>
@@ -210,7 +202,7 @@
                     </div>
                     <div id="continueLife2_overlay" class="overlay">
                         <div id="continueLife2_tab">
-                            <button id="continueLife2_close" class="close" onclick="displayType('continueLife2_overlay', 'none')"></button>
+                            <button id="continueLife2_close" class="close"></button>
                             <div id="continueLife2_container">
                                 <h1 id="continueLife2_h1">Continue life 0?</h1>
                                 <p id="continueLife2_p">
@@ -218,19 +210,19 @@
                                     <strong>1970/1/1</strong>?
                                 </p>
                             </div>
-                            <button id="continueLife2_yes" onclick="continueLife()"></button>
-                            <button id="continueLife2_no" onclick="displayType('continueLife2_overlay', 'none')"></button>
+                            <button id="continueLife2_yes"></button>
+                            <button id="continueLife2_no"></button>
                         </div>
                     </div>
                     <br /><br /><br />
                 </div>
-                <button id="continueLife_close" class="close" onclick="displayType('continueLife_overlay', 'none')"></button>
+                <button id="continueLife_close" class="close"></button>
             </div>
         </div>
         <div id="pastLives_overlay" class="overlay">
             <div id="pastLives_tab">
                 <div id="pastLives_container">
-                    <button id="pastLives_close" class="close" onclick="displayType('pastLives_overlay', 'none')"></button>
+                    <button id="pastLives_close" class="close"></button>
                     <h1>Past Lives</h1>
                     <p>This is the gallery of all the lives you have once lived that you chose to preserve. Click on a life to read their diary.</p>
                     <p>
@@ -241,7 +233,7 @@
                         - Banksy
                     </p>
                     <div id="pastLives_div">
-                        <div id="pastLives_save1" class="pastLives_save" onClick="pastFn(1)">
+                        <div id="pastLives_save1" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save1_main">
                                     <td class="pastLives_save_no" id="pastLives_save1_no">1</td>
@@ -259,7 +251,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save2" class="pastLives_save" onClick="pastFn(2)">
+                        <div id="pastLives_save2" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save2_main">
                                     <td class="pastLives_save_no" id="pastLives_save2_no">2</td>
@@ -277,7 +269,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save3" class="pastLives_save" onClick="pastFn(3)">
+                        <div id="pastLives_save3" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save3_main">
                                     <td class="pastLives_save_no" id="pastLives_save3_no">3</td>
@@ -295,7 +287,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save4" class="pastLives_save" onClick="pastFn(4)">
+                        <div id="pastLives_save4" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save4_main">
                                     <td class="pastLives_save_no" id="pastLives_save4_no">4</td>
@@ -313,7 +305,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save5" class="pastLives_save" onClick="pastFn(5)">
+                        <div id="pastLives_save5" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save5_main">
                                     <td class="pastLives_save_no" id="pastLives_save5_no">5</td>
@@ -331,7 +323,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save6" class="pastLives_save" onClick="pastFn(6)">
+                        <div id="pastLives_save6" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save6_main">
                                     <td class="pastLives_save_no" id="pastLives_save6_no">6</td>
@@ -349,7 +341,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save7" class="pastLives_save" onClick="pastFn(7)">
+                        <div id="pastLives_save7" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save7_main">
                                     <td class="pastLives_save_no" id="pastLives_save7_no">7</td>
@@ -367,7 +359,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save8" class="pastLives_save" onClick="pastFn(8)">
+                        <div id="pastLives_save8" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save8_main">
                                     <td class="pastLives_save_no" id="pastLives_save8_no">8</td>
@@ -385,7 +377,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save9" class="pastLives_save" onClick="pastFn(9)">
+                        <div id="pastLives_save9" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save9_main">
                                     <td class="pastLives_save_no" id="pastLives_save9_no">9</td>
@@ -403,7 +395,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save10" class="pastLives_save" onClick="pastFn(10)">
+                        <div id="pastLives_save10" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save10_main">
                                     <td class="pastLives_save_no" id="pastLives_save10_no">10</td>
@@ -421,7 +413,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save11" class="pastLives_save" onClick="pastFn(11)">
+                        <div id="pastLives_save11" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save11_main">
                                     <td class="pastLives_save_no" id="pastLives_save11_no">11</td>
@@ -439,7 +431,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save12" class="pastLives_save" onClick="pastFn(12)">
+                        <div id="pastLives_save12" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save12_main">
                                     <td class="pastLives_save_no" id="pastLives_save12_no">12</td>
@@ -457,7 +449,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save13" class="pastLives_save" onClick="pastFn(13)">
+                        <div id="pastLives_save13" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save13_main">
                                     <td class="pastLives_save_no" id="pastLives_save13_no">13</td>
@@ -475,7 +467,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save14" class="pastLives_save" onClick="pastFn(14)">
+                        <div id="pastLives_save14" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save14_main">
                                     <td class="pastLives_save_no" id="pastLives_save14_no">14</td>
@@ -493,7 +485,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save15" class="pastLives_save" onClick="pastFn(15)">
+                        <div id="pastLives_save15" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save15_main">
                                     <td class="pastLives_save_no" id="pastLives_save15_no">15</td>
@@ -511,7 +503,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save16" class="pastLives_save" onClick="pastFn(16)">
+                        <div id="pastLives_save16" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save16_main">
                                     <td class="pastLives_save_no" id="pastLives_save16_no">16</td>
@@ -529,7 +521,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save17" class="pastLives_save" onClick="pastFn(17)">
+                        <div id="pastLives_save17" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save17_main">
                                     <td class="pastLives_save_no" id="pastLives_save17_no">17</td>
@@ -547,7 +539,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save18" class="pastLives_save" onClick="pastFn(18)">
+                        <div id="pastLives_save18" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save18_main">
                                     <td class="pastLives_save_no" id="pastLives_save18_no">18</td>
@@ -565,7 +557,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save19" class="pastLives_save" onClick="pastFn(19)">
+                        <div id="pastLives_save19" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save19_main">
                                     <td class="pastLives_save_no" id="pastLives_save19_no">19</td>
@@ -583,7 +575,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save20" class="pastLives_save" onClick="pastFn(20)">
+                        <div id="pastLives_save20" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save20_main">
                                     <td class="pastLives_save_no" id="pastLives_save20_no">20</td>
@@ -601,7 +593,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save21" class="pastLives_save" onClick="pastFn(21)">
+                        <div id="pastLives_save21" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save21_main">
                                     <td class="pastLives_save_no" id="pastLives_save21_no">21</td>
@@ -619,7 +611,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save22" class="pastLives_save" onClick="pastFn(22)">
+                        <div id="pastLives_save22" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save22_main">
                                     <td class="pastLives_save_no" id="pastLives_save22_no">22</td>
@@ -637,7 +629,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save23" class="pastLives_save" onClick="pastFn(23)">
+                        <div id="pastLives_save23" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save23_main">
                                     <td class="pastLives_save_no" id="pastLives_save23_no">23</td>
@@ -655,7 +647,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save24" class="pastLives_save" onClick="pastFn(24)">
+                        <div id="pastLives_save24" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save24_main">
                                     <td class="pastLives_save_no" id="pastLives_save24_no">24</td>
@@ -673,7 +665,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save25" class="pastLives_save" onClick="pastFn(25)">
+                        <div id="pastLives_save25" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save25_main">
                                     <td class="pastLives_save_no" id="pastLives_save25_no">25</td>
@@ -691,7 +683,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save26" class="pastLives_save" onClick="pastFn(26)">
+                        <div id="pastLives_save26" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save26_main">
                                     <td class="pastLives_save_no" id="pastLives_save26_no">26</td>
@@ -709,7 +701,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save27" class="pastLives_save" onClick="pastFn(27)">
+                        <div id="pastLives_save27" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save27_main">
                                     <td class="pastLives_save_no" id="pastLives_save27_no">27</td>
@@ -727,7 +719,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save28" class="pastLives_save" onClick="pastFn(28)">
+                        <div id="pastLives_save28" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save28_main">
                                     <td class="pastLives_save_no" id="pastLives_save28_no">28</td>
@@ -745,7 +737,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save29" class="pastLives_save" onClick="pastFn(29)">
+                        <div id="pastLives_save29" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save29_main">
                                     <td class="pastLives_save_no" id="pastLives_save29_no">29</td>
@@ -763,7 +755,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="pastLives_save30" class="pastLives_save" onClick="pastFn(30)">
+                        <div id="pastLives_save30" class="pastLives_save">
                             <table>
                                 <tr class="pastLives_save_main" id="pastLives_save30_main">
                                     <td class="pastLives_save_no" id="pastLives_save30_no">30</td>
@@ -786,7 +778,7 @@
                     <div>
                         <div id="pastLives2_overlay" class="overlay">
                             <div id="pastLives2_tab">
-                                <button id="pastLives2_close" class="close" onclick="displayType('pastLives2_overlay', 'none')"></button>
+                                <button id="pastLives2_close" class="close"></button>
                                 <div id="pastLives2_container">
                                     <h1 id="pastLives2_h1">John Smith's diary</h1>
                                     <p id="pastLives2_p">
@@ -807,7 +799,7 @@
                     <h3>Volume</h3>
                     <input id="settings_volume" type="range" min="0" max="100" name="volume" />
                     <h3>Theme</h3>
-                    <button id="settings_theme" onclick="settings_theme()"></button>
+                    <button id="settings_theme" value="4"></button>
                     <h3>Game Speed</h3>
                     <label for="settings_gameSpeed1"
                         ><input id="settings_gameSpeed1" name="gameSpeed" type="radio" value="1" />&nbsp;Slow&nbsp;&nbsp;&nbsp;</label
@@ -818,21 +810,22 @@
                     <label for="settings_gameSpeed3"
                         ><input id="settings_gameSpeed3" name="gameSpeed" type="radio" value="3" />&nbsp;Fast&nbsp;&nbsp;&nbsp;</label
                     >
-                    <p>
+                    <h4>
                         The Game Speed adjusts the amounts of events that will happen in your life. For a fast game but uneventful life, choose slow.
                         For a slow game but a life packed full of events, choose fast. For a balanced game, choose medium.
-                    </p>
+                    </h4>
                     <div id="settings2_overlay" class="overlay">
                         <div id="settings2_tab">
-                            <button id="settings2_close" class="close" onclick="displayType('settings2_overlay', 'none')"></button>
+                            <button id="settings2_close" class="close"></button>
                             <h2 id="settings2_h2">Save your current settings?</h2>
-                            <button id="settings2_yes" onclick="settings_save()"></button>
-                            <button id="settings2_no" onclick="displayType('settings2_overlay', 'none')"></button>
+                            <pre id="settings2_pre">Sample</pre>
+                            <button id="settings2_yes"></button>
+                            <button id="settings2_no"></button>
                         </div>
                     </div>
-                    <button id="settings_save" onclick="settings_sure()"></button>
+                    <button id="settings_save"></button>
                 </div>
-                <button id="settings_close" class="close" onclick="displayType('settings_overlay', 'none')"></button>
+                <button id="settings_close" class="close"></button>
             </div>
         </div>
         <div id="home_version">Version: 0.3.0 (Beta - Not to be used for actual gameplay)</div>

@@ -1,39 +1,29 @@
-// This script contains all the constant datas required to run Life Simulator. 
+// This script contains all the constant datas required to run Life Simulator.
 // The information here does not change, unless changed by developer.
 // ! This javascript file might be split into multiple databases in the future.
 
-const database = {
-    //Theme Names
-    themeNames: [
-        null,
-        "1_sunset.jpg",
-        "2_forest.jpg",
-        "3_cityscape.jpg",
-        "4_rainy.jpg",
-        "5_blocks.jpg",
-        "6_paint.jpg",
-        "7_moon.jpg",
-        "8_waterfall.jpg",
-        "9_hexagon.jpg",
-        "10_road.jpg",
-        "11_valley.jpg",
-        "12_train.jpg",
-    ],
-
+export const db = {
     // Default Settings - Settings when the game is first launched, or when resetted
-    settings: {
-        volume: 100,
-        theme: 1,
-        gameSpeed: 1,
-    },
+    defaultSettings: { volume: 100, theme: 1, gameSpeed: 1 },
+
+    // Theme Files and Names
+    themeFiles: [
+        null, "1_sunset.jpg", "2_forest.jpg", "3_cityscape.jpg", "4_rainy.jpg",
+        "5_blocks.jpg", "6_paint.jpg", "7_moon.jpg", "8_waterfall.jpg",
+        "9_hexagon.jpg", "10_road.jpg", "11_valley.jpg", "12_train.jpg",
+    ],
+    themeNames: [
+        null, "Sunset" , "Forest", "Cityscape", "Rainy", "Blocks", "Paint",
+        "Moon", "Waterfall", "Hexagon", "Road", "Valley", "Train",
+    ],
+    gameSpeedNames: [null, "Slow", "Medium", "Fast"],
+
 
     // Default Life Information - Life information before the life is first created
     lifeInformation: {
         // Crucial information for running, never shown to the player
         // Status: 0 = Doesn't Exist, 1 = Alive, 2 = Dead
-        version: "0.3 beta",
-        status: 0,  // Integer from 0-2, changed to 1 when life is created 
-                    // (0 = Not born yet, 1 = Alive, 2 = Dead)
+        status: 0,
 
         // Life Information
         age: {
@@ -77,13 +67,12 @@ const database = {
             month: 1, // Integer from 0-12, changed when life is created
             day: 1, // Integer from 0-31, changed when life is created
         },
-        diary: "Click the play button on the bottom right corner to start your life!", //String
+        diary: "Click the play button on the bottom right corner to start your life!", // String
         dsb: 0, // Integer, never shown to the player
         education: {
-            status: 0,  // Integer from 0-3 
-                        // (0 = Not in school yet, 1 = In school, 2 = On Holidays, 3 = Graduated)
-            level: 0,   // Integer from 0-3 
-                        // (0 = Not in school yet, 1 = Primary, 2 = Secondary, 3 = Tertiary)
+            status: 0,  // Integer from 0-3,
+            // (0 = Not in school yet, 1 = In school, 2 = On Holidays, 3 = Graduated)
+            level: 0,   // Integer from 0-3, (0 = Not in school yet, 1 = Primary, 2 = Secondary, 3 = Tertiary)
             grade: 0, // Integer <= 0
             school: 0, // Integer <= 0
             daysIntoGrade: 0, // Integer <= 0
@@ -158,22 +147,19 @@ const database = {
         // List of Grade Names
         grades: {
             primary: {
-                names: [
-                    null, "Kindergarten", "Year 1", "Year 2", 
-                    "Year 3", "Year 4", "Year 5", "Year 6"
-                ],
+                names: [null, "Kindergarten", "Year 1", "Year 2", "Year 3", "Year 4", "Year 5", "Year 6"],
                 difficulty: [null, 5, 15, 20, 25, 30, 35, 45],
-                startDate: [null, 131, 131, 131, 131, 131, 131, 131], 
+                startDate: [null, 131, 131, 131, 131, 131, 131, 131],
                 // MMDD code of when the grade will start
-                endDate: [null, 1215, 1215, 1215, 1215, 1215, 1215, 1215], 
+                endDate: [null, 1215, 1215, 1215, 1215, 1215, 1215, 1215],
                 // MMDD code of when the grade will end
             },
             secondary: {
                 names: [null, "Year 7", "Year 8", "Year 9", "Year 10", "Year 11", "Year 12"],
                 difficulty: [null, 60, 65, 75, 80, 95, 120],
-                startDate: [null, 131, 131, 131, 131, 131, 1012], 
+                startDate: [null, 131, 131, 131, 131, 131, 1012],
                 // MMDD code of when the grade will start
-                endDate: [null, 1215, 1215, 1215, 1215, 925, 1106], 
+                endDate: [null, 1215, 1215, 1215, 1215, 925, 1106],
                 // MMDD code of when the grade will end
             },
         },
@@ -185,7 +171,7 @@ const database = {
         jobs: [
             {
                 profession: "Unemployed" // Job 0
-            }, 
+            },
             {
                 profession: "Janitor", // Job 1
                 levels: [
@@ -282,7 +268,7 @@ const database = {
                 levels: [
                     null, // Level 0
                     "Assistant Engineer", // Level 1
-                    "Junior Engineer", //Level 2
+                    "Junior Engineer", // Level 2
                     "Senior Engineer", // Level 3
                     "Engineering Team Leader", // Level 4
                     "Engineering General Manager", // Level 5

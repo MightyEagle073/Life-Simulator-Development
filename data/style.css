@@ -663,10 +663,10 @@ img {
     font-family: "Open Sans", sans-serif;
 }
 
-#settings_tab p {
+#settings_tab h4 {
     position: relative;
     font-weight: 100;
-    font-size: 10px;
+    font-size: 12px;
 }
 
 #settings_save {
@@ -689,7 +689,7 @@ img {
     position: fixed;
     display: fixed;
     width: 30%;
-    height: 20%;
+    height: 25%;
     left: 35%;
     top: 40%;
     background-color: rgba(255, 255, 255, 0.7);
@@ -700,8 +700,15 @@ img {
 }
 
 #settings2_h2 {
-    position: absolute;
+    position: relative;
     left: 3%;
+}
+
+#settings2_pre {
+    font-family: "Open Sans", sans-serif;
+    position: relative;
+    left: 3%;
+    font-size: 16px;
 }
 
 #settings2_close {
