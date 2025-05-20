@@ -26,13 +26,13 @@ if (!localStorage.getItem("LiSim")) {
 
 // Detects if there is a life to be transferred
 if (localStorage.getItem("lifeTransfer")) try {
-    if (window.location.pathname === "/home.html") {
+    if (window.location.pathname.endsWith("home.html")) {
         const info = misc.getData();
         const life = JSON.parse(localStorage.getItem("lifeTransfer"));
         if (life.status === 1) info.saved[life.lifeNo - 1] = life;
         else if (life.status === 2) info.preserved[life.lifeNo - 1] = life;
         misc.setData(info);
-    } else if (window.location.pathname === "/main.html") {
+    } else if (window.location.pathname.endsWith("main.html")) {
         window.life = JSON.parse(localStorage.getItem("lifeTransfer"));
         window.progressing = false;
         localStorage.removeItem("lifeTransfer");
@@ -44,7 +44,7 @@ if (localStorage.getItem("lifeTransfer")) try {
 }
 
 // Initialises text fields
-if (window.location.pathname === "/home.html") {
+if (window.location.pathname.endsWith("home.html")) {
     // Initialises text inside the continue life tab
     for (let i = 0; i < 10; i++) {
         const prefix = "#continueLife_saveFile";
@@ -71,21 +71,20 @@ if (window.location.pathname === "/home.html") {
             console.log("eduction" + i);
         }
     }
-} else if (window.location.pathname === "/main.html") {
+} else if (window.location.pathname.endsWith("main.html")) {
     // Initialises text inside the main window
-    if (!window.life) window.location.href = "../home.html";
+    if (!window.life) window.location.href = "home.html";
     const launchBalance = window.life.balance.toLocaleString(
         "en-AU", { style: "currency", currency: "AUD", });
     const launchNetWorth =  window.life.netWorth.toLocaleString(
         "en-AU", { style: "currency", currency: "AUD" });
+    let gender;
+    if (window.life.gender === "m") gender = "Gender: Male";
+    else if (window.life.gender === "f") gender = "Gender: Female";
     $("#main_diary_h1").html(`${window.life.name.first} ${window.life.name.last}'s Diary`);
     $("#main_diary_p").html(`${window.life.diary}`);
     $("#main_info_age").html(`Age: ${window.life.age.years} years ${window.life.age.days} days`);
-    switch (window.life.gender) {
-        case "m": $("#main_info_gender").html("Gender: Male"); break;
-        case "f": $("#main_info_gender").html("Gender: Female"); break;
-        default: $("#main_info_gender").html("Gender: Error! You might want to restart your game.");
-    }
+    $("#main_info_gender").html(`Gender: ${gender}`);
     $("#main_info_balance").html(`Balance: ${launchBalance}`);
     $("#main_info_netWorth").html(`Net Worth: ${launchNetWorth}`);
     $("#main_info_birthday").html("Birthday:" + " " + dates.convert_dict_date(window.life.birthday));
