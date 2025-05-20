@@ -1,0 +1,6 @@
+@echo off
+echo Starting npm server...
+start /B cmd /C "npm start"
+timeout /t 2 >nul
+echo Opening browser...
+start "" "http://localhost:8080/index.html"
