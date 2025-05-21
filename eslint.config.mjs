@@ -1,4 +1,3 @@
-/* eslint-disable no-magic-numbers */
 import js from "@eslint/js";
 import globals from "globals";
 import pluginReact from "eslint-plugin-react";
@@ -10,7 +9,7 @@ export default defineConfig([
         files: ["**/*.{js,mjs,cjs,jsx}"],
         plugins: { js },
         languageOptions: {
-            globals: { ...globals.browser, $: "readonly" },
+            globals: { ...globals.browser, ...globals.vitest, $: "readonly" },
         },
         rules: {
             "max-len": ["warn", { code: 110 }], // 110 char limit on all lines of code
