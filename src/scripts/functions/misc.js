@@ -1,22 +1,30 @@
 // This script contains miscellaneous functions not defined by other scripts.
 // TODO: Split this into many different js files
 
-import dates from "./dates.js";
-
 export default class misc {
-    // Function 1: displayType() - Changes the display type of the following element
-    static display(overlayName, displayType) {
-        $("#" + overlayName).css("display", displayType);
+    /**
+     * Sets the html display attribute of an element to be something else
+     * @param {String} elementName - Name of the element
+     * @param {String} displayType - Desired display
+     */
+    static display(elementName, displayType) {
+        $("#" + elementName).css("display", displayType);
     }
 
-    // Function 2: playAudio() - Plays audio
+    /**
+     * Plays audio
+     * @param {*} audioFile - Name of the audio file, minus the mp3
+     */
     static playAudio(audioFile) {
-        const audio = new Audio(`audio/${audioFile}.mp3`);
+        const audio = new Audio(`assets/audio/${audioFile}.mp3`);
         audio.volume = this.getData().settings.volume / 100;
         audio.play();
     }
 
-    // Function 3: wait() - Waits for a certain amount of time before continuing
+    /**
+     * Waits for a certain amount of time before continuing
+     * @param {*} ms - Amount of milliseconds to wait
+     */
     static wait(ms) {
         const d = new Date();
         let d2 = null;
@@ -25,13 +33,10 @@ export default class misc {
         } while (d2 - d < ms);
     }
 
-    // Function 4: diaryAdd() - Adds a new diary entry to the diary
-    static diaryAdd(input) {
-        const dateString = dates.convert_dict_date(window.life.date);
-        window.life.diary = window.life.diary + dateString + " - " + input + " <br>";
-    }
-
-    // Function 5: transferLife() - Transfers the life from main.html to home.html
+    /**
+     * Transfers the life from main.html to home.html
+     * @param {*} lifeNo - Desired life number
+     */
     static transferLife(lifeNo) {
         window.life.lifeNo = lifeNo;
         localStorage.setItem("lifeTransfer", JSON.stringify(window.life));

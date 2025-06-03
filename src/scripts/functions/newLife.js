@@ -1,11 +1,14 @@
 // This script contains functions running all things related to starting a new life.
 
-import { db } from "./database.js";
+import Life from "../classes/Life.js";
+import LifeDate from "../classes/LifeDate.js";
+import { Gender } from "../enums.js";
 import misc from "./misc.js";
-import dates from "./dates.js";
 
 export default class newLife {
-    // Function 1: This function activates when user tries to start a life
+    /**
+     * This function activates when user tries to start a life
+     */
     static confirm() {
         // If first name is invalid
         if ($("#newLife_firstName").val().length === 0) {
@@ -58,34 +61,36 @@ export default class newLife {
         else {
             const firstName = $("#newLife_firstName").val();
             const surname = $("#newLife_surname").val();
-            const date = $("#newLife_dob").val();
+            const date = new LifeDate($("#newLife_dob").val());
             misc.display("newLife2_yes", "block");
             misc.display("newLife2_no", "block");
             $("#newLife2_h1").html("Start Life?");
             $("#newLife2_p").html(
                 `Would you like to start the life of 
                 <strong>${firstName} ${surname}</strong>, 
-                starting from <strong>${dates.convert_calendar_date(date)}</strong>?`
+                starting from <strong>${date.format("dd/mm/yyyy")}</strong>?`
             );
             misc.display("newLife2_overlay", "block");
         }
     }
 
-    // Function 2 - Activates when user is sure they want to start their life
+    /** Activates when user is sure they want to start their life
+     *
+     */
     static create() {
-        const info = db.lifeInformation;
+        const info = new Life();
         info.status = 1;
         info.name.first = $("#newLife_firstName").val();
         info.name.last = $("#newLife_surname").val();
-        info.date = info.birthday = dates.convert_calendar_dict($("#newLife_dob").val());
-        if ($("#newLife_gender_male").prop("checked")) info.gender = "m";
-        else if ($("#newLife_gender_female").prop("checked")) info.gender= "f";
+        info.birthday = info.date = new LifeDate($("#newLife_dob").val());
+        if ($("#newLife_gender_male").prop("checked")) info.gender = Gender.MALE;
+        else if ($("#newLife_gender_female").prop("checked")) info.gender= Gender.FEMALE;
         let iqX = Math.random();
         if (iqX >= 0.5) {
-            info.iq = Math.round(8 * Math.PI * Math.pow(Math.asin(2 * iqX - 1), 2.5) + 100);
+            info.skills.iq = Math.round(8 * Math.PI * Math.pow(Math.asin(2 * iqX - 1), 2.5) + 100);
         } else {
             iqX = 1 - iqX;
-            info.iq = Math.round(-5 * Math.PI * Math.pow(Math.asin(2 * iqX - 1), 2.5) + 100);
+            info.skills.iq = Math.round(-5 * Math.PI * Math.pow(Math.asin(2 * iqX - 1), 2.5) + 100);
         }
         console.log(info);
         localStorage.setItem("lifeTransfer", JSON.stringify(info));

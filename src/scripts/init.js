@@ -2,16 +2,18 @@
 // into html. Therefore, this js file is responsibile for quite a lot of stuff.
 
 // Imports
-import { db } from "./scripts/database.js";
-import settings from "./scripts/settings.js";
-import misc from "./scripts/misc.js";
-import dates from "./scripts/dates.js";
-import newLife from "./scripts/newLife.js";
-import continueLife from "./scripts/continueLife.js";
-import control from "./scripts/control.js";
-import education from "./scripts/education.js";
-import career from "./scripts/career.js";
-import deadLife from "./scripts/deadLife.js";
+import { db } from "./database/master.js";
+import settings from "./functions/settings.js";
+import misc from "./functions/misc.js";
+import newLife from "./functions/newLife.js";
+import continueLife from "./functions/continueLife.js";
+import control from "./functions/control.js";
+import deadLife from "./functions/deadLife.js";
+import htmlUpdate from "./functions/htmlUpdate.js";
+
+import Life from "./classes/Life.js";
+import Money from "./classes/Money.js";
+import Education from "./classes/Education.js";
 
 // Initialises game data if not done so already
 if (!localStorage.getItem("LiSim")) {
@@ -19,7 +21,7 @@ if (!localStorage.getItem("LiSim")) {
     const newGameData = {
         saved: new Array(10),
         preserved: new Array(30),
-        settings: db.defaultSettings
+        settings: db.defaultSettings,
     };
     localStorage.setItem("LiSim", JSON.stringify(newGameData));
 }
@@ -33,14 +35,12 @@ if (localStorage.getItem("lifeTransfer")) try {
         else if (life.status === 2) info.preserved[life.lifeNo - 1] = life;
         misc.setData(info);
     } else if (window.location.pathname.endsWith("main.html")) {
-        window.life = JSON.parse(localStorage.getItem("lifeTransfer"));
+        window.life = new Life(JSON.parse(localStorage.getItem("lifeTransfer")));
+        window.interval = null;
         window.progressing = false;
-        localStorage.removeItem("lifeTransfer");
     }
 } catch(err) {
-    console.err(err.stack);
-} finally {
-    localStorage.removeItem("lifeTransfer");
+    console.error(err.stack);
 }
 
 // Initialises text fields
@@ -48,48 +48,31 @@ if (window.location.pathname.endsWith("home.html")) {
     // Initialises text inside the continue life tab
     for (let i = 0; i < 10; i++) {
         const prefix = "#continueLife_saveFile";
-        const life = misc.getData().saved[i] ?? null;
+        const life = misc.getData().saved[i] ? new Life(misc.getData().saved[i]) : null;
         if (life && life.status === 1) {
             $(prefix + `${i + 1}_name`).html(`${life.name.first} ${life.name.last}`);
             $(prefix + `${i + 1}_age`).html(`Age: ${life.age.years}`);
-            $(prefix + `${i + 1}_date`).html(`Date: ${dates.convert_dict_date(life.date)}`);
+            $(prefix + `${i + 1}_date`).html(`Date: ${life.date.format("dd/mm/yyyy")}`);
         }
     }
     // Initialises text inside the past lives tab
     for (let i = 0; i < 30; i++) {
         const prefix = "#pastLives_save";
-        const life = misc.getData().preserved[i] ?? null;
+        const life = misc.getData().preserved[i] ? new Life(misc.getData().preserved[i]) : null;
         if (life && life.status === 2) {
-            const lifespanStart = dates.convert_dict_date(life.birthday);
-            const lifespanEnd = dates.convert_dict_date(life.date);
-            const netWorth = life.netWorth.toLocaleString("en-AU", { style: "currency", currency: "AUD" });
+            const lifespanStart = life.birthday.format("dd/mm/yyyy");
+            const lifespanEnd = life.date.format("dd/mm/yyyy");
+            const netWorth = life.financials.netWorth.format();
             $(prefix + `${i + 1}_name`).html(`${life.name.first} ${life.name.last}`);
             $(prefix + `${i + 1}_age`).html(`Age: ${life.age.years}`);
             $(prefix + `${i + 1}_date`).html(`Lifespan: ${lifespanStart} - ${lifespanEnd}`);
             $(prefix + `${i + 1}_wealth`).html(`Net Worth: ${netWorth}`);
             $(prefix + `${i + 1}_career`).html(`Career: ${life.career.longest}`);
-            console.log("eduction" + i);
         }
     }
 } else if (window.location.pathname.endsWith("main.html")) {
     // Initialises text inside the main window
-    if (!window.life) window.location.href = "home.html";
-    const launchBalance = window.life.balance.toLocaleString(
-        "en-AU", { style: "currency", currency: "AUD", });
-    const launchNetWorth =  window.life.netWorth.toLocaleString(
-        "en-AU", { style: "currency", currency: "AUD" });
-    let gender;
-    if (window.life.gender === "m") gender = "Gender: Male";
-    else if (window.life.gender === "f") gender = "Gender: Female";
-    $("#main_diary_h1").html(`${window.life.name.first} ${window.life.name.last}'s Diary`);
-    $("#main_diary_p").html(`${window.life.diary}`);
-    $("#main_info_age").html(`Age: ${window.life.age.years} years ${window.life.age.days} days`);
-    $("#main_info_gender").html(`Gender: ${gender}`);
-    $("#main_info_balance").html(`Balance: ${launchBalance}`);
-    $("#main_info_netWorth").html(`Net Worth: ${launchNetWorth}`);
-    $("#main_info_birthday").html("Birthday:" + " " + dates.convert_dict_date(window.life.birthday));
-    $("#main_control_currentDate").html(dates.convert_dict_date(window.life.date));
-    $("#main_control_speed").val(0);
+    if (!window.life) window.location.href = "home.html"; // Call it quits if window life doesn't exit
 
     // Initialises text inside the save tab
     for (let i = 1; i <= 10; i++) {
@@ -98,6 +81,9 @@ if (window.location.pathname.endsWith("home.html")) {
             $(`#save_div_${i}`).html(`Life ${i}: ${currentInfo.name.first} ${currentInfo.name.last}`);
         }
     }
+
+    // Sync life info with html info
+    htmlUpdate();
 }
 
 // Initialises settings
@@ -141,8 +127,9 @@ $(document).ready(() => {
     // Main screen buttons
     $("#main_actions_save").on("click", function () { misc.display("save_overlay", "block"); });
     $("#main_actions_settings").on("click", function () { misc.display("settings_overlay", "block"); });
-    $("#main_control_pause").on("click", function () { control.pause(); });
-    $("#main_control_start").on("click", function () { control.start(); });
+    $("#main_control_pp").on("click", function () { control.toggle(); });
+    $("#main_control_skip").on("click", function () { control.skip(); });
+    $("#main_control_speed").on("input", function () { control.update(); });
     $("#death_endLife").on("click", function () { misc.display("end_overlay", "block"); });
     $("#death_preserveLife").on("click", function () { misc.display("preserve_overlay", "block"); });
     $("#end_yes").on("click", function () { deadLife.endLife(); });
@@ -152,8 +139,8 @@ $(document).ready(() => {
     $("#settings_theme").on("click", function () { settings.theme(); });
     $("#settings_save").on("click", function () { settings.confirm(); });
     $("#newLife_start").on("click", function () { newLife.confirm(); });
-    $("#main_actions_education").on("click", function () { education.open(window.life); });
-    $("#main_actions_career").on("click", function () { career.open(window.life); });
+    $("#main_actions_education").on("click", function () { Education.open(window.life); });
+    // $("#main_actions_career").on("click", function () { Career.open(window.life); });
 
     // Secondary overlay buttons
     $("#newLife2_yes").on("click", function () { newLife.create(); });
@@ -162,4 +149,7 @@ $(document).ready(() => {
     $("#continueLife2_no").on("click", function () { misc.display("continueLife2_overlay", "none"); });
     $("#settings2_yes").on("click", function () { settings.save(); });
     $("#settings2_no").on("click", function () { misc.display("settings2_overlay", "none"); });
+
+    // On Change Actions
+    $("#education_effort_input").on("change", function () { Education.effortSave(); });
 });

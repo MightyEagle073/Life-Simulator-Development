@@ -8,7 +8,7 @@
         <link href="logo.png" rel="icon" />
         <script src="scripts/public/jquery-3.4.1.min.js"></script>
         <script src="scripts/public/jquery.fittext.js"></script>
-`        <script type="module" src="./init.js" defer></script>
+`        <script type="module" src="scripts/init.js" defer></script>
     </head>
 
     <body id="main_body">
@@ -20,7 +20,7 @@
                     Please adjust your window size so that Lightning Mcqueen is fully visible. You can do this by either enlarging or fullscreening
                     your window or pressing Ctrl and - (Windows) or Cmd and - (Mac).
                 </p>
-                <img src="png/mcqueen.png" alt="McQueen" />
+                <img src="assets/png/mcqueen.png" alt="McQueen" />
             </div>
         </div>
         <div id="notStarted_overlay" class="overlay">
@@ -29,9 +29,9 @@
                 <p>Life Simulator has detected that you haven't even started your life yet. Open home.html to either continue or start a new life.</p>
             </div>
         </div>
-        <audio id="main_audio_death"><source src="audio/death.mp3" type="audio/mpeg" /></audio>
-        <audio id="main_audio_education_graduation_level"><source src="audio/education_graduation_level.mp3" type="audio/mpeg" /></audio>
-        <audio id="main_audio_education_graduation_school"><source src="audio/education_graduation_school.mp3" type="audio/mpeg" /></audio>
+        <audio id="main_audio_death"><source src="assets/audio/death.mp3" type="audio/mpeg" /></audio>
+        <audio id="main_audio_education_graduation_stage"><source src="assets/audio/education_graduation_stage.mp3" type="audio/mpeg" /></audio>
+        <audio id="main_audio_education_graduation_school"><source src="assets/audio/education_graduation_school.mp3" type="audio/mpeg" /></audio>
         <div id="main_diary">
             <div id="main_diary_head">
                 <h1 id="main_diary_h1">John Smith's Diary</h1>
@@ -54,18 +54,18 @@
             </div>
         </div>
         <div id="main_actions">
-            <img id="main_actions_education" class="main_actions_icons" src="png/actions_education.png" alt="Education" />
-            <img id="main_actions_career" class="main_actions_icons" src="png/actions_career.png" alt="Careers" />
-            <img id="main_actions_save" class="main_actions_icons" src="png/actions_save.png" alt="Save" />
-            <img id="main_actions_settings" class="main_actions_icons" src="png/actions_settings.png" alt="Settings" />
+            <img id="main_actions_education" class="main_actions_icons" src="assets/png/actions_education.png" alt="Education" />
+            <img id="main_actions_career" class="main_actions_icons" src="assets/png/actions_career.png" alt="Careers" />
+            <img id="main_actions_save" class="main_actions_icons" src="assets/png/actions_save.png" alt="Save" />
+            <img id="main_actions_settings" class="main_actions_icons" src="assets/png/actions_settings.png" alt="Settings" />
         </div>
         <div id="main_control">
-            <div id="main_control_date">
-                <h1 id="main_control_currentDate">1970/1/1</h1>
-                <button id="main_control_pause"></button>
-                <button id="main_control_start"></button>
-                <input id="main_control_speed" type="range" min="0" max="100" value="0" name="speed" />
-            </div>
+            <h1 id="main_control_currentDate">Date: 1970/1/1</h1>
+            <button id="main_control_pp"></button>
+            <button id="main_control_skip"></button>
+            <input id="main_control_speed" type="range" min="0" max="100" value="0" name="speed" />
+            <input id="main_control_iter" type="number" value="1" name="iterations" />
+            <div id="main_control_tooltip"></div>
         </div>
         <div id="education_overlay" class="overlay">
             <div id="education_tab">
@@ -82,7 +82,6 @@
                             min="0"
                             max="100"
                             name="education_effort"
-                            onchange="education_effort_save()"
                             disabled />
                         <p id="education_effort_level">Effort text: You shouldn't see this!</p>
                         <p id="education_effort_warning"></p>
@@ -152,10 +151,20 @@
                     <label for="settings_gameSpeed3"
                         ><input id="settings_gameSpeed3" name="gameSpeed" type="radio" value="3" /> Fast&nbsp;&nbsp;&nbsp;</label
                     >
-                    <p>
+                    <!-- <p>
                         The Game Speed adjusts the amounts of events that will happen in your life. For a fast game but uneventful life, choose fast.
                         For a slow game but a life packed full of events, choose slow. For a balanced game, choose medium.
-                    </p>
+                    </p> -->
+                    <h3>Diary Logging</h3>
+                    <label for="settings_diaryLogging1">
+                        <input id="settings_diaryLogging1" name="diaryLogging" type="radio" value="1" /> All&nbsp;&nbsp;&nbsp;
+                    </label>
+                    <label for="settings_diaryLogging2"
+                        ><input id="settings_diaryLogging2" name="diaryLogging" type="radio" value="2" /> Only Important&nbsp;&nbsp;&nbsp;</label
+                    >
+                    <label for="settings_diaryLogging3"
+                        ><input id="settings_diaryLogging3" name="diaryLogging" type="radio" value="3" /> Only Crucial&nbsp;&nbsp;&nbsp;</label
+                    >
                     <div id="settings2_overlay" class="overlay">
                         <div id="settings2_tab">
                             <button id="settings2_close" class="close"></button>
@@ -178,6 +187,7 @@
                     <p id="notification_p_1">You shouldn't see this text. If you are seeing this then something has gone bonkers in the code.</p>
                     <p id="notification_p_2">Please report this to the developers.</p>
                 </div>
+                <img id ="notification_image" src="assets/png/notification_default.png">
                 <button id="notification_close" class="close"></button>
             </div>
         </div>
@@ -185,7 +195,7 @@
             <div id="death_tab">
                 <div id="death_container">
                     <h1>You have perished.</h1>
-                    <img src="png/tombstone.png" alt="tombstone" />
+                    <img src="assets/png/tombstone.png" alt="tombstone" />
                     <p id="death_died">John Smith died on 1970/1/1.</p>
                     <p id="death_age">He was at a young age of 18 years 0 days.</p>
                 </div>

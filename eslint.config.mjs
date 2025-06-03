@@ -26,7 +26,7 @@ export default defineConfig([
             "no-redeclare": "warn", // Cannot redeclare variables
             "no-empty": "warn", // Cannot have empty blocks, i.e. if () {}
             "no-use-before-define": "error", // Cannot use a variable before its declaration
-            "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }], // Cannot have unused variables
+            "no-unused-vars": ["warn", { "varsIgnorePattern": "^[A-Z_]" }], // Cannot have unused variables
             // "no-magic-numbers": ["warn", { "ignore": [0, 1, -1], "ignoreArrayIndexes": true,
             //     "enforceConst": true, "detectObjects": true }], // Cannot have magic numbers
             "spaced-comment": ["warn", "always", { "markers": ["/"] }], // Must have space after double slash
